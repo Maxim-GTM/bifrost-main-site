@@ -62,6 +62,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={`scroll-smooth ${geistSans.variable} ${geistMono.variable}`}
+      style={{ colorScheme: 'light' }}
     >
       <head>
         {process.env.NODE_ENV !== 'development' && (

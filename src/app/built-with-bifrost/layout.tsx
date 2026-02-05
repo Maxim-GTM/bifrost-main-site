@@ -47,7 +47,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="built-with-bifrost">
+    <div className="built-with-bifrost" style={{ colorScheme: 'light' }}>
       <Navbar />
       {children}
       <Footer />

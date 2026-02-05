@@ -7,10 +7,10 @@ export default function BifrostResourcesLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
+    <div style={{ colorScheme: 'light' }}>
       <Navbar />
       {children}
       <Footer />
-    </>
+    </div>
   );
 }

@@ -46,7 +46,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="model-library">
+    <div className="model-library" style={{ colorScheme: 'light' }}>
       <Navbar />
       {children}
       <Footer />

@@ -81,16 +81,7 @@
   --color-extracted: rgb(143, 143, 143);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --greptile-green: #34d399;
-    --greptile-green-light: #6ee7b7;
-    --greptile-green-dark: #10b981;
-    --color-accent: #33c09e;
-  }
-}
+/* Dark mode disabled: site is light-only */
 
 body {
   overscroll-behavior: none;

@@ -235,7 +235,7 @@ function getModesDisplay(model: ProcessedModel) {
     model.data.modes?.length ? model.data.modes : model.data.supported_modes?.length ? model.data.supported_modes : null;
 
   if (modeList && modeList.length) {
-    const uniqueModes = Array.from(new Set(modeList));
+    const uniqueModes = Array.from(new Set(modeList)) as string[];
     return uniqueModes.map((mode) => getModeDisplayName(mode)).join(', ');
   }
 
