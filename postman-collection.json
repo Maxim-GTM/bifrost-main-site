@@ -1,0 +1,436 @@
+{
+  "info": {
+    "_postman_id": "bifrost-api-collection",
+    "name": "Bifrost Website API",
+    "description": "API collection for Bifrost Website - Customer management and enterprise update notifications",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string",
+      "description": "Base URL for the API (change to production URL as needed)"
+    },
+    {
+      "key": "apiKey",
+      "value": "your-god-key-here",
+      "type": "string",
+      "description": "API key for authentication (GOD_KEY)"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "item": [
+    {
+      "name": "Customer",
+      "description": "Enterprise customer management endpoints",
+      "item": [
+        {
+          "name": "List All Customers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "customer"]
+            },
+            "description": "Retrieve a list of all enterprise customers with their notification preferences."
+          },
+          "response": [
+            {
+              "name": "Success - Customer List",
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customers\": [\n    {\n      \"name\": \"acme-corp\",\n      \"notificationPreference\": {\n        \"emails\": [\"admin@acme.com\", \"dev@acme.com\"],\n        \"webhooks\": [\"https://hooks.acme.com/bifrost\"]\n      }\n    }\n  ]\n}"
+            },
+            {
+              "name": "Unauthorized",
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Unauthorized: Invalid API key\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Customer by Name",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer?name=acme-corp",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "customer"],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "acme-corp",
+                  "description": "Customer name to retrieve"
+                }
+              ]
+            },
+            "description": "Retrieve a specific customer by name."
+          },
+          "response": [
+            {
+              "name": "Success - Customer Found",
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customer\": {\n    \"name\": \"acme-corp\",\n    \"notificationPreference\": {\n      \"emails\": [\"admin@acme.com\", \"dev@acme.com\"],\n      \"webhooks\": [\"https://hooks.acme.com/bifrost\"]\n    }\n  }\n}"
+            },
+            {
+              "name": "Not Found",
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Customer not found\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create Customer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"acme-corp\",\n  \"notificationPreference\": {\n    \"emails\": [\"admin@acme.com\", \"dev@acme.com\"],\n    \"webhooks\": [\"https://hooks.acme.com/bifrost\"]\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/customer",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "customer"]
+            },
+            "description": "Create a new enterprise customer with notification preferences."
+          },
+          "response": [
+            {
+              "name": "Success - Customer Created",
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Customer created successfully\",\n  \"customer\": {\n    \"name\": \"acme-corp\",\n    \"notificationPreference\": {\n      \"emails\": [\"admin@acme.com\", \"dev@acme.com\"],\n      \"webhooks\": [\"https://hooks.acme.com/bifrost\"]\n    }\n  }\n}"
+            },
+            {
+              "name": "Conflict - Customer Exists",
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Customer already exists\"\n}"
+            },
+            {
+              "name": "Bad Request - Missing Name",
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Customer name is required\"\n}"
+            },
+            {
+              "name": "Bad Request - Invalid Notification Preference",
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid notificationPreference format. Expected { emails: [], webhooks: [] }\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Customer",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"acme-corp\",\n  \"notificationPreference\": {\n    \"emails\": [\"admin@acme.com\", \"dev@acme.com\", \"ops@acme.com\"],\n    \"webhooks\": [\"https://hooks.acme.com/bifrost\", \"https://slack.acme.com/webhook\"]\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/customer",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "customer"]
+            },
+            "description": "Update an existing customer's notification preferences."
+          },
+          "response": [
+            {
+              "name": "Success - Customer Updated",
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Customer updated successfully\",\n  \"customer\": {\n    \"name\": \"acme-corp\",\n    \"notificationPreference\": {\n      \"emails\": [\"admin@acme.com\", \"dev@acme.com\", \"ops@acme.com\"],\n      \"webhooks\": [\"https://hooks.acme.com/bifrost\", \"https://slack.acme.com/webhook\"]\n    }\n  }\n}"
+            },
+            {
+              "name": "Not Found",
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Customer not found\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Customer",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"acme-corp\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/customer",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "customer"]
+            },
+            "description": "Delete an enterprise customer."
+          },
+          "response": [
+            {
+              "name": "Success - Customer Deleted",
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Customer deleted successfully\",\n  \"name\": \"acme-corp\"\n}"
+            },
+            {
+              "name": "Not Found",
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Customer not found\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Enterprise Updates",
+      "description": "Enterprise notification and email campaign endpoints",
+      "item": [
+        {
+          "name": "Trigger Enterprise Update Email",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"transactionalId\": \"optional-override-template-id\",\n  \"dataVariables\": {\n    \"version\": \"2.5.0\",\n    \"changelog\": \"## New Features\\n- Added support for new LLM providers\\n- Improved failover mechanism\",\n    \"subject\": \"v2.5.0 is now available\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/trigger-enterprise-update",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "trigger-enterprise-update"]
+            },
+            "description": "Send enterprise update notification emails to all registered customers via Loops API. Requires LOOPS_API_KEY env var. The transactionalId can be passed in the body or set via LOOPS_TRANSACTIONAL_ID env var."
+          },
+          "response": [
+            {
+              "name": "Success - Emails Sent",
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Email campaign completed\",\n  \"sent\": 15,\n  \"failed\": 0,\n  \"total\": 15\n}"
+            },
+            {
+              "name": "Partial Success - Some Failures",
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Email campaign completed\",\n  \"sent\": 13,\n  \"failed\": 2,\n  \"total\": 15,\n  \"failures\": [\n    {\n      \"email\": \"invalid@example.com\",\n      \"error\": \"Invalid email address\"\n    },\n    {\n      \"email\": \"bounce@test.com\",\n      \"error\": \"Mailbox not found\"\n    }\n  ]\n}"
+            },
+            {
+              "name": "Bad Request - Missing Fields",
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Version and changelog are required\"\n}"
+            },
+            {
+              "name": "Not Found - No Subscribers",
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"No subscribers found\",\n  \"sent\": 0,\n  \"failed\": 0\n}"
+            },
+            {
+              "name": "Unauthorized",
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Unauthorized: Invalid API key\"\n}"
+            },
+            {
+              "name": "Server Error - All Emails Failed",
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"All emails failed to send\",\n  \"sent\": 0,\n  \"failed\": 5,\n  \"failures\": [\n    {\n      \"email\": \"user1@example.com\",\n      \"error\": \"SMTP connection failed\"\n    }\n  ]\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Pre-request script for all requests",
+          "// Ensure API key is set",
+          "if (!pm.variables.get('apiKey') || pm.variables.get('apiKey') === 'your-god-key-here') {",
+          "    console.warn('Warning: API key not configured. Set the apiKey collection variable.');",
+          "}"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Common test script for all requests",
+          "pm.test('Response time is less than 5000ms', function () {",
+          "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+          "});",
+          "",
+          "pm.test('Response has valid JSON', function () {",
+          "    pm.response.to.be.json;",
+          "});"
+        ]
+      }
+    }
+  ]
+}

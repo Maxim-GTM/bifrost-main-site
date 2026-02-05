@@ -1,0 +1,20 @@
+export function getCostCalculatorBaseUrl(){
+    if(process.env.NEXT_PUBLIC_ENV === 'local'){
+        return ''
+    }
+    return '/bifrost'
+}
+
+export function getModelLibraryBaseUrl() {
+    if (process.env.NEXT_PUBLIC_ENV === 'local') {
+        return ''
+    }
+    return '/bifrost'
+}
+
+export function getBuiltWithBifrostBaseUrl() {
+    if (process.env.NEXT_PUBLIC_ENV === 'local') {
+        return ''
+    }
+    return '/bifrost'
+}

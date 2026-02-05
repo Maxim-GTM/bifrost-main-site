@@ -1,0 +1,10 @@
+<svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Bridge/Gateway Symbol -->
+  <path d="M8 20L16 12L24 20L32 12L40 20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M6 22L18 22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  <path d="M26 22L38 22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="22" cy="20" r="3" fill="currentColor"/>
+  
+  <!-- Text -->
+  <text x="50" y="25" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" fill="currentColor">Bifrost</text>
+</svg>
