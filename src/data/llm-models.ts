@@ -1,5 +1,5 @@
 // Auto-generated file - DO NOT EDIT
-// Generated at: 2026-02-05T14:05:19.425Z
+// Generated at: 2026-02-05T19:58:04.976Z
 // Source: https://getbifrost.ai/datasheet
 // Run `npm run generate:llm-data` to regenerate
 
@@ -1710,6 +1710,40 @@ export const LLM_MODELS: ProcessedModel[] = [
     },
     "slug": "claude-opus-4-5",
     "displayName": "claude-opus-4-5"
+  },
+  {
+    "id": "azure_ai/claude-opus-4-6",
+    "name": "claude-opus-4-6",
+    "provider": "azure_ai",
+    "data": {
+      "input_cost_per_token": 0.000005,
+      "output_cost_per_token": 0.000025,
+      "max_input_tokens": 200000,
+      "max_output_tokens": 128000,
+      "max_tokens": 128000,
+      "mode": "chat",
+      "search_context_cost_per_query": {
+        "search_context_size_high": 0.01,
+        "search_context_size_low": 0.01,
+        "search_context_size_medium": 0.01
+      },
+      "cache_creation_input_token_cost": 0.00000625,
+      "cache_creation_input_token_cost_above_1hr": 0.00001,
+      "cache_read_input_token_cost": 5e-7,
+      "supports_assistant_prefill": true,
+      "supports_computer_use": true,
+      "supports_function_calling": true,
+      "supports_pdf_input": true,
+      "supports_prompt_caching": true,
+      "supports_reasoning": true,
+      "supports_response_schema": true,
+      "supports_tool_choice": true,
+      "supports_vision": true,
+      "tool_use_system_prompt_tokens": 159,
+      "provider": "azure_ai"
+    },
+    "slug": "claude-opus-4-6",
+    "displayName": "claude-opus-4-6"
   },
   {
     "id": "azure_ai/claude-opus-4-1",
@@ -9170,6 +9204,74 @@ export const LLM_MODELS: ProcessedModel[] = [
     },
     "slug": "claude-opus-4-5",
     "displayName": "claude-opus-4-5"
+  },
+  {
+    "id": "claude-opus-4-6",
+    "name": "claude-opus-4-6",
+    "provider": "anthropic",
+    "data": {
+      "input_cost_per_token": 0.000005,
+      "output_cost_per_token": 0.000025,
+      "max_input_tokens": 200000,
+      "max_output_tokens": 128000,
+      "max_tokens": 128000,
+      "mode": "chat",
+      "search_context_cost_per_query": {
+        "search_context_size_high": 0.01,
+        "search_context_size_low": 0.01,
+        "search_context_size_medium": 0.01
+      },
+      "cache_creation_input_token_cost": 0.00000625,
+      "cache_creation_input_token_cost_above_1hr": 0.00001,
+      "cache_read_input_token_cost": 5e-7,
+      "supports_assistant_prefill": true,
+      "supports_computer_use": true,
+      "supports_function_calling": true,
+      "supports_pdf_input": true,
+      "supports_prompt_caching": true,
+      "supports_reasoning": true,
+      "supports_response_schema": true,
+      "supports_tool_choice": true,
+      "supports_vision": true,
+      "tool_use_system_prompt_tokens": 159,
+      "provider": "anthropic"
+    },
+    "slug": "claude-opus-4-6",
+    "displayName": "claude-opus-4-6"
+  },
+  {
+    "id": "claude-opus-4-6-20260205",
+    "name": "claude-opus-4-6-20260205",
+    "provider": "anthropic",
+    "data": {
+      "input_cost_per_token": 0.000005,
+      "output_cost_per_token": 0.000025,
+      "max_input_tokens": 200000,
+      "max_output_tokens": 128000,
+      "max_tokens": 128000,
+      "mode": "chat",
+      "search_context_cost_per_query": {
+        "search_context_size_high": 0.01,
+        "search_context_size_low": 0.01,
+        "search_context_size_medium": 0.01
+      },
+      "cache_creation_input_token_cost": 0.00000625,
+      "cache_creation_input_token_cost_above_1hr": 0.00001,
+      "cache_read_input_token_cost": 5e-7,
+      "supports_assistant_prefill": true,
+      "supports_computer_use": true,
+      "supports_function_calling": true,
+      "supports_pdf_input": true,
+      "supports_prompt_caching": true,
+      "supports_reasoning": true,
+      "supports_response_schema": true,
+      "supports_tool_choice": true,
+      "supports_vision": true,
+      "tool_use_system_prompt_tokens": 159,
+      "provider": "anthropic"
+    },
+    "slug": "claude-opus-4-6-20260205",
+    "displayName": "claude-opus-4-6-20260205"
   },
   {
     "id": "claude-sonnet-4-20250514",
@@ -42302,8 +42404,8 @@ for (const model of LLM_MODELS) {
 
 // Stats
 export const LLM_STATS = {
-  totalModels: 1914,
+  totalModels: 1917,
   totalProviders: 71,
   totalModes: 9,
-  generatedAt: '2026-02-05T14:05:19.428Z',
+  generatedAt: '2026-02-05T19:58:04.979Z',
 };

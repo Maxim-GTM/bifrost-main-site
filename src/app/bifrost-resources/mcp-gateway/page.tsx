@@ -3,152 +3,232 @@ import PrimaryButton from '@/components/ui/PrimaryButton';
 import SecondaryButton from '@/components/ui/SecondaryButton';
 import FeatureMatrix from '@/components/resources/FeatureMatrix';
 import DropInReplacement from '@/components/resources/DropInReplacement';
+import SetupSteps from '@/components/resources/SetupSteps';
 import {
     Activity,
     ArrowRight,
     BadgeCheck,
     CheckCircle2,
+    Code2,
+    Cpu,
     ExternalLink,
+    Filter,
     Globe,
     KeyRound,
+    Layers,
+    Lock,
+    Play,
     Plug,
+    RefreshCw,
+    Server,
+    Shield,
     ShieldCheck,
     Terminal,
+    Wrench,
+    XCircle,
     Zap,
 } from 'lucide-react';
 
 export const metadata: Metadata = {
     title: 'MCP Gateway | High-Performance Tool Execution for AI Agents',
-    description: 'Enable AI models to discover and execute external tools dynamically. The fastest open-source MCP gateway with 11µs overhead and complete security control.',
+    description: 'Enable AI models to discover and execute external tools dynamically. The fastest open-source MCP gateway with 11µs overhead, Code Mode for 50% token savings, and complete security control.',
 };
 
 const performanceMetrics = [
     { label: 'Internal Overhead', value: '11µs', description: 'Ultra-low latency at high throughput' },
-    { label: 'Performance', value: '50x Faster', description: 'Than LiteLLM and Python alternatives' },
-    { label: 'Architecture', value: '100% Stateless', description: 'Complete control over execution' },
+    { label: 'Token Savings', value: '50%+', description: 'With Code Mode vs classic MCP' },
+    { label: 'Latency Reduction', value: '40-50%', description: 'Code Mode execution pipeline' },
     { label: 'Provider Support', value: '15+', description: 'LLM providers supported' },
 ];
 
-const coreFeatures = [
+const coreCapabilities = [
     {
         icon: Plug,
-        title: 'Connect to MCP Servers',
-        description: 'Connect via STDIO, HTTP, or SSE. Discover tools automatically from any MCP-compliant server.',
+        title: 'Connect to MCP servers',
+        description: 'Connect to any MCP-compliant server via STDIO, HTTP, or SSE. Bifrost auto-discovers tools and their schemas at runtime so your AI models can use them immediately.',
+        tag: 'STDIO + HTTP + SSE',
     },
     {
-        icon: KeyRound,
-        title: 'OAuth Authentication',
-        description: 'Built-in OAuth 2.1 for secure server authentication and token management.',
+        icon: Server,
+        title: 'Expose as MCP server',
+        description: 'Bifrost doubles as an MCP server. Connect Claude Desktop, Cursor, or any MCP client directly to your Bifrost instance and give them access to all connected tools through a single gateway URL.',
+        tag: 'Claude Desktop ready',
     },
     {
-        icon: Activity,
-        title: 'Tool Execution',
-        description: 'Explicit approval workflows with complete audit trails for every execution.',
+        icon: Play,
+        title: 'Explicit tool execution',
+        description: 'Tool calls from LLMs are suggestions only. Execution requires a separate API call, giving your app full control to validate, filter, and approve every action before it runs.',
+        tag: 'Security-first',
     },
     {
         icon: Zap,
         title: 'Agent Mode',
-        description: 'Multi-step tool orchestration while keeping human oversight in the loop.',
+        description: 'Enable autonomous multi-step tool execution with configurable auto-approval. Specify exactly which tools can auto-execute while keeping human oversight for sensitive operations.',
+        tag: 'Configurable auto-approval',
     },
     {
-        icon: Terminal,
+        icon: Code2,
         title: 'Code Mode',
-        description: 'Code-aware tool integration for filesystem, git, and dev environment tools.',
+        description: 'For 3+ MCP servers, Code Mode has the AI write Python to orchestrate tools in a sandbox instead of exposing 100+ tool definitions directly. Cuts tokens by 50%+ and latency by 40-50%.',
+        tag: '50% fewer tokens',
     },
     {
-        icon: Globe,
-        title: 'MCP Gateway URL',
-        description: 'A single endpoint for tool discovery, execution, and management.',
-    },
-    {
-        icon: ShieldCheck,
-        title: 'Tool Hosting',
-        description: 'Host internal MCP servers alongside third-party integrations with governance.',
-    },
-    {
-        icon: CheckCircle2,
-        title: 'Tool Filtering',
-        description: 'Blacklist, whitelist, and apply role-based tool availability per request.',
+        icon: Filter,
+        title: 'Tool filtering & RBAC',
+        description: 'Blacklist, whitelist, and apply role-based tool availability per request, per client, or per virtual key. Control exactly which tools are accessible in every context.',
+        tag: 'Per-request control',
     },
 ];
 
-const workflowSteps = [
-    { step: '01', title: 'Connect MCP Servers', description: 'Configure STDIO, HTTP, or SSE connections.' },
-    { step: '02', title: 'Discover Tools', description: 'Bifrost discovers tools and their schemas automatically.' },
-    { step: '03', title: 'AI Request', description: 'Your app sends a chat completion request to Bifrost.' },
-    { step: '04', title: 'Tool Suggestions', description: 'Models suggest tools but do NOT execute them.' },
-    { step: '05', title: 'Security Review', description: 'Your app validates and approves tool execution.' },
-    { step: '06', title: 'Execute Tools', description: 'Only approved tools run and results return.' },
-    { step: '07', title: 'Continue Chat', description: 'Results flow into the next model response.' },
+const setupSteps = [
+    {
+        step: '01',
+        title: 'Connect MCP servers',
+        description: 'Configure your MCP server connections. Bifrost supports STDIO for local tools, HTTP for remote APIs, and SSE for real-time streaming.',
+        code: `# bifrost config with MCP servers
+mcp_servers:
+  - name: "filesystem"
+    transport: "stdio"
+    command: "npx"
+    args: ["-y", "@anthropic/mcp-filesystem"]
+  - name: "database"
+    transport: "http"
+    url: "https://db-tools.internal/mcp"`,
+    },
+    {
+        step: '02',
+        title: 'Send a chat completion',
+        description: 'Use the standard OpenAI-compatible API. Bifrost discovers available tools and includes them in the request. The LLM suggests tool calls but does NOT execute them.',
+        code: `# standard chat completions API
+curl -X POST http://localhost:8080/v1/chat/completions \\
+  -H "Content-Type: application/json" \\
+  -d '{"model": "gpt-4o",
+       "messages": [{"role": "user",
+         "content": "List files in /projects"}]}'`,
+    },
+    {
+        step: '03',
+        title: 'Execute approved tools',
+        description: 'Review the suggested tool calls, apply your security rules, then explicitly execute only the approved ones. Results flow back into the conversation.',
+        code: `# execute approved tool calls
+curl -X POST http://localhost:8080/v1/mcp/tool/execute \\
+  -H "Content-Type: application/json" \\
+  -d '{"tool_call_id": "call_abc123",
+       "name": "list_directory",
+       "arguments": {"path": "/projects"}}'`,
+    },
+];
+
+const securityPrinciples = [
+    {
+        icon: ShieldCheck,
+        principle: 'Explicit execution',
+        description: 'Tool calls from LLMs are suggestions only. Execution requires a separate API call from your application.',
+    },
+    {
+        icon: Filter,
+        principle: 'Granular control',
+        description: 'Filter tools per-request, per-client, or per-virtual-key. Blacklist dangerous tools globally.',
+    },
+    {
+        icon: Lock,
+        principle: 'Opt-in auto-execution',
+        description: 'Agent Mode with auto-execution must be explicitly configured. Specify exactly which tools are allowed.',
+    },
+    {
+        icon: Layers,
+        principle: 'Stateless design',
+        description: 'Each API call is independent. Your app controls conversation state with full audit trails at every step.',
+    },
+];
+
+const comparisonData = [
+    { feature: 'Tool definition overhead', classic: '100+ tool schemas sent every request', bifrost: 'AI writes code to call tools' },
+    { feature: 'Token usage', classic: 'High (all tool schemas in context)', bifrost: '50%+ reduction' },
+    { feature: 'Execution latency', classic: 'Multiple round-trips per tool', bifrost: '40-50% faster' },
+    { feature: 'Multi-tool orchestration', classic: 'Sequential tool calls only', bifrost: 'Python orchestrates in one pass' },
+    { feature: 'Scalability with servers', classic: 'Degrades with 3+ servers', bifrost: 'Scales to any number' },
+    { feature: 'Error handling', classic: 'LLM retries each tool call', bifrost: 'Python try/catch in sandbox' },
 ];
 
 const connectionTypes = [
     {
         icon: Terminal,
         title: 'STDIO',
-        description: 'Local process execution via stdin/stdout.',
+        description: 'Local process execution via stdin/stdout for filesystem tools, code search, git operations, and dev environment scripts.',
         latency: '1-10ms',
-        bestFor: 'Local tools',
-        useCases: ['Filesystem operations', 'Code search', 'Dev scripts'],
+        bestFor: 'Local tools & dev environments',
     },
     {
         icon: Globe,
         title: 'HTTP',
-        description: 'Remote MCP servers via HTTP requests.',
+        description: 'Remote MCP servers via stateless HTTP requests for database tools, internal APIs, microservices, and authentication systems.',
         latency: '10-500ms',
-        bestFor: 'Microservices',
-        useCases: ['Database tools', 'Internal APIs', 'Authentication'],
+        bestFor: 'APIs & microservices',
     },
     {
         icon: Activity,
         title: 'SSE',
-        description: 'Persistent streaming for real-time data.',
+        description: 'Persistent server-sent events for real-time monitoring, live dashboards, streaming data, and event-driven tool workflows.',
         latency: 'Event-driven',
-        bestFor: 'Live data',
-        useCases: ['Monitoring', 'Live dashboards', 'Streaming'],
+        bestFor: 'Real-time & streaming',
     },
 ];
 
-const securityFeatures = [
-    'No automatic execution',
-    'Request-level filtering',
-    'Tool blacklisting',
-    'Permission mapping with RBAC',
-    'Complete audit trail',
-    'Environment-based controls',
-];
-
 const useCases = [
-    { title: 'Code Review Agents', description: 'Controlled filesystem access for automated reviews and scans.' },
-    { title: 'Database Agents', description: 'Read-first database operations with granular permissions.' },
-    { title: 'Web Research Agents', description: 'Safe, rate-limited search and content extraction.' },
-    { title: 'DevOps Automation', description: 'Supervised infrastructure actions and deployments.' },
-    { title: 'Multi-Tool Workflows', description: 'Coordinate filesystem, DB, and API operations.' },
-    { title: 'Data Analysis Agents', description: 'Automated reporting with full observability.' },
+    {
+        icon: Wrench,
+        title: 'Agentic coding pipelines',
+        description: 'Connect AI coding agents to filesystem tools, databases, and deployment pipelines. Bifrost handles tool injection transparently with full audit trails for every operation.',
+    },
+    {
+        icon: Shield,
+        title: 'Regulated enterprise environments',
+        description: 'Deploy in healthcare, finance, or government with explicit approval workflows, PII redaction, and tamper-evident audit logs for SOC 2 and HIPAA compliance.',
+    },
+    {
+        icon: RefreshCw,
+        title: 'Multi-tool orchestration',
+        description: 'Coordinate filesystem operations, database queries, and API calls in a single request using Code Mode. Reduce token waste and latency when using 3+ MCP servers.',
+    },
+    {
+        icon: Cpu,
+        title: 'DevOps & infrastructure automation',
+        description: 'Supervised infrastructure actions and deployments with role-based tool access. Only approved tools execute, with complete visibility into every automated step.',
+    },
+    {
+        icon: KeyRound,
+        title: 'Centralized tool governance',
+        description: 'Manage tool access across teams with virtual keys and per-key tool filtering. Set different tool policies for development, staging, and production environments.',
+    },
+    {
+        icon: Globe,
+        title: 'Claude Desktop & MCP clients',
+        description: 'Expose your entire tool ecosystem through a single Bifrost gateway URL. Claude Desktop and other MCP clients connect once and discover all available tools automatically.',
+    },
 ];
 
-const deploymentOptions = [
-    { title: 'NPX', description: 'Start in 30 seconds with npx for dev and prototyping.' },
-    { title: 'Docker', description: 'Production-ready containers with persistent volumes.' },
-    { title: 'Kubernetes', description: 'Enterprise clusters with scaling and load balancing.' },
-    { title: 'Private Cloud', description: 'VPC deployments with custom security controls.' },
-    { title: 'Self-Hosted', description: 'On-prem deployment with full data sovereignty.' },
-];
-
-const resourceLinks = [
-    { label: 'Bifrost Documentation', href: 'https://docs.getbifrost.ai/' },
-    { label: 'MCP Documentation', href: 'https://docs.getbifrost.ai/features/mcp' },
-    { label: 'Quick Start Guide', href: 'https://docs.getbifrost.ai/quickstart/gateway/setting-up' },
-    { label: 'Architecture Overview', href: 'https://www.getmaxim.ai/docs/bifrost/architecture/mcp' },
-];
-
-const differentiators = [
-    '11µs overhead, 50x faster than alternatives',
-    'Stateless architecture with explicit approval',
-    'STDIO, HTTP, and SSE support',
-    'Production-proven at millions of requests/day',
-    'Built-in metrics, tracing, and audit trails',
-    'Open source (Apache 2.0) with enterprise support',
+const architectureFeatures = [
+    {
+        role: 'MCP Client',
+        description: 'Bifrost connects to your external MCP servers — filesystem tools, web search, databases, custom APIs — and discovers their capabilities automatically.',
+        items: [
+            'Auto-discover tools from any MCP server',
+            'STDIO, HTTP, and SSE transports',
+            'OAuth 2.0 with automatic token refresh',
+            'Tool filtering and access control',
+        ],
+    },
+    {
+        role: 'MCP Server',
+        description: 'Bifrost exposes all connected tools through a single gateway URL. MCP clients like Claude Desktop connect to Bifrost and access everything.',
+        items: [
+            'Single gateway URL for all tools',
+            'Claude Desktop, Cursor, and any MCP client',
+            'Unified tool discovery and execution',
+            'Centralized security and audit trails',
+        ],
+    },
 ];
 
 export default function MCPGatewayPage() {
@@ -160,20 +240,20 @@ export default function MCPGatewayPage() {
                     <div className="text-center">
                         <span className="provider-badge">[ MCP GATEWAY ]</span>
                         <h1 className="text-4xl md:text-5xl font-normal text-gray-900 mb-4 leading-[1.2] tracking-tight text-center">
-                            MCP Gateway Built for
+                            Turn AI Models into
                             <br />
-                            <span className="text-[var(--accent-text)]">Speed &amp; Security</span>
+                            <span className="text-[var(--accent-text)]">Action-Capable Agents</span>
                         </h1>
                         <p className="text-sm md:text-base text-gray-500 max-w-3xl mx-auto leading-relaxed mb-8">
-                            Enable AI models to discover and execute external tools dynamically with the fastest open-source MCP gateway. Enterprise-grade with 11µs overhead, complete security control, and zero automatic execution.
+                            Bifrost&apos;s MCP Gateway connects AI models to external tools — filesystems, databases, APIs, and custom integrations — with explicit security controls at every step. Acts as both MCP client and MCP server through a single deployment.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center w-full">
                             <PrimaryButton href="https://github.com/maximhq/bifrost" external>
                                 Get started
                                 <ArrowRight className="w-4 h-4" />
                             </PrimaryButton>
-                            <SecondaryButton href="https://docs.getbifrost.ai/features/mcp" external>
-                                View documentation
+                            <SecondaryButton href="https://docs.getbifrost.ai/mcp/overview" external>
+                                MCP documentation
                                 <ExternalLink className="w-4 h-4" />
                             </SecondaryButton>
                         </div>
@@ -185,7 +265,7 @@ export default function MCPGatewayPage() {
             <section className="py-10 bg-white">
                 <div className="w-full">
                     <p className="text-[10px] text-gray-400 uppercase tracking-widest font-mono text-center mb-4">
-                        [ OUR NUMBERS AT A GLANCE ]
+                        [ PERFORMANCE AT A GLANCE ]
                     </p>
                     <div className="border-y border-gray-200">
                         <div className="max-w-7xl mx-auto">
@@ -212,25 +292,234 @@ export default function MCPGatewayPage() {
                 </div>
             </section>
 
-            {/* Core Features */}
+            {/* Architecture: Dual Role */}
             <section className="py-16 md:py-24 bg-gray-50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
                         <p className="text-xs text-gray-400 uppercase tracking-widest font-mono mb-4">
-                            [ CORE FEATURES ]
+                            [ ARCHITECTURE ]
                         </p>
                         <h2 className="text-2xl md:text-3xl text-gray-900 mb-4">
-                            Complete MCP gateway solution
+                            One gateway, two roles
                         </h2>
-                        <p className="text-gray-600 max-w-2xl mx-auto">
-                            Connect, secure, and execute tools with explicit approval and full observability.
+                        <p className="text-gray-600 max-w-3xl mx-auto">
+                            Bifrost acts as both an MCP client (connecting to external tool servers) and an MCP server (exposing tools to external clients like Claude Desktop) through a single deployment.
+                        </p>
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-6">
+                        {architectureFeatures.map((arch) => (
+                            <div key={arch.role} className="border border-gray-200 bg-white p-6 md:p-8">
+                                <div className="flex items-center gap-3 mb-4">
+                                    <div className="w-10 h-10 flex items-center justify-center bg-[var(--accent)]/10 text-[var(--accent-text)]">
+                                        {arch.role === 'MCP Client' ? (
+                                            <Plug className="w-5 h-5" />
+                                        ) : (
+                                            <Server className="w-5 h-5" />
+                                        )}
+                                    </div>
+                                    <h3 className="text-lg text-gray-900">{arch.role}</h3>
+                                </div>
+                                <p className="text-sm text-gray-600 leading-relaxed mb-5">{arch.description}</p>
+                                <ul className="space-y-2.5">
+                                    {arch.items.map((item) => (
+                                        <li key={item} className="flex items-start gap-2.5">
+                                            <CheckCircle2 className="w-4 h-4 text-[var(--accent-text)] mt-0.5 flex-shrink-0" />
+                                            <span className="text-sm text-gray-700">{item}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
+                    </div>
+                    {/* Architecture Flow */}
+                    <div className="mt-8 border border-gray-200 bg-white p-6">
+                        <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4">
+                            <div className="flex items-center gap-3 text-center md:text-left">
+                                <div className="w-10 h-10 flex items-center justify-center bg-blue-50 text-blue-600 border border-blue-200">
+                                    <Cpu className="w-5 h-5" />
+                                </div>
+                                <div>
+                                    <div className="text-sm font-medium text-gray-900">Your Application</div>
+                                    <div className="text-xs text-gray-500">Chat completions API</div>
+                                </div>
+                            </div>
+                            <ArrowRight className="w-5 h-5 text-gray-300 hidden md:block" />
+                            <div className="w-px h-6 bg-gray-300 md:hidden" />
+                            <div className="flex items-center gap-3 text-center md:text-left">
+                                <div className="w-10 h-10 flex items-center justify-center bg-[var(--accent)]/10 text-[var(--accent-text)] border border-[var(--accent-border)]">
+                                    <Zap className="w-5 h-5" />
+                                </div>
+                                <div>
+                                    <div className="text-sm font-medium text-gray-900">Bifrost Gateway</div>
+                                    <div className="text-xs text-gray-500">MCP Client + Server</div>
+                                </div>
+                            </div>
+                            <ArrowRight className="w-5 h-5 text-gray-300 hidden md:block" />
+                            <div className="w-px h-6 bg-gray-300 md:hidden" />
+                            <div className="flex items-center gap-3 text-center md:text-left">
+                                <div className="w-10 h-10 flex items-center justify-center bg-orange-50 text-orange-600 border border-orange-200">
+                                    <Wrench className="w-5 h-5" />
+                                </div>
+                                <div>
+                                    <div className="text-sm font-medium text-gray-900">MCP Servers</div>
+                                    <div className="text-xs text-gray-500">Filesystem, DB, APIs</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Core Capabilities */}
+            <section className="py-16 md:py-24 bg-white">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-12">
+                        <p className="text-xs text-gray-400 uppercase tracking-widest font-mono mb-4">
+                            [ CORE CAPABILITIES ]
+                        </p>
+                        <h2 className="text-2xl md:text-3xl text-gray-900 mb-4">
+                            Everything you need for production tool execution
+                        </h2>
+                        <p className="text-gray-600 max-w-3xl mx-auto">
+                            Connect, secure, filter, and execute tools with explicit approval workflows, autonomous agent mode, and Code Mode for high-efficiency orchestration.
+                        </p>
+                    </div>
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {coreCapabilities.map((item) => (
+                            <div key={item.title} className="bg-white p-6 border border-gray-200 hover:border-[var(--accent-border)] hover:shadow-sm transition-all">
+                                <item.icon className="w-6 h-6 text-[var(--accent)] mb-4" />
+                                <h3 className="text-gray-900 mb-2">{item.title}</h3>
+                                <p className="text-sm text-gray-600 leading-relaxed mb-4">{item.description}</p>
+                                <span className="inline-block text-xs font-mono text-[var(--accent-text)] bg-[var(--accent-light)] px-2 py-1">
+                                    {item.tag}
+                                </span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* How It Works - Setup Steps */}
+            <section className="py-16 md:py-24 bg-gray-50">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-12">
+                        <p className="text-xs text-gray-400 uppercase tracking-widest font-mono mb-4">
+                            [ HOW IT WORKS ]
+                        </p>
+                        <h2 className="text-2xl md:text-3xl text-gray-900 mb-4">
+                            Stateless tool calling with explicit approval
+                        </h2>
+                        <p className="text-gray-600 max-w-3xl mx-auto">
+                            The default tool calling pattern is stateless with explicit execution. No unintended API calls, no accidental data modifications, full audit trail of every operation.
+                        </p>
+                    </div>
+                    <SetupSteps steps={setupSteps} />
+                    <div className="mt-8 grid md:grid-cols-3 gap-4">
+                        <div className="border border-gray-200 bg-white p-4 text-sm text-gray-700">
+                            <strong className="text-gray-900">No automatic execution:</strong> Tool calls from LLMs are suggestions — your app decides what runs.
+                        </div>
+                        <div className="border border-gray-200 bg-white p-4 text-sm text-gray-700">
+                            <strong className="text-gray-900">Full audit trail:</strong> Every tool suggestion, approval, and execution is logged with metadata.
+                        </div>
+                        <div className="border border-gray-200 bg-white p-4 text-sm text-gray-700">
+                            <strong className="text-gray-900">Stateless design:</strong> Each API call is independent — your app controls conversation state entirely.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Code Mode Highlight */}
+            <section className="py-16 md:py-24 bg-white">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="grid md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <p className="text-xs text-gray-400 uppercase tracking-widest font-mono mb-4">
+                                [ CODE MODE ]
+                            </p>
+                            <h2 className="text-2xl md:text-3xl text-gray-900 mb-4">
+                                50% fewer tokens.<br />40% lower latency.
+                            </h2>
+                            <p className="text-sm text-gray-600 leading-relaxed mb-6">
+                                If you&apos;re using 3+ MCP servers, classic tool calling becomes expensive. Every request sends all tool schemas to the LLM, burning tokens on definitions instead of work.
+                            </p>
+                            <p className="text-sm text-gray-600 leading-relaxed mb-6">
+                                Code Mode takes a different approach: instead of exposing 100+ tool definitions, the AI writes Python code to orchestrate tools in a sandboxed environment. One round-trip handles what would take multiple sequential tool calls.
+                            </p>
+                            <div className="space-y-3">
+                                {[
+                                    'AI generates Python to orchestrate multiple tools',
+                                    'Sandboxed execution with full error handling',
+                                    'One round-trip replaces sequential tool calls',
+                                    'Scales to any number of MCP servers',
+                                ].map((item) => (
+                                    <div key={item} className="flex items-start gap-2.5">
+                                        <CheckCircle2 className="w-4 h-4 text-[var(--accent-text)] mt-0.5 flex-shrink-0" />
+                                        <span className="text-sm text-gray-700">{item}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="space-y-4">
+                            <div className="border border-gray-200 bg-gray-50 p-6">
+                                <div className="text-xs text-gray-400 uppercase tracking-widest font-mono mb-4">Classic MCP</div>
+                                <div className="space-y-3">
+                                    <div className="flex items-center justify-between">
+                                        <span className="text-sm text-gray-600">Token usage</span>
+                                        <span className="text-sm text-gray-900 font-mono">High</span>
+                                    </div>
+                                    <div className="w-full bg-gray-200 h-2"><div className="bg-gray-400 h-2 w-full" /></div>
+                                    <div className="flex items-center justify-between">
+                                        <span className="text-sm text-gray-600">Round-trips per workflow</span>
+                                        <span className="text-sm text-gray-900 font-mono">N tools = N calls</span>
+                                    </div>
+                                    <div className="flex items-center justify-between">
+                                        <span className="text-sm text-gray-600">Scalability</span>
+                                        <span className="text-sm text-gray-900 font-mono">Degrades at 3+ servers</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="border-2 border-[var(--accent-border)] bg-white p-6">
+                                <div className="text-xs text-[var(--accent-text)] uppercase tracking-widest font-mono mb-4">Bifrost Code Mode</div>
+                                <div className="space-y-3">
+                                    <div className="flex items-center justify-between">
+                                        <span className="text-sm text-gray-600">Token usage</span>
+                                        <span className="text-sm text-[var(--accent-text)] font-mono font-semibold">50%+ reduction</span>
+                                    </div>
+                                    <div className="w-full bg-gray-200 h-2"><div className="bg-[var(--accent)] h-2 w-[45%]" /></div>
+                                    <div className="flex items-center justify-between">
+                                        <span className="text-sm text-gray-600">Round-trips per workflow</span>
+                                        <span className="text-sm text-[var(--accent-text)] font-mono font-semibold">1 round-trip</span>
+                                    </div>
+                                    <div className="flex items-center justify-between">
+                                        <span className="text-sm text-gray-600">Scalability</span>
+                                        <span className="text-sm text-[var(--accent-text)] font-mono font-semibold">Any number of servers</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Security Principles */}
+            <section className="py-16 md:py-24 bg-gray-50">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-12">
+                        <p className="text-xs text-gray-400 uppercase tracking-widest font-mono mb-4">
+                            [ SECURITY-FIRST DESIGN ]
+                        </p>
+                        <h2 className="text-2xl md:text-3xl text-gray-900 mb-4">
+                            No tool runs unless you approve it
+                        </h2>
+                        <p className="text-gray-600 max-w-3xl mx-auto">
+                            By default, Bifrost does NOT automatically execute tool calls. All tool execution requires explicit API calls from your application, ensuring human oversight for every operation.
                         </p>
                     </div>
                     <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {coreFeatures.map((item) => (
-                            <div key={item.title} className="bg-white p-6 border border-gray-200 hover:border-[var(--accent-border)] hover:shadow-sm transition-all">
+                        {securityPrinciples.map((item) => (
+                            <div key={item.principle} className="bg-white p-6 border border-gray-200">
                                 <item.icon className="w-6 h-6 text-[var(--accent)] mb-4" />
-                                <h3 className="text-gray-900 mb-2 text-sm">{item.title}</h3>
+                                <h3 className="text-gray-900 mb-2 text-sm font-medium">{item.principle}</h3>
                                 <p className="text-xs text-gray-600 leading-relaxed">{item.description}</p>
                             </div>
                         ))}
@@ -238,38 +527,57 @@ export default function MCPGatewayPage() {
                 </div>
             </section>
 
-            {/* Workflow */}
+            {/* Comparison Table: Classic MCP vs Bifrost Code Mode */}
             <section className="py-16 md:py-24 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
                         <p className="text-xs text-gray-400 uppercase tracking-widest font-mono mb-4">
-                            [ WORKFLOW ]
+                            [ COMPARISON ]
                         </p>
                         <h2 className="text-2xl md:text-3xl text-gray-900 mb-4">
-                            How MCP works in Bifrost
+                            Classic MCP vs Bifrost Code Mode
                         </h2>
+                        <p className="text-gray-600 max-w-2xl mx-auto">
+                            Standard MCP tool calling works, but it doesn&apos;t scale. Code Mode solves the hard problems.
+                        </p>
                     </div>
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {workflowSteps.map((step) => (
-                            <div key={step.step} className="border border-gray-200 bg-white p-6">
-                                <p className="text-xs text-gray-400 uppercase tracking-widest font-mono mb-3">
-                                    Step {step.step}
-                                </p>
-                                <h3 className="text-gray-900 mb-2">{step.title}</h3>
-                                <p className="text-sm text-gray-600 leading-relaxed">{step.description}</p>
-                            </div>
-                        ))}
-                    </div>
-                    <div className="mt-8 grid md:grid-cols-3 gap-4">
-                        <div className="border border-gray-200 bg-gray-50 p-4 text-sm text-gray-700">
-                            <strong className="text-gray-900">Security checkpoint:</strong> Every tool execution requires explicit approval.
-                        </div>
-                        <div className="border border-gray-200 bg-gray-50 p-4 text-sm text-gray-700">
-                            <strong className="text-gray-900">Stateless:</strong> Each step is independent with no automatic state management.
-                        </div>
-                        <div className="border border-gray-200 bg-gray-50 p-4 text-sm text-gray-700">
-                            <strong className="text-gray-900">Observable:</strong> Complete audit trails and metrics at every stage.
-                        </div>
+                    <div className="border border-gray-200 bg-white overflow-hidden">
+                        <table className="w-full">
+                            <thead>
+                                <tr className="border-b border-gray-200 bg-gray-50">
+                                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Dimension
+                                    </th>
+                                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Classic MCP
+                                    </th>
+                                    <th className="px-4 py-3 text-left text-xs font-medium text-[var(--accent-text)] uppercase tracking-wider">
+                                        Bifrost Code Mode
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody className="divide-y divide-gray-200">
+                                {comparisonData.map((row, index) => (
+                                    <tr key={index} className="hover:bg-gray-50 transition-colors">
+                                        <td className="px-4 py-3 text-sm text-gray-600">
+                                            {row.feature}
+                                        </td>
+                                        <td className="px-4 py-3 text-sm text-gray-500">
+                                            <span className="inline-flex items-center gap-1.5">
+                                                <XCircle className="w-3.5 h-3.5 text-gray-400" />
+                                                {row.classic}
+                                            </span>
+                                        </td>
+                                        <td className="px-4 py-3 text-sm font-medium text-gray-900">
+                                            <span className="inline-flex items-center gap-1.5">
+                                                <CheckCircle2 className="w-3.5 h-3.5 text-[var(--accent-text)]" />
+                                                {row.bifrost}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </section>
@@ -279,49 +587,28 @@ export default function MCPGatewayPage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
                         <p className="text-xs text-gray-400 uppercase tracking-widest font-mono mb-4">
-                            [ CONNECTION TYPES ]
+                            [ TRANSPORT PROTOCOLS ]
                         </p>
                         <h2 className="text-2xl md:text-3xl text-gray-900 mb-4">
-                            STDIO, HTTP, and SSE support
+                            Connect any way you need
                         </h2>
                     </div>
                     <div className="grid md:grid-cols-3 gap-6">
                         {connectionTypes.map((item) => (
-                            <div key={item.title} className="bg-white p-6 border border-gray-200">
-                                <item.icon className="w-6 h-6 text-[var(--accent)] mb-4" />
-                                <h3 className="text-gray-900 mb-2">{item.title}</h3>
-                                <p className="text-sm text-gray-600 mb-4">{item.description}</p>
-                                <div className="text-xs text-gray-500 space-y-1">
-                                    <div><strong>Latency:</strong> {item.latency}</div>
-                                    <div><strong>Best for:</strong> {item.bestFor}</div>
+                            <div key={item.title} className="bg-white p-6 border border-gray-200 hover:border-[var(--accent-border)] hover:shadow-sm transition-all">
+                                <div className="flex items-center gap-3 mb-4">
+                                    <div className="w-10 h-10 flex items-center justify-center bg-[var(--accent)]/10 text-[var(--accent-text)]">
+                                        <item.icon className="w-5 h-5" />
+                                    </div>
+                                    <div>
+                                        <h3 className="text-gray-900">{item.title}</h3>
+                                        <div className="text-xs text-gray-400 font-mono">{item.latency}</div>
+                                    </div>
                                 </div>
-                                <ul className="mt-3 text-xs text-gray-500 list-disc list-inside">
-                                    {item.useCases.map((useCase) => (
-                                        <li key={useCase}>{useCase}</li>
-                                    ))}
-                                </ul>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Security */}
-            <section className="py-16 md:py-24 bg-white">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-12">
-                        <p className="text-xs text-gray-400 uppercase tracking-widest font-mono mb-4">
-                            [ SECURITY ]
-                        </p>
-                        <h2 className="text-2xl md:text-3xl text-gray-900 mb-4">
-                            Enterprise-grade security controls
-                        </h2>
-                    </div>
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {securityFeatures.map((item) => (
-                            <div key={item} className="flex items-start gap-3 border border-gray-200 bg-white p-4">
-                                <CheckCircle2 className="w-5 h-5 text-[var(--accent-text)] mt-0.5" />
-                                <p className="text-sm text-gray-700">{item}</p>
+                                <p className="text-sm text-gray-600 leading-relaxed mb-3">{item.description}</p>
+                                <span className="inline-block text-xs font-mono text-[var(--accent-text)] bg-[var(--accent-light)] px-2 py-1">
+                                    {item.bestFor}
+                                </span>
                             </div>
                         ))}
                     </div>
@@ -329,19 +616,20 @@ export default function MCPGatewayPage() {
             </section>
 
             {/* Use Cases */}
-            <section className="py-16 md:py-24 bg-gray-50">
+            <section className="py-16 md:py-24 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
                         <p className="text-xs text-gray-400 uppercase tracking-widest font-mono mb-4">
                             [ USE CASES ]
                         </p>
                         <h2 className="text-2xl md:text-3xl text-gray-900 mb-4">
-                            What you can build
+                            What teams build with Bifrost MCP
                         </h2>
                     </div>
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         {useCases.map((item) => (
                             <div key={item.title} className="bg-white p-6 border border-gray-200 hover:border-[var(--accent-border)] hover:shadow-sm transition-all">
+                                <item.icon className="w-6 h-6 text-[var(--accent)] mb-4" />
                                 <h3 className="text-gray-900 mb-2">{item.title}</h3>
                                 <p className="text-sm text-gray-600 leading-relaxed">{item.description}</p>
                             </div>
@@ -350,61 +638,31 @@ export default function MCPGatewayPage() {
                 </div>
             </section>
 
-            {/* Deployment */}
-            <section className="py-16 md:py-24 bg-white">
+            {/* Why Bifrost */}
+            <section className="py-16 md:py-24 bg-gray-50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
                         <p className="text-xs text-gray-400 uppercase tracking-widest font-mono mb-4">
-                            [ DEPLOYMENT ]
+                            [ WHY BIFROST ]
                         </p>
                         <h2 className="text-2xl md:text-3xl text-gray-900 mb-4">
-                            Deployment options
+                            The fastest open-source MCP gateway
                         </h2>
                     </div>
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {deploymentOptions.map((item) => (
-                            <div key={item.title} className="border border-gray-200 bg-white p-6">
-                                <h3 className="text-gray-900 mb-2">{item.title}</h3>
-                                <p className="text-sm text-gray-600 leading-relaxed">{item.description}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Resources */}
-            <section className="py-16 md:py-24 bg-gray-50">
-                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <p className="text-xs text-gray-400 uppercase tracking-widest font-mono mb-4">
-                        [ RESOURCES ]
-                    </p>
-                    <h2 className="text-2xl md:text-3xl text-gray-900 mb-6">
-                        Documentation and guides
-                    </h2>
-                    <div className="grid sm:grid-cols-2 gap-4">
-                        {resourceLinks.map((item) => (
-                            <SecondaryButton key={item.label} href={item.href} external>
-                                {item.label}
-                                <ExternalLink className="w-4 h-4" />
-                            </SecondaryButton>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Differentiators */}
-            <section className="py-16 md:py-24 bg-white">
-                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <p className="text-xs text-gray-400 uppercase tracking-widest font-mono mb-4">
-                        [ WHY BIFROST ]
-                    </p>
-                    <h2 className="text-2xl md:text-3xl text-gray-900 mb-6">
-                        Key differentiators
-                    </h2>
-                    <div className="grid sm:grid-cols-2 gap-4 text-left">
-                        {differentiators.map((item) => (
-                            <div key={item} className="flex items-start gap-3 border border-gray-200 p-4">
-                                <BadgeCheck className="w-5 h-5 text-[var(--accent-text)] mt-0.5" />
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {[
+                            '11µs overhead at 5,000 requests per second',
+                            'Stateless architecture with explicit approval',
+                            'Code Mode: 50% fewer tokens, 40% lower latency',
+                            'Dual role: MCP Client and MCP Server',
+                            'Built-in OAuth 2.0 with automatic token refresh',
+                            'Production-proven at millions of requests/day',
+                            'Complete audit trails and OpenTelemetry export',
+                            'Open source (Apache 2.0) with enterprise support',
+                            'Go-native with zero Python GIL bottleneck',
+                        ].map((item) => (
+                            <div key={item} className="flex items-start gap-3 border border-gray-200 bg-white p-4">
+                                <BadgeCheck className="w-5 h-5 text-[var(--accent-text)] mt-0.5 flex-shrink-0" />
                                 <p className="text-sm text-gray-700">{item}</p>
                             </div>
                         ))}
@@ -413,21 +671,21 @@ export default function MCPGatewayPage() {
             </section>
 
             {/* CTA */}
-            <section className="py-16 md:py-24 bg-gray-50">
+            <section className="py-16 md:py-24 bg-white">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h2 className="text-2xl md:text-3xl text-gray-900 mb-4">
                         Build production AI agents with Bifrost
                     </h2>
                     <p className="text-gray-600 max-w-2xl mx-auto mb-8">
-                        Get enterprise-grade MCP gateway performance without compromising on security or control.
+                        Get enterprise-grade MCP gateway performance with explicit security controls, Code Mode for token efficiency, and a single gateway URL for your entire tool ecosystem.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center w-full">
                         <PrimaryButton href="https://github.com/maximhq/bifrost" external>
                             Get started on GitHub
                             <ArrowRight className="w-4 h-4" />
                         </PrimaryButton>
-                        <SecondaryButton href="https://docs.getbifrost.ai/" external>
-                            View documentation
+                        <SecondaryButton href="https://docs.getbifrost.ai/mcp/overview" external>
+                            Read MCP docs
                             <ExternalLink className="w-4 h-4" />
                         </SecondaryButton>
                     </div>
@@ -435,7 +693,7 @@ export default function MCPGatewayPage() {
             </section>
 
             {/* Feature Matrix */}
-            <section className="py-16 md:py-24 bg-white">
+            <section className="py-16 md:py-24 bg-gray-50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
                         <p className="text-xs text-gray-400 uppercase tracking-widest font-mono mb-4">
@@ -453,7 +711,7 @@ export default function MCPGatewayPage() {
             </section>
 
             {/* Drop-in Replacement */}
-            <section className="py-16 md:py-24 bg-gray-50">
+            <section className="py-16 md:py-24 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <DropInReplacement />
                 </div>
