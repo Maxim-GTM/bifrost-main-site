@@ -135,7 +135,7 @@ export default function DropInReplacement() {
                 {/* Right Side - Code Editor */}
                 <div className="flex flex-col">
                     {/* Tab Bar */}
-                    <div className="flex flex-col sm:flex-row border-b border-gray-200">
+                    <div className="flex flex-col sm:flex-row border-b border-gray-200 bg-gray-50">
                         <div className="flex overflow-x-auto">
                             {tabs.map((tab) => (
                                 <button
@@ -161,7 +161,7 @@ export default function DropInReplacement() {
                         {/* Copy Button */}
                         <button
                             onClick={handleCopy}
-                            className="flex items-center justify-center gap-2 px-4 py-3 bg-gray-50 hover:bg-gray-100 transition-colors border-t sm:border-t-0 sm:border-l border-gray-200"
+                            className="flex items-center justify-center gap-2 px-4 py-3 bg-gray-50 hover:bg-gray-100 transition-colors border-t sm:border-t-0 sm:border-l border-r border-gray-200"
                         >
                             {copied ? (
                                 <Check className="w-4 h-4 text-[var(--accent)]" />
