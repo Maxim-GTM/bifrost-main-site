@@ -18,6 +18,7 @@ const partnerTypes = [
     'Global System Integrator',
     'Technology Partner',
     'Channel Partner',
+    'Others',
 ];
 
 export default function PartnerForm() {
