@@ -46,12 +46,12 @@ const platforms = [
     {
         name: 'Bifrost',
         tagline: 'The Fastest Enterprise LLM Gateway',
-        deployment: 'Self-hosted, in-VPC',
+        deployment: 'Self-hosted, in-VPC, on-prem',
         pricing: 'Zero markup',
         latency: '~11µs',
         highlight: true,
         description: 'Built with Go for sub-microsecond latency. Native MCP support, adaptive load balancing, and integrated with Maxim AI evaluation platform.',
-        strengths: ['Sub ~11µs latency', '5,000 RPS', 'Native MCP', 'Maxim AI integration'],
+        strengths: ['Sub ~11µs latency', '5,000 RPS', 'Native MCP', 'Adaptive load balancing'],
         language: 'Go',
     },
     {
@@ -61,19 +61,19 @@ const platforms = [
         pricing: 'Zero markup',
         latency: '~8ms P95',
         highlight: false,
-        description: 'Python-based open-source gateway supporting 100+ providers. Highly customizable with extensive integration options.',
-        strengths: ['100+ providers', 'Open source', 'Customizable', 'Active community'],
+        description: 'Python-based open-source gateway supporting multiple providers. Highly customizable with extensive integration options.',
+        strengths: ['Open source', 'Customizable', 'Active community'],
         language: 'Python',
     },
     {
-        name: 'Portkey',
-        tagline: 'Enterprise Governance Platform',
-        deployment: 'SaaS, Private Cloud',
-        pricing: '$49/mo + usage',
-        latency: 'Not published',
+        name: 'Cloudflare AI',
+        tagline: 'Unified AI traffic management',
+        deployment: 'SaaS',
+        pricing: 'Platform plans',
+        latency: 'Varies',
         highlight: false,
-        description: 'Enterprise AI gateway with strong governance and compliance features. Built for regulated industries.',
-        strengths: ['1,600+ models', 'SOC2/GDPR/HIPAA', 'Prompt management', 'MCP support'],
+        description: 'Unified AI traffic management for Cloudflare users. Multiple models supported.',
+        strengths: ['Unified AI traffic management', 'Multiple models supported'],
         language: 'N/A',
     },
     {
@@ -105,8 +105,8 @@ const platforms = [
         pricing: '5% markup',
         latency: '25-40ms',
         highlight: false,
-        description: 'Simplified access to 500+ AI models through a single endpoint. Best for rapid prototyping.',
-        strengths: ['500+ models', 'Simple setup', 'Pay-as-you-go', 'Developer friendly'],
+        description: 'Simplified access to multiple AI models through a single endpoint. Best for rapid prototyping.',
+        strengths: ['Simple setup', 'Pay-as-you-go', 'Developer friendly'],
         language: 'N/A',
     },
 ];
@@ -163,7 +163,7 @@ const capabilities = [
     {
         icon: DollarSign,
         title: 'Cost Optimization',
-        description: 'Semantic caching, budget limits, and intelligent routing to reduce costs by 30-50%.',
+        description: 'Semantic caching, budget limits, and intelligent routing to reduce costs and latency.',
     },
     {
         icon: ShieldCheck,
@@ -225,12 +225,12 @@ export default function BuyersGuidePage() {
                             [ LLM GATEWAY BUYER&apos;S GUIDE 2026 ]
                         </span>
                         <h1 className="text-4xl md:text-5xl font-normal text-gray-900 mb-4 leading-[1.2] tracking-tight text-center">
-                            Find the Best LLM Gateway for
+                        Choosing the Right LLM Gateway for
                             <br />
                             <span className="text-[var(--accent-text)]"> Enterprise AI</span>
                         </h1>
                         <p className="text-sm md:text-base text-gray-500 max-w-2xl mx-auto leading-relaxed mb-8">
-                            Compare leading AI gateway platforms for multi-provider routing, governance, observability, and enterprise-grade reliability.
+                            Compare leading AI gateway platforms for multi-provider routing, cost management, access control, governance, observability, and enterprise-grade reliability.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center w-full">
                             <PrimaryButton href="#comparison">
@@ -433,7 +433,7 @@ export default function BuyersGuidePage() {
                                     <th>Feature</th>
                                     <th className="col-b">Bifrost</th>
                                     <th>LiteLLM</th>
-                                    <th>Portkey</th>
+                                    <th>Cloudflare AI</th>
                                     <th>Helicone</th>
                                     <th>Kong AI</th>
                                     <th>OpenRouter</th>
@@ -455,7 +455,7 @@ export default function BuyersGuidePage() {
                                     <td>Latency Overhead</td>
                                     <td className="col-b-c"><span className="sv">&lt;~11µs</span></td>
                                     <td><span className="sv">~8ms</span></td>
-                                    <td><span className="sn">N/A</span></td>
+                                    <td><span className="sp">Varies</span></td>
                                     <td><span className="sv">1–5ms</span></td>
                                     <td><span className="sn">N/A</span></td>
                                     <td><span className="sv">25–40ms</span></td>
@@ -473,7 +473,7 @@ export default function BuyersGuidePage() {
                                     <td>Open Source</td>
                                     <td className="col-b-c"><span className="sy">Yes</span></td>
                                     <td><span className="sy">Yes</span></td>
-                                    <td><span className="sp">Partial</span></td>
+                                    <td><span className="sn">No</span></td>
                                     <td><span className="sp">Partial</span></td>
                                     <td><span className="sp">Partial</span></td>
                                     <td><span className="sn">No</span></td>
@@ -482,7 +482,7 @@ export default function BuyersGuidePage() {
                                     <td>Zero Markup</td>
                                     <td className="col-b-c"><span className="sy">Yes</span></td>
                                     <td><span className="sy">Yes</span></td>
-                                    <td><span className="sn">No</span></td>
+                                    <td><span className="sy">Yes</span></td>
                                     <td><span className="sy">Yes</span></td>
                                     <td><span className="sp">Custom</span></td>
                                     <td><span className="sn">5%</span></td>
@@ -503,7 +503,7 @@ export default function BuyersGuidePage() {
                                     <td>Adaptive Load Balancing</td>
                                     <td className="col-b-c"><span className="sy">Yes</span></td>
                                     <td><span className="sn">No</span></td>
-                                    <td><span className="sp">Cost / Latency</span></td>
+                                    <td><span className="sn">No</span></td>
                                     <td><span className="sp">Health-aware</span></td>
                                     <td><span className="sp">Basic</span></td>
                                     <td><span className="sn">No</span></td>
@@ -521,7 +521,7 @@ export default function BuyersGuidePage() {
                                     <td>Semantic Caching</td>
                                     <td className="col-b-c"><span className="sy">Yes</span></td>
                                     <td><span className="sn">No</span></td>
-                                    <td><span className="sn">No</span></td>
+                                    <td><span className="sy">Yes</span></td>
                                     <td><span className="sy">Yes</span></td>
                                     <td><span className="sn">No</span></td>
                                     <td><span className="sn">No</span></td>
@@ -530,7 +530,7 @@ export default function BuyersGuidePage() {
                                     <td>MCP Support</td>
                                     <td className="col-b-c"><span className="sy">Yes</span></td>
                                     <td><span className="sn">No</span></td>
-                                    <td><span className="sy">Yes</span></td>
+                                    <td><span className="sn">No</span></td>
                                     <td><span className="sn">No</span></td>
                                     <td><span className="sy">Yes</span></td>
                                     <td><span className="sn">No</span></td>
@@ -542,7 +542,7 @@ export default function BuyersGuidePage() {
                                     <td>Built-in Observability</td>
                                     <td className="col-b-c"><span className="sy">Native</span></td>
                                     <td><span className="sp">Via integrations</span></td>
-                                    <td><span className="sy">Native</span></td>
+                                    <td><span className="sp">Basic</span></td>
                                     <td><span className="sy">Native</span></td>
                                     <td><span className="sp">Basic</span></td>
                                     <td><span className="sn">No</span></td>
@@ -551,7 +551,7 @@ export default function BuyersGuidePage() {
                                     <td>Real-time Alerts</td>
                                     <td className="col-b-c"><span className="sy">Yes</span></td>
                                     <td><span className="sn">No</span></td>
-                                    <td><span className="sy">Yes</span></td>
+                                    <td><span className="sn">No</span></td>
                                     <td><span className="sn">No</span></td>
                                     <td><span className="sp">Via plugins</span></td>
                                     <td><span className="sn">No</span></td>
@@ -560,7 +560,7 @@ export default function BuyersGuidePage() {
                                     <td>Guardrails</td>
                                     <td className="col-b-c"><span className="sy">Yes</span></td>
                                     <td><span className="sn">No</span></td>
-                                    <td><span className="sy">Yes</span></td>
+                                    <td><span className="sn">No</span></td>
                                     <td><span className="sn">No</span></td>
                                     <td><span className="sn">No</span></td>
                                     <td><span className="sn">No</span></td>
@@ -569,7 +569,7 @@ export default function BuyersGuidePage() {
                                     <td>RBAC &amp; Governance</td>
                                     <td className="col-b-c"><span className="sy">Yes</span></td>
                                     <td><span className="sn">No</span></td>
-                                    <td><span className="sy">Yes</span></td>
+                                    <td><span className="sn">No</span></td>
                                     <td><span className="sn">No</span></td>
                                     <td><span className="sy">Yes</span></td>
                                     <td><span className="sn">No</span></td>
@@ -578,7 +578,7 @@ export default function BuyersGuidePage() {
                                     <td>SSO (SAML / OIDC)</td>
                                     <td className="col-b-c"><span className="sy">Yes</span></td>
                                     <td><span className="sn">No</span></td>
-                                    <td><span className="sy">Yes</span></td>
+                                    <td><span className="sn">No</span></td>
                                     <td><span className="sn">No</span></td>
                                     <td><span className="sy">Yes</span></td>
                                     <td><span className="sn">No</span></td>
@@ -587,7 +587,7 @@ export default function BuyersGuidePage() {
                                     <td>Budget Management</td>
                                     <td className="col-b-c"><span className="sy">Yes</span></td>
                                     <td><span className="sy">Yes</span></td>
-                                    <td><span className="sy">Yes</span></td>
+                                    <td><span className="sn">No</span></td>
                                     <td><span className="sn">No</span></td>
                                     <td><span className="sn">No</span></td>
                                     <td><span className="sn">No</span></td>
@@ -608,16 +608,16 @@ export default function BuyersGuidePage() {
                                     <td>VPC Deployment</td>
                                     <td className="col-b-c"><span className="sy">Yes</span></td>
                                     <td><span className="sy">Yes</span></td>
-                                    <td><span className="sy">Yes</span></td>
+                                    <td><span className="sn">No</span></td>
                                     <td><span className="sy">Yes</span></td>
                                     <td><span className="sy">Yes</span></td>
                                     <td><span className="sn">No</span></td>
                                 </tr>
                                 <tr>
                                     <td>Multi-Cloud Support</td>
-                                    <td className="col-b-c"><span className="sy">AWS, GCP, Azure</span></td>
+                                    <td className="col-b-c"><span className="sy">AWS, GCP, Azure, Cloudflare, Vercel</span></td>
                                     <td><span className="sp">Self-managed</span></td>
-                                    <td><span className="sp">Private cloud</span></td>
+                                    <td><span className="sn">CF only</span></td>
                                     <td><span className="sp">Self-managed</span></td>
                                     <td><span className="sy">Multi-cloud</span></td>
                                     <td><span className="sn">No</span></td>
@@ -649,8 +649,8 @@ export default function BuyersGuidePage() {
                                 {[
                                     { metric: '~11µs', label: 'Latency overhead per request at peak load' },
                                     { metric: '5,000 RPS', label: 'Sustained throughput on a single node' },
-                                    { metric: '55x faster', label: 'Than Python-based gateways at P95' },
-                                    { metric: '30-50%', label: 'Cost savings via semantic caching' },
+                                    { metric: '50x faster', label: 'Than Python-based gateways at P95' },
+                                    { metric: '99.99%', label: 'Uptime enabled by automatic multi-provider failover' },
                                 ].map((item) => (
                                     <div key={item.metric} className="flex items-center gap-4">
                                         <div className="flex-shrink-0 w-24">

@@ -19,7 +19,7 @@ import {
 
 export const metadata: Metadata = {
     title: 'MCP Gateway | High-Performance Tool Execution for AI Agents',
-    description: 'Enable AI models to discover and execute external tools dynamically. The fastest open-source MCP gateway with 11µs overhead and complete security control.',
+    description: 'Connect AI models to external tools with an open-source MCP gateway that delivers 11µs overhead and complete security control.',
 };
 
 const performanceMetrics = [
@@ -38,7 +38,7 @@ const coreFeatures = [
     {
         icon: KeyRound,
         title: 'OAuth Authentication',
-        description: 'Built-in OAuth 2.1 for secure server authentication and token management.',
+        description: 'Secure OAuth 2.0 authentication with automatic token refresh',
     },
     {
         icon: Activity,
@@ -53,7 +53,7 @@ const coreFeatures = [
     {
         icon: Terminal,
         title: 'Code Mode',
-        description: 'Code-aware tool integration for filesystem, git, and dev environment tools.',
+        description: 'Let AI write Python to orchestrate multiple tools in one request.',
     },
     {
         icon: Globe,
@@ -165,7 +165,7 @@ export default function MCPGatewayPage() {
                             <span className="text-[var(--accent-text)]">Speed &amp; Security</span>
                         </h1>
                         <p className="text-sm md:text-base text-gray-500 max-w-3xl mx-auto leading-relaxed mb-8">
-                            Enable AI models to discover and execute external tools dynamically with the fastest open-source MCP gateway. Enterprise-grade with 11µs overhead, complete security control, and zero automatic execution.
+                            Enable AI models to discover and execute external tools dynamically with the fastest open-source MCP gateway that delivers 11µs overhead and complete security control without automatic execution.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center w-full">
                             <PrimaryButton href="https://github.com/maximhq/bifrost" external>
@@ -220,7 +220,7 @@ export default function MCPGatewayPage() {
                             [ CORE FEATURES ]
                         </p>
                         <h2 className="text-2xl md:text-3xl text-gray-900 mb-4">
-                            Complete MCP gateway solution
+                            Complete MCP Gateway Solution
                         </h2>
                         <p className="text-gray-600 max-w-2xl mx-auto">
                             Connect, secure, and execute tools with explicit approval and full observability.
@@ -246,7 +246,7 @@ export default function MCPGatewayPage() {
                             [ WORKFLOW ]
                         </p>
                         <h2 className="text-2xl md:text-3xl text-gray-900 mb-4">
-                            How MCP works in Bifrost
+                            How MCP Works in Bifrost
                         </h2>
                     </div>
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -282,7 +282,7 @@ export default function MCPGatewayPage() {
                             [ CONNECTION TYPES ]
                         </p>
                         <h2 className="text-2xl md:text-3xl text-gray-900 mb-4">
-                            STDIO, HTTP, and SSE support
+                            STDIO, HTTP, and SSE Support
                         </h2>
                     </div>
                     <div className="grid md:grid-cols-3 gap-6">
@@ -292,7 +292,7 @@ export default function MCPGatewayPage() {
                                 <h3 className="text-gray-900 mb-2">{item.title}</h3>
                                 <p className="text-sm text-gray-600 mb-4">{item.description}</p>
                                 <div className="text-xs text-gray-500 space-y-1">
-                                    <div><strong>Latency:</strong> {item.latency}</div>
+                                    
                                     <div><strong>Best for:</strong> {item.bestFor}</div>
                                 </div>
                                 <ul className="mt-3 text-xs text-gray-500 list-disc list-inside">
@@ -314,7 +314,7 @@ export default function MCPGatewayPage() {
                             [ SECURITY ]
                         </p>
                         <h2 className="text-2xl md:text-3xl text-gray-900 mb-4">
-                            Enterprise-grade security controls
+                            Enterprise-Grade Security Controls
                         </h2>
                     </div>
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -336,7 +336,7 @@ export default function MCPGatewayPage() {
                             [ USE CASES ]
                         </p>
                         <h2 className="text-2xl md:text-3xl text-gray-900 mb-4">
-                            What you can build
+                            What You Can Build
                         </h2>
                     </div>
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -358,7 +358,7 @@ export default function MCPGatewayPage() {
                             [ DEPLOYMENT ]
                         </p>
                         <h2 className="text-2xl md:text-3xl text-gray-900 mb-4">
-                            Deployment options
+                            Deployment Options
                         </h2>
                     </div>
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
