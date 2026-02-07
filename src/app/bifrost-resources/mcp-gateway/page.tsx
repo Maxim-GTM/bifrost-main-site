@@ -87,7 +87,6 @@ const connectionTypes = [
         icon: Terminal,
         title: 'STDIO',
         description: 'Local process execution via stdin/stdout.',
-        latency: '1-10ms',
         bestFor: 'Local tools',
         useCases: ['Filesystem operations', 'Code search', 'Dev scripts'],
     },
@@ -95,7 +94,6 @@ const connectionTypes = [
         icon: Globe,
         title: 'HTTP',
         description: 'Remote MCP servers via HTTP requests.',
-        latency: '10-500ms',
         bestFor: 'Microservices',
         useCases: ['Database tools', 'Internal APIs', 'Authentication'],
     },
@@ -103,7 +101,6 @@ const connectionTypes = [
         icon: Activity,
         title: 'SSE',
         description: 'Persistent streaming for real-time data.',
-        latency: 'Event-driven',
         bestFor: 'Live data',
         useCases: ['Monitoring', 'Live dashboards', 'Streaming'],
     },
@@ -292,7 +289,6 @@ export default function MCPGatewayPage() {
                                 <h3 className="text-gray-900 mb-2">{item.title}</h3>
                                 <p className="text-sm text-gray-600 mb-4">{item.description}</p>
                                 <div className="text-xs text-gray-500 space-y-1">
-                                    
                                     <div><strong>Best for:</strong> {item.bestFor}</div>
                                 </div>
                                 <ul className="mt-3 text-xs text-gray-500 list-disc list-inside">
