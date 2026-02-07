@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, Activity, BookOpen, ShieldCheck, Building2, Stethoscope, Shield, ShoppingCart, Plug } from 'lucide-react';
+import { ArrowRight, Activity, BookOpen, ShieldCheck, Building2, Stethoscope, Shield, ShoppingCart, Plug, RefreshCw, Zap } from 'lucide-react';
 import { getCostCalculatorBaseUrl } from '@/lib/utils';
 
 const basePath = getCostCalculatorBaseUrl();
@@ -32,6 +32,20 @@ const resources = [
     href: `${basePath}/bifrost-resources/mcp-gateway`,
     icon: Plug,
     label: 'MCP',
+  },
+  {
+    title: 'Migrating from LiteLLM',
+    description: 'Step-by-step guide to migrate from LiteLLM to Bifrost in 15 minutes with zero code changes.',
+    href: `${basePath}/bifrost-resources/migrating-from-litellm`,
+    icon: RefreshCw,
+    label: 'Migration',
+  },
+  {
+    title: 'LiteLLM Alternative',
+    description: 'Why teams choose Bifrost over LiteLLM — 50x faster, zero-config deployment, and native observability.',
+    href: `${basePath}/bifrost-resources/litellm-alternative`,
+    icon: Zap,
+    label: 'Alternative',
   },
 ];
 
