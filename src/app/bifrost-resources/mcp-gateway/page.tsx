@@ -31,7 +31,7 @@ import {
 
 export const metadata: Metadata = {
     title: 'MCP Gateway | High-Performance Tool Execution for AI Agents',
-    description: 'Enable AI models to discover and execute external tools dynamically. The fastest open-source MCP gateway with 11µs overhead, Code Mode for 50% token savings, and complete security control.',
+    description: 'Connect AI models to external tools with an open-source MCP gateway that delivers 11µs overhead and complete security control.',
 };
 
 const performanceMetrics = [
@@ -49,10 +49,9 @@ const coreCapabilities = [
         tag: 'STDIO + HTTP + SSE',
     },
     {
-        icon: Server,
-        title: 'Expose as MCP server',
-        description: 'Bifrost doubles as an MCP server. Connect Claude Desktop, Cursor, or any MCP client directly to your Bifrost instance and give them access to all connected tools through a single gateway URL.',
-        tag: 'Claude Desktop ready',
+        icon: KeyRound,
+        title: 'OAuth Authentication',
+        description: 'Secure OAuth 2.0 authentication with automatic token refresh',
     },
     {
         icon: Play,
@@ -69,53 +68,12 @@ const coreCapabilities = [
     {
         icon: Code2,
         title: 'Code Mode',
-        description: 'For 3+ MCP servers, Code Mode has the AI write Python to orchestrate tools in a sandbox instead of exposing 100+ tool definitions directly. Cuts tokens by 50%+ and latency by 40-50%.',
-        tag: '50% fewer tokens',
+        description: 'Let AI write Python to orchestrate multiple tools in one request.',
     },
     {
-        icon: Filter,
-        title: 'Tool filtering & RBAC',
-        description: 'Blacklist, whitelist, and apply role-based tool availability per request, per client, or per virtual key. Control exactly which tools are accessible in every context.',
-        tag: 'Per-request control',
-    },
-];
-
-const setupSteps = [
-    {
-        step: '01',
-        title: 'Connect MCP servers',
-        description: 'Configure your MCP server connections. Bifrost supports STDIO for local tools, HTTP for remote APIs, and SSE for real-time streaming.',
-        code: `# bifrost config with MCP servers
-mcp_servers:
-  - name: "filesystem"
-    transport: "stdio"
-    command: "npx"
-    args: ["-y", "@anthropic/mcp-filesystem"]
-  - name: "database"
-    transport: "http"
-    url: "https://db-tools.internal/mcp"`,
-    },
-    {
-        step: '02',
-        title: 'Send a chat completion',
-        description: 'Use the standard OpenAI-compatible API. Bifrost discovers available tools and includes them in the request. The LLM suggests tool calls but does NOT execute them.',
-        code: `# standard chat completions API
-curl -X POST http://localhost:8080/v1/chat/completions \\
-  -H "Content-Type: application/json" \\
-  -d '{"model": "gpt-4o",
-       "messages": [{"role": "user",
-         "content": "List files in /projects"}]}'`,
-    },
-    {
-        step: '03',
-        title: 'Execute approved tools',
-        description: 'Review the suggested tool calls, apply your security rules, then explicitly execute only the approved ones. Results flow back into the conversation.',
-        code: `# execute approved tool calls
-curl -X POST http://localhost:8080/v1/mcp/tool/execute \\
-  -H "Content-Type: application/json" \\
-  -d '{"tool_call_id": "call_abc123",
-       "name": "list_directory",
-       "arguments": {"path": "/projects"}}'`,
+        icon: Globe,
+        title: 'MCP Gateway URL',
+        description: 'A single endpoint for tool discovery, execution, and management.',
     },
 ];
 
@@ -155,24 +113,33 @@ const connectionTypes = [
     {
         icon: Terminal,
         title: 'STDIO',
-        description: 'Local process execution via stdin/stdout for filesystem tools, code search, git operations, and dev environment scripts.',
-        latency: '1-10ms',
-        bestFor: 'Local tools & dev environments',
+        description: 'Local process execution via stdin/stdout.',
+        bestFor: 'Local tools',
+        useCases: ['Filesystem operations', 'Code search', 'Dev scripts'],
     },
     {
         icon: Globe,
         title: 'HTTP',
-        description: 'Remote MCP servers via stateless HTTP requests for database tools, internal APIs, microservices, and authentication systems.',
-        latency: '10-500ms',
-        bestFor: 'APIs & microservices',
+        description: 'Remote MCP servers via HTTP requests.',
+        bestFor: 'Microservices',
+        useCases: ['Database tools', 'Internal APIs', 'Authentication'],
     },
     {
         icon: Activity,
         title: 'SSE',
-        description: 'Persistent server-sent events for real-time monitoring, live dashboards, streaming data, and event-driven tool workflows.',
-        latency: 'Event-driven',
-        bestFor: 'Real-time & streaming',
+        description: 'Persistent streaming for real-time data.',
+        bestFor: 'Live data',
+        useCases: ['Monitoring', 'Live dashboards', 'Streaming'],
     },
+];
+
+const securityFeatures = [
+    'No automatic execution',
+    'Request-level filtering',
+    'Tool blacklisting',
+    'Permission mapping with RBAC',
+    'Complete audit trail',
+    'Environment-based controls',
 ];
 
 const useCases = [
@@ -245,7 +212,7 @@ export default function MCPGatewayPage() {
                             <span className="text-[var(--accent-text)]">Action-Capable Agents</span>
                         </h1>
                         <p className="text-sm md:text-base text-gray-500 max-w-3xl mx-auto leading-relaxed mb-8">
-                            Bifrost&apos;s MCP Gateway connects AI models to external tools — filesystems, databases, APIs, and custom integrations — with explicit security controls at every step. Acts as both MCP client and MCP server through a single deployment.
+                            Enable AI models to discover and execute external tools dynamically with the fastest open-source MCP gateway that delivers 11µs overhead and complete security control without automatic execution.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center w-full">
                             <PrimaryButton href="https://github.com/maximhq/bifrost" external>
@@ -300,7 +267,7 @@ export default function MCPGatewayPage() {
                             [ ARCHITECTURE ]
                         </p>
                         <h2 className="text-2xl md:text-3xl text-gray-900 mb-4">
-                            One gateway, two roles
+                            Complete MCP Gateway Solution
                         </h2>
                         <p className="text-gray-600 max-w-3xl mx-auto">
                             Bifrost acts as both an MCP client (connecting to external tool servers) and an MCP server (exposing tools to external clients like Claude Desktop) through a single deployment.
@@ -378,7 +345,7 @@ export default function MCPGatewayPage() {
                             [ CORE CAPABILITIES ]
                         </p>
                         <h2 className="text-2xl md:text-3xl text-gray-900 mb-4">
-                            Everything you need for production tool execution
+                            How MCP Works in Bifrost
                         </h2>
                         <p className="text-gray-600 max-w-3xl mx-auto">
                             Connect, secure, filter, and execute tools with explicit approval workflows, autonomous agent mode, and Code Mode for high-efficiency orchestration.
@@ -509,7 +476,7 @@ export default function MCPGatewayPage() {
                             [ SECURITY-FIRST DESIGN ]
                         </p>
                         <h2 className="text-2xl md:text-3xl text-gray-900 mb-4">
-                            No tool runs unless you approve it
+                            STDIO, HTTP, and SSE Support
                         </h2>
                         <p className="text-gray-600 max-w-3xl mx-auto">
                             By default, Bifrost does NOT automatically execute tool calls. All tool execution requires explicit API calls from your application, ensuring human oversight for every operation.
@@ -519,8 +486,16 @@ export default function MCPGatewayPage() {
                         {securityPrinciples.map((item) => (
                             <div key={item.principle} className="bg-white p-6 border border-gray-200">
                                 <item.icon className="w-6 h-6 text-[var(--accent)] mb-4" />
-                                <h3 className="text-gray-900 mb-2 text-sm font-medium">{item.principle}</h3>
-                                <p className="text-xs text-gray-600 leading-relaxed">{item.description}</p>
+                                <h3 className="text-gray-900 mb-2">{item.title}</h3>
+                                <p className="text-sm text-gray-600 mb-4">{item.description}</p>
+                                <div className="text-xs text-gray-500 space-y-1">
+                                    <div><strong>Best for:</strong> {item.bestFor}</div>
+                                </div>
+                                <ul className="mt-3 text-xs text-gray-500 list-disc list-inside">
+                                    {item.useCases.map((useCase) => (
+                                        <li key={useCase}>{useCase}</li>
+                                    ))}
+                                </ul>
                             </div>
                         ))}
                     </div>
@@ -535,7 +510,7 @@ export default function MCPGatewayPage() {
                             [ COMPARISON ]
                         </p>
                         <h2 className="text-2xl md:text-3xl text-gray-900 mb-4">
-                            Classic MCP vs Bifrost Code Mode
+                            Enterprise-Grade Security Controls
                         </h2>
                         <p className="text-gray-600 max-w-2xl mx-auto">
                             Standard MCP tool calling works, but it doesn&apos;t scale. Code Mode solves the hard problems.
@@ -590,7 +565,7 @@ export default function MCPGatewayPage() {
                             [ TRANSPORT PROTOCOLS ]
                         </p>
                         <h2 className="text-2xl md:text-3xl text-gray-900 mb-4">
-                            Connect any way you need
+                            What You Can Build
                         </h2>
                     </div>
                     <div className="grid md:grid-cols-3 gap-6">
@@ -623,7 +598,7 @@ export default function MCPGatewayPage() {
                             [ USE CASES ]
                         </p>
                         <h2 className="text-2xl md:text-3xl text-gray-900 mb-4">
-                            What teams build with Bifrost MCP
+                            Deployment Options
                         </h2>
                     </div>
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

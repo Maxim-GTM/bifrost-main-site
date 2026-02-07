@@ -78,7 +78,7 @@ const coreFeatures = [
         icon: Shield,
         title: 'Guardrails and governance',
         description: 'Enforce content policies, PII redaction, and safety checks before requests reach the model. Role-based access controls and rate limits per team provide fine-grained LLM governance across the organization.',
-        tag: 'AWS Bedrock + Patronus AI',
+        tag: 'AWS Bedrock + Azure AI',
     },
     {
         icon: Zap,
@@ -142,14 +142,14 @@ const enterpriseFeatures = [
 ];
 
 const comparisonData = [
-    { feature: 'Multi-model support', standalone: 'Claude only', withBifrost: '15+ providers' },
-    { feature: 'MCP tool gateway', standalone: 'Not supported', withBifrost: 'Full MCP injection' },
-    { feature: 'Cost tracking', standalone: 'No visibility', withBifrost: 'Real-time per-request' },
-    { feature: 'Provider failover', standalone: 'Single provider', withBifrost: 'Automatic across providers' },
-    { feature: 'Semantic caching', standalone: 'None', withBifrost: 'Up to 95% cost reduction' },
-    { feature: 'Team budgets', standalone: 'Not available', withBifrost: 'Virtual keys + limits' },
-    { feature: 'Request observability', standalone: 'Limited', withBifrost: 'Full log trail + OTEL export' },
-    { feature: 'Gateway latency', standalone: 'N/A', withBifrost: '11µs at 5,000 RPS' },
+    { feature: 'Multi-model support', standalone: false, withBifrost: '15+ providers' },
+    { feature: 'MCP tool gateway', standalone: false, withBifrost: 'Full MCP injection' },
+    { feature: 'Cost tracking', standalone: false, withBifrost: 'Real-time per-request' },
+    { feature: 'Provider failover', standalone: false, withBifrost: 'Automatic across providers' },
+    { feature: 'Semantic caching', standalone: false, withBifrost: 'Reduce costs and latency' },
+    { feature: 'Team budgets', standalone: false, withBifrost: 'Virtual keys + limits' },
+    { feature: 'Request observability', standalone: false, withBifrost: 'Full log trail + OTEL export' },
+    { feature: 'Gateway latency', standalone: null, withBifrost: '11µs at 5,000 RPS' },
 ];
 
 const useCases = [
@@ -176,7 +176,7 @@ const useCases = [
     {
         icon: Users,
         title: 'Startups scaling AI development',
-        description: 'Early-stage teams use Bifrost\'s LLM gateway to experiment with multiple providers without vendor lock-in. Semantic caching cuts costs by 95% during rapid prototyping.',
+        description: 'Early-stage teams use Bifrost\'s LLM gateway to experiment with multiple providers without vendor lock-in. Semantic caching cuts costs and latency during rapid prototyping.',
     },
     {
         icon: Activity,
@@ -230,8 +230,8 @@ export default function ClaudeCodePage() {
                             <br />
                             <span className="text-[var(--accent-text)]">Claude Code</span>
                         </h1>
-                        <p className="text-sm md:text-base text-gray-500 max-w-3xl mx-auto leading-relaxed mb-8">
-                            Add multi-provider routing, cost control, guardrails, and full observability to Claude Code without changing how developers work. One environment variable. Zero code changes.
+                        <p className="text-sm md:text-base text-gray-500 max-w-2xl mx-auto leading-relaxed mb-8">
+                            Use Bifrost to scale Claude Code across your organization with multi-provider routing, cost controls, security guardrails, role-based access control, and compliance-ready governance.
                         </p>
 
                         {/* CTAs */}
@@ -425,10 +425,10 @@ export default function ClaudeCodePage() {
                             [ CORE CAPABILITIES ]
                         </p>
                         <h2 className="text-2xl md:text-3xl text-gray-900 mb-4">
-                            Enterprise controls without changing how developers code
+                            Enterprise Controls without Changing how Engineers Code
                         </h2>
                         <p className="text-gray-600 max-w-3xl mx-auto">
-                            Bifrost acts as a transparent proxy between Claude Code and model providers. Deploy once to unlock multi-provider routing, cost control, governance, and observability across the entire engineering org.
+                        Bifrost manages request routing transparently, giving your entire engineering org centralized visibility, budget management, access controls, guardrails, and model performance.
                         </p>
                     </div>
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -454,13 +454,69 @@ export default function ClaudeCodePage() {
                             [ SETUP ]
                         </p>
                         <h2 className="text-2xl md:text-3xl text-gray-900 mb-4">
-                            Three steps to full team control
+                            Three Steps to Full Team Control
                         </h2>
                         <p className="text-gray-600 max-w-2xl mx-auto">
                             No SDK changes, no plugin installation, no developer workflow disruption.
                         </p>
                     </div>
                     <SetupSteps steps={setupSteps} />
+                </div>
+            </section>
+
+            {/* Performance Stats */}
+            <section className="py-12 bg-white">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="flex justify-center">
+                        <div className="border-t border-b border-gray-200 w-full max-w-4xl">
+                            <div className="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-gray-200">
+                                {[
+                                    { metric: '11µs', label: 'Mean Latency', description: 'Gateway overhead per request' },
+                                    { metric: '5K RPS', label: 'Throughput', description: 'Requests per second sustained' },
+                                    { metric: '50x', label: 'Faster', description: 'Than Python-based gateways' },
+                                    { metric: '15+', label: 'Providers', description: 'Model APIs supported' },
+                                ].map((item, index) => (
+                                    <div key={index} className="text-center py-5 px-4">
+                                        <div className="text-2xl md:text-3xl text-[var(--accent-text)] mb-1 leading-none font-mono font-semibold">
+                                            {item.metric}
+                                        </div>
+                                        <div className="text-xs text-gray-500 uppercase tracking-wider font-medium font-mono mb-1">
+                                            {item.label}
+                                        </div>
+                                        <div className="text-xs text-gray-400">
+                                            {item.description}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Enterprise Features Grid */}
+            <section className="py-16 md:py-24 bg-white">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-12">
+                        <p className="text-xs text-gray-400 uppercase tracking-widest font-mono mb-4">
+                            [ BUILT FOR PRODUCTION ]
+                        </p>
+                        <h2 className="text-2xl md:text-3xl text-gray-900 mb-4">
+                            Enterprise Features, Ready on Deploy
+                        </h2>
+                        <p className="text-gray-600 max-w-2xl mx-auto">
+                            Bifrost ships with the full set of controls platform teams expect before rolling out AI tooling organization-wide.
+                        </p>
+                    </div>
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        {enterpriseFeatures.map((feature) => (
+                            <div key={feature.title} className="p-4 border border-gray-200 hover:border-[var(--accent)] bg-white hover:shadow-sm transition-all">
+                                <feature.icon className="w-5 h-5 text-[var(--accent)] mb-3" />
+                                <h3 className="text-gray-900 mb-1 text-sm">{feature.title}</h3>
+                                <p className="text-xs text-gray-500 leading-relaxed">{feature.description}</p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </section>
 
@@ -556,7 +612,7 @@ export default function ClaudeCodePage() {
                             [ AGENTIC WORKFLOWS ]
                         </p>
                         <h2 className="text-2xl md:text-3xl text-gray-900 mb-4">
-                            MCP tools, injected transparently
+                        Native MCP Tool Support for Agentic Workflows
                         </h2>
                         <p className="text-gray-600 max-w-3xl mx-auto">
                             Bifrost connects Claude Code to filesystem tools, databases, web search, and custom integrations via Model Context Protocol — without modifying the Claude Code client or adding configuration steps on the developer side.
@@ -602,7 +658,7 @@ export default function ClaudeCodePage() {
                             [ USE CASES ]
                         </p>
                         <h2 className="text-2xl md:text-3xl text-gray-900 mb-4">
-                            Real-world scenarios where Bifrost changes the game
+                            Real-world Scenarios where Bifrost Changes the Game
                         </h2>
                     </div>
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
