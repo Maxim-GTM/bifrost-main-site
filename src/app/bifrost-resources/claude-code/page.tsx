@@ -554,12 +554,12 @@ export default function ClaudeCodePage() {
                                         </td>
                                         <td className="px-4 py-3 text-sm text-gray-500">
                                             <span className="inline-flex items-center gap-1.5">
-                                                {row.standalone === 'N/A' ? (
-                                                    <span className="text-gray-400">{row.standalone}</span>
+                                                {row.standalone === null ? (
+                                                    <span className="text-gray-400">N/A</span>
                                                 ) : (
                                                     <>
                                                         <XCircle className="w-3.5 h-3.5 text-gray-400" />
-                                                        {row.standalone}
+                                                        No
                                                     </>
                                                 )}
                                             </span>
