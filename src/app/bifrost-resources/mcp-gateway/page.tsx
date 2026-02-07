@@ -41,6 +41,35 @@ const performanceMetrics = [
     { label: 'Provider Support', value: '15+', description: 'LLM providers supported' },
 ];
 
+const setupSteps = [
+    {
+        step: '01',
+        title: 'Register MCP servers',
+        description: 'Connect Bifrost to any MCP-compliant server. Bifrost auto-discovers available tools and their schemas at startup.',
+        code: `# bifrost config
+mcp_servers:
+  - name: filesystem
+    transport: stdio
+    command: npx @modelcontextprotocol/server-filesystem`,
+    },
+    {
+        step: '02',
+        title: 'Send a chat request',
+        description: 'Your app sends a standard chat completion request. Bifrost injects discovered MCP tools into the request automatically.',
+        code: `curl http://localhost:8080/v1/chat/completions \\
+  -H "Content-Type: application/json" \\
+  -d '{"model": "claude-sonnet", "messages": [...]}'`,
+    },
+    {
+        step: '03',
+        title: 'Execute tool calls',
+        description: 'When the LLM suggests a tool call, your app decides whether to execute it. Bifrost handles the MCP protocol and returns results.',
+        code: `# tool call returned in response
+# your app approves → Bifrost executes
+# full audit trail logged automatically`,
+    },
+];
+
 const coreCapabilities = [
     {
         icon: Plug,
@@ -486,16 +515,8 @@ export default function MCPGatewayPage() {
                         {securityPrinciples.map((item) => (
                             <div key={item.principle} className="bg-white p-6 border border-gray-200">
                                 <item.icon className="w-6 h-6 text-[var(--accent)] mb-4" />
-                                <h3 className="text-gray-900 mb-2">{item.title}</h3>
-                                <p className="text-sm text-gray-600 mb-4">{item.description}</p>
-                                <div className="text-xs text-gray-500 space-y-1">
-                                    <div><strong>Best for:</strong> {item.bestFor}</div>
-                                </div>
-                                <ul className="mt-3 text-xs text-gray-500 list-disc list-inside">
-                                    {item.useCases.map((useCase) => (
-                                        <li key={useCase}>{useCase}</li>
-                                    ))}
-                                </ul>
+                                <h3 className="text-gray-900 mb-2">{item.principle}</h3>
+                                <p className="text-sm text-gray-600">{item.description}</p>
                             </div>
                         ))}
                     </div>
@@ -577,13 +598,17 @@ export default function MCPGatewayPage() {
                                     </div>
                                     <div>
                                         <h3 className="text-gray-900">{item.title}</h3>
-                                        <div className="text-xs text-gray-400 font-mono">{item.latency}</div>
                                     </div>
                                 </div>
                                 <p className="text-sm text-gray-600 leading-relaxed mb-3">{item.description}</p>
-                                <span className="inline-block text-xs font-mono text-[var(--accent-text)] bg-[var(--accent-light)] px-2 py-1">
+                                <span className="inline-block text-xs font-mono text-[var(--accent-text)] bg-[var(--accent-light)] px-2 py-1 mb-3">
                                     {item.bestFor}
                                 </span>
+                                <ul className="text-xs text-gray-500 list-disc list-inside">
+                                    {item.useCases.map((useCase) => (
+                                        <li key={useCase}>{useCase}</li>
+                                    ))}
+                                </ul>
                             </div>
                         ))}
                     </div>
