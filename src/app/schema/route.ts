@@ -1,7 +1,7 @@
-import { NextResponse } from "next/server";
+import { NextResponse } from 'next/server'
 
-export const runtime = 'edge';
-export const revalidate = 3600; // Revalidate this data once per hour
+export const runtime = 'edge'
+export const revalidate = 3600 // Revalidate this data once per hour
 
 async function handler(): Promise<NextResponse> {
   try {
@@ -27,16 +27,13 @@ async function handler(): Promise<NextResponse> {
         'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET',
-        'Access-Control-Allow-Headers': 'Content-Type'
-      }
+        'Access-Control-Allow-Headers': 'Content-Type',
+      },
     })
   } catch (error) {
     console.error('Error fetching Bifrost schema:', error)
-    return NextResponse.json(
-      { error: 'Failed to fetch schema' },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: 'Failed to fetch schema' }, { status: 500 })
   }
 }
 
-export const GET = handler;
+export const GET = handler

@@ -3,13 +3,13 @@ import EnterpriseClientPageContent from './pageContent'
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'http://getmaxim.ai/bifrost/enterprise'
-  }
+    canonical: 'http://getmaxim.ai/bifrost/enterprise',
+  },
 }
 
-export const dynamic = 'force-dynamic';
-export const runtime = 'edge';
+export const dynamic = 'force-dynamic'
+export const runtime = 'edge'
 
-export default async function Enterprise () {
+export default async function Enterprise() {
   return <EnterpriseClientPageContent />
 }

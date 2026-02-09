@@ -1,81 +1,76 @@
-'use client';
+'use client'
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { formatProviderName } from '@/lib/model-library/api';
-import { getProviderLogo } from '@/lib/model-library/providerLogos';
-import { getModelLibraryBaseUrl } from '@/lib/utils';
+import { useState, useEffect } from 'react'
+import Link from 'next/link'
+import { formatProviderName } from '@/lib/model-library/api'
+import { getProviderLogo } from '@/lib/model-library/providerLogos'
+import { getModelLibraryBaseUrl } from '@/lib/utils'
 
 interface Provider {
-  name: string;
-  count: number;
+  name: string
+  count: number
 }
 
 interface ProvidersModalProps {
-  providers: Provider[];
-  isOpen: boolean;
-  onClose: () => void;
+  providers: Provider[]
+  isOpen: boolean
+  onClose: () => void
 }
 
 export default function ProvidersModal({ providers, isOpen, onClose }: ProvidersModalProps) {
-  const [searchQuery, setSearchQuery] = useState('');
-  const basePath = `${getModelLibraryBaseUrl()}/model-library`;
+  const [searchQuery, setSearchQuery] = useState('')
+  const basePath = `${getModelLibraryBaseUrl()}/model-library`
 
   // Filter providers based on search
-  const filteredProviders = providers.filter(provider =>
+  const filteredProviders = providers.filter((provider) =>
     provider.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  )
 
   // Close on Escape key
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        onClose();
+        onClose()
       }
-    };
+    }
 
     if (isOpen) {
-      document.addEventListener('keydown', handleEscape);
+      document.addEventListener('keydown', handleEscape)
       // Prevent body scroll when modal is open
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden'
     }
 
     return () => {
-      document.removeEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'unset';
-    };
-  }, [isOpen, onClose]);
+      document.removeEventListener('keydown', handleEscape)
+      document.body.style.overflow = 'unset'
+    }
+  }, [isOpen, onClose])
 
-  if (!isOpen) return null;
+  if (!isOpen) return null
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm"
       onClick={onClose}
     >
       <div
-        className="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[80vh] flex flex-col"
+        className="flex max-h-[80vh] w-full max-w-4xl flex-col rounded-lg bg-white shadow-xl"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
+        <div className="flex items-center justify-between border-b border-gray-200 p-6">
           <div>
             <h2 className="text-2xl font-bold text-gray-900">All Providers</h2>
-            <p className="text-sm text-gray-600 mt-1">
+            <p className="mt-1 text-sm text-gray-600">
               {filteredProviders.length} of {providers.length} providers
             </p>
           </div>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 transition-colors"
+            className="text-gray-400 transition-colors hover:text-gray-600"
             aria-label="Close modal"
           >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
+            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -87,13 +82,13 @@ export default function ProvidersModal({ providers, isOpen, onClose }: Providers
         </div>
 
         {/* Search */}
-        <div className="p-6 border-b border-gray-200">
+        <div className="border-b border-gray-200 p-6">
           <input
             type="text"
             placeholder="Search providers..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent"
+            className="focus:ring-accent w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-transparent focus:ring-2"
             autoFocus
           />
         </div>
@@ -119,13 +114,12 @@ export default function ProvidersModal({ providers, isOpen, onClose }: Providers
             ))}
           </div>
           {filteredProviders.length === 0 && (
-            <div className="text-center text-gray-500 py-12">
+            <div className="py-12 text-center text-gray-500">
               No providers found matching "{searchQuery}"
             </div>
           )}
         </div>
       </div>
     </div>
-  );
+  )
 }
-

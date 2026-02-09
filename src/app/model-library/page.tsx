@@ -1,107 +1,121 @@
-import { fetchAllModels, processModels, getAllProviders, getAllModes } from '@/lib/model-library/api';
-import ModelsTable from '@/components/model-library/ModelsTable';
-import ProvidersList from '@/components/model-library/ProvidersList';
-import Pagination from '@/components/model-library/Pagination';
-import { Metadata } from 'next';
-import { buildCanonicalUrl } from '@/lib/model-library/seo';
-import { getModelLibraryBaseUrl } from '@/lib/utils';
+import {
+  fetchAllModels,
+  processModels,
+  getAllProviders,
+  getAllModes,
+} from '@/lib/model-library/api'
+import ModelsTable from '@/components/model-library/ModelsTable'
+import ProvidersList from '@/components/model-library/ProvidersList'
+import Pagination from '@/components/model-library/Pagination'
+import { Metadata } from 'next'
+import { buildCanonicalUrl } from '@/lib/model-library/seo'
+import { getModelLibraryBaseUrl } from '@/lib/utils'
 
 interface PageProps {
-  searchParams: Promise<{ showAllProviders?: string; page?: string }>;
+  searchParams: Promise<{ showAllProviders?: string; page?: string }>
 }
 
 export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
-  const { showAllProviders, page } = await searchParams;
+  const { showAllProviders, page } = await searchParams
   const canonical = buildCanonicalUrl('/', {
     showAllProviders: showAllProviders || undefined,
     page: page && page !== '1' ? page : undefined,
-  });
+  })
 
   return {
     title: 'Bifrost AI Model Library - Explore Providers and Capabilities',
     description:
       'Browse AI models across providers. Compare capabilities, context limits, and pricing details for chat, image generation, audio, and more.',
-    keywords: 'Bifrost AI Model Library, model catalog, AI providers, model capabilities, model pricing',
+    keywords:
+      'Bifrost AI Model Library, model catalog, AI providers, model capabilities, model pricing',
     alternates: {
       canonical,
     },
-  };
+  }
 }
 
 export default async function HomePage({ searchParams }: PageProps) {
-  const { showAllProviders, page } = await searchParams;
-  const modelsData = await fetchAllModels();
-  const models = processModels(modelsData);
-  const providers = getAllProviders(modelsData);
-  const modes = getAllModes(modelsData);
-  const basePath = `${getModelLibraryBaseUrl()}/model-library`;
+  const { showAllProviders, page } = await searchParams
+  const modelsData = await fetchAllModels()
+  const models = processModels(modelsData)
+  const providers = getAllProviders(modelsData)
+  const modes = getAllModes(modelsData)
+  const basePath = `${getModelLibraryBaseUrl()}/model-library`
 
-  const PAGE_SIZE = 100;
-  const currentPage = Math.max(1, parseInt(page || '1', 10) || 1);
-  const totalModels = models.length;
-  const startIdx = (currentPage - 1) * PAGE_SIZE;
-  const pagedModels = models.slice(startIdx, startIdx + PAGE_SIZE);
+  const PAGE_SIZE = 100
+  const currentPage = Math.max(1, parseInt(page || '1', 10) || 1)
+  const totalModels = models.length
+  const startIdx = (currentPage - 1) * PAGE_SIZE
+  const pagedModels = models.slice(startIdx, startIdx + PAGE_SIZE)
 
   // Group models by provider for nested display
-  const modelsByProvider = models.reduce((acc, model) => {
-    if (!acc[model.provider]) {
-      acc[model.provider] = [];
-    }
-    acc[model.provider].push(model);
-    return acc;
-  }, {} as Record<string, typeof models>);
+  const modelsByProvider = models.reduce(
+    (acc, model) => {
+      if (!acc[model.provider]) {
+        acc[model.provider] = []
+      }
+      acc[model.provider].push(model)
+      return acc
+    },
+    {} as Record<string, typeof models>
+  )
 
   // Filter out providers with 0 models
-  const providersWithModels = providers.filter(provider =>
-    (modelsByProvider[provider]?.length || 0) > 0
-  );
+  const providersWithModels = providers.filter(
+    (provider) => (modelsByProvider[provider]?.length || 0) > 0
+  )
 
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <div className="relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
           <div className="text-center">
-            <span className="provider-badge">
-              [ BIFROST AI MODEL LIBRARY ]
-            </span>
-            <h1 className="text-4xl md:text-5xl font-normal text-gray-900 mb-4 leading-[1.2] tracking-tight text-center">
+            <span className="provider-badge">[ BIFROST AI MODEL LIBRARY ]</span>
+            <h1 className="mb-4 text-center text-4xl leading-[1.2] font-normal tracking-tight text-gray-900 md:text-5xl">
               Explore AI Models Across Providers
             </h1>
-            <p className="text-sm md:text-base text-gray-500 max-w-2xl mx-auto leading-relaxed">
-              Discover model capabilities, context limits, and pricing across chat, image generation, audio, and more.
+            <p className="mx-auto max-w-2xl text-sm leading-relaxed text-gray-500 md:text-base">
+              Discover model capabilities, context limits, and pricing across chat, image
+              generation, audio, and more.
             </p>
           </div>
         </div>
       </div>
 
       {/* Stats Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="text-center mb-6">
-          <p className="text-xs text-gray-400 uppercase tracking-widest font-medium font-mono">[ OUR NUMBERS AT A GLANCE ]</p>
+      <div className="mx-auto mb-12 max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-6 text-center">
+          <p className="font-mono text-xs font-medium tracking-widest text-gray-400 uppercase">
+            [ OUR NUMBERS AT A GLANCE ]
+          </p>
         </div>
         <div className="flex justify-center">
-          <div className="border-t border-b border-gray-200 max-w-2xl w-full">
-            <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-200">
-              <div className="text-center py-4 md:py-5 px-6">
-                <div className="text-sm text-gray-500 uppercase tracking-wider font-medium font-mono">Models</div>
+          <div className="w-full max-w-2xl border-t border-b border-gray-200">
+            <div className="grid grid-cols-1 divide-y divide-gray-200 md:grid-cols-3 md:divide-x md:divide-y-0">
+              <div className="px-6 py-4 text-center md:py-5">
+                <div className="font-mono text-sm font-medium tracking-wider text-gray-500 uppercase">
+                  Models
+                </div>
 
-                <div className="text-xl md:text-2xl text-accent mb-1 leading-none font-mono">
+                <div className="text-accent mb-1 font-mono text-xl leading-none md:text-2xl">
                   {models.length.toLocaleString()}
                 </div>
-
               </div>
-              <div className="text-center py-4 md:py-5 px-6">
-                <div className="text-sm text-gray-500 uppercase tracking-wider font-medium font-mono">Providers</div>
-
-                <div className="text-xl md:text-2xl text-accent mb-1 leading-none font-mono">
-                  {providers.length}
+              <div className="px-6 py-4 text-center md:py-5">
+                <div className="font-mono text-sm font-medium tracking-wider text-gray-500 uppercase">
+                  Providers
                 </div>
 
+                <div className="text-accent mb-1 font-mono text-xl leading-none md:text-2xl">
+                  {providers.length}
+                </div>
               </div>
-              <div className="text-center py-4 md:py-5 px-6">
-                <div className="text-sm text-gray-500 uppercase tracking-wider font-medium font-mono">Modes</div>
-                <div className="text-xl md:text-2xl text-accent mb-1 leading-none font-mono">
+              <div className="px-6 py-4 text-center md:py-5">
+                <div className="font-mono text-sm font-medium tracking-wider text-gray-500 uppercase">
+                  Modes
+                </div>
+                <div className="text-accent mb-1 font-mono text-xl leading-none md:text-2xl">
                   {modes.length}
                 </div>
               </div>
@@ -111,15 +125,15 @@ export default async function HomePage({ searchParams }: PageProps) {
       </div>
 
       {/* Providers Quick Links */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+      <div className="mx-auto mb-8 max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-4">
-          <h2 className="text-xl md:text-2xl font-medium text-gray-900 mb-2 tracking-tight">Browse by Provider</h2>
-          <p className="text-gray-600 text-sm">
-            View all models from a specific provider
-          </p>
+          <h2 className="mb-2 text-xl font-medium tracking-tight text-gray-900 md:text-2xl">
+            Browse by Provider
+          </h2>
+          <p className="text-sm text-gray-600">View all models from a specific provider</p>
         </div>
         <ProvidersList
-          providers={providersWithModels.map(provider => ({
+          providers={providersWithModels.map((provider) => ({
             name: provider,
             count: modelsByProvider[provider]?.length || 0,
           }))}
@@ -129,10 +143,12 @@ export default async function HomePage({ searchParams }: PageProps) {
       </div>
 
       {/* Models Table */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+      <div className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
         <div className="mb-6">
-          <h2 className="text-xl md:text-2xl font-medium text-gray-900 mb-2 tracking-tight">All Models</h2>
-          <p className="text-gray-600 text-sm">
+          <h2 className="mb-2 text-xl font-medium tracking-tight text-gray-900 md:text-2xl">
+            All Models
+          </h2>
+          <p className="text-sm text-gray-600">
             Click on any model to view detailed pricing and capabilities
           </p>
         </div>
@@ -155,5 +171,5 @@ export default async function HomePage({ searchParams }: PageProps) {
         )}
       </div>
     </div>
-  );
+  )
 }

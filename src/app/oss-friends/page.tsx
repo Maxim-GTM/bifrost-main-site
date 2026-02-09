@@ -18,10 +18,10 @@ export const metadata: Metadata = {
     description:
       'Amazing open source projects that share our mission of making AI development more accessible and efficient.',
   },
-  metadataBase: new URL("https://www.getmaxim.ai"),
-      alternates: {
-        canonical: `/bifrost/oss-friends`,
-      },
+  metadataBase: new URL('https://www.getmaxim.ai'),
+  alternates: {
+    canonical: `/bifrost/oss-friends`,
+  },
 }
 
 export default async function OSSFriendsPage() {
@@ -42,19 +42,19 @@ export default async function OSSFriendsPage() {
             <nav className="hidden items-center space-x-8 md:flex">
               <a
                 href="https://getmaxim.ai/bifrost#features"
-                className="text-sm font-medium text-gray-600 transition-colors hover:text-accent"
+                className="hover:text-accent text-sm font-medium text-gray-600 transition-colors"
               >
                 Features
               </a>
               <a
                 href="https://getmaxim.ai/bifrost#performance"
-                className="text-sm font-medium text-gray-600 transition-colors hover:text-accent"
+                className="hover:text-accent text-sm font-medium text-gray-600 transition-colors"
               >
                 Performance
               </a>
               <a
                 href="https://getmaxim.ai/bifrost#oss-friends"
-                className="text-sm font-medium text-gray-600 transition-colors hover:text-accent"
+                className="hover:text-accent text-sm font-medium text-gray-600 transition-colors"
               >
                 OSS Friends
               </a>
@@ -62,7 +62,7 @@ export default async function OSSFriendsPage() {
                 href="https://docs.getbifrost.ai"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-medium text-gray-600 transition-colors hover:text-accent"
+                className="hover:text-accent text-sm font-medium text-gray-600 transition-colors"
               >
                 Docs
               </a>
@@ -105,7 +105,7 @@ export default async function OSSFriendsPage() {
               href="https://app.formbricks.com/s/clhys1p9r001cpr0hu65rwh17"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-lg bg-white px-8 py-3 font-medium text-accent transition-colors hover:bg-gray-50"
+              className="text-accent rounded-lg bg-white px-8 py-3 font-medium transition-colors hover:bg-gray-50"
             >
               Submit Your Project
             </a>
@@ -113,7 +113,7 @@ export default async function OSSFriendsPage() {
               href="https://getmax.im/bifrost-discord"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-lg border-2 border-white px-8 py-3 font-medium text-white transition-colors hover:bg-white hover:text-accent"
+              className="hover:text-accent rounded-lg border-2 border-white px-8 py-3 font-medium text-white transition-colors hover:bg-white"
             >
               Join Our Discord
             </a>

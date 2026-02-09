@@ -7,11 +7,11 @@ export function AnimatedDots() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setDotCount(prev => prev === 3 ? 1 : prev + 1)
+      setDotCount((prev) => (prev === 3 ? 1 : prev + 1))
     }, 500)
 
     return () => clearInterval(interval)
   }, [])
 
   return <span>{'.'.repeat(dotCount)}</span>
-} 
+}

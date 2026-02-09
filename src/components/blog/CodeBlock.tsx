@@ -40,28 +40,28 @@ const bifrostHighlightStyle = HighlightStyle.define([
   { tag: tags.definitionOperator, color: '#10b981' },
   { tag: tags.updateOperator, color: '#10b981' },
   { tag: tags.typeOperator, color: '#10b981' },
-  
+
   { tag: tags.typeName, color: '#60a5fa' },
   { tag: tags.className, color: '#60a5fa' },
   { tag: tags.namespace, color: '#60a5fa' },
   { tag: tags.labelName, color: '#60a5fa' },
   { tag: tags.attributeName, color: '#60a5fa' },
   { tag: tags.propertyName, color: '#60a5fa' },
-  
+
   { tag: tags.function(tags.variableName), color: '#a78bfa' },
   { tag: tags.function(tags.propertyName), color: '#a78bfa' },
   { tag: tags.macroName, color: '#a78bfa' },
-  
+
   { tag: tags.variableName, color: '#e5e7eb' },
   { tag: tags.definition(tags.variableName), color: '#e5e7eb' },
   { tag: tags.local(tags.variableName), color: '#e5e7eb' },
   { tag: tags.special(tags.variableName), color: '#a78bfa' },
-  
+
   { tag: tags.string, color: '#fbbf24' },
   { tag: tags.character, color: '#fbbf24' },
   { tag: tags.regexp, color: '#fbbf24' },
   { tag: tags.docString, color: '#fbbf24' },
-  
+
   { tag: tags.number, color: '#f472b6' },
   { tag: tags.integer, color: '#f472b6' },
   { tag: tags.float, color: '#f472b6' },
@@ -70,19 +70,19 @@ const bifrostHighlightStyle = HighlightStyle.define([
   { tag: tags.atom, color: '#f472b6' },
   { tag: tags.literal, color: '#f472b6' },
   { tag: tags.escape, color: '#f472b6' },
-  
+
   { tag: tags.comment, color: '#6b7280', fontStyle: 'italic' },
   { tag: tags.lineComment, color: '#6b7280', fontStyle: 'italic' },
   { tag: tags.blockComment, color: '#6b7280', fontStyle: 'italic' },
   { tag: tags.docComment, color: '#6b7280', fontStyle: 'italic' },
-  
+
   { tag: tags.meta, color: '#9ca3af' },
   { tag: tags.annotation, color: '#9ca3af' },
   { tag: tags.processingInstruction, color: '#9ca3af' },
-  
+
   { tag: tags.tagName, color: '#10b981' },
   { tag: tags.self, color: '#f472b6' },
-  
+
   { tag: tags.punctuation, color: '#9ca3af' },
   { tag: tags.paren, color: '#e5e7eb' },
   { tag: tags.brace, color: '#e5e7eb' },
@@ -90,7 +90,7 @@ const bifrostHighlightStyle = HighlightStyle.define([
   { tag: tags.angleBracket, color: '#6b7280' },
   { tag: tags.separator, color: '#9ca3af' },
   { tag: tags.derefOperator, color: '#9ca3af' },
-  
+
   { tag: tags.heading, color: '#60a5fa', fontWeight: 'bold' },
   { tag: tags.heading1, color: '#60a5fa', fontWeight: 'bold' },
   { tag: tags.heading2, color: '#60a5fa', fontWeight: 'bold' },
@@ -100,7 +100,7 @@ const bifrostHighlightStyle = HighlightStyle.define([
   { tag: tags.emphasis, fontStyle: 'italic' },
   { tag: tags.strong, fontWeight: 'bold' },
   { tag: tags.strikethrough, textDecoration: 'line-through' },
-  
+
   { tag: tags.inserted, color: '#10b981' },
   { tag: tags.deleted, color: '#ef4444' },
   { tag: tags.changed, color: '#fbbf24' },
@@ -108,49 +108,52 @@ const bifrostHighlightStyle = HighlightStyle.define([
 ])
 
 // Custom dark theme
-const bifrostTheme = EditorView.theme({
-  '&': {
-    backgroundColor: '#111827',
-    color: '#e5e7eb',
-    fontSize: '14px',
-    fontFamily: "'Geist Mono', 'Cascadia Code', 'Fira Code', ui-monospace, monospace",
+const bifrostTheme = EditorView.theme(
+  {
+    '&': {
+      backgroundColor: '#111827',
+      color: '#e5e7eb',
+      fontSize: '14px',
+      fontFamily: "'Geist Mono', 'Cascadia Code', 'Fira Code', ui-monospace, monospace",
+    },
+    '.cm-content': {
+      padding: '16px 0',
+      caretColor: '#10b981',
+    },
+    '.cm-line': {
+      padding: '0 16px',
+      lineHeight: '1.6',
+    },
+    '.cm-gutters': {
+      backgroundColor: '#111827',
+      color: '#4b5563',
+      border: 'none',
+      paddingLeft: '8px',
+    },
+    '.cm-lineNumbers .cm-gutterElement': {
+      padding: '0 12px 0 8px',
+      minWidth: '40px',
+      fontSize: '13px',
+    },
+    '.cm-activeLineGutter': {
+      backgroundColor: 'transparent',
+      color: '#9ca3af',
+    },
+    '&.cm-focused': {
+      outline: 'none',
+    },
+    '.cm-selectionBackground': {
+      backgroundColor: '#374151 !important',
+    },
+    '&.cm-focused .cm-selectionBackground': {
+      backgroundColor: '#374151 !important',
+    },
+    '.cm-cursor': {
+      borderLeftColor: '#10b981',
+    },
   },
-  '.cm-content': {
-    padding: '16px 0',
-    caretColor: '#10b981',
-  },
-  '.cm-line': {
-    padding: '0 16px',
-    lineHeight: '1.6',
-  },
-  '.cm-gutters': {
-    backgroundColor: '#111827',
-    color: '#4b5563',
-    border: 'none',
-    paddingLeft: '8px',
-  },
-  '.cm-lineNumbers .cm-gutterElement': {
-    padding: '0 12px 0 8px',
-    minWidth: '40px',
-    fontSize: '13px',
-  },
-  '.cm-activeLineGutter': {
-    backgroundColor: 'transparent',
-    color: '#9ca3af',
-  },
-  '&.cm-focused': {
-    outline: 'none',
-  },
-  '.cm-selectionBackground': {
-    backgroundColor: '#374151 !important',
-  },
-  '&.cm-focused .cm-selectionBackground': {
-    backgroundColor: '#374151 !important',
-  },
-  '.cm-cursor': {
-    borderLeftColor: '#10b981',
-  },
-}, { dark: true })
+  { dark: true }
+)
 
 // Get language extension based on language name
 function getLanguageExtension(language: string): Extension | null {
@@ -189,8 +192,8 @@ function getLanguageExtension(language: string): Extension | null {
     postgresql: () => sql(),
     php: () => php(),
     shell: () => javascript(), // Basic fallback
-    bash: () => javascript(),  // Basic fallback
-    sh: () => javascript(),    // Basic fallback
+    bash: () => javascript(), // Basic fallback
+    sh: () => javascript(), // Basic fallback
   }
 
   const factory = langMap[language.toLowerCase()]
@@ -203,7 +206,8 @@ export function CodeBlock({ code, language = 'plaintext' }: CodeBlockProps) {
   const [isCopied, setIsCopied] = useState(false)
 
   // Map common language aliases for display
-  const displayLanguage = language.toLowerCase()
+  const displayLanguage = language
+    .toLowerCase()
     .replace('javascript', 'js')
     .replace('typescript', 'ts')
     .replace('python', 'py')
@@ -260,25 +264,25 @@ export function CodeBlock({ code, language = 'plaintext' }: CodeBlockProps) {
   }
 
   return (
-    <div className="relative group my-8 rounded-xl overflow-hidden border border-gray-700 bg-[#111827]">
+    <div className="group relative my-8 overflow-hidden rounded-xl border border-gray-700 bg-[#111827]">
       {/* Language badge and copy button */}
-      <div className="flex items-center justify-between px-4 py-2.5 bg-[#0d1117] border-b border-gray-700">
-        <span className="text-xs font-medium text-gray-400 uppercase tracking-wider font-mono">
+      <div className="flex items-center justify-between border-b border-gray-700 bg-[#0d1117] px-4 py-2.5">
+        <span className="font-mono text-xs font-medium tracking-wider text-gray-400 uppercase">
           {displayLanguage}
         </span>
         <button
           onClick={handleCopy}
-          className="flex items-center gap-1.5 text-xs text-gray-400 hover:text-white transition-colors px-2 py-1 rounded hover:bg-gray-700"
+          className="flex items-center gap-1.5 rounded px-2 py-1 text-xs text-gray-400 transition-colors hover:bg-gray-700 hover:text-white"
           aria-label="Copy code"
         >
           {isCopied ? (
             <>
-              <Check className="w-3.5 h-3.5 text-green-500" />
+              <Check className="h-3.5 w-3.5 text-green-500" />
               <span className="text-green-500">Copied!</span>
             </>
           ) : (
             <>
-              <Copy className="w-3.5 h-3.5" />
+              <Copy className="h-3.5 w-3.5" />
               <span>Copy</span>
             </>
           )}
@@ -286,10 +290,7 @@ export function CodeBlock({ code, language = 'plaintext' }: CodeBlockProps) {
       </div>
 
       {/* CodeMirror Editor */}
-      <div 
-        ref={editorRef} 
-        className="w-full overflow-auto max-h-[500px]"
-      />
+      <div ref={editorRef} className="max-h-[500px] w-full overflow-auto" />
     </div>
   )
 }

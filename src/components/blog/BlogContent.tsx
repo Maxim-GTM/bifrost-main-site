@@ -88,4 +88,3 @@ function findElement(parent: Element, tagName: string): Element | null {
   }
   return null
 }
-

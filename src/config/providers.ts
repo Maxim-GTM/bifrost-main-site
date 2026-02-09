@@ -16,8 +16,8 @@
  * Provider metadata (display name and logo)
  */
 export interface ProviderMetadata {
-  displayName: string;
-  logo: string;
+  displayName: string
+  logo: string
 }
 
 /**
@@ -58,7 +58,7 @@ export const PROVIDER_METADATA: Record<string, ProviderMetadata> = {
   ollama: { displayName: 'Ollama', logo: 'ollama.svg' },
   openrouter: { displayName: 'OpenRouter', logo: 'openrouter.svg' },
   xai: { displayName: 'xAI', logo: 'xai.svg' },
-};
+}
 
 /**
  * Complete list of all providers available in the Bifrost API
@@ -174,7 +174,7 @@ export const ALL_AVAILABLE_PROVIDERS = [
   'watsonx',
   'xai',
   'zai',
-] as const;
+] as const
 
 /**
  * Whitelisted providers - only these will be included in the site
@@ -208,30 +208,30 @@ export const WHITELISTED_PROVIDERS = [
   'cohere',
   'mistral',
   'perplexity',
-] as const;
+] as const
 
 /**
  * Type for whitelisted provider names
  */
-export type WhitelistedProvider = typeof WHITELISTED_PROVIDERS[number];
+export type WhitelistedProvider = (typeof WHITELISTED_PROVIDERS)[number]
 
 /**
  * Type for all available provider names
  */
-export type AvailableProvider = typeof ALL_AVAILABLE_PROVIDERS[number];
+export type AvailableProvider = (typeof ALL_AVAILABLE_PROVIDERS)[number]
 
 /**
  * Check if a provider is whitelisted
  */
 export function isProviderWhitelisted(provider: string): boolean {
-  return WHITELISTED_PROVIDERS.includes(provider as WhitelistedProvider);
+  return WHITELISTED_PROVIDERS.includes(provider as WhitelistedProvider)
 }
 
 /**
  * Get the whitelist as a Set for efficient lookups
  */
 export function getWhitelistSet(): Set<string> {
-  return new Set(WHITELISTED_PROVIDERS);
+  return new Set(WHITELISTED_PROVIDERS)
 }
 
 /**
@@ -242,14 +242,17 @@ export function getProviderStats() {
     total: ALL_AVAILABLE_PROVIDERS.length,
     whitelisted: WHITELISTED_PROVIDERS.length,
     percentage: ((WHITELISTED_PROVIDERS.length / ALL_AVAILABLE_PROVIDERS.length) * 100).toFixed(1),
-  };
+  }
 }
 
 /**
  * Normalize provider name for consistent lookups
  */
 function normalizeProvider(provider: string): string {
-  return provider.trim().toLowerCase().replace(/[\s-]+/g, '_');
+  return provider
+    .trim()
+    .toLowerCase()
+    .replace(/[\s-]+/g, '_')
 }
 
 /**
@@ -259,46 +262,46 @@ function toTitleCase(value: string): string {
   return value
     .split(' ')
     .map((word) => (word ? word[0].toUpperCase() + word.slice(1).toLowerCase() : ''))
-    .join(' ');
+    .join(' ')
 }
 
 /**
  * Fallback provider name formatter
  */
 function formatProviderNameFallback(provider: string): string {
-  const formatted = toTitleCase(provider.replace(/[_-]/g, ' '));
-  return formatted.replace(/ai/gi, 'AI');
+  const formatted = toTitleCase(provider.replace(/[_-]/g, ' '))
+  return formatted.replace(/ai/gi, 'AI')
 }
 
 /**
  * Get provider metadata (display name and logo)
  */
 export function getProviderMetadata(provider: string): ProviderMetadata {
-  const normalized = normalizeProvider(provider);
-  const metadata = PROVIDER_METADATA[normalized];
+  const normalized = normalizeProvider(provider)
+  const metadata = PROVIDER_METADATA[normalized]
 
   if (metadata) {
-    return metadata;
+    return metadata
   }
 
   // Fallback for unknown providers
   return {
     displayName: formatProviderNameFallback(provider),
     logo: 'unknown.svg',
-  };
+  }
 }
 
 /**
  * Get provider display name
  */
 export function getProviderDisplayName(provider: string): string {
-  return getProviderMetadata(provider).displayName;
+  return getProviderMetadata(provider).displayName
 }
 
 /**
  * Get provider logo path
  */
 export function getProviderLogo(provider: string): string {
-  const metadata = getProviderMetadata(provider);
-  return `/provider-logo/${metadata.logo}`;
+  const metadata = getProviderMetadata(provider)
+  return `/provider-logo/${metadata.logo}`
 }

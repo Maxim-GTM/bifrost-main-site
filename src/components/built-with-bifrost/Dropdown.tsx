@@ -1,21 +1,21 @@
-'use client';
+'use client'
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react'
 
 export interface DropdownOption {
-  value: string;
-  label: string;
-  icon?: string;
+  value: string
+  label: string
+  icon?: string
 }
 
 interface DropdownProps {
-  options: DropdownOption[];
-  value: string;
-  onChange: (value: string) => void;
-  placeholder?: string;
-  className?: string;
-  allOptionLabel?: string;
-  showAllOption?: boolean;
+  options: DropdownOption[]
+  value: string
+  onChange: (value: string) => void
+  placeholder?: string
+  className?: string
+  allOptionLabel?: string
+  showAllOption?: boolean
 }
 
 export default function Dropdown({
@@ -27,37 +27,37 @@ export default function Dropdown({
   allOptionLabel = 'All',
   showAllOption = false,
 }: DropdownProps) {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [isExpanded, setIsExpanded] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
 
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsExpanded(false);
+        setIsExpanded(false)
       }
-    };
+    }
 
     if (isExpanded) {
-      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('mousedown', handleClickOutside)
     }
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [isExpanded]);
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isExpanded])
 
-  const selectedOption = options.find(opt => opt.value === value);
-  const displayText = selectedOption 
-    ? selectedOption.label 
+  const selectedOption = options.find((opt) => opt.value === value)
+  const displayText = selectedOption
+    ? selectedOption.label
     : showAllOption && value === 'all'
-    ? allOptionLabel
-    : placeholder;
+      ? allOptionLabel
+      : placeholder
 
   const handleSelect = (optionValue: string) => {
-    onChange(optionValue);
-    setIsExpanded(false);
-  };
+    onChange(optionValue)
+    setIsExpanded(false)
+  }
 
   return (
     <div className={`provider-filter ${className}`} ref={dropdownRef}>
@@ -88,7 +88,7 @@ export default function Dropdown({
           />
         </svg>
       </button>
-      
+
       {isExpanded && (
         <div className="provider-list">
           {showAllOption && (
@@ -111,7 +111,12 @@ export default function Dropdown({
                 <img
                   src={option.icon}
                   alt={option.label}
-                  style={{ width: '16px', height: '16px', objectFit: 'contain', marginRight: '0.5rem' }}
+                  style={{
+                    width: '16px',
+                    height: '16px',
+                    objectFit: 'contain',
+                    marginRight: '0.5rem',
+                  }}
                 />
               )}
               {option.label}
@@ -120,6 +125,5 @@ export default function Dropdown({
         </div>
       )}
     </div>
-  );
+  )
 }
-

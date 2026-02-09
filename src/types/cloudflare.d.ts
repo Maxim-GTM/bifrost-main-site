@@ -27,7 +27,7 @@ interface RequestContext {
 
 declare module '@cloudflare/next-on-pages' {
   export function getRequestContext(): RequestContext
-  
+
   interface CloudflareEnv {
     BIFROST_KV?: KVNamespace
     MAILGUN_API_KEY?: string
@@ -36,4 +36,3 @@ declare module '@cloudflare/next-on-pages' {
     FROM_EMAIL?: string
   }
 }
-

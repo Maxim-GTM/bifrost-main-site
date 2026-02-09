@@ -3,21 +3,21 @@
 import { Menu, X } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
-import PrimaryButton from '@/components/ui/PrimaryButton'
-import SecondaryButton from '@/components/ui/SecondaryButton'
+import CornerBracketLink from './CornerBracketLink'
+import { Button } from './ui/Button'
 
 // Bifrost Logo SVG Component
 function BifrostLogo({ className = '' }: { className?: string }) {
   return (
-    <svg
-      width="230"
-      height="70"
-      viewBox="0 0 464 110"
-      fill="none"
-      className={className}
-    >
-      <path d="M157.368 9.35449C166.274 9.35449 173.168 11.4075 178.049 15.5146C183.015 19.6218 185.499 24.97 185.499 31.5586C185.499 36.5214 184.214 40.6717 181.646 44.0088C179.162 47.2604 176.036 49.5713 172.269 50.9404C175.78 52.0528 178.82 53.7215 181.389 55.9463C183.958 58.171 185.97 60.7806 187.426 63.7754C188.882 66.7703 189.609 70.1077 189.609 73.7871C189.609 78.5789 188.496 82.9004 186.27 86.751C184.129 90.6014 180.917 93.6386 176.636 95.8633C172.354 98.088 167.002 99.2011 160.58 99.2012H124.871V9.35449H157.368ZM256.408 21.1377H252.64C249.521 21.1377 247.311 21.7779 246.012 23.0576C244.712 24.252 244.063 26.2997 244.062 29.2002L244.063 35.2148H257.838V46.6045H244.063L244.062 99.2002H230.288V46.6045H221.711V35.2148H230.288V29.0723C230.288 22.1619 232.064 17.2135 235.616 14.2275C239.168 11.1564 244.107 9.62109 250.431 9.62109H256.408V21.1377ZM302.655 49.2705H298.93C292.85 49.2705 288.312 50.8537 285.314 54.0195C282.317 57.0999 280.818 61.8492 280.818 68.2666V99.2002H267.203V36.5635H280.305L280.69 47.3457C282.831 43.4952 285.743 40.5005 289.425 38.3613C293.193 36.1366 297.603 35.0234 302.655 35.0234V49.2705ZM334.774 35.0234C340.624 35.0234 345.906 36.2991 350.618 38.8496C355.331 41.4002 359.108 45.0619 361.952 49.834C364.796 54.606 366.218 60.3239 366.218 66.9883C366.218 73.2414 364.837 78.7951 362.074 83.6494C359.393 88.5037 355.656 92.3295 350.862 95.127C346.069 97.8421 340.543 99.2002 334.287 99.2002C328.437 99.2002 323.156 97.9246 318.443 95.374C313.812 92.7412 310.116 88.9976 307.354 84.1436C304.672 79.2892 303.331 73.5705 303.331 66.9883C303.331 60.4062 304.712 54.729 307.475 49.957C310.318 45.185 314.097 41.5232 318.81 38.9727C323.603 36.34 328.925 35.0235 334.774 35.0234ZM393.257 35.0234C399.905 35.0235 405.445 36.7107 409.877 40.084C414.309 43.375 416.77 48.2292 417.263 54.6465H404.706C404.378 51.767 403.146 49.5456 401.013 47.9824C398.961 46.4192 396.294 45.6378 393.011 45.6377C389.974 45.6377 387.512 46.2543 385.624 47.4883C383.736 48.6402 382.792 50.4099 382.792 52.7959C382.792 54.4413 383.449 55.8404 384.762 56.9922C386.075 58.0617 387.758 58.9666 389.81 59.707C391.943 60.3652 394.159 60.9817 396.457 61.5576C400.643 62.4626 404.377 63.5742 407.66 64.8906C410.943 66.2071 413.57 68.0583 415.54 70.4443C417.51 72.8303 418.535 76.1215 418.617 80.3174C418.617 84.1021 417.55 87.4348 415.416 90.3145C413.364 93.1116 410.533 95.2923 406.922 96.8555C403.393 98.4187 399.329 99.2002 394.733 99.2002C389.973 99.2001 385.624 98.3769 381.685 96.7314C377.745 95.0036 374.543 92.5767 372.081 89.4502C369.619 86.3237 368.183 82.6619 367.772 78.4658H380.945C381.52 81.4278 383.039 83.8557 385.501 85.748C387.963 87.6401 391.041 88.5859 394.733 88.5859C398.016 88.5859 400.684 87.887 402.736 86.4883C404.788 85.0073 405.813 83.0735 405.813 80.6875C405.813 78.6306 405.116 77.0259 403.721 75.874C402.408 74.7223 400.684 73.8173 398.551 73.1592C396.499 72.501 394.241 71.9253 391.779 71.4316C388.004 70.5266 384.433 69.416 381.068 68.0996C377.785 66.7832 375.118 64.9727 373.066 62.6689C371.015 60.3653 369.988 57.2799 369.988 53.4131C369.988 49.6284 370.974 46.3782 372.943 43.6631C374.995 40.8657 377.785 38.7261 381.314 37.2451C384.844 35.7641 388.825 35.0234 393.257 35.0234ZM212.716 99.1992H199.101L198.963 35.0234H212.578L212.716 99.1992ZM447.219 35.0234H463.404V46.4463H447.219L447.22 79.4336C447.22 82.6849 447.948 84.8671 449.403 85.9795C450.859 87.0919 453.129 87.6475 456.212 87.6475H463.405V99.1992H453.386C447.049 99.1992 442.168 97.6595 438.742 94.5791C435.317 91.4987 433.605 86.45 433.604 79.4336L433.604 46.4463H423.97V35.0234H433.604L433.604 20.1348H447.22L447.219 35.0234ZM334.531 46.3779C330.713 46.3779 327.422 47.2827 324.659 49.0928C321.978 50.9029 319.906 53.3715 318.443 56.498C317.062 59.5422 316.372 63.0391 316.372 66.9883C316.372 71.5135 317.185 75.3393 318.81 78.4658C320.516 81.5924 322.75 83.9377 325.513 85.501C328.275 87.0641 331.241 87.8457 334.409 87.8457C337.984 87.8457 341.153 86.9408 343.915 85.1309C346.759 83.3208 348.993 80.8521 350.618 77.7256C352.243 74.5168 353.056 70.8967 353.056 66.8652C353.056 62.7514 352.243 59.1722 350.618 56.1279C349.074 53.0014 346.922 50.6153 344.159 48.9697C341.397 47.2419 338.187 46.378 334.531 46.3779ZM138.486 87.6494H158.14C163.877 87.6493 168.244 86.4082 171.241 83.9268C174.324 81.4453 175.865 77.6803 175.865 72.6318C175.865 67.4977 174.238 63.6895 170.984 61.208C167.73 58.7266 163.362 57.4863 157.882 57.4863H138.486V87.6494ZM138.486 46.1914H156.341C161.393 46.1914 165.203 45.079 167.772 42.8545C170.341 40.6297 171.626 37.5061 171.626 33.4844C171.626 29.4627 170.341 26.339 167.772 24.1143C165.289 21.8897 161.35 20.7773 155.955 20.7773H138.486V46.1914ZM205.908 9.07422C208.477 9.07422 210.618 9.93023 212.331 11.6416C214.129 13.3529 215.028 15.4493 215.028 17.9307C215.028 20.4976 214.129 22.6797 212.331 24.4766C210.618 26.1879 208.477 27.0439 205.908 27.0439C203.425 27.0439 201.284 26.1879 199.485 24.4766C197.773 22.6797 196.917 20.4975 196.917 17.9307C196.917 15.4494 197.773 13.3529 199.485 11.6416C201.284 9.93026 203.425 9.07424 205.908 9.07422Z" fill="black" />
-      <path d="M65.8047 109.59H0V87.6719H65.8047V109.59ZM87.7393 87.6719H65.8047V65.7539H87.7393V87.6719ZM43.8701 65.7539H21.9355V43.8359H43.8701V65.7539ZM87.7393 43.8359H65.8047V21.918H87.7393V43.8359ZM65.8047 21.918H0V0H65.8047V21.918Z" fill="#33C19E" />
+    <svg width="230" height="70" viewBox="0 0 464 110" fill="none" className={className}>
+      <path
+        d="M157.368 9.35449C166.274 9.35449 173.168 11.4075 178.049 15.5146C183.015 19.6218 185.499 24.97 185.499 31.5586C185.499 36.5214 184.214 40.6717 181.646 44.0088C179.162 47.2604 176.036 49.5713 172.269 50.9404C175.78 52.0528 178.82 53.7215 181.389 55.9463C183.958 58.171 185.97 60.7806 187.426 63.7754C188.882 66.7703 189.609 70.1077 189.609 73.7871C189.609 78.5789 188.496 82.9004 186.27 86.751C184.129 90.6014 180.917 93.6386 176.636 95.8633C172.354 98.088 167.002 99.2011 160.58 99.2012H124.871V9.35449H157.368ZM256.408 21.1377H252.64C249.521 21.1377 247.311 21.7779 246.012 23.0576C244.712 24.252 244.063 26.2997 244.062 29.2002L244.063 35.2148H257.838V46.6045H244.063L244.062 99.2002H230.288V46.6045H221.711V35.2148H230.288V29.0723C230.288 22.1619 232.064 17.2135 235.616 14.2275C239.168 11.1564 244.107 9.62109 250.431 9.62109H256.408V21.1377ZM302.655 49.2705H298.93C292.85 49.2705 288.312 50.8537 285.314 54.0195C282.317 57.0999 280.818 61.8492 280.818 68.2666V99.2002H267.203V36.5635H280.305L280.69 47.3457C282.831 43.4952 285.743 40.5005 289.425 38.3613C293.193 36.1366 297.603 35.0234 302.655 35.0234V49.2705ZM334.774 35.0234C340.624 35.0234 345.906 36.2991 350.618 38.8496C355.331 41.4002 359.108 45.0619 361.952 49.834C364.796 54.606 366.218 60.3239 366.218 66.9883C366.218 73.2414 364.837 78.7951 362.074 83.6494C359.393 88.5037 355.656 92.3295 350.862 95.127C346.069 97.8421 340.543 99.2002 334.287 99.2002C328.437 99.2002 323.156 97.9246 318.443 95.374C313.812 92.7412 310.116 88.9976 307.354 84.1436C304.672 79.2892 303.331 73.5705 303.331 66.9883C303.331 60.4062 304.712 54.729 307.475 49.957C310.318 45.185 314.097 41.5232 318.81 38.9727C323.603 36.34 328.925 35.0235 334.774 35.0234ZM393.257 35.0234C399.905 35.0235 405.445 36.7107 409.877 40.084C414.309 43.375 416.77 48.2292 417.263 54.6465H404.706C404.378 51.767 403.146 49.5456 401.013 47.9824C398.961 46.4192 396.294 45.6378 393.011 45.6377C389.974 45.6377 387.512 46.2543 385.624 47.4883C383.736 48.6402 382.792 50.4099 382.792 52.7959C382.792 54.4413 383.449 55.8404 384.762 56.9922C386.075 58.0617 387.758 58.9666 389.81 59.707C391.943 60.3652 394.159 60.9817 396.457 61.5576C400.643 62.4626 404.377 63.5742 407.66 64.8906C410.943 66.2071 413.57 68.0583 415.54 70.4443C417.51 72.8303 418.535 76.1215 418.617 80.3174C418.617 84.1021 417.55 87.4348 415.416 90.3145C413.364 93.1116 410.533 95.2923 406.922 96.8555C403.393 98.4187 399.329 99.2002 394.733 99.2002C389.973 99.2001 385.624 98.3769 381.685 96.7314C377.745 95.0036 374.543 92.5767 372.081 89.4502C369.619 86.3237 368.183 82.6619 367.772 78.4658H380.945C381.52 81.4278 383.039 83.8557 385.501 85.748C387.963 87.6401 391.041 88.5859 394.733 88.5859C398.016 88.5859 400.684 87.887 402.736 86.4883C404.788 85.0073 405.813 83.0735 405.813 80.6875C405.813 78.6306 405.116 77.0259 403.721 75.874C402.408 74.7223 400.684 73.8173 398.551 73.1592C396.499 72.501 394.241 71.9253 391.779 71.4316C388.004 70.5266 384.433 69.416 381.068 68.0996C377.785 66.7832 375.118 64.9727 373.066 62.6689C371.015 60.3653 369.988 57.2799 369.988 53.4131C369.988 49.6284 370.974 46.3782 372.943 43.6631C374.995 40.8657 377.785 38.7261 381.314 37.2451C384.844 35.7641 388.825 35.0234 393.257 35.0234ZM212.716 99.1992H199.101L198.963 35.0234H212.578L212.716 99.1992ZM447.219 35.0234H463.404V46.4463H447.219L447.22 79.4336C447.22 82.6849 447.948 84.8671 449.403 85.9795C450.859 87.0919 453.129 87.6475 456.212 87.6475H463.405V99.1992H453.386C447.049 99.1992 442.168 97.6595 438.742 94.5791C435.317 91.4987 433.605 86.45 433.604 79.4336L433.604 46.4463H423.97V35.0234H433.604L433.604 20.1348H447.22L447.219 35.0234ZM334.531 46.3779C330.713 46.3779 327.422 47.2827 324.659 49.0928C321.978 50.9029 319.906 53.3715 318.443 56.498C317.062 59.5422 316.372 63.0391 316.372 66.9883C316.372 71.5135 317.185 75.3393 318.81 78.4658C320.516 81.5924 322.75 83.9377 325.513 85.501C328.275 87.0641 331.241 87.8457 334.409 87.8457C337.984 87.8457 341.153 86.9408 343.915 85.1309C346.759 83.3208 348.993 80.8521 350.618 77.7256C352.243 74.5168 353.056 70.8967 353.056 66.8652C353.056 62.7514 352.243 59.1722 350.618 56.1279C349.074 53.0014 346.922 50.6153 344.159 48.9697C341.397 47.2419 338.187 46.378 334.531 46.3779ZM138.486 87.6494H158.14C163.877 87.6493 168.244 86.4082 171.241 83.9268C174.324 81.4453 175.865 77.6803 175.865 72.6318C175.865 67.4977 174.238 63.6895 170.984 61.208C167.73 58.7266 163.362 57.4863 157.882 57.4863H138.486V87.6494ZM138.486 46.1914H156.341C161.393 46.1914 165.203 45.079 167.772 42.8545C170.341 40.6297 171.626 37.5061 171.626 33.4844C171.626 29.4627 170.341 26.339 167.772 24.1143C165.289 21.8897 161.35 20.7773 155.955 20.7773H138.486V46.1914ZM205.908 9.07422C208.477 9.07422 210.618 9.93023 212.331 11.6416C214.129 13.3529 215.028 15.4493 215.028 17.9307C215.028 20.4976 214.129 22.6797 212.331 24.4766C210.618 26.1879 208.477 27.0439 205.908 27.0439C203.425 27.0439 201.284 26.1879 199.485 24.4766C197.773 22.6797 196.917 20.4975 196.917 17.9307C196.917 15.4494 197.773 13.3529 199.485 11.6416C201.284 9.93026 203.425 9.07424 205.908 9.07422Z"
+        fill="black"
+      />
+      <path
+        d="M65.8047 109.59H0V87.6719H65.8047V109.59ZM87.7393 87.6719H65.8047V65.7539H87.7393V87.6719ZM43.8701 65.7539H21.9355V43.8359H43.8701V65.7539ZM87.7393 43.8359H65.8047V21.918H87.7393V43.8359ZM65.8047 21.918H0V0H65.8047V21.918Z"
+        fill="#33C19E"
+      />
     </svg>
   )
 }
@@ -47,9 +47,10 @@ export function Navbar() {
     <>
       {/* Top Banner - scrolls with page */}
       <div
-        className="relative w-full h-[42px] flex items-center justify-center overflow-hidden"
+        className="relative flex h-[40px] w-full items-center justify-center overflow-hidden"
         style={{
-          background: 'linear-gradient(90deg, rgba(111, 195, 168, 0) 0%, rgba(89, 156, 134, 0.8) 10%, rgb(89, 156, 134) 50%, rgba(89, 156, 134, 0.8) 90%, rgba(111, 195, 168, 0) 100%), rgb(111, 195, 168)',
+          background:
+            'linear-gradient(90deg, rgba(111, 195, 168, 0) 0%, rgba(89, 156, 134, 0.8) 10%, rgb(89, 156, 134) 50%, rgba(89, 156, 134, 0.8) 90%, rgba(111, 195, 168, 0) 100%), rgb(111, 195, 168)',
         }}
       >
         {/* Grid pattern overlay */}
@@ -60,12 +61,22 @@ export function Navbar() {
             backgroundSize: '4px 4px',
           }}
         />
-        <div className="relative flex items-center gap-3 text-white h-6">
-          <div className="flex items-center gap-1.5 bg-green-900  px-2 py-1.5 navbar-update-button text-[11px] font-medium tracking-wider">
-            <svg className="w-3 h-3" viewBox="0 0 12 12" fill="none">
+        <div className="relative flex h-6 items-center gap-3 text-white">
+          <div className="navbar-update-button flex items-center gap-1.5 bg-green-900 px-2 py-1.5 text-[11px] font-medium tracking-wider">
+            <svg className="h-3 w-3" viewBox="0 0 12 12" fill="none">
               <g clipPath="url(#clip0)">
-                <path d="M4.5 9C4.5 9.39782 4.65804 9.77936 4.93934 10.0607C5.22064 10.342 5.60218 10.5 6 10.5C6.39782 10.5 6.77936 10.342 7.06066 10.0607C7.34196 9.77936 7.5 9.39782 7.5 9" stroke="white" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M2.62665 4.875C2.62665 3.97989 2.98223 3.12145 3.61517 2.48851C4.2481 1.85558 5.10655 1.5 6.00165 1.5C6.89676 1.5 7.7552 1.85558 8.38814 2.48851C9.02107 3.12145 9.37665 3.97989 9.37665 4.875C9.37665 6.55406 9.76571 7.90313 10.0751 8.4375C10.1079 8.49441 10.1253 8.55896 10.1253 8.62467C10.1254 8.69038 10.1082 8.75496 10.0754 8.81193C10.0427 8.8689 9.99551 8.91626 9.93869 8.94927C9.88186 8.98227 9.81736 8.99977 9.75165 9H2.25165C2.18602 8.99961 2.12163 8.98199 2.06494 8.94892C2.00825 8.91584 1.96123 8.86847 1.92858 8.81153C1.89594 8.75458 1.87881 8.69007 1.87891 8.62444C1.87901 8.5588 1.89633 8.49434 1.92915 8.4375C2.23806 7.90313 2.62665 6.55359 2.62665 4.875Z" stroke="white" strokeLinecap="round" strokeLinejoin="round" />
+                <path
+                  d="M4.5 9C4.5 9.39782 4.65804 9.77936 4.93934 10.0607C5.22064 10.342 5.60218 10.5 6 10.5C6.39782 10.5 6.77936 10.342 7.06066 10.0607C7.34196 9.77936 7.5 9.39782 7.5 9"
+                  stroke="white"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M2.62665 4.875C2.62665 3.97989 2.98223 3.12145 3.61517 2.48851C4.2481 1.85558 5.10655 1.5 6.00165 1.5C6.89676 1.5 7.7552 1.85558 8.38814 2.48851C9.02107 3.12145 9.37665 3.97989 9.37665 4.875C9.37665 6.55406 9.76571 7.90313 10.0751 8.4375C10.1079 8.49441 10.1253 8.55896 10.1253 8.62467C10.1254 8.69038 10.1082 8.75496 10.0754 8.81193C10.0427 8.8689 9.99551 8.91626 9.93869 8.94927C9.88186 8.98227 9.81736 8.99977 9.75165 9H2.25165C2.18602 8.99961 2.12163 8.98199 2.06494 8.94892C2.00825 8.91584 1.96123 8.86847 1.92858 8.81153C1.89594 8.75458 1.87881 8.69007 1.87891 8.62444C1.87901 8.5588 1.89633 8.49434 1.92915 8.4375C2.23806 7.90313 2.62665 6.55359 2.62665 4.875Z"
+                  stroke="white"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </g>
               <defs>
                 <clipPath id="clip0">
@@ -77,13 +88,11 @@ export function Navbar() {
             <span>UPDATES</span>
           </div>
 
-          <div className="flex pl-24 gap-2 items-center uppercase tracking-[0.04em] ">
-            <div className="text-xs font-medium">
-              Try Bifrost Enterprise free for 14 days.
-            </div>
+          <div className="flex items-center gap-2 pl-24 tracking-[0.04em] uppercase">
+            <div className="text-xs font-medium">Try Bifrost Enterprise free for 14 days.</div>
             <Link
               href="https://www.getmaxim.ai/bifrost/enterprise"
-              className="text-xs font-semibold underline underline-offset-2 hover:no-underline transition-all"
+              className="text-xs font-semibold underline underline-offset-2 transition-all hover:no-underline"
             >
               Explore now
             </Link>
@@ -92,129 +101,157 @@ export function Navbar() {
       </div>
 
       {/* Main Header */}
-      <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-12 h-[64px] flex items-center">
+      <header className="sticky top-0 z-50 border-b border-gray-200 bg-[#F9F9F9]">
+        <div className="mx-auto flex h-[64px] max-w-[1100px] items-center px-4 sm:px-6 lg:px-12">
           {/* Logo */}
-          <Link href="/bifrost" className="flex items-center shrink-0">
-            <BifrostLogo className="h-6 md:h-7 w-auto" />
+          <Link href="/bifrost" className="flex shrink-0 items-center">
+            <BifrostLogo className="h-6 w-auto md:h-7" />
           </Link>
-          <div className="flex-row gap-6 items-center ml-8 mt-1.5 hidden lg:flex font-mono">
-            <Link
+          <div className="mt-1.5 ml-8 hidden flex-row items-center gap-6 lg:flex">
+            <CornerBracketLink
               href="https://getmaxim.ai/bifrost/#performance"
-              className="text-sm font-medium tracking-[0.04em] text-extracted hover:text-gray-900 transition-colors uppercase"
+              className="text-extracted font-sans text-sm font-medium tracking-[0.04em] uppercase transition-colors hover:text-gray-900"
             >
               Performance
-            </Link>
-            <Link
+            </CornerBracketLink>
+            <CornerBracketLink
               href="https://getmaxim.ai/bifrost/#features"
-              className="text-sm font-medium tracking-[0.04em] text-extracted hover:text-gray-900 transition-colors uppercase"
+              className="text-extracted text-sm font-medium tracking-[0.04em] uppercase transition-colors hover:text-gray-900"
             >
               Features
-            </Link>
-            <Link
+            </CornerBracketLink>
+            <CornerBracketLink
               href="https://getmaxim.ai/bifrost/enterprise"
-              className="text-sm font-medium tracking-[0.04em] text-extracted hover:text-gray-900 transition-colors uppercase"
+              className="text-extracted text-sm font-medium tracking-[0.04em] uppercase transition-colors hover:text-gray-900"
             >
               Enterprise
-            </Link>
-            <Link
+            </CornerBracketLink>
+            <CornerBracketLink
               href="https://docs.getbifrost.ai"
               target="_blank"
-              className="text-sm font-medium tracking-[0.04em] text-extracted hover:text-gray-900 transition-colors uppercase"
+              className="text-extracted text-sm font-medium tracking-[0.04em] uppercase transition-colors hover:text-gray-900"
             >
               Docs
-            </Link>
-            <Link
+            </CornerBracketLink>
+            <CornerBracketLink
               href="https://getmaxim.ai/bifrost/blog"
               target="_blank"
-              className="text-sm font-medium tracking-[0.04em] text-extracted hover:text-gray-900 transition-colors uppercase"
+              className="text-extracted text-sm font-medium tracking-[0.04em] uppercase transition-colors hover:text-gray-900"
             >
               Blog
-            </Link>
+            </CornerBracketLink>
           </div>
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-2 ml-auto font-mono">
-
-
+          <nav className="ml-auto hidden items-center gap-2 lg:flex">
             {/* Discord Button */}
-            <SecondaryButton
-              href="https://discord.gg/EN6EMhQduQ"
-              external
-              className="px-3 py-1 text-[12px] text-gray-700"
-              style={{ background: '#F5F5F5', border: 'none' }}
-              hoverBackground="#EDEDED"
-              accentColor="#D0D0D0"
-              accentHoverColor="#BDBDBD"
-              accentOffset={-1}
-            >
-              <DiscordIcon className="w-4 h-4 text-gray-600" />
-              <span>Discord</span>
-            </SecondaryButton>
+            <Button asChild variant="secondary">
+              <Link href="https://discord.gg/EN6EMhQduQ" target="_blank" rel="noopener noreferrer">
+                <DiscordIcon className="size-4 text-gray-600" />
+                Discord
+              </Link>
+            </Button>
 
             {/* GitHub Button */}
-            <SecondaryButton
-              href="https://github.com/maximhq/bifrost"
-              external
-              className="px-3 py-1 text-[12px] text-gray-700"
-              style={{ background: '#F5F5F5', border: 'none' }}
-              hoverBackground="#EDEDED"
-              accentColor="#D0D0D0"
-              accentHoverColor="#BDBDBD"
-              accentOffset={-1}
-            >
-              <GitHubIcon className="w-4 h-4 text-gray-600" />
-              <span>Github</span>
-            </SecondaryButton>
+            <Button asChild variant="secondary">
+              <Link
+                href="https://github.com/maximhq/bifrost"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <GitHubIcon className="size-4 text-gray-600" />
+                Github
+              </Link>
+            </Button>
 
-            <PrimaryButton
-              href="https://calendly.com/maximai/bifrost-demo"
-              external
-              className="px-4 py-0.5 text-[13px]"
-            >
-              Book a Demo
-            </PrimaryButton>
+            {/* Book a Demo Button - Green with dashed border */}
+            <Button asChild variant="primary">
+              <Link
+                href="https://calendly.com/maximai/bifrost-demo"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Book a Demo
+              </Link>
+            </Button>
           </nav>
 
           {/* Mobile Navigation Toggle */}
           <button
-            className="lg:hidden p-2 text-gray-600 hover:text-gray-900 transition-colors ml-auto"
+            className="ml-auto p-2 text-gray-600 transition-colors hover:text-gray-900 lg:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMenuOpen ? (
+              <X className="size-4" strokeWidth={1} />
+            ) : (
+              <Menu className="size-4" strokeWidth={1} />
+            )}
           </button>
         </div>
       </header>
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="lg:hidden fixed inset-0 z-[60] bg-white">
-          <div className="flex items-center justify-between px-4 py-4 border-b border-gray-200">
+        <div className="fixed inset-0 z-[60] bg-white lg:hidden">
+          <div className="flex items-center justify-between border-b border-gray-200 px-4 py-4">
             <Link href="/" onClick={() => setIsMenuOpen(false)}>
               <BifrostLogo className="h-6 w-auto" />
             </Link>
-            <button
-              className="p-2"
-              onClick={() => setIsMenuOpen(false)}
-              aria-label="Close menu"
-            >
-              <X className="w-6 h-6" />
+            <button className="p-2" onClick={() => setIsMenuOpen(false)} aria-label="Close menu">
+              <X className="h-6 w-6" />
             </button>
           </div>
-          <nav className="flex flex-col p-6 gap-6 font-mono">
-            <Link href="/#performance" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium tracking-wider uppercase text-gray-700">Performance</Link>
-            <Link href="/#features" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium tracking-wider uppercase text-gray-700">Features</Link>
-            <Link href="/enterprise" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium tracking-wider uppercase text-gray-700">Enterprise</Link>
-            <Link href="https://docs.getbifrost.ai" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium tracking-wider uppercase text-gray-700">Docs</Link>
-            <Link href="https://discord.gg/EN6EMhQduQ" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium tracking-wider uppercase text-gray-700">Discord</Link>
-            <Link href="https://github.com/maximhq/bifrost" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium tracking-wider uppercase text-gray-700">Github</Link>
-            <PrimaryButton
+          <nav className="flex flex-col gap-6 p-6">
+            <Link
+              href="/#performance"
+              onClick={() => setIsMenuOpen(false)}
+              className="text-lg font-medium tracking-wider text-gray-700 uppercase"
+            >
+              Performance
+            </Link>
+            <Link
+              href="/#features"
+              onClick={() => setIsMenuOpen(false)}
+              className="text-lg font-medium tracking-wider text-gray-700 uppercase"
+            >
+              Features
+            </Link>
+            <Link
+              href="/enterprise"
+              onClick={() => setIsMenuOpen(false)}
+              className="text-lg font-medium tracking-wider text-gray-700 uppercase"
+            >
+              Enterprise
+            </Link>
+            <Link
+              href="https://docs.getbifrost.ai"
+              onClick={() => setIsMenuOpen(false)}
+              className="text-lg font-medium tracking-wider text-gray-700 uppercase"
+            >
+              Docs
+            </Link>
+            <Link
+              href="https://discord.gg/EN6EMhQduQ"
+              onClick={() => setIsMenuOpen(false)}
+              className="text-lg font-medium tracking-wider text-gray-700 uppercase"
+            >
+              Discord
+            </Link>
+            <Link
+              href="https://github.com/maximhq/bifrost"
+              onClick={() => setIsMenuOpen(false)}
+              className="text-lg font-medium tracking-wider text-gray-700 uppercase"
+            >
+              Github
+            </Link>
+            <Link
               href="https://calendly.com/maximai/bifrost-demo"
               onClick={() => setIsMenuOpen(false)}
-              className="w-full py-3 text-base mt-4"
+              className="bg-accent mt-4 w-full py-4 text-center text-sm font-medium tracking-wider text-white uppercase"
+              style={{ border: '2px dashed rgba(0,0,0,0.2)' }}
             >
               Book a Demo
-            </PrimaryButton>
+            </Link>
           </nav>
         </div>
       )}

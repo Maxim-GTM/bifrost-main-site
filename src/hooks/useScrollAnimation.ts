@@ -11,7 +11,7 @@ export function useScrollAnimation() {
     if (throttleTimeoutRef.current) {
       clearTimeout(throttleTimeoutRef.current)
     }
-    
+
     throttleTimeoutRef.current = setTimeout(() => {
       setScrollY(window.scrollY)
     }, 16) // 60fps throttling
@@ -22,7 +22,7 @@ export function useScrollAnimation() {
     setScrollY(window.scrollY)
 
     window.addEventListener('scroll', handleScroll, { passive: true })
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll)
       if (throttleTimeoutRef.current) {
@@ -32,4 +32,4 @@ export function useScrollAnimation() {
   }, [handleScroll])
 
   return { scrollY }
-} 
+}

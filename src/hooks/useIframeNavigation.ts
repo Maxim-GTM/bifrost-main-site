@@ -5,12 +5,12 @@ import { useEffect } from 'react'
 
 const IFRAME_ORIGIN = 'https://bifrost-site.getmaxim.ai'
 
-function getBasePath () {
+function getBasePath() {
   if (typeof window === 'undefined') return ''
   return window.location.pathname.startsWith('/bifrost') ? '/bifrost' : ''
 }
 
-export function useIframeNavigation () {
+export function useIframeNavigation() {
   const router = useRouter()
   const pathname = usePathname()
 

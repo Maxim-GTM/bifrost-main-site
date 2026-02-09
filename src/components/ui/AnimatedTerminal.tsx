@@ -21,7 +21,7 @@ export function AnimatedTerminal() {
         { text: '$ bifrost benchmark --rps 5000 --instance t3.xlarge', type: 'command', delay: 0 },
         { text: 'Running benchmark on t3.xlarge instance...', type: 'info', delay: 1000 },
         { text: '', type: 'empty', delay: 800 },
-        { text: '📊 Performance Metrics:', type: 'info', delay: 500 },        
+        { text: '📊 Performance Metrics:', type: 'info', delay: 500 },
         { text: '   Success Rate: 100.00% ✓', type: 'success', delay: 400 },
         { text: '   Average Latency: 1.61s ✓', type: 'success', delay: 400 },
         { text: '   Response Size: 10.32 KB ✓', type: 'success', delay: 400 },
@@ -32,11 +32,11 @@ export function AnimatedTerminal() {
         { text: '', type: 'empty', delay: 300 },
         { text: '🏆 Benchmark complete!', type: 'highlight', delay: 600 },
         { text: '   Ultra-low gateway overhead', type: 'success', delay: 300 },
-        { text: '   100% success rate maintained', type: 'success', delay: 300 }
-      ]
+        { text: '   100% success rate maintained', type: 'success', delay: 300 },
+      ],
     },
     {
-      title: 'Failover Demo', 
+      title: 'Failover Demo',
       lines: [
         { text: '$ bifrost failover --demo', type: 'command', delay: 0 },
         { text: 'Initializing failover test...', type: 'info', delay: 800 },
@@ -50,9 +50,9 @@ export function AnimatedTerminal() {
         { text: '', type: 'empty', delay: 400 },
         { text: '🔄 New Primary: Anthropic Claude-3.5 (active)', type: 'success', delay: 500 },
         { text: '📊 Zero requests dropped during failover', type: 'highlight', delay: 600 },
-        { text: '🎯 99.9999% uptime maintained', type: 'success', delay: 400 }
-      ]
-    }
+        { text: '🎯 99.9999% uptime maintained', type: 'success', delay: 400 },
+      ],
+    },
   ]
 
   // Cleanup function
@@ -70,9 +70,9 @@ export function AnimatedTerminal() {
   // Cursor blinking effect
   useEffect(() => {
     intervalRef.current = setInterval(() => {
-      setShowCursor(prev => !prev)
+      setShowCursor((prev) => !prev)
     }, 500)
-    
+
     return cleanup
   }, [cleanup])
 
@@ -91,12 +91,12 @@ export function AnimatedTerminal() {
     }
 
     const currentLine = currentSceneData.lines[currentLineIndex]
-    
+
     // Handle empty lines
     if (currentLine.type === 'empty') {
       timeoutRef.current = setTimeout(() => {
-        setDisplayLines(prev => [...prev, ''])
-        setCurrentLineIndex(prev => prev + 1)
+        setDisplayLines((prev) => [...prev, ''])
+        setCurrentLineIndex((prev) => prev + 1)
         setCurrentCharIndex(0)
       }, currentLine.delay)
       return
@@ -114,20 +114,20 @@ export function AnimatedTerminal() {
     // Continue typing
     if (currentCharIndex <= currentLine.text.length) {
       const typingSpeed = currentLine.type === 'command' ? 80 : 30
-      
+
       timeoutRef.current = setTimeout(() => {
-        setDisplayLines(prev => {
+        setDisplayLines((prev) => {
           const newLines = [...prev]
           newLines[currentLineIndex] = currentLine.text.slice(0, currentCharIndex)
           return newLines
         })
-        
+
         if (currentCharIndex < currentLine.text.length) {
-          setCurrentCharIndex(prev => prev + 1)
+          setCurrentCharIndex((prev) => prev + 1)
         } else {
           // Line complete
           setIsTyping(false)
-          setCurrentLineIndex(prev => prev + 1)
+          setCurrentLineIndex((prev) => prev + 1)
           setCurrentCharIndex(0)
         }
       }, typingSpeed)
@@ -151,7 +151,7 @@ export function AnimatedTerminal() {
   const getLineClass = (lineIndex: number) => {
     const currentSceneData = scenes[currentScene]
     if (lineIndex >= currentSceneData.lines.length) return 'text-gray-300'
-    
+
     const lineType = currentSceneData.lines[lineIndex]?.type
     switch (lineType) {
       case 'command':
@@ -174,42 +174,42 @@ export function AnimatedTerminal() {
   return (
     <div className="mx-auto mb-16 max-w-[650px] xl:w-[650px]">
       <div
-        className="bg-gray-900 rounded-sm shadow-2xl overflow-hidden transition-all duration-700 will-change-transform ring-4 ring-green-400/40 shadow-green-400/30"
+        className="overflow-hidden rounded-sm bg-gray-900 shadow-2xl ring-4 shadow-green-400/30 ring-green-400/40 transition-all duration-700 will-change-transform"
         style={{
-          transform: `perspective(1200px) rotateX(${tilt.x * 0.3}deg) rotateY(${tilt.y * 0.3}deg)`
+          transform: `perspective(1200px) rotateX(${tilt.x * 0.3}deg) rotateY(${tilt.y * 0.3}deg)`,
         }}
         onMouseMove={handleMouseMove}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
         {/* Terminal Header */}
-        <div className="flex items-center justify-between px-4 py-3 bg-gray-800">
+        <div className="flex items-center justify-between bg-gray-800 px-4 py-3">
           <div className="flex items-center space-x-3">
             <div className="flex space-x-2">
-              <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-              <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+              <div className="h-3 w-3 rounded-full bg-red-500"></div>
+              <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
+              <div className="h-3 w-3 rounded-full bg-green-500"></div>
             </div>
-            <div className="text-gray-400 text-sm font-medium">❤️ Ghostty</div>
+            <div className="text-sm font-medium text-gray-400">❤️ Ghostty</div>
           </div>
-          <div className="text-gray-500 text-xs">
-            {scenes[currentScene].title}
-          </div>
+          <div className="text-xs text-gray-500">{scenes[currentScene].title}</div>
         </div>
 
         {/* Terminal Content */}
-        <div className="p-6 font-mono text-[15px] h-[30rem] overflow-hidden">
+        <div className="h-[30rem] overflow-hidden p-6 font-mono text-[15px]">
           {displayLines.map((line, index) => (
-            <div key={`${currentScene}-${index}`} className={`${getLineClass(index)} mb-1 min-h-[1.25rem]`}>
+            <div
+              key={`${currentScene}-${index}`}
+              className={`${getLineClass(index)} mb-1 min-h-[1.25rem]`}
+            >
               {line}
               {index === currentLineIndex && isTyping && showCursor && (
-                <span className="text-green-400 animate-pulse">▋</span>
+                <span className="animate-pulse text-green-400">▋</span>
               )}
             </div>
           ))}
         </div>
-        
       </div>
     </div>
   )
-} 
+}

@@ -1,7 +1,7 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  ...(process.env.NODE_ENV !== 'development' && { assetPrefix: "https://bifrost.getmaxim.ai" }),
+  ...(process.env.NODE_ENV !== 'development' && { assetPrefix: 'https://bifrost.getmaxim.ai' }),
   images: {
     remotePatterns: [
       {
@@ -19,6 +19,12 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'bifrost-1.ghost.io',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.prod.website-files.com',
         port: '',
         pathname: '/**',
       },
@@ -78,6 +84,6 @@ const nextConfig: NextConfig = {
       },
     ]
   },
-};
+}
 
-export default nextConfig;
+export default nextConfig

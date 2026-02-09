@@ -9,7 +9,12 @@ interface AnimatedNumberProps {
   onComplete?: () => void
 }
 
-export function AnimatedNumber({ value, suffix = '', duration = 2000, onComplete }: AnimatedNumberProps) {
+export function AnimatedNumber({
+  value,
+  suffix = '',
+  duration = 2000,
+  onComplete,
+}: AnimatedNumberProps) {
   const [displayValue, setDisplayValue] = useState(0)
   const [isClient, setIsClient] = useState(false)
 
@@ -27,12 +32,12 @@ export function AnimatedNumber({ value, suffix = '', duration = 2000, onComplete
     const animate = (currentTime: number) => {
       if (!startTime) startTime = currentTime
       const progress = Math.min((currentTime - startTime) / duration, 1)
-      
+
       const easeOutQuart = 1 - Math.pow(1 - progress, 4)
       const currentValue = Math.floor(startValue + (endValue - startValue) * easeOutQuart)
-      
+
       setDisplayValue(currentValue)
-      
+
       if (progress < 1) {
         requestAnimationFrame(animate)
       } else if (onComplete) {
@@ -49,7 +54,8 @@ export function AnimatedNumber({ value, suffix = '', duration = 2000, onComplete
 
   return (
     <span>
-      {displayValue}{suffix}
+      {displayValue}
+      {suffix}
     </span>
   )
-} 
+}

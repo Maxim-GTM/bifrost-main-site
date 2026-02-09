@@ -1,6 +1,6 @@
 'use client'
 
-export function IframePreloader ({ src }: { src: string }) {
+export function IframePreloader({ src }: { src: string }) {
   return (
     <iframe
       src={src}
@@ -16,7 +16,7 @@ export function IframePreloader ({ src }: { src: string }) {
         opacity: 0,
         pointerEvents: 'none',
         visibility: 'hidden',
-        left: '-9999px'
+        left: '-9999px',
       }}
     />
   )

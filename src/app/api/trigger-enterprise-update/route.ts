@@ -52,24 +52,24 @@ const KV_PREFIX = 'enterprise::customer::'
 export const runtime = 'edge'
 
 // Workers-compatible Loops send function using native fetch
-async function sendLoopsEmail (
+async function sendLoopsEmail(
   apiKey: string,
   transactionalId: string,
   email: string,
   dataVariables: Record<string, string>
-): Promise<{ success: boolean, error?: string }> {
+): Promise<{ success: boolean; error?: string }> {
   try {
     const response = await fetch('https://app.loops.so/api/v1/transactional', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${apiKey}`,
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         transactionalId,
         email,
-        dataVariables
-      })
+        dataVariables,
+      }),
     })
 
     if (!response.ok) {
@@ -82,7 +82,7 @@ async function sendLoopsEmail (
   } catch (error) {
     return {
       success: false,
-      error: error instanceof Error ? error.message : 'Unknown fetch error'
+      error: error instanceof Error ? error.message : 'Unknown fetch error',
     }
   }
 }
@@ -97,7 +97,10 @@ interface SlackBlock {
   }
 }
 
-function formatSlackBlocks (dataVariables: Record<string, string>): { text: string, blocks: SlackBlock[] } {
+function formatSlackBlocks(dataVariables: Record<string, string>): {
+  text: string
+  blocks: SlackBlock[]
+} {
   const blocks: SlackBlock[] = []
   const fallbackText = '📦 New Enterprise Update Available'
 
@@ -107,8 +110,8 @@ function formatSlackBlocks (dataVariables: Record<string, string>): { text: stri
     text: {
       type: 'plain_text',
       text: '📦 New Enterprise Update Available',
-      emoji: true
-    }
+      emoji: true,
+    },
   })
 
   const entries = Object.entries(dataVariables)
@@ -117,8 +120,8 @@ function formatSlackBlocks (dataVariables: Record<string, string>): { text: stri
       type: 'section',
       text: {
         type: 'mrkdwn',
-        text: 'A new update has been released for your Bifrost instance.'
-      }
+        text: 'A new update has been released for your Bifrost instance.',
+      },
     })
     return { text: fallbackText, blocks }
   }
@@ -130,8 +133,8 @@ function formatSlackBlocks (dataVariables: Record<string, string>): { text: stri
       type: 'section',
       text: {
         type: 'mrkdwn',
-        text: `*Version:* \`${version}\``
-      }
+        text: `*Version:* \`${version}\``,
+      },
     })
   }
 
@@ -145,8 +148,8 @@ function formatSlackBlocks (dataVariables: Record<string, string>): { text: stri
       type: 'section',
       text: {
         type: 'mrkdwn',
-        text: '*Changelog:*\n' + changelogItems.map(item => `• ${item}`).join('\n')
-      }
+        text: '*Changelog:*\n' + changelogItems.map((item) => `• ${item}`).join('\n'),
+      },
     })
   }
 
@@ -154,25 +157,28 @@ function formatSlackBlocks (dataVariables: Record<string, string>): { text: stri
 }
 
 // Fetch all member emails from a Slack channel (filtering out bots)
-async function fetchSlackChannelMemberEmails (
+async function fetchSlackChannelMemberEmails(
   botToken: string,
   channelId: string
 ): Promise<SlackMemberResult> {
   try {
     // Step 1: Get all member IDs from the channel
-    const membersResponse = await fetch(`https://slack.com/api/conversations.members?channel=${channelId}`, {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${botToken}`,
-        'Content-Type': 'application/json'
+    const membersResponse = await fetch(
+      `https://slack.com/api/conversations.members?channel=${channelId}`,
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${botToken}`,
+          'Content-Type': 'application/json',
+        },
       }
-    })
+    )
 
     if (!membersResponse.ok) {
       return { emails: [], error: `HTTP ${membersResponse.status}` }
     }
 
-    const membersData = await membersResponse.json() as {
+    const membersData = (await membersResponse.json()) as {
       ok: boolean
       members?: string[]
       error?: string
@@ -196,8 +202,8 @@ async function fetchSlackChannelMemberEmails (
           method: 'GET',
           headers: {
             Authorization: `Bearer ${botToken}`,
-            'Content-Type': 'application/json'
-          }
+            'Content-Type': 'application/json',
+          },
         })
 
         if (!userResponse.ok) {
@@ -205,7 +211,7 @@ async function fetchSlackChannelMemberEmails (
           continue
         }
 
-        const userData = await userResponse.json() as {
+        const userData = (await userResponse.json()) as {
           ok: boolean
           user?: SlackUser
           error?: string
@@ -238,17 +244,17 @@ async function fetchSlackChannelMemberEmails (
   } catch (error) {
     return {
       emails: [],
-      error: error instanceof Error ? error.message : 'Unknown fetch error'
+      error: error instanceof Error ? error.message : 'Unknown fetch error',
     }
   }
 }
 
 // Workers-compatible Slack send function using native fetch
-async function sendSlackMessage (
+async function sendSlackMessage(
   botToken: string,
   channelId: string,
   dataVariables: Record<string, string>
-): Promise<{ success: boolean, error?: string }> {
+): Promise<{ success: boolean; error?: string }> {
   try {
     const { text, blocks } = formatSlackBlocks(dataVariables)
 
@@ -256,20 +262,20 @@ async function sendSlackMessage (
       method: 'POST',
       headers: {
         Authorization: `Bearer ${botToken}`,
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         channel: channelId,
         text,
-        blocks
-      })
+        blocks,
+      }),
     })
 
     if (!response.ok) {
       return { success: false, error: `HTTP ${response.status}` }
     }
 
-    const data = await response.json() as { ok: boolean, error?: string }
+    const data = (await response.json()) as { ok: boolean; error?: string }
 
     if (!data.ok) {
       return { success: false, error: `Slack error: ${data.error}` }
@@ -279,30 +285,24 @@ async function sendSlackMessage (
   } catch (error) {
     return {
       success: false,
-      error: error instanceof Error ? error.message : 'Unknown fetch error'
+      error: error instanceof Error ? error.message : 'Unknown fetch error',
     }
   }
 }
 
-export async function POST (request: NextRequest) {
+export async function POST(request: NextRequest) {
   try {
     // 1. Validate API key authentication
     const apiKey = request.headers.get('x-api-key')
     const expectedApiKey = process.env.GOD_KEY
-    
+
     if (!expectedApiKey) {
       console.error('GOD_KEY not configured')
-      return NextResponse.json(
-        { error: 'Server configuration error' },
-        { status: 500 }
-      )
+      return NextResponse.json({ error: 'Server configuration error' }, { status: 500 })
     }
-    
+
     if (!apiKey || apiKey !== expectedApiKey) {
-      return NextResponse.json(
-        { error: 'Unauthorized: Invalid API key' },
-        { status: 401 }
-      )
+      return NextResponse.json({ error: 'Unauthorized: Invalid API key' }, { status: 401 })
     }
 
     // 2. Validate Loops configuration
@@ -311,27 +311,21 @@ export async function POST (request: NextRequest) {
 
     if (!loopsApiKey) {
       console.error('LOOPS_API_KEY not configured')
-      return NextResponse.json(
-        { error: 'Email service not configured' },
-        { status: 500 }
-      )
+      return NextResponse.json({ error: 'Email service not configured' }, { status: 500 })
     }
 
     // 3. Get email list from Cloudflare KV
     const { env } = getRequestContext()
     const kvStore = env.BIFROST_KV
-    
+
     if (!kvStore) {
       console.error('KV store not available')
-      return NextResponse.json(
-        { error: 'Storage service not available' },
-        { status: 500 }
-      )
+      return NextResponse.json({ error: 'Storage service not available' }, { status: 500 })
     }
 
     // Get all enterprise customers from KV
     const listResult = await kvStore.list({ prefix: KV_PREFIX })
-    
+
     if (!listResult.keys || listResult.keys.length === 0) {
       console.error('No enterprise customers found in KV store')
       return NextResponse.json(
@@ -339,7 +333,7 @@ export async function POST (request: NextRequest) {
         { status: 404 }
       )
     }
-    
+
     // Collect all emails and Slack channels from all customers
     const emailSet = new Set<string>()
     const slackChannels: CustomerSlackInfo[] = []
@@ -357,7 +351,7 @@ export async function POST (request: NextRequest) {
           if (customerData.notificationPreference?.slackChannelId) {
             slackChannels.push({
               name: customerName,
-              slackChannelId: customerData.notificationPreference.slackChannelId
+              slackChannelId: customerData.notificationPreference.slackChannelId,
             })
           }
         }
@@ -372,9 +366,13 @@ export async function POST (request: NextRequest) {
       for (const { name, slackChannelId } of slackChannels) {
         const result = await fetchSlackChannelMemberEmails(slackBotToken, slackChannelId)
         if (result.error) {
-          console.warn(`Failed to fetch Slack channel members for ${name} (${slackChannelId}): ${result.error}`)
+          console.warn(
+            `Failed to fetch Slack channel members for ${name} (${slackChannelId}): ${result.error}`
+          )
         } else if (result.emails.length > 0) {
-          console.log(`Found ${result.emails.length} emails from Slack channel ${slackChannelId} for customer ${name}`)
+          console.log(
+            `Found ${result.emails.length} emails from Slack channel ${slackChannelId} for customer ${name}`
+          )
           for (const email of result.emails) {
             // if its getmaxim.ai email address, then we skip it
             if (email.includes('@getmaxim.ai')) {
@@ -400,10 +398,7 @@ export async function POST (request: NextRequest) {
     try {
       body = await request.json()
     } catch {
-      return NextResponse.json(
-        { error: 'Invalid request body' },
-        { status: 400 }
-      )
+      return NextResponse.json({ error: 'Invalid request body' }, { status: 400 })
     }
 
     // Use transactionalId from request or fallback to env
@@ -420,19 +415,14 @@ export async function POST (request: NextRequest) {
 
     // 6. Send emails to all subscribers using Loops API
     const results: EmailResult[] = []
-    
+
     for (const email of emailList) {
-      const result = await sendLoopsEmail(
-        loopsApiKey,
-        transactionalId,
-        email,
-        dataVariables
-      )
+      const result = await sendLoopsEmail(loopsApiKey, transactionalId, email, dataVariables)
 
       results.push({
         email,
         success: result.success,
-        error: result.error
+        error: result.error,
       })
 
       if (result.success) {
@@ -443,35 +433,38 @@ export async function POST (request: NextRequest) {
     }
 
     // 7. Calculate email results
-    const successCount = results.filter(r => r.success).length
-    const failureCount = results.filter(r => !r.success).length
-    const failedEmails = results.filter(r => !r.success).map(r => ({
-      email: r.email,
-      error: r.error
-    }))
+    const successCount = results.filter((r) => r.success).length
+    const failureCount = results.filter((r) => !r.success).length
+    const failedEmails = results
+      .filter((r) => !r.success)
+      .map((r) => ({
+        email: r.email,
+        error: r.error,
+      }))
 
     // 8. Send Slack notifications
     const slackResults: SlackResult[] = []
 
     if (slackBotToken && slackChannels.length > 0) {
       for (const { name, slackChannelId } of slackChannels) {
-        const result = await sendSlackMessage(
-          slackBotToken,
-          slackChannelId,
-          dataVariables
-        )
+        const result = await sendSlackMessage(slackBotToken, slackChannelId, dataVariables)
 
         slackResults.push({
           channelId: slackChannelId,
           customerName: name,
           success: result.success,
-          error: result.error
+          error: result.error,
         })
 
         if (result.success) {
-          console.log(`Successfully sent Slack message to channel ${slackChannelId} for customer ${name}`)
+          console.log(
+            `Successfully sent Slack message to channel ${slackChannelId} for customer ${name}`
+          )
         } else {
-          console.error(`Failed to send Slack message to channel ${slackChannelId} for customer ${name}:`, result.error)
+          console.error(
+            `Failed to send Slack message to channel ${slackChannelId} for customer ${name}:`,
+            result.error
+          )
         }
       }
     } else if (slackChannels.length > 0 && !slackBotToken) {
@@ -479,13 +472,15 @@ export async function POST (request: NextRequest) {
     }
 
     // 9. Calculate Slack results
-    const slackSuccessCount = slackResults.filter(r => r.success).length
-    const slackFailureCount = slackResults.filter(r => !r.success).length
-    const failedSlackMessages = slackResults.filter(r => !r.success).map(r => ({
-      channelId: r.channelId,
-      customerName: r.customerName,
-      error: r.error
-    }))
+    const slackSuccessCount = slackResults.filter((r) => r.success).length
+    const slackFailureCount = slackResults.filter((r) => !r.success).length
+    const failedSlackMessages = slackResults
+      .filter((r) => !r.success)
+      .map((r) => ({
+        channelId: r.channelId,
+        customerName: r.customerName,
+        error: r.error,
+      }))
 
     // 10. Return response based on results
     if (successCount === 0) {
@@ -499,8 +494,8 @@ export async function POST (request: NextRequest) {
             sent: slackSuccessCount,
             failed: slackFailureCount,
             total: slackChannels.length,
-            ...(slackFailureCount > 0 && { failures: failedSlackMessages })
-          }
+            ...(slackFailureCount > 0 && { failures: failedSlackMessages }),
+          },
         },
         { status: 500 }
       )
@@ -517,8 +512,8 @@ export async function POST (request: NextRequest) {
           sent: slackSuccessCount,
           failed: slackFailureCount,
           total: slackChannels.length,
-          ...(slackFailureCount > 0 && { failures: failedSlackMessages })
-        }
+          ...(slackFailureCount > 0 && { failures: failedSlackMessages }),
+        },
       },
       { status: 200 }
     )
@@ -527,7 +522,7 @@ export async function POST (request: NextRequest) {
     return NextResponse.json(
       {
         error: 'Internal server error',
-        message: error instanceof Error ? error.message : 'Unknown error'
+        message: error instanceof Error ? error.message : 'Unknown error',
       },
       { status: 500 }
     )
