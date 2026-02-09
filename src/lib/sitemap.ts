@@ -1,27 +1,26 @@
 import { X2jOptions, XMLBuilder, XmlBuilderOptions, XMLParser } from 'fast-xml-parser'
 
-
 const parserOptions: Partial<X2jOptions> = {
   ignoreAttributes: false,
   attributeNamePrefix: '@_',
   preserveOrder: true,
   ignoreDeclaration: false,
-  ignorePiTags: true
+  ignorePiTags: true,
 }
 
 const builderOptions: Partial<XmlBuilderOptions> = {
   ignoreAttributes: false,
   attributeNamePrefix: '@_',
   preserveOrder: true,
-  format: false
+  format: false,
 }
 
-function replaceUrls (sourceUrl: string, targetUrl: string, obj: unknown): unknown {
+function replaceUrls(sourceUrl: string, targetUrl: string, obj: unknown): unknown {
   if (typeof obj === 'string') {
     return obj.replace(new RegExp(sourceUrl, 'g'), targetUrl)
   }
   if (Array.isArray(obj)) {
-    return obj.map((v)=> replaceUrls(sourceUrl, targetUrl, v))
+    return obj.map((v) => replaceUrls(sourceUrl, targetUrl, v))
   }
   if (obj !== null && typeof obj === 'object') {
     const result: Record<string, unknown> = {}
@@ -33,10 +32,7 @@ function replaceUrls (sourceUrl: string, targetUrl: string, obj: unknown): unkno
   return obj
 }
 
-function filterSitemapElements (
-  parsed: unknown[],
-  excludeUrls: string[]
-): unknown[] {
+function filterSitemapElements(parsed: unknown[], excludeUrls: string[]): unknown[] {
   return parsed.map((node) => {
     if (typeof node !== 'object' || node === null) return node
 
@@ -74,7 +70,7 @@ export interface TransformOptions {
   excludeSitemaps?: string[]
 }
 
-export function transformSitemapXml (
+export function transformSitemapXml(
   xml: string,
   sourceUrl: string,
   targetUrl: string,
@@ -90,9 +86,7 @@ export function transformSitemapXml (
 
   // Filter out excluded sitemap entries
   if (options.excludeSitemaps && options.excludeSitemaps.length > 0) {
-    const excludeUrls = options.excludeSitemaps.map(
-      (path) => `${targetUrl}/${path}`
-    )
+    const excludeUrls = options.excludeSitemaps.map((path) => `${targetUrl}/${path}`)
     parsed = filterSitemapElements(parsed, excludeUrls)
   }
 
@@ -105,4 +99,3 @@ export function transformSitemapXml (
 
   return result
 }
-

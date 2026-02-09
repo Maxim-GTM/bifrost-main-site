@@ -6,7 +6,7 @@ export const runtime = 'edge'
 const CACHE_KEY = 'latest-release'
 const CACHE_TTL = 600 // 10 minutes in seconds
 
-async function handler () {
+async function handler() {
   try {
     const { env } = getRequestContext()
     const kv = env.BIFROST_KV
@@ -22,8 +22,8 @@ async function handler () {
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'GET',
             'Access-Control-Allow-Headers': 'Content-Type',
-            'X-Cache': 'HIT'
-          }
+            'X-Cache': 'HIT',
+          },
         })
       }
     }
@@ -34,7 +34,7 @@ async function handler () {
   try {
     const headers: Record<string, string> = {
       Accept: 'application/vnd.github+json',
-      'X-GitHub-Api-Version': '2022-11-28'
+      'X-GitHub-Api-Version': '2022-11-28',
     }
 
     // Add authorization if GITHUB_TOKEN is available
@@ -47,7 +47,8 @@ async function handler () {
     const perPage = 30 // Max allowed by GitHub API
     let latestTransportTag = null
 
-    while (!latestTransportTag && page <= 10) { // Limit to 10 pages (1000 tags max)
+    while (!latestTransportTag && page <= 10) {
+      // Limit to 10 pages (1000 tags max)
       const response = await fetch(
         `https://api.github.com/repos/maximhq/bifrost/tags?per_page=${perPage}&page=${page}`,
         { headers }
@@ -65,9 +66,7 @@ async function handler () {
       }
 
       // Find the first transports/* tag
-      latestTransportTag = tags.find((tag: { name: string }) => 
-        tag.name.startsWith('transports/')
-      )
+      latestTransportTag = tags.find((tag: { name: string }) => tag.name.startsWith('transports/'))
 
       // If found, break out of the loop
       if (latestTransportTag) {
@@ -78,17 +77,14 @@ async function handler () {
     }
 
     if (!latestTransportTag) {
-      return NextResponse.json(
-        { error: 'No transport tags found' },
-        { status: 404 }
-      )
+      return NextResponse.json({ error: 'No transport tags found' }, { status: 404 })
     }
 
     // Return the latest transport tag
     const latestVersion = latestTransportTag.name.replace('transports/', '')
     const responseData = {
       name: latestVersion,
-      changelogUrl: `https://docs.getbifrost.ai/changelogs/${latestVersion}`
+      changelogUrl: `https://docs.getbifrost.ai/changelogs/${latestVersion}`,
     }
 
     // Store in Cloudflare KV cache
@@ -97,7 +93,7 @@ async function handler () {
       const kv = env.BIFROST_KV
       if (kv) {
         await kv.put(CACHE_KEY, JSON.stringify(responseData), {
-          expirationTtl: CACHE_TTL
+          expirationTtl: CACHE_TTL,
         })
       }
     } catch (kvError) {
@@ -112,17 +108,13 @@ async function handler () {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET',
         'Access-Control-Allow-Headers': 'Content-Type',
-        'X-Cache': 'MISS'
-      }
+        'X-Cache': 'MISS',
+      },
     })
   } catch (error) {
     console.error('Error fetching latest Bifrost transport release:', error)
-    return NextResponse.json(
-      { error: 'Failed to fetch latest release' },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: 'Failed to fetch latest release' }, { status: 500 })
   }
 }
 
 export const GET = handler
-

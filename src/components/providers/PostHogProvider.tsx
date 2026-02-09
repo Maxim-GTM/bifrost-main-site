@@ -15,16 +15,12 @@ if (typeof window !== 'undefined') {
       if (process.env.NODE_ENV === 'development') {
         console.log('PostHog initialized')
       }
-    }
+    },
   })
 }
 
 export function CSPostHogProvider({ children }: { children: React.ReactNode }) {
-  return (
-    <PostHogProvider client={posthog}>
-      {children}
-    </PostHogProvider>
-  )
+  return <PostHogProvider client={posthog}>{children}</PostHogProvider>
 }
 
 // Custom hook for manual pageview tracking

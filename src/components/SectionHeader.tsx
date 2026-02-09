@@ -1,19 +1,13 @@
 interface SectionHeaderProps {
-  title: string;
-  description?: string;
+  title: string
+  description?: string
 }
 
 export function SectionHeader({ title, description }: SectionHeaderProps) {
   return (
-    <div className="text-center mb-16">
-      <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-        {title}
-      </h2>
-      {description && (
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-          {description}
-        </p>
-      )}
+    <div className="mb-16 text-center">
+      <h2 className="mb-4 text-4xl font-bold text-gray-900 md:text-5xl">{title}</h2>
+      {description && <p className="mx-auto max-w-3xl text-lg text-gray-600">{description}</p>}
     </div>
-  );
+  )
 }

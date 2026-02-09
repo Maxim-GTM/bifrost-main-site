@@ -75,16 +75,16 @@ export interface GhostPostsResponse {
 async function ghostFetch<T>(endpoint: string, params: Record<string, string> = {}): Promise<T> {
   const url = new URL(`${GHOST_URL}/ghost/api/content/${endpoint}`)
   url.searchParams.set('key', GHOST_KEY)
-  
+
   Object.entries(params).forEach(([key, value]) => {
     url.searchParams.set(key, value)
   })
 
   const res = await fetch(url.toString(), {
     headers: {
-      'Accept-Version': GHOST_VERSION
+      'Accept-Version': GHOST_VERSION,
     },
-    next: { revalidate: 60 } // Revalidate every 60 seconds
+    next: { revalidate: 60 }, // Revalidate every 60 seconds
   })
 
   if (!res.ok) {
@@ -94,11 +94,13 @@ async function ghostFetch<T>(endpoint: string, params: Record<string, string> = 
   return res.json()
 }
 
-export async function getPosts(options: { limit?: number; page?: number; filter?: string } = {}): Promise<GhostPostsResponse> {
+export async function getPosts(
+  options: { limit?: number; page?: number; filter?: string } = {}
+): Promise<GhostPostsResponse> {
   const params: Record<string, string> = {
     include: 'tags,authors',
     limit: options.limit?.toString() || 'all',
-    order: 'published_at desc'
+    order: 'published_at desc',
   }
 
   if (options.page) {
@@ -115,7 +117,7 @@ export async function getPosts(options: { limit?: number; page?: number; filter?
 export async function getPostBySlug(slug: string): Promise<GhostPost | null> {
   try {
     const response = await ghostFetch<{ posts: GhostPost[] }>(`posts/slug/${slug}/`, {
-      include: 'tags,authors'
+      include: 'tags,authors',
     })
     return response.posts[0] || null
   } catch {
@@ -125,7 +127,7 @@ export async function getPostBySlug(slug: string): Promise<GhostPost | null> {
 
 export async function getAllPostSlugs(): Promise<string[]> {
   const response = await getPosts({ limit: 100 })
-  return response.posts.map(post => post.slug)
+  return response.posts.map((post) => post.slug)
 }
 
 export function formatDate(dateString: string): string {
@@ -133,7 +135,7 @@ export function formatDate(dateString: string): string {
   return date.toLocaleDateString('en-US', {
     day: '2-digit',
     month: 'short',
-    year: 'numeric'
+    year: 'numeric',
   })
 }
 
@@ -142,7 +144,3 @@ export function calculateReadingTime(html: string): number {
   const words = text.split(/\s+/).length
   return Math.ceil(words / 200)
 }
-
-
-
-

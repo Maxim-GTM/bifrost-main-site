@@ -3,15 +3,18 @@ import { PostCard } from '../../components/blog'
 import { Navbar } from '../../components/Navbar'
 import { Footer } from '../../components/sections'
 import { getPosts } from '../../lib/ghostBlog'
+import CornerBracketLink from '@/components/CornerBracketLink'
 import './blog.css'
 
 export const metadata: Metadata = {
   title: 'Blog | Bifrost - AI Gateway',
-  description: 'Latest updates, tutorials, and insights about Bifrost - the fastest LLM gateway in the world.',
+  description:
+    'Latest updates, tutorials, and insights about Bifrost - the fastest LLM gateway in the world.',
   openGraph: {
     title: 'Blog | Bifrost - AI Gateway',
-    description: 'Latest updates, tutorials, and insights about Bifrost - the fastest LLM gateway in the world.',
-  }
+    description:
+      'Latest updates, tutorials, and insights about Bifrost - the fastest LLM gateway in the world.',
+  },
 }
 
 export const revalidate = 60
@@ -23,30 +26,30 @@ export default async function BlogPage() {
     <div className="min-h-screen bg-gray-50">
       <Navbar />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <main className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         {/* Hero Section */}
-        <div className="text-center mb-16">
-          <span className="inline-block mb-4 px-3 py-1 text-xs font-mono text-green-700 bg-green-50 rounded-full border border-green-200">
-            [ BIFROST BLOG ]
-          </span>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        <div className="mt-16 mb-32 text-center">
+          <h3 className="font-mono text-[12px] leading-[15px] font-medium tracking-[0.04em] text-emerald-500 uppercase">
+            [&ensp;BIFROST BLOG&ensp;]
+          </h3>
+          <h1 className="mt-2 mb-4 text-[48px] leading-[120%] font-medium tracking-[-0.02em] text-black">
             Latest Updates & Tutorials
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto font-mono">
+          <p className="text-[16px] leading-[140%] tracking-[0em] text-[#525252]">
             Insights, integration guides, and updates from the Bifrost team.
           </p>
         </div>
 
         {/* Posts Grid */}
         {posts.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {posts.map(post => (
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {posts.map((post) => (
               <PostCard key={post.id} post={post} type="blog" />
             ))}
           </div>
         ) : (
-          <div className="text-center py-16">
-            <p className="text-gray-500 font-mono">No posts yet. Check back soon!</p>
+          <div className="py-16 text-center">
+            <p className="font-mono text-gray-500">No posts yet. Check back soon!</p>
           </div>
         )}
       </main>
@@ -55,4 +58,3 @@ export default async function BlogPage() {
     </div>
   )
 }
-

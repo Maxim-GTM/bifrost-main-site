@@ -42,4 +42,3 @@ export async function GET(
     return new NextResponse('Error fetching content', { status: 500 })
   }
 }
-

@@ -11,7 +11,7 @@
  * formatNumber(1000000) => "1,000,000"
  */
 export function formatNumber(num: number): string {
-  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }
 
 /**
@@ -24,12 +24,12 @@ export function formatNumber(num: number): string {
  */
 export function formatCompactNumber(num: number): string {
   if (num >= 1_000_000) {
-    return `${(num / 1_000_000).toFixed(1)}M`;
+    return `${(num / 1_000_000).toFixed(1)}M`
   }
   if (num >= 100_000) {
-    return `${Math.floor(num / 1000)}k`;
+    return `${Math.floor(num / 1000)}k`
   }
-  return formatNumber(num);
+  return formatNumber(num)
 }
 
 /**
@@ -39,9 +39,9 @@ export function formatCompactNumber(num: number): string {
  */
 export function formatTokenCount(tokens: number): string {
   if (tokens >= 100_000) {
-    return `${Math.floor(tokens / 1000)}k`;
+    return `${Math.floor(tokens / 1000)}k`
   }
-  return formatNumber(tokens);
+  return formatNumber(tokens)
 }
 
 /**
@@ -52,7 +52,7 @@ export function formatTokenCount(tokens: number): string {
  * formatCurrency(0.005) => "$0.01"
  */
 export function formatCurrency(amount: number): string {
-  return `$${amount.toFixed(2)}`;
+  return `$${amount.toFixed(2)}`
 }
 
 /**
@@ -65,10 +65,10 @@ export function formatCurrency(amount: number): string {
 export function formatSmallNumber(num: number): string {
   // For very small numbers, use fixed notation
   if (num < 0.000001) {
-    return num.toFixed(9);
+    return num.toFixed(9)
   }
   if (num < 0.0001) {
-    return num.toFixed(7);
+    return num.toFixed(7)
   }
-  return num.toFixed(6);
+  return num.toFixed(6)
 }

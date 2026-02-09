@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/sections/Footer";
-import { SiteConfig } from "@/lib/built-with-bifrost/site.config";
-import { getBuiltWithBifrostBaseUrl } from "@/lib/utils";
+import type { Metadata } from 'next'
+import { Navbar } from '@/components/Navbar'
+import { Footer } from '@/components/sections/Footer'
+import { SiteConfig } from '@/lib/built-with-bifrost/site.config'
+import { getBuiltWithBifrostBaseUrl } from '@/lib/utils'
 
-const basePath = `${getBuiltWithBifrostBaseUrl()}/built-with-bifrost`;
+const basePath = `${getBuiltWithBifrostBaseUrl()}/built-with-bifrost`
 
 export const metadata: Metadata = {
   metadataBase: new URL(`https://www.getmaxim.ai${basePath}`),
@@ -39,12 +39,12 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-};
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <div className="built-with-bifrost" style={{ colorScheme: 'light' }}>
@@ -52,5 +52,5 @@ export default function RootLayout({
       {children}
       <Footer />
     </div>
-  );
+  )
 }

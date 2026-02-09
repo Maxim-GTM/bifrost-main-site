@@ -22,9 +22,36 @@
   --gray-light: #f3f4f6;
   --gray-medium: #9ca3af;
   --gray-dark: #4b5563;
+
+  --primary: #33C09E;
+  --primary-hover: #33A68B;
+  --primary-active: #33C09E;
+  --primary-border: #82ceb6;
+
+  /* Button theming */
+  --btn-primary: #33C09E;
+  --btn-primary-hover: #33A68B;
+  --btn-primary-border: #82ceb6;
+  --btn-primary-corner: #177B62;
+  --btn-primary-text: white;
+
+  --btn-outline-border: #E0E0E0;
+  --btn-outline-corner: #7F7F7F;
+  --btn-outline-text: #282828;
+
+  --btn-secondary: #F5F5F5;
+  --btn-secondary-hover: #F0F0F0;
+  --btn-secondary-border: #E0E0E0;
+  --btn-secondary-corner: #E0E0E0;
+  --btn-secondary-text: #282828;
 }
 
 @theme inline {
+  --primary: var(--primary);
+  --primary-hover: var(--primary-hover);
+  --primary-active: var(--primary-active);
+  --primary-border: var(--primary-border);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);

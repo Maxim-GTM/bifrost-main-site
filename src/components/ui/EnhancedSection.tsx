@@ -9,21 +9,21 @@ interface EnhancedSectionProps {
   backgroundElements?: React.ReactNode
 }
 
-export function EnhancedSection({ children, className = '', backgroundElements = null }: EnhancedSectionProps) {
+export function EnhancedSection({
+  children,
+  className = '',
+  backgroundElements = null,
+}: EnhancedSectionProps) {
   const { scrollY } = useScrollAnimation()
 
   return (
-    <section 
-      className={`relative overflow-hidden ${className}`}
-    >
+    <section className={`relative overflow-hidden ${className}`}>
       {backgroundElements && (
-        <div className="absolute inset-0 pointer-events-none">
-          <div style={{ transform: `translateY(${scrollY * 0.1}px)` }}>
-            {backgroundElements}
-          </div>
+        <div className="pointer-events-none absolute inset-0">
+          <div style={{ transform: `translateY(${scrollY * 0.1}px)` }}>{backgroundElements}</div>
         </div>
       )}
       {children}
     </section>
   )
-} 
+}

@@ -1,44 +1,48 @@
-'use client';
+'use client'
 
-import { useState, useEffect } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
-import Link from 'next/link';
-import ProvidersModal from './ProvidersModal';
-import { formatProviderName } from '@/lib/model-library/api';
-import { getProviderLogo } from '@/lib/model-library/providerLogos';
-import { getModelLibraryBaseUrl } from '@/lib/utils';
+import { useState, useEffect } from 'react'
+import { useSearchParams, useRouter } from 'next/navigation'
+import Link from 'next/link'
+import ProvidersModal from './ProvidersModal'
+import { formatProviderName } from '@/lib/model-library/api'
+import { getProviderLogo } from '@/lib/model-library/providerLogos'
+import { getModelLibraryBaseUrl } from '@/lib/utils'
 
 interface Provider {
-  name: string;
-  count: number;
+  name: string
+  count: number
 }
 
 interface ProvidersListProps {
-  providers: Provider[];
-  maxVisible?: number;
-  showAllProvidersParam?: boolean;
+  providers: Provider[]
+  maxVisible?: number
+  showAllProvidersParam?: boolean
 }
 
-export default function ProvidersList({ providers, maxVisible = 20, showAllProvidersParam = false }: ProvidersListProps) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const searchParams = useSearchParams();
-  const router = useRouter();
-  const showAllProviders = showAllProvidersParam || searchParams?.get('showAllProviders') === 'true';
-  const basePath = `${getModelLibraryBaseUrl()}/model-library`;
-  
-  const visibleProviders = showAllProviders ? providers : providers.slice(0, maxVisible);
-  const remainingCount = providers.length - maxVisible;
+export default function ProvidersList({
+  providers,
+  maxVisible = 20,
+  showAllProvidersParam = false,
+}: ProvidersListProps) {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const searchParams = useSearchParams()
+  const router = useRouter()
+  const showAllProviders = showAllProvidersParam || searchParams?.get('showAllProviders') === 'true'
+  const basePath = `${getModelLibraryBaseUrl()}/model-library`
+
+  const visibleProviders = showAllProviders ? providers : providers.slice(0, maxVisible)
+  const remainingCount = providers.length - maxVisible
 
   // Open modal if URL parameter is set (for JS-enabled users)
   useEffect(() => {
     if (showAllProviders && !isModalOpen && typeof window !== 'undefined') {
-      setIsModalOpen(true);
+      setIsModalOpen(true)
       // Clean up URL parameter without page reload
       if (searchParams?.get('showAllProviders') === 'true') {
-        router.replace(basePath, { scroll: false });
+        router.replace(basePath, { scroll: false })
       }
     }
-  }, [showAllProviders, isModalOpen, router, searchParams]);
+  }, [showAllProviders, isModalOpen, router, searchParams])
 
   return (
     <>
@@ -67,8 +71,8 @@ export default function ProvidersList({ providers, maxVisible = 20, showAllProvi
               onClick={(e) => {
                 // If JS is enabled, prevent default and open modal instead
                 if (typeof window !== 'undefined') {
-                  e.preventDefault();
-                  setIsModalOpen(true);
+                  e.preventDefault()
+                  setIsModalOpen(true)
                 }
               }}
             >
@@ -83,6 +87,5 @@ export default function ProvidersList({ providers, maxVisible = 20, showAllProvi
         onClose={() => setIsModalOpen(false)}
       />
     </>
-  );
+  )
 }
-

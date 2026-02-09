@@ -19,37 +19,31 @@ interface CustomerWithName extends CustomerData {
   name: string
 }
 
-function validateAuth (request: NextRequest): NextResponse | null {
+function validateAuth(request: NextRequest): NextResponse | null {
   const apiKey = request.headers.get('x-api-key')
   const godKey = process.env.GOD_KEY
 
   if (!godKey) {
     console.error('GOD_KEY not configured')
-    return NextResponse.json(
-      { error: 'Server configuration error' },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: 'Server configuration error' }, { status: 500 })
   }
 
   if (!apiKey || apiKey !== godKey) {
-    return NextResponse.json(
-      { error: 'Unauthorized: Invalid API key' },
-      { status: 401 }
-    )
+    return NextResponse.json({ error: 'Unauthorized: Invalid API key' }, { status: 401 })
   }
 
   return null
 }
 
-function getKvKey (name: string): string {
+function getKvKey(name: string): string {
   return `${KV_PREFIX}${name}`
 }
 
-function extractCustomerName (key: string): string {
+function extractCustomerName(key: string): string {
   return key.replace(KV_PREFIX, '')
 }
 
-function validateNotificationPreference (pref: unknown): pref is NotificationPreference {
+function validateNotificationPreference(pref: unknown): pref is NotificationPreference {
   if (!pref || typeof pref !== 'object') return false
   const p = pref as Record<string, unknown>
   const hasRequiredFields = Array.isArray(p.emails) && Array.isArray(p.webhooks)
@@ -58,7 +52,7 @@ function validateNotificationPreference (pref: unknown): pref is NotificationPre
 }
 
 // GET - List all customers or get specific customer by name
-export async function GET (request: NextRequest) {
+export async function GET(request: NextRequest) {
   const authError = validateAuth(request)
   if (authError) return authError
 
@@ -67,10 +61,7 @@ export async function GET (request: NextRequest) {
     const kvStore = env.BIFROST_KV
 
     if (!kvStore) {
-      return NextResponse.json(
-        { error: 'Storage service not available' },
-        { status: 500 }
-      )
+      return NextResponse.json({ error: 'Storage service not available' }, { status: 500 })
     }
 
     const { searchParams } = new URL(request.url)
@@ -82,15 +73,12 @@ export async function GET (request: NextRequest) {
       const data = await kvStore.get(key, 'text')
 
       if (!data) {
-        return NextResponse.json(
-          { error: 'Customer not found' },
-          { status: 404 }
-        )
+        return NextResponse.json({ error: 'Customer not found' }, { status: 404 })
       }
 
       const customerData: CustomerData = JSON.parse(data as string)
       return NextResponse.json({
-        customer: { name, ...customerData }
+        customer: { name, ...customerData },
       })
     }
 
@@ -104,7 +92,7 @@ export async function GET (request: NextRequest) {
         const customerData: CustomerData = JSON.parse(data as string)
         customers.push({
           name: extractCustomerName(key.name),
-          ...customerData
+          ...customerData,
         })
       }
     }
@@ -112,15 +100,12 @@ export async function GET (request: NextRequest) {
     return NextResponse.json({ customers })
   } catch (error) {
     console.error('Error in GET /api/customer:', error)
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
 
 // POST - Create a new customer
-export async function POST (request: NextRequest) {
+export async function POST(request: NextRequest) {
   const authError = validateAuth(request)
   if (authError) return authError
 
@@ -129,25 +114,22 @@ export async function POST (request: NextRequest) {
     const kvStore = env.BIFROST_KV
 
     if (!kvStore) {
-      return NextResponse.json(
-        { error: 'Storage service not available' },
-        { status: 500 }
-      )
+      return NextResponse.json({ error: 'Storage service not available' }, { status: 500 })
     }
 
     const body = await request.json()
     const { name, notificationPreference } = body
 
     if (!name || typeof name !== 'string') {
-      return NextResponse.json(
-        { error: 'Customer name is required' },
-        { status: 400 }
-      )
+      return NextResponse.json({ error: 'Customer name is required' }, { status: 400 })
     }
 
     if (!validateNotificationPreference(notificationPreference)) {
       return NextResponse.json(
-        { error: 'Invalid notificationPreference format. Expected { emails: [], webhooks: [], slackChannelId?: string }' },
+        {
+          error:
+            'Invalid notificationPreference format. Expected { emails: [], webhooks: [], slackChannelId?: string }',
+        },
         { status: 400 }
       )
     }
@@ -157,10 +139,7 @@ export async function POST (request: NextRequest) {
     // Check if customer already exists
     const existing = await kvStore.get(key, 'text')
     if (existing) {
-      return NextResponse.json(
-        { error: 'Customer already exists' },
-        { status: 409 }
-      )
+      return NextResponse.json({ error: 'Customer already exists' }, { status: 409 })
     }
 
     const customerData: CustomerData = { notificationPreference }
@@ -169,21 +148,18 @@ export async function POST (request: NextRequest) {
     return NextResponse.json(
       {
         message: 'Customer created successfully',
-        customer: { name, ...customerData }
+        customer: { name, ...customerData },
       },
       { status: 201 }
     )
   } catch (error) {
     console.error('Error in POST /api/customer:', error)
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
 
 // PUT - Update existing customer
-export async function PUT (request: NextRequest) {
+export async function PUT(request: NextRequest) {
   const authError = validateAuth(request)
   if (authError) return authError
 
@@ -192,25 +168,22 @@ export async function PUT (request: NextRequest) {
     const kvStore = env.BIFROST_KV
 
     if (!kvStore) {
-      return NextResponse.json(
-        { error: 'Storage service not available' },
-        { status: 500 }
-      )
+      return NextResponse.json({ error: 'Storage service not available' }, { status: 500 })
     }
 
     const body = await request.json()
     const { name, notificationPreference } = body
 
     if (!name || typeof name !== 'string') {
-      return NextResponse.json(
-        { error: 'Customer name is required' },
-        { status: 400 }
-      )
+      return NextResponse.json({ error: 'Customer name is required' }, { status: 400 })
     }
 
     if (!validateNotificationPreference(notificationPreference)) {
       return NextResponse.json(
-        { error: 'Invalid notificationPreference format. Expected { emails: [], webhooks: [], slackChannelId?: string }' },
+        {
+          error:
+            'Invalid notificationPreference format. Expected { emails: [], webhooks: [], slackChannelId?: string }',
+        },
         { status: 400 }
       )
     }
@@ -220,10 +193,7 @@ export async function PUT (request: NextRequest) {
     // Check if customer exists
     const existing = await kvStore.get(key, 'text')
     if (!existing) {
-      return NextResponse.json(
-        { error: 'Customer not found' },
-        { status: 404 }
-      )
+      return NextResponse.json({ error: 'Customer not found' }, { status: 404 })
     }
 
     const customerData: CustomerData = { notificationPreference }
@@ -231,19 +201,16 @@ export async function PUT (request: NextRequest) {
 
     return NextResponse.json({
       message: 'Customer updated successfully',
-      customer: { name, ...customerData }
+      customer: { name, ...customerData },
     })
   } catch (error) {
     console.error('Error in PUT /api/customer:', error)
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
 
 // DELETE - Delete a customer
-export async function DELETE (request: NextRequest) {
+export async function DELETE(request: NextRequest) {
   const authError = validateAuth(request)
   if (authError) return authError
 
@@ -252,20 +219,14 @@ export async function DELETE (request: NextRequest) {
     const kvStore = env.BIFROST_KV
 
     if (!kvStore) {
-      return NextResponse.json(
-        { error: 'Storage service not available' },
-        { status: 500 }
-      )
+      return NextResponse.json({ error: 'Storage service not available' }, { status: 500 })
     }
 
     const body = await request.json()
     const { name } = body
 
     if (!name || typeof name !== 'string') {
-      return NextResponse.json(
-        { error: 'Customer name is required' },
-        { status: 400 }
-      )
+      return NextResponse.json({ error: 'Customer name is required' }, { status: 400 })
     }
 
     const key = getKvKey(name)
@@ -273,24 +234,17 @@ export async function DELETE (request: NextRequest) {
     // Check if customer exists
     const existing = await kvStore.get(key, 'text')
     if (!existing) {
-      return NextResponse.json(
-        { error: 'Customer not found' },
-        { status: 404 }
-      )
+      return NextResponse.json({ error: 'Customer not found' }, { status: 404 })
     }
 
     await kvStore.delete(key)
 
     return NextResponse.json({
       message: 'Customer deleted successfully',
-      name
+      name,
     })
   } catch (error) {
     console.error('Error in DELETE /api/customer:', error)
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
-

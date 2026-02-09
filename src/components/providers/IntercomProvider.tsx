@@ -9,7 +9,7 @@ declare global {
   }
 }
 
-export function IntercomProvider ({ children }: { children: React.ReactNode }) {
+export function IntercomProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const appId = process.env.NEXT_PUBLIC_INTERCOM_APP_ID
 
@@ -23,7 +23,7 @@ export function IntercomProvider ({ children }: { children: React.ReactNode }) {
     // Initialize Intercom settings
     window.intercomSettings = {
       api_base: 'https://api-iam.intercom.io',
-      app_id: appId
+      app_id: appId,
     }
 
     // Load Intercom script
@@ -48,4 +48,3 @@ export function IntercomProvider ({ children }: { children: React.ReactNode }) {
 
   return <>{children}</>
 }
-

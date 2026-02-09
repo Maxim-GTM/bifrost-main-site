@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react'
 
-export default function SuccessPage () {
+export default function SuccessPage() {
   useEffect(() => {
     setTimeout(() => {
       window.location.href = 'https://www.getmaxim.ai/bifrost'

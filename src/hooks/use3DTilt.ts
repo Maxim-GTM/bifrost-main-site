@@ -10,13 +10,13 @@ export function use3DTilt() {
     const rect = e.currentTarget.getBoundingClientRect()
     const centerX = rect.left + rect.width / 2
     const centerY = rect.top + rect.height / 2
-    
+
     const mouseX = e.clientX - centerX
     const mouseY = e.clientY - centerY
-    
+
     const rotateX = (mouseY / rect.height) * -10 // Max 10 degrees
-    const rotateY = (mouseX / rect.width) * 10   // Max 10 degrees
-    
+    const rotateY = (mouseX / rect.width) * 10 // Max 10 degrees
+
     setTilt({ x: rotateX, y: rotateY })
   }
 
@@ -31,6 +31,6 @@ export function use3DTilt() {
     isHovered,
     handleMouseMove,
     handleMouseEnter,
-    handleMouseLeave
+    handleMouseLeave,
   }
-} 
+}

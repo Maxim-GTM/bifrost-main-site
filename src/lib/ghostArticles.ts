@@ -72,19 +72,22 @@ export interface GhostPostsResponse {
   }
 }
 
-async function ghostArticlesFetch<T>(endpoint: string, params: Record<string, string> = {}): Promise<T> {
+async function ghostArticlesFetch<T>(
+  endpoint: string,
+  params: Record<string, string> = {}
+): Promise<T> {
   const url = new URL(`${GHOST_ARTICLES_URL}/ghost/api/content/${endpoint}`)
   url.searchParams.set('key', GHOST_ARTICLES_KEY)
-  
+
   Object.entries(params).forEach(([key, value]) => {
     url.searchParams.set(key, value)
   })
 
   const res = await fetch(url.toString(), {
     headers: {
-      'Accept-Version': GHOST_ARTICLES_VERSION
+      'Accept-Version': GHOST_ARTICLES_VERSION,
     },
-    next: { revalidate: 60 } // Revalidate every 60 seconds
+    next: { revalidate: 60 }, // Revalidate every 60 seconds
   })
 
   if (!res.ok) {
@@ -94,11 +97,13 @@ async function ghostArticlesFetch<T>(endpoint: string, params: Record<string, st
   return res.json()
 }
 
-export async function getArticles(options: { limit?: number; page?: number; filter?: string } = {}): Promise<GhostPostsResponse> {
+export async function getArticles(
+  options: { limit?: number; page?: number; filter?: string } = {}
+): Promise<GhostPostsResponse> {
   const params: Record<string, string> = {
     include: 'tags,authors',
     limit: options.limit?.toString() || 'all',
-    order: 'published_at desc'
+    order: 'published_at desc',
   }
 
   if (options.page) {
@@ -115,7 +120,7 @@ export async function getArticles(options: { limit?: number; page?: number; filt
 export async function getArticleBySlug(slug: string): Promise<GhostPost | null> {
   try {
     const response = await ghostArticlesFetch<{ posts: GhostPost[] }>(`posts/slug/${slug}/`, {
-      include: 'tags,authors'
+      include: 'tags,authors',
     })
     return response.posts[0] || null
   } catch {
@@ -125,5 +130,5 @@ export async function getArticleBySlug(slug: string): Promise<GhostPost | null> 
 
 export async function getAllArticleSlugs(): Promise<string[]> {
   const response = await getArticles({ limit: 100 })
-  return response.posts.map(post => post.slug)
+  return response.posts.map((post) => post.slug)
 }

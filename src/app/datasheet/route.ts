@@ -17,11 +17,11 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     const capability = searchParams.get('capability')
     const modelName = searchParams.get('model')
     const forceRefresh = searchParams.get('forceRefresh')
-    
+
     // Create cache key based on query params
     const queryString = searchParams.toString()
     const cacheKey = queryString ? `${CACHE_KEY_PREFIX}:${queryString}` : `${CACHE_KEY_PREFIX}:all`
-    
+
     // Try to get cached data from Cloudflare KV
     try {
       const { env } = getRequestContext()
@@ -37,8 +37,8 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
               'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
               'Access-Control-Allow-Headers': 'Content-Type, Authorization',
               'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
-              'X-Cache': 'HIT'
-            }
+              'X-Cache': 'HIT',
+            },
           })
         }
       }
@@ -52,8 +52,8 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       'https://raw.githubusercontent.com/BerriAI/litellm/refs/heads/main/litellm/model_prices_and_context_window_backup.json',
       {
         headers: {
-          Accept: 'application/json'
-        }
+          Accept: 'application/json',
+        },
       }
     )
     if (!response.ok) {
@@ -111,7 +111,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       const kv = env.BIFROST_KV
       if (kv) {
         await kv.put(cacheKey, JSON.stringify(data), {
-          expirationTtl: CACHE_TTL
+          expirationTtl: CACHE_TTL,
         })
       }
     } catch (kvError) {
@@ -127,8 +127,8 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
         'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
         'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
-        'X-Cache': 'MISS'
-      }
+        'X-Cache': 'MISS',
+      },
     })
   } catch (error) {
     console.error('Error fetching model data:', error)

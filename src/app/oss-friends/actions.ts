@@ -22,7 +22,7 @@ interface OSSFriend {
 function getLogoUrl(url: string): string {
   try {
     const domain = new URL(url).hostname.replace('www.', '')
-    
+
     // Use Logo.dev API with your token
     const logoDevToken = 'pk_C1s8CGvARzeNAolBBFW-dg'
     return `https://img.logo.dev/${domain}?token=${logoDevToken}&size=128&format=webp&retina=true`
@@ -39,7 +39,7 @@ export async function getOSSFriends(): Promise<OSSFriend[]> {
         'Content-Type': 'application/json',
       },
       // Add cache control to prevent stale data
-      next: { revalidate: 3600 } // Cache for 1 hour
+      next: { revalidate: 3600 }, // Cache for 1 hour
     })
 
     if (!response.ok) {
@@ -59,7 +59,7 @@ export async function getOSSFriends(): Promise<OSSFriend[]> {
       logo: getLogoUrl(friend.href), // Use Logo.dev API
       category: 'Open Source', // Default category since not provided
       stars: undefined,
-      language: undefined
+      language: undefined,
     }))
 
     // Add our original friends to the list
@@ -73,25 +73,27 @@ export async function getOSSFriends(): Promise<OSSFriend[]> {
       {
         id: 'litellm',
         name: 'LiteLLM',
-        description: 'Use any LLM as a drop in replacement for gpt-3.5-turbo. Use Azure, OpenAI, Cohere, Anthropic, Ollama, VLLM, Sagemaker, HuggingFace, Replicate (100+ LLMs)',
+        description:
+          'Use any LLM as a drop in replacement for gpt-3.5-turbo. Use Azure, OpenAI, Cohere, Anthropic, Ollama, VLLM, Sagemaker, HuggingFace, Replicate (100+ LLMs)',
         url: 'https://litellm.ai',
         githubUrl: 'https://github.com/BerriAI/litellm',
         logo: '/litellm-logo.png',
         category: 'LLM Gateway',
         stars: 12500,
-        language: 'Python'
+        language: 'Python',
       },
       {
         id: 'composio',
         name: 'Composio',
-        description: 'Integration platform for AI agents & LLMs. Connect to 200+ tools with natural language',
+        description:
+          'Integration platform for AI agents & LLMs. Connect to 200+ tools with natural language',
         url: 'https://composio.dev',
         githubUrl: 'https://github.com/ComposioHQ/composio',
         logo: '/composio-logo.svg',
         category: 'AI Tools',
         stars: 8900,
-        language: 'Python'
-      }
+        language: 'Python',
+      },
     ]
   }
-} 
+}

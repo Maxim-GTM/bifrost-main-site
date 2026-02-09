@@ -1,12 +1,12 @@
-import Link from 'next/link';
+import Link from 'next/link'
 
 export interface BreadcrumbItem {
-  label: string;
-  href?: string;
+  label: string
+  href?: string
 }
 
 interface BreadcrumbsProps {
-  items: BreadcrumbItem[];
+  items: BreadcrumbItem[]
 }
 
 export function Breadcrumbs({ items }: BreadcrumbsProps) {
@@ -14,20 +14,15 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
     <nav className="breadcrumbs" aria-label="Breadcrumb">
       <ol>
         {items.map((item, index) => {
-          const isLast = index === items.length - 1;
-          
+          const isLast = index === items.length - 1
+
           return (
             <li key={index}>
               {isLast ? (
-                <span className="breadcrumb-current">
-                  {item.label}
-                </span>
+                <span className="breadcrumb-current">{item.label}</span>
               ) : (
                 <>
-                  <Link 
-                    href={item.href || '#'} 
-                    className="breadcrumb-link"
-                  >
+                  <Link href={item.href || '#'} className="breadcrumb-link">
                     {item.label}
                   </Link>
                   <svg
@@ -49,10 +44,9 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
                 </>
               )}
             </li>
-          );
+          )
         })}
       </ol>
     </nav>
-  );
+  )
 }
-

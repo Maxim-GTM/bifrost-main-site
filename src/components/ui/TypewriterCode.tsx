@@ -9,27 +9,33 @@ export function TypewriterCode() {
   const [showCursor, setShowCursor] = useState(true)
   const [isClient, setIsClient] = useState(false)
 
-  const codeLines = useMemo(() => [
-    { text: '# Install with Docker', className: 'text-gray-500 mb-4 font-medium' },
-    { text: 'docker pull maximhq/bifrost', className: 'text-green-400 mb-1' },
-    { text: 'docker run -p 8080:8080 \\', className: 'text-green-400 mb-1' },
-    { text: '  -v $(pwd)/config.json:/app/config/config.json \\', className: 'text-green-400 mb-1' },
-    { text: '  -e OPENAI_API_KEY \\', className: 'text-green-400 mb-1' },
-    { text: '  maximhq/bifrost', className: 'text-green-400 mb-6' },
-    { text: '', className: 'mb-2' },
-    { text: '# Simple config.json', className: 'text-gray-500 mb-4 font-medium' },
-    { text: '{', className: 'text-gray-300' },
-    { text: '  "providers": {', className: 'text-gray-300 ml-2' },
-    { text: '    "openai": {', className: 'text-gray-300 ml-4' },
-    { text: '      "keys": [{', className: 'text-gray-300 ml-6' },
-    { text: '        "value": "env.OPENAI_API_KEY",', className: 'text-gray-300 ml-8' },
-    { text: '        "models": ["gpt-4o-mini"],', className: 'text-gray-300 ml-8' },
-    { text: '        "weight": 1.0', className: 'text-gray-300 ml-8' },
-    { text: '      }]', className: 'text-gray-300 ml-6' },
-    { text: '    }', className: 'text-gray-300 ml-4' },
-    { text: '  }', className: 'text-gray-300 ml-2' },
-    { text: '}', className: 'text-gray-300' }
-  ], [])
+  const codeLines = useMemo(
+    () => [
+      { text: '# Install with Docker', className: 'text-gray-500 mb-4 font-medium' },
+      { text: 'docker pull maximhq/bifrost', className: 'text-green-400 mb-1' },
+      { text: 'docker run -p 8080:8080 \\', className: 'text-green-400 mb-1' },
+      {
+        text: '  -v $(pwd)/config.json:/app/config/config.json \\',
+        className: 'text-green-400 mb-1',
+      },
+      { text: '  -e OPENAI_API_KEY \\', className: 'text-green-400 mb-1' },
+      { text: '  maximhq/bifrost', className: 'text-green-400 mb-6' },
+      { text: '', className: 'mb-2' },
+      { text: '# Simple config.json', className: 'text-gray-500 mb-4 font-medium' },
+      { text: '{', className: 'text-gray-300' },
+      { text: '  "providers": {', className: 'text-gray-300 ml-2' },
+      { text: '    "openai": {', className: 'text-gray-300 ml-4' },
+      { text: '      "keys": [{', className: 'text-gray-300 ml-6' },
+      { text: '        "value": "env.OPENAI_API_KEY",', className: 'text-gray-300 ml-8' },
+      { text: '        "models": ["gpt-4o-mini"],', className: 'text-gray-300 ml-8' },
+      { text: '        "weight": 1.0', className: 'text-gray-300 ml-8' },
+      { text: '      }]', className: 'text-gray-300 ml-6' },
+      { text: '    }', className: 'text-gray-300 ml-4' },
+      { text: '  }', className: 'text-gray-300 ml-2' },
+      { text: '}', className: 'text-gray-300' },
+    ],
+    []
+  )
 
   useEffect(() => {
     setIsClient(true)
@@ -51,12 +57,12 @@ export function TypewriterCode() {
       const timer = setTimeout(() => {
         if (currentCharIndex === currentLine.text.length) {
           // Line complete, move to next line
-          setDisplayedLines(prev => [...prev, currentLine.text])
-          setCurrentLineIndex(prev => prev + 1)
+          setDisplayedLines((prev) => [...prev, currentLine.text])
+          setCurrentLineIndex((prev) => prev + 1)
           setCurrentCharIndex(0)
         } else {
           // Continue typing current line
-          setCurrentCharIndex(prev => prev + 1)
+          setCurrentCharIndex((prev) => prev + 1)
         }
       }, typingDelay)
 
@@ -67,9 +73,9 @@ export function TypewriterCode() {
   // Cursor blinking effect
   useEffect(() => {
     if (!isClient || !showCursor) return
-    
+
     const interval = setInterval(() => {
-      setShowCursor(prev => !prev)
+      setShowCursor((prev) => !prev)
     }, 500)
 
     return () => clearInterval(interval)
@@ -77,16 +83,32 @@ export function TypewriterCode() {
 
   const renderLineWithSyntaxHighlighting = (text: string) => {
     // Apply syntax highlighting for JSON lines
-    if (text.includes('"') && (text.includes('providers') || text.includes('openai') || text.includes('keys') || text.includes('value') || text.includes('models') || text.includes('weight'))) {
+    if (
+      text.includes('"') &&
+      (text.includes('providers') ||
+        text.includes('openai') ||
+        text.includes('keys') ||
+        text.includes('value') ||
+        text.includes('models') ||
+        text.includes('weight'))
+    ) {
       return (
         <span>
           {text.split('"').map((part, i) => {
             if (i % 2 === 1) {
               // Inside quotes
               if (['providers', 'openai', 'keys', 'value', 'models', 'weight'].includes(part)) {
-                return <span key={i} className="text-emerald-400">&quot;{part}&quot;</span>
+                return (
+                  <span key={i} className="text-emerald-400">
+                    &quot;{part}&quot;
+                  </span>
+                )
               } else if (part === 'env.OPENAI_API_KEY' || part === 'gpt-4o-mini') {
-                return <span key={i} className="text-yellow-300">&quot;{part}&quot;</span>
+                return (
+                  <span key={i} className="text-yellow-300">
+                    &quot;{part}&quot;
+                  </span>
+                )
               }
               return `"${part}"`
             }
@@ -100,27 +122,31 @@ export function TypewriterCode() {
         </span>
       )
     }
-    
+
     return text
   }
 
   return (
-    <div className="text-gray-300 font-mono text-sm leading-relaxed">
+    <div className="font-mono text-sm leading-relaxed text-gray-300">
       {displayedLines.map((line, index) => (
         <div key={index} className={codeLines[index]?.className || 'text-gray-300'}>
           {renderLineWithSyntaxHighlighting(line)}
         </div>
       ))}
-      
+
       {/* Current typing line */}
       {currentLineIndex < codeLines.length && (
         <div className={codeLines[currentLineIndex].className}>
           {renderLineWithSyntaxHighlighting(
             codeLines[currentLineIndex].text.substring(0, currentCharIndex)
           )}
-          {showCursor && <span className="animate-pulse bg-green-400 text-green-400 inline-block w-[1px] h-4">█</span>}
+          {showCursor && (
+            <span className="inline-block h-4 w-[1px] animate-pulse bg-green-400 text-green-400">
+              █
+            </span>
+          )}
         </div>
       )}
     </div>
   )
-} 
+}
