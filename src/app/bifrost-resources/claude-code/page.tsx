@@ -44,7 +44,7 @@ const painPoints = [
     icon: DollarSign,
     problem: 'No cost visibility',
     detail:
-      'No way to track which teams, projects, or developers are driving Claude Code spend. Budgets are managed manually — if at all.',
+      'No way to track which teams, projects, or developers are driving Claude Code spend. Budgets are managed manually.',
   },
   {
     icon: AlertTriangle,
@@ -71,7 +71,7 @@ const coreFeatures = [
     icon: DollarSign,
     title: 'Cost management and optimization',
     description:
-      'Track LLM spend per request with breakdowns by provider, model, team, and developer. Virtual keys enforce team-level budgets. Semantic caching reduces costs by up to 95% on repeat queries.',
+      'Track LLM spend per request with breakdowns by provider, model, team, and developer. Virtual keys enforce team-level budgets. Semantic caching reduces costs on repeat queries.',
     tag: 'LLM cost control + budgets',
   },
   {
@@ -133,7 +133,7 @@ docker run -p 8080:8080 bifrost`,
     step: '03',
     title: 'Configure from the dashboard',
     description:
-      "Set team budgets, apply guardrails, configure provider fallbacks, and view real-time analytics — all from Bifrost's web interface. No code required.",
+      "Set team budgets, apply guardrails, configure provider fallbacks, and view real-time analytics, all from Bifrost's web interface. No code required.",
     code: `# dashboard available at
 localhost:8080/logs
 # virtual keys, budgets, guardrails`,
@@ -154,7 +154,7 @@ const enterpriseFeatures = [
   {
     icon: Database,
     title: 'Semantic caching',
-    description: 'Repeat or near-identical queries resolve instantly, cutting costs up to 95%.',
+    description: 'Repeat or near-identical queries resolve instantly, cutting costs and reducing latency.',
   },
   {
     icon: KeyRound,
@@ -204,7 +204,7 @@ const enterpriseFeatures = [
 ]
 
 const comparisonData = [
-  { feature: 'Multi-model support', standalone: false, withBifrost: '15+ providers' },
+  { feature: 'Multi-model support', standalone: false, withBifrost: '20+ providers' },
   { feature: 'MCP tool gateway', standalone: false, withBifrost: 'Full MCP injection' },
   { feature: 'Cost tracking', standalone: false, withBifrost: 'Real-time per-request' },
   { feature: 'Provider failover', standalone: false, withBifrost: 'Automatic across providers' },
@@ -323,7 +323,7 @@ export default function ClaudeCodePage() {
                 </Button>
               </Link>
 
-              <Link href="https://docs.getbifrost.ai/" target="_blank" rel="noopener noreferrer">
+              <Link href="https://docs.getbifrost.ai/quickstart/gateway/cli-agents#claude-code" target="_blank" rel="noopener noreferrer">
                 <Button variant="outline" size="lg">
                   View documentation
                   <ExternalLink className="h-4 w-4" />
@@ -356,7 +356,7 @@ export default function ClaudeCodePage() {
                     description: 'Requests per second sustained',
                   },
                   { metric: '50x', label: 'Faster', description: 'Than Python-based gateways' },
-                  { metric: '15+', label: 'Providers', description: 'Model APIs supported' },
+                  { metric: '20+', label: 'Providers', description: 'Model APIs supported' },
                 ].map((item) => (
                   <div
                     key={item.label}
@@ -386,7 +386,7 @@ export default function ClaudeCodePage() {
               [ THE PROBLEM ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              What happens when 50+ developers use Claude Code without governance
+              What Happens When 50+ Developers use Claude Code without Governance
             </h2>
             <p className="mx-auto max-w-3xl text-gray-600">
               Claude Code is powerful out of the box for individual developers. But scaling it
@@ -414,12 +414,10 @@ export default function ClaudeCodePage() {
               [ HOW IT WORKS ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Bifrost sits between Claude Code and the world
+             Zero-Friction Integration: How Bifrost Works with Claude Code
             </h2>
             <p className="mx-auto max-w-3xl text-gray-600">
-              Bifrost acts as a transparent proxy. Developers set one environment variable and
-              Claude Code routes through Bifrost automatically — no plugin, no agent, no code
-              changes.
+            Set one environment variable to route Claude Code through Bifrost, developers work unchanged while platform teams gain full control over budgets, guardrails, failover routing, and real-time observability across 20+ providers.
             </p>
           </div>
 
@@ -483,14 +481,14 @@ export default function ClaudeCodePage() {
               </div>
               <p className="mb-4 text-sm leading-relaxed text-gray-600">
                 Nothing changes. Set one environment variable and Claude Code works exactly as
-                before. Same API, same workflow, same speed. Bifrost is invisible.
+                before. Same API, same workflow, same speed.
               </p>
               <ul className="space-y-2">
                 {[
                   'No plugin or agent installation',
                   'No code changes required',
                   'Works with existing Claude Code config',
-                  'Access to 15+ model providers transparently',
+                  'Access to 20+ model providers transparently',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2.5">
                     <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--accent-text)]" />
@@ -599,7 +597,7 @@ export default function ClaudeCodePage() {
                     description: 'Requests per second sustained',
                   },
                   { metric: '50x', label: 'Faster', description: 'Than Python-based gateways' },
-                  { metric: '15+', label: 'Providers', description: 'Model APIs supported' },
+                  { metric: '20+', label: 'Providers', description: 'Model APIs supported' },
                 ].map((item, index) => (
                   <div key={index} className="px-4 py-5 text-center">
                     <div className="mb-1 font-mono text-2xl leading-none font-semibold text-[var(--accent-text)] md:text-3xl">
@@ -711,7 +709,7 @@ export default function ClaudeCodePage() {
               [ BUILT FOR PRODUCTION ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Enterprise features, ready on deploy
+              Enterprise Features, Ready on Deploy
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
               Bifrost ships with the full set of controls platform teams expect before rolling out
@@ -745,7 +743,7 @@ export default function ClaudeCodePage() {
             </h2>
             <p className="mx-auto max-w-3xl text-gray-600">
               Bifrost connects Claude Code to filesystem tools, databases, web search, and custom
-              integrations via Model Context Protocol — without modifying the Claude Code client or
+              integrations via Model Context Protocol without modifying the Claude Code client or
               adding configuration steps on the developer side.
             </p>
           </div>
@@ -768,7 +766,7 @@ export default function ClaudeCodePage() {
               <h3 className="mb-2 text-gray-900">Agentic coding pipelines</h3>
               <p className="text-sm leading-relaxed text-gray-600">
                 Claude Code combines with MCP-connected tools for database queries, API testing,
-                deployment scripts, and custom integrations — all routed and monitored through a
+                deployment scripts, and custom integrations all routed and monitored through a
                 single gateway.
               </p>
             </div>
@@ -779,7 +777,7 @@ export default function ClaudeCodePage() {
               <h3 className="mb-2 text-gray-900">Semantic caching at scale</h3>
               <p className="text-sm leading-relaxed text-gray-600">
                 Repeat or near-identical queries across developers resolve instantly from cache.
-                Teams running large codebases see up to 95% cost reduction on common operations like
+                Teams running large codebases see cost savings on common operations like
                 code explanations and documentation generation.
               </p>
             </div>
@@ -821,7 +819,7 @@ export default function ClaudeCodePage() {
               [ GOVERNANCE &amp; COMPLIANCE ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Built for enterprises with strict security requirements
+              Built for Enterprises with Strict Security Requirements
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
               Bifrost ships with the governance features and compliance certifications platform
@@ -864,7 +862,7 @@ export default function ClaudeCodePage() {
       <section className="bg-white py-16 md:py-24">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-            Ready to bring enterprise controls to Claude Code?
+            Ready to Bring Enterprise Controls to Claude Code?
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-gray-600">
             Bifrost is open source and production-ready. Teams get started in minutes and scale

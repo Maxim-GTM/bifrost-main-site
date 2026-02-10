@@ -178,10 +178,9 @@ export function generateLiveThroughputData(count: number = 60): ThroughputDataPo
 export const comparisonTable = [
   { feature: 'Language', bifrost: 'Go', litellm: 'Python' },
   { feature: 'Async Runtime', bifrost: 'Goroutines', litellm: 'asyncio' },
-  { feature: 'HTTP Server', bifrost: 'net/http', litellm: 'FastAPI/Uvicorn' },
+  { feature: 'HTTP Server', bifrost: 'Fast http', litellm: 'FastAPI/Uvicorn' },
   { feature: 'Memory Model', bifrost: 'Efficient GC', litellm: 'GC-managed' },
   { feature: 'Concurrency', bifrost: 'Native goroutines', litellm: 'GIL-limited' },
-  { feature: 'Startup Time', bifrost: '< 100ms', litellm: '2-5 seconds' },
-  { feature: 'Binary Size', bifrost: '~15MB', litellm: '~500MB+ (with deps)' },
+  { feature: 'Binary Size', bifrost: '~80MB', litellm: '~500MB+ (with deps)' },
   { feature: 'Open Source', bifrost: 'Yes (Apache 2.0)', litellm: 'Yes (MIT)' },
 ]

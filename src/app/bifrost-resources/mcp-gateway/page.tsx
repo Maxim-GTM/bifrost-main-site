@@ -42,8 +42,8 @@ const performanceMetrics = [
     description: 'Ultra-low latency at high throughput',
   },
   { label: 'Token Savings', value: '50%+', description: 'With Code Mode vs classic MCP' },
-  { label: 'Latency Reduction', value: '40-50%', description: 'Code Mode execution pipeline' },
-  { label: 'Provider Support', value: '15+', description: 'LLM providers supported' },
+  { label: 'Faster Execution', value: '40%', description: 'Code Mode execution pipeline' },
+  { label: 'Provider Support', value: '20+', description: 'LLM providers supported' },
 ]
 
 const setupSteps = [
@@ -90,6 +90,7 @@ const coreCapabilities = [
     icon: KeyRound,
     title: 'OAuth Authentication',
     description: 'Secure OAuth 2.0 authentication with automatic token refresh',
+    tag: 'OAuth 2.0 with automatic token refresh',
   },
   {
     icon: Play,
@@ -109,11 +110,13 @@ const coreCapabilities = [
     icon: Code2,
     title: 'Code Mode',
     description: 'Let AI write Python to orchestrate multiple tools in one request.',
+    tag: 'Token efficiency',
   },
   {
     icon: Globe,
     title: 'MCP Gateway URL',
     description: 'A single endpoint for tool discovery, execution, and management.',
+    tag: 'Single gateway URL',
   },
 ]
 
@@ -158,7 +161,7 @@ const comparisonData = [
   {
     feature: 'Execution latency',
     classic: 'Multiple round-trips per tool',
-    bifrost: '40-50% faster',
+    bifrost: '40% faster execution',
   },
   {
     feature: 'Multi-tool orchestration',
@@ -253,7 +256,7 @@ const architectureFeatures = [
   {
     role: 'MCP Client',
     description:
-      'Bifrost connects to your external MCP servers — filesystem tools, web search, databases, custom APIs — and discovers their capabilities automatically.',
+      'Bifrost connects to your external MCP servers - filesystem tools, web search, databases, custom APIs, and discovers their capabilities automatically.',
     items: [
       'Auto-discover tools from any MCP server',
       'STDIO, HTTP, and SSE transports',
@@ -468,7 +471,7 @@ export default function MCPGatewayPage() {
               [ HOW IT WORKS ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Stateless tool calling with explicit approval
+              Stateless Tool Calling with Explicit Approval
             </h2>
             <p className="mx-auto max-w-3xl text-gray-600">
               The default tool calling pattern is stateless with explicit execution. No unintended
@@ -479,7 +482,7 @@ export default function MCPGatewayPage() {
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             <div className="border border-gray-200 bg-white p-4 text-sm text-gray-700">
               <strong className="text-gray-900">No automatic execution:</strong> Tool calls from
-              LLMs are suggestions — your app decides what runs.
+              LLMs are suggestions, your app decides what runs.
             </div>
             <div className="border border-gray-200 bg-white p-4 text-sm text-gray-700">
               <strong className="text-gray-900">Full audit trail:</strong> Every tool suggestion,
@@ -487,7 +490,7 @@ export default function MCPGatewayPage() {
             </div>
             <div className="border border-gray-200 bg-white p-4 text-sm text-gray-700">
               <strong className="text-gray-900">Stateless design:</strong> Each API call is
-              independent — your app controls conversation state entirely.
+              independent, your app controls conversation state entirely.
             </div>
           </div>
         </div>
@@ -502,9 +505,9 @@ export default function MCPGatewayPage() {
                 [ CODE MODE ]
               </p>
               <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-                50% fewer tokens.
+                50% Fewer Tokens.
                 <br />
-                40% lower latency.
+                40% Faster Execution.
               </h2>
               <p className="mb-6 text-sm leading-relaxed text-gray-600">
                 If you&apos;re using 3+ MCP servers, classic tool calling becomes expensive. Every
@@ -738,14 +741,14 @@ export default function MCPGatewayPage() {
               [ WHY BIFROST ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              The fastest open-source MCP gateway
+              The Fastest Open-Source MCP Gateway
             </h2>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {[
               '11µs overhead at 5,000 requests per second',
               'Stateless architecture with explicit approval',
-              'Code Mode: 50% fewer tokens, 40% lower latency',
+              'Code Mode: 50% fewer tokens, 40% faster execution',
               'Dual role: MCP Client and MCP Server',
               'Built-in OAuth 2.0 with automatic token refresh',
               'Production-proven at millions of requests/day',
