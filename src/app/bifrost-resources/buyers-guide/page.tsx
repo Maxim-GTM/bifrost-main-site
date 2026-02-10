@@ -73,7 +73,7 @@ const platforms = [
     tagline: 'Unified AI traffic management',
     deployment: 'SaaS',
     pricing: 'Platform plans',
-    latency: 'Varies',
+    latency: '10-50 ms',
     highlight: false,
     description: 'Unified AI traffic management for Cloudflare users. Multiple models supported.',
     strengths: ['Unified AI traffic management', 'Multiple models supported'],
@@ -84,7 +84,7 @@ const platforms = [
     tagline: 'Performance-First Observability',
     deployment: 'SaaS, Self-hosted',
     pricing: 'Zero markup',
-    latency: '1-5ms',
+    latency: 'Not specified',
     highlight: false,
     description: 'Gateway optimized for performance and observability with zero markup pricing.',
     strengths: ['Low latency', 'Zero markup', 'Semantic caching', 'Built-in observability'],
@@ -95,7 +95,7 @@ const platforms = [
     tagline: 'API Management Extended',
     deployment: 'SaaS, On-premises',
     pricing: 'Enterprise',
-    latency: 'Minimal',
+    latency: 'Not specified',
     highlight: false,
     description:
       "Extends Kong's proven API gateway platform to support LLM routing with plugin-based architecture.",
@@ -527,10 +527,10 @@ export default function BuyersGuidePage() {
                     <span className="sv">~8ms</span>
                   </td>
                   <td>
-                    <span className="sp">Varies</span>
+                    <span className="sp">10-50ms</span>
                   </td>
                   <td>
-                    <span className="sv">1–5ms</span>
+                    <span className="sn">N/A</span>
                   </td>
                   <td>
                     <span className="sn">N/A</span>
@@ -963,7 +963,7 @@ export default function BuyersGuidePage() {
               </p>
               {[
                 { name: 'Bifrost', latency: '~11µs', highlight: true, tag: 'Go' },
-                { name: 'Helicone', latency: '1-5ms', highlight: false, tag: null },
+                { name: 'Cloudflare AI', latency: '10-50ms', highlight: false, tag: null },
                 { name: 'LiteLLM', latency: '~8ms', highlight: false, tag: 'Python' },
                 { name: 'OpenRouter', latency: '25-40ms', highlight: false, tag: null },
               ].map((platform) => (

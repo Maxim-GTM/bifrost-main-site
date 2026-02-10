@@ -83,7 +83,7 @@ export default function PartnersPage() {
             <p className="mx-auto mb-8 max-w-3xl text-sm leading-relaxed text-gray-500 md:text-base">
               Join the Bifrost Partner Program and help accelerate the leading AI companies in the
               world. Whether you&apos;re a cloud provider, system integrator, technology vendor, or
-              channel partner — there&apos;s a program built for you.
+              channel partner - there&apos;s a program built for you.
             </p>
             <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
               <Link href="/partners-program/become-a-partner">

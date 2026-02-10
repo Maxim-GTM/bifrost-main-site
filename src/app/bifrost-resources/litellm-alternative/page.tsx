@@ -32,7 +32,7 @@ const performanceMetrics = [
   { label: 'Gateway Overhead', value: '11µs', description: 'At 5,000 RPS sustained' },
   { label: 'Success Rate', value: '100%', description: 'Even under extreme load' },
   { label: 'Setup Time', value: '<30s', description: 'NPX or Docker, zero config' },
-  { label: 'Providers', value: '15+', description: '1000+ models supported' },
+  { label: 'Providers', value: '20+', description: '1000+ models supported' },
 ]
 
 const challengeTable = [
@@ -58,7 +58,7 @@ const challengeTable = [
   },
   {
     challenge: 'Production reliability',
-    why: '100% success rate at 5,000 RPS with <100µs overhead',
+    why: '100% success rate at 5,000 RPS with <11µs overhead',
   },
 ]
 
@@ -132,7 +132,7 @@ const featureComparisonSections: { title: string; rows: ComparisonRow[] }[] = [
     rows: [
       {
         feature: 'Provider Support',
-        bifrost: '15+ providers, 1000+ models',
+        bifrost: '20+ providers, 1000+ models',
         litellm: '100+ LLM APIs',
       },
       {
@@ -177,7 +177,7 @@ const featureComparisonSections: { title: string; rows: ComparisonRow[] }[] = [
     title: 'Performance & Scalability',
     rows: [
       { feature: 'Language', bifrost: 'Go (compiled)', litellm: 'Python (interpreted)' },
-      { feature: 'Gateway Overhead', bifrost: '11-59µs at 5K RPS', litellm: '8ms P95 at 1K RPS' },
+      { feature: 'Gateway Overhead', bifrost: '1.68s P99 at 500 RPS', litellm: '90.72s P99 at 500 RPS' },
       {
         feature: 'Concurrency Model',
         bifrost: 'Native goroutines',
@@ -345,7 +345,7 @@ go get github.com/maximhq/bifrost/core@latest`,
     step: '02',
     title: 'Configure via Web UI',
     description:
-      'Add provider keys, configure models, set up fallback chains — all from the browser.',
+      'Add provider keys, configure models, set up fallback chains, all from the browser.',
     code: `# open the dashboard
 open http://localhost:8080
 # add API keys for providers
@@ -367,11 +367,11 @@ curl http://localhost:8080/v1/chat/completions \\
 
 const chooseBifrost = [
   'You need high-throughput performance at 1,000+ RPS with minimal latency overhead',
-  'You want zero-configuration deployment — start in seconds, no Redis or databases',
-  'You value operational simplicity — single binary, no external dependencies',
+  'You want zero-configuration deployment, start in seconds, no Redis or databases',
+  'You value operational simplicity, single binary, no external dependencies',
   'Every millisecond of latency and every MB of memory matters for your infrastructure costs',
-  'You need built-in observability — native Prometheus, OpenTelemetry, and web UI',
-  'You want complete control — self-hosted, Apache 2.0, full source code access',
+  'You need built-in observability, native Prometheus, OpenTelemetry, and web UI',
+  'You want complete control, self-hosted, Apache 2.0, full source code access',
 ]
 
 const chooseLitellm = [
@@ -387,7 +387,7 @@ const summaryTable = [
     bifrost: 'High-throughput production systems',
     litellm: 'Multi-provider abstraction, Python teams',
   },
-  { factor: 'Performance', bifrost: '<100µs overhead at 5K RPS', litellm: '8ms P95 at 1K RPS' },
+  { factor: 'Performance', bifrost: '1.68s P99 overhead at 500 RPS', litellm: '90.72s P99 at 500 RPS' },
   { factor: 'Setup Time', bifrost: '<30 seconds', litellm: '2-10 minutes' },
   { factor: 'Dependencies', bifrost: 'Zero', litellm: 'Redis recommended' },
   {
@@ -402,7 +402,7 @@ const summaryTable = [
     litellm: 'Via integrations',
   },
   { factor: 'Cost', bifrost: 'Free (Apache 2.0)', litellm: 'Free (MIT)' },
-  { factor: 'Providers', bifrost: '15+ providers, 1000+ models', litellm: '100+ LLM APIs' },
+  { factor: 'Providers', bifrost: '20+ providers, 1000+ models', litellm: '100+ LLM APIs' },
 ]
 
 function CellIcon({ check, warn, none }: { check?: boolean; warn?: boolean; none?: boolean }) {
@@ -427,7 +427,7 @@ export default function LiteLLMAlternativePage() {
             </h1>
             <p className="mx-auto mb-8 max-w-3xl text-sm leading-relaxed text-gray-500 md:text-base">
               Bifrost is an open-source LLM gateway built in Go that delivers production-grade
-              reliability with &lt;100µs overhead at 5,000 RPS. If you&apos;re evaluating LiteLLM or
+              reliability with &lt;11µs overhead at 5,000 RPS. If you&apos;re evaluating LiteLLM or
               experiencing performance bottlenecks at scale, Bifrost is a drop-in alternative
               designed for serious GenAI workloads.
             </p>
@@ -492,7 +492,7 @@ export default function LiteLLMAlternativePage() {
               [ WHY BIFROST ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Why teams choose Bifrost over LiteLLM
+              Why Teams Choose Bifrost Over LiteLLM
             </h2>
           </div>
           <div className="overflow-hidden border border-gray-200 bg-white">
@@ -533,11 +533,11 @@ export default function LiteLLMAlternativePage() {
               [ PERFORMANCE BENCHMARKS ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Bifrost performance at 5,000 RPS
+              Bifrost Performance at 5,000 RPS
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
               Benchmarked on production infrastructure under sustained load. Perfect reliability
-              with sub-100µs overhead.
+              with sub-11µs overhead.
             </p>
           </div>
           <div className="mb-8 grid gap-6 md:grid-cols-2">
@@ -563,14 +563,14 @@ export default function LiteLLMAlternativePage() {
               </div>
             ))}
           </div>
-          <div className="border border-gray-200 bg-gray-50 p-4">
+          {/*<div className="border border-gray-200 bg-gray-50 p-4">
             <p className="text-xs leading-relaxed text-gray-500">
               <span className="font-medium text-gray-700">LiteLLM comparison:</span> LiteLLM reports
               P95 latency of 8ms at 1,000 RPS with recommended Redis configuration. LiteLLM
               recommends multiple instances with proper worker configuration for production
               deployments.
             </p>
-          </div>
+          </div>*/}
         </div>
       </section>
 
@@ -582,7 +582,7 @@ export default function LiteLLMAlternativePage() {
               [ ARCHITECTURE ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Why Go beats Python for LLM gateways
+              Why "Go" Beats "Python" for LLM Gateways
             </h2>
           </div>
           <div className="grid gap-8 md:grid-cols-2">
@@ -632,7 +632,7 @@ export default function LiteLLMAlternativePage() {
               [ FEATURE COMPARISON ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Feature-by-feature comparison
+              Feature-By-Feature Comparison
             </h2>
           </div>
           <div className="space-y-6">
@@ -695,7 +695,7 @@ export default function LiteLLMAlternativePage() {
               [ ENTERPRISE READY ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Built-in governance and observability
+              Built-in Governance and Observability
             </h2>
             <p className="mx-auto max-w-3xl text-gray-600">
               Everything you need for production AI infrastructure, without bolting on external
@@ -715,7 +715,7 @@ export default function LiteLLMAlternativePage() {
                 icon: BarChart3,
                 title: 'Native Prometheus metrics',
                 description:
-                  'Metrics automatically available at /metrics — requests, latency, provider health, memory usage.',
+                  'Metrics automatically available at /metrics - requests, latency, provider health, memory usage.',
                 tag: 'No sidecars',
               },
               {
@@ -770,7 +770,7 @@ export default function LiteLLMAlternativePage() {
             <p className="mb-4 font-mono text-xs tracking-widest text-gray-400 uppercase">
               [ QUICK START ]
             </p>
-            <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">Get started in three steps</h2>
+            <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">Get Started in Three Steps</h2>
             <p className="mx-auto max-w-2xl text-gray-600">
               No configuration files, no Redis, no external databases. Just install and go.
             </p>
@@ -786,7 +786,7 @@ export default function LiteLLMAlternativePage() {
             <p className="mb-4 font-mono text-xs tracking-widest text-gray-400 uppercase">
               [ DECISION GUIDE ]
             </p>
-            <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">When to choose what</h2>
+            <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">When to Choose What</h2>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
             <div className="border-2 border-[var(--accent-border)] bg-white">
@@ -832,7 +832,7 @@ export default function LiteLLMAlternativePage() {
             <p className="mb-4 font-mono text-xs tracking-widest text-gray-400 uppercase">
               [ COMPARISON SUMMARY ]
             </p>
-            <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">At a glance</h2>
+            <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">At a Glance</h2>
           </div>
           <div className="overflow-hidden border border-gray-200 bg-white">
             <table className="w-full">
@@ -867,7 +867,7 @@ export default function LiteLLMAlternativePage() {
       <section className="bg-gray-50 py-16 md:py-24">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-            Ready to upgrade your LLM infrastructure?
+            Ready to Upgrade Your LLM Infrastructure?
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-gray-600">
             100% open source under Apache 2.0. Free forever. No vendor lock-in. Get started in under
