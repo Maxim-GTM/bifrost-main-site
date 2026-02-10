@@ -1,7 +1,7 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  ...(process.env.NODE_ENV !== 'development' && { assetPrefix: 'https://bifrost.getmaxim.ai' }),
+  // ...(process.env.NODE_ENV !== 'development' && { assetPrefix: 'https://bifrost.getmaxim.ai' }),
   images: {
     remotePatterns: [
       {

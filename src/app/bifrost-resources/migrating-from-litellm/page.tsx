@@ -18,24 +18,24 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Migrating from LiteLLM to Bifrost | 50x Faster LLM Gateway',
+  title: 'Migrating from LiteLLM to Bifrost | 54x Faster LLM Gateway',
   description:
-    'Migrate from LiteLLM to Bifrost in 15-30 minutes. Get 50x faster performance, 99.99% uptime, and enterprise-grade security with zero code changes.',
+    'Migrate from LiteLLM to Bifrost in 15-30 minutes. Get 54x faster performance at 500 RPS, 99.99% uptime, and enterprise-grade security with zero code changes.',
 }
 
 const performanceMetrics = [
-  { label: 'Faster', value: '50x', description: '11µs overhead vs ~600µs' },
+  { label: 'Lower P99 Latency', value: '54x', description: 'Consistently fast response times' },
   { label: 'Uptime SLA', value: '99.99%', description: 'Automatic failover & circuit breakers' },
-  { label: 'Providers', value: '15+', description: 'LLM providers supported natively' },
+  { label: 'Providers', value: '20+', description: 'LLM providers supported natively' },
   { label: 'Migration Time', value: '15 min', description: 'Drop-in OpenAI-compatible API' },
 ]
 
 const whyMigrate = [
   {
     icon: Zap,
-    title: '50x Faster Performance',
+    title: '54x Faster Performance',
     description:
-      'Built in Go with just 11µs overhead at 5,000 RPS compared to ~8ms for Python-based solutions. Your gateway stops being the bottleneck.',
+      'Built in Go with just 1.68S overhead at 500 RPS compared to 90.72s for Python-based solutions. Your gateway stops being the bottleneck.',
   },
   {
     icon: Shield,
@@ -47,7 +47,7 @@ const whyMigrate = [
     icon: DollarSign,
     title: 'Cost Optimization',
     description:
-      'Semantic caching reduces costs by up to 80% on repeated queries. Adaptive load balancing ensures efficient resource utilization.',
+      'Semantic caching reduces costs and latency on repeated queries. Adaptive load balancing ensures efficient resource utilization.',
   },
   {
     icon: Lock,
@@ -70,9 +70,8 @@ const whyMigrate = [
 ]
 
 const benchmarkRows = [
-  { metric: 'Overhead per Request (5K RPS)', bifrost: '11µs', litellm: '~600µs (50x slower)' },
-  { metric: 'P99 Latency at 500 RPS', bifrost: '520ms', litellm: '28,000ms' },
-  { metric: 'P99 Latency at 1K RPS', bifrost: '1.2s', litellm: 'Crashes (memory exhaustion)' },
+  { metric: 'Overhead per Request (500 RPS)', bifrost: '0.99ms', litellm: '~40ms (40.4x slower)' },
+  { metric: 'P99 Latency at 500 RPS', bifrost: '1.68s', litellm: '90.72s' },
   { metric: 'Maximum Sustained RPS', bifrost: '5,000+ stable', litellm: 'Fails at high load' },
 ]
 
@@ -89,9 +88,9 @@ const featureComparison: { title: string; rows: ComparisonRow[] }[] = [
     title: 'Performance',
     rows: [
       {
-        feature: 'Overhead at 5K RPS',
-        bifrost: '11µs (Go-native)',
-        litellm: '~600µs (Python GIL)',
+        feature: 'Overhead at 500 RPS',
+        bifrost: '0.99ms (Go-native)',
+        litellm: '40ms (Python GIL)',
       },
       {
         feature: 'Memory Management',
@@ -292,12 +291,12 @@ base_url="http://localhost:8080"`,
 ]
 
 const whenToMigrate = [
-  'Scaling beyond prototyping — performance matters at production traffic levels',
-  'Building multi-step agent architectures — overhead compounds with each LLM call',
-  'Need enterprise governance — budget management, access control, and audit trails',
-  'Want integrated observability — Maxim platform provides unmatched visibility',
-  'Experiencing reliability issues — timeout spikes, memory issues, or unpredictable latency',
-  'Need better cost control — semantic caching and adaptive load balancing',
+  'Scaling beyond prototyping, performance matters at production traffic levels',
+  'Building multi-step agent architectures, overhead compounds with each LLM call',
+  'Need enterprise governance, budget management, access control, and audit trails',
+  'Want integrated observability, Maxim platform provides unmatched visibility',
+  'Experiencing reliability issues, timeout spikes, memory issues, or unpredictable latency',
+  'Need better cost control, semantic caching and adaptive load balancing',
 ]
 
 function ComparisonCell({ value, hasCheck }: { value: string | null; hasCheck?: boolean }) {
@@ -334,7 +333,7 @@ export default function MigratingFromLiteLLMPage() {
               <span className="text-[var(--accent-text)]">to Bifrost</span>
             </h1>
             <p className="mx-auto mb-8 max-w-3xl text-sm leading-relaxed text-gray-500 md:text-base">
-              Get 50x faster performance with 40% less latency overhead and 9.5x faster throughput
+              Get 54x faster performance with 40% less latency overhead and 9.5x faster throughput at 500 RPS
               compared to Python-based gateways. Built in Go for teams that need 99.99% uptime and
               infrastructure that scales from prototype to millions of requests.
             </p>
@@ -398,7 +397,7 @@ export default function MigratingFromLiteLLMPage() {
             <p className="mb-4 font-mono text-xs tracking-widest text-gray-400 uppercase">
               [ WHY MIGRATE ]
             </p>
-            <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">Why migrate to Bifrost?</h2>
+            <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">Why Migrate to Bifrost?</h2>
             <p className="mx-auto max-w-3xl text-gray-600">
               While LiteLLM works well for prototyping, teams scaling to production need
               infrastructure that doesn&apos;t become a bottleneck.
@@ -426,7 +425,7 @@ export default function MigratingFromLiteLLMPage() {
             <p className="mb-4 font-mono text-xs tracking-widest text-gray-400 uppercase">
               [ PERFORMANCE BENCHMARKS ]
             </p>
-            <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">Performance comparison</h2>
+            <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">Performance Comparison</h2>
             <p className="mx-auto max-w-2xl text-gray-600">
               Tested on identical AWS t3.xlarge instances. Bifrost delivers consistent, predictable
               performance under load.
@@ -462,15 +461,15 @@ export default function MigratingFromLiteLLMPage() {
                 ))}
               </tbody>
             </table>
-          </div>
-          <div className="mt-6 border border-gray-200 bg-gray-50 p-4">
+            </div>
+            {/*<div className="mt-6 border border-gray-200 bg-gray-50 p-4">
             <p className="text-xs leading-relaxed text-gray-500">
               <span className="font-medium text-gray-700">For multi-step agent architectures:</span>{' '}
               Ten sequential LLM calls through Bifrost add ~110µs of gateway overhead. The same
               sequence through LiteLLM adds approximately 5ms, enough to noticeably impact real-time
               user experiences.
             </p>
-          </div>
+          </div>*/}
         </div>
       </section>
 
@@ -482,7 +481,7 @@ export default function MigratingFromLiteLLMPage() {
               [ FEATURE COMPARISON ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Feature-by-feature comparison
+              Feature-By-Feature Comparison
             </h2>
           </div>
           <div className="space-y-6">
@@ -534,7 +533,7 @@ export default function MigratingFromLiteLLMPage() {
             <p className="mb-4 font-mono text-xs tracking-widest text-gray-400 uppercase">
               [ MIGRATION STEPS ]
             </p>
-            <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">Migrate in three steps</h2>
+            <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">Migrate in Three Steps</h2>
             <p className="mx-auto max-w-2xl text-gray-600">
               The OpenAI-compatible API means most applications require zero code changes. Just
               update the base URL.
@@ -566,7 +565,7 @@ export default function MigratingFromLiteLLMPage() {
             <p className="mb-4 font-mono text-xs tracking-widest text-gray-400 uppercase">
               [ CODE COMPARISON ]
             </p>
-            <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">One line change</h2>
+            <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">One Line Change</h2>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
             <div>
@@ -624,7 +623,7 @@ response = client.chat.completions.create(
             <p className="mb-4 font-mono text-xs tracking-widest text-gray-400 uppercase">
               [ COMMON SCENARIOS ]
             </p>
-            <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">Common migration scenarios</h2>
+            <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">Common Migration Scenarios</h2>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
             <div className="border border-gray-200 bg-white p-6">
@@ -710,7 +709,7 @@ response = litellm.completion(
             <p className="mb-4 font-mono text-xs tracking-widest text-gray-400 uppercase">
               [ WHEN TO MIGRATE ]
             </p>
-            <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">You should migrate if</h2>
+            <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">You Should Migrate If</h2>
           </div>
           <div className="mx-auto max-w-3xl">
             <div className="border border-gray-200 bg-white">
@@ -730,7 +729,7 @@ response = litellm.completion(
       {/* CTA */}
       <section className="bg-white py-16 md:py-24">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">Ready to migrate?</h2>
+          <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">Ready to Migrate?</h2>
           <p className="mx-auto mb-8 max-w-2xl text-gray-600">
             Get started in under 15 minutes. Our team is here to help with any questions during your
             migration.
