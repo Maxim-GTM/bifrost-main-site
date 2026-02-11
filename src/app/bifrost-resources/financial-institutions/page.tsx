@@ -209,8 +209,12 @@ export default function FinancialInstitutionsPage() {
             {challenges.map((item) => (
               <div
                 key={item.title}
-                className="border border-gray-200 bg-white p-6 transition-all hover:border-[var(--accent-border)] hover:shadow-sm"
+                className="relative border border-gray-200 bg-white p-6 transition-all hover:border-[var(--accent-border)] hover:shadow-sm"
               >
+                <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+                <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
                 <item.icon className="mb-4 h-6 w-6 text-[var(--accent)]" />
                 <h3 className="mb-2 text-gray-900">{item.title}</h3>
                 <p className="text-sm leading-relaxed text-gray-600">{item.description}</p>
@@ -237,7 +241,11 @@ export default function FinancialInstitutionsPage() {
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {governance.map((item) => (
-              <div key={item.title} className="border border-gray-200 bg-white p-6">
+              <div key={item.title} className="relative border border-gray-200 bg-white p-6">
+                <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+                <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
                 <item.icon className="mb-4 h-6 w-6 text-[var(--accent)]" />
                 <h3 className="mb-2 text-sm text-gray-900">{item.title}</h3>
                 <p className="text-xs leading-relaxed text-gray-600">{item.description}</p>
@@ -266,8 +274,12 @@ export default function FinancialInstitutionsPage() {
             {platformCapabilities.map((item) => (
               <div
                 key={item.title}
-                className="border border-gray-200 bg-white p-6 transition-all hover:border-[var(--accent-border)] hover:shadow-sm"
+                className="relative border border-gray-200 bg-white p-6 transition-all hover:border-[var(--accent-border)] hover:shadow-sm"
               >
+                <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+                <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
                 <item.icon className="mb-4 h-6 w-6 text-[var(--accent)]" />
                 <h3 className="mb-2 text-gray-900">{item.title}</h3>
                 <p className="text-sm leading-relaxed text-gray-600">{item.description}</p>
@@ -293,7 +305,11 @@ export default function FinancialInstitutionsPage() {
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {interfaceHighlights.map((shot) => (
-              <div key={shot.title} className="border border-gray-200 bg-white">
+              <div key={shot.title} className="relative border border-gray-200 bg-white">
+                <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40 z-10" />
+                <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40 z-10" />
+                <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40 z-10" />
+                <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40 z-10" />
                 <div className="relative aspect-[16/9] overflow-hidden bg-gray-50">
                   <Image
                     src={shot.src}
@@ -329,8 +345,12 @@ export default function FinancialInstitutionsPage() {
             {useCases.map((item) => (
               <div
                 key={item.title}
-                className="border border-gray-200 bg-white p-6 transition-all hover:border-[var(--accent-border)] hover:shadow-sm"
+                className="relative border border-gray-200 bg-white p-6 transition-all hover:border-[var(--accent-border)] hover:shadow-sm"
               >
+                <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+                <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
                 <h3 className="mb-2 text-gray-900">{item.title}</h3>
                 <p className="text-sm leading-relaxed text-gray-600">{item.description}</p>
               </div>

@@ -322,7 +322,7 @@ export default function MCPGatewayPage() {
       </section>
 
       {/* Metrics */}
-      <section className="bg-white py-10">
+      <section className="py-10">
         <div className="w-full">
           <p className="mb-4 text-center font-mono text-[10px] tracking-widest text-gray-400 uppercase">
             [ PERFORMANCE AT A GLANCE ]
@@ -370,7 +370,11 @@ export default function MCPGatewayPage() {
           </div>
           <div className="grid gap-6 md:grid-cols-2">
             {architectureFeatures.map((arch) => (
-              <div key={arch.role} className="border border-gray-200 bg-white p-6 md:p-8">
+              <div key={arch.role} className="relative border border-gray-200 bg-white p-6 md:p-8">
+                <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+                <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
                 <div className="mb-4 flex items-center gap-3">
                   <div className="flex h-10 w-10 items-center justify-center bg-[var(--accent)]/10 text-[var(--accent-text)]">
                     {arch.role === 'MCP Client' ? (
@@ -394,7 +398,11 @@ export default function MCPGatewayPage() {
             ))}
           </div>
           {/* Architecture Flow */}
-          <div className="mt-8 border border-gray-200 bg-white p-6">
+          <div className="relative mt-8 border border-gray-200 bg-white p-6">
+            <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+            <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+            <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+            <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
             <div className="flex flex-col items-center justify-between gap-6 md:flex-row md:gap-4">
               <div className="flex items-center gap-3 text-center md:text-left">
                 <div className="flex h-10 w-10 items-center justify-center border border-blue-200 bg-blue-50 text-blue-600">
@@ -449,8 +457,12 @@ export default function MCPGatewayPage() {
             {coreCapabilities.map((item) => (
               <div
                 key={item.title}
-                className="border border-gray-200 bg-white p-6 transition-all hover:border-[var(--accent-border)] hover:shadow-sm"
+                className="relative border border-gray-200 bg-white p-6 transition-all hover:border-[var(--accent-border)] hover:shadow-sm"
               >
+                <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+                <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
                 <item.icon className="mb-4 h-6 w-6 text-[var(--accent)]" />
                 <h3 className="mb-2 text-gray-900">{item.title}</h3>
                 <p className="mb-4 text-sm leading-relaxed text-gray-600">{item.description}</p>
@@ -480,15 +492,27 @@ export default function MCPGatewayPage() {
           </div>
           <SetupSteps steps={setupSteps} />
           <div className="mt-8 grid gap-4 md:grid-cols-3">
-            <div className="border border-gray-200 bg-white p-4 text-sm text-gray-700">
+            <div className="relative border border-gray-200 bg-white p-4 text-sm text-gray-700">
+              <div className="absolute top-2 left-2 h-1.5 w-1.5 border-t border-l border-[var(--accent)] opacity-40" />
+              <div className="absolute top-2 right-2 h-1.5 w-1.5 border-t border-r border-[var(--accent)] opacity-40" />
+              <div className="absolute bottom-2 left-2 h-1.5 w-1.5 border-b border-l border-[var(--accent)] opacity-40" />
+              <div className="absolute right-2 bottom-2 h-1.5 w-1.5 border-r border-b border-[var(--accent)] opacity-40" />
               <strong className="text-gray-900">No automatic execution:</strong> Tool calls from
               LLMs are suggestions, your app decides what runs.
             </div>
-            <div className="border border-gray-200 bg-white p-4 text-sm text-gray-700">
+            <div className="relative border border-gray-200 bg-white p-4 text-sm text-gray-700">
+              <div className="absolute top-2 left-2 h-1.5 w-1.5 border-t border-l border-[var(--accent)] opacity-40" />
+              <div className="absolute top-2 right-2 h-1.5 w-1.5 border-t border-r border-[var(--accent)] opacity-40" />
+              <div className="absolute bottom-2 left-2 h-1.5 w-1.5 border-b border-l border-[var(--accent)] opacity-40" />
+              <div className="absolute right-2 bottom-2 h-1.5 w-1.5 border-r border-b border-[var(--accent)] opacity-40" />
               <strong className="text-gray-900">Full audit trail:</strong> Every tool suggestion,
               approval, and execution is logged with metadata.
             </div>
-            <div className="border border-gray-200 bg-white p-4 text-sm text-gray-700">
+            <div className="relative border border-gray-200 bg-white p-4 text-sm text-gray-700">
+              <div className="absolute top-2 left-2 h-1.5 w-1.5 border-t border-l border-[var(--accent)] opacity-40" />
+              <div className="absolute top-2 right-2 h-1.5 w-1.5 border-t border-r border-[var(--accent)] opacity-40" />
+              <div className="absolute bottom-2 left-2 h-1.5 w-1.5 border-b border-l border-[var(--accent)] opacity-40" />
+              <div className="absolute right-2 bottom-2 h-1.5 w-1.5 border-r border-b border-[var(--accent)] opacity-40" />
               <strong className="text-gray-900">Stateless design:</strong> Each API call is
               independent, your app controls conversation state entirely.
             </div>
@@ -607,7 +631,11 @@ export default function MCPGatewayPage() {
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {securityPrinciples.map((item) => (
-              <div key={item.principle} className="border border-gray-200 bg-white p-6">
+              <div key={item.principle} className="relative border border-gray-200 bg-white p-6">
+                <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+                <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
                 <item.icon className="mb-4 h-6 w-6 text-[var(--accent)]" />
                 <h3 className="mb-2 text-gray-900">{item.principle}</h3>
                 <p className="text-sm text-gray-600">{item.description}</p>
@@ -684,8 +712,12 @@ export default function MCPGatewayPage() {
             {connectionTypes.map((item) => (
               <div
                 key={item.title}
-                className="border border-gray-200 bg-white p-6 transition-all hover:border-[var(--accent-border)] hover:shadow-sm"
+                className="relative border border-gray-200 bg-white p-6 transition-all hover:border-[var(--accent-border)] hover:shadow-sm"
               >
+                <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+                <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
                 <div className="mb-4 flex items-center gap-3">
                   <div className="flex h-10 w-10 items-center justify-center bg-[var(--accent)]/10 text-[var(--accent-text)]">
                     <item.icon className="h-5 w-5" />
@@ -722,8 +754,12 @@ export default function MCPGatewayPage() {
             {useCases.map((item) => (
               <div
                 key={item.title}
-                className="border border-gray-200 bg-white p-6 transition-all hover:border-[var(--accent-border)] hover:shadow-sm"
+                className="relative border border-gray-200 bg-white p-6 transition-all hover:border-[var(--accent-border)] hover:shadow-sm"
               >
+                <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+                <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
                 <item.icon className="mb-4 h-6 w-6 text-[var(--accent)]" />
                 <h3 className="mb-2 text-gray-900">{item.title}</h3>
                 <p className="text-sm leading-relaxed text-gray-600">{item.description}</p>
@@ -758,8 +794,12 @@ export default function MCPGatewayPage() {
             ].map((item) => (
               <div
                 key={item}
-                className="flex items-start gap-3 border border-gray-200 bg-white p-4"
+                className="relative flex items-start gap-3 border border-gray-200 bg-white p-4"
               >
+                <div className="absolute top-2 left-2 h-1.5 w-1.5 border-t border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute top-2 right-2 h-1.5 w-1.5 border-t border-r border-[var(--accent)] opacity-40" />
+                <div className="absolute bottom-2 left-2 h-1.5 w-1.5 border-b border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute right-2 bottom-2 h-1.5 w-1.5 border-r border-b border-[var(--accent)] opacity-40" />
                 <BadgeCheck className="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--accent-text)]" />
                 <p className="text-sm text-gray-700">{item}</p>
               </div>

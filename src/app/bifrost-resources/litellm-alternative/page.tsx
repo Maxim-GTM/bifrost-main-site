@@ -454,7 +454,7 @@ export default function LiteLLMAlternativePage() {
       </section>
 
       {/* Metrics */}
-      <section className="bg-white py-10">
+      <section className="py-10">
         <div className="w-full">
           <p className="mb-4 text-center font-mono text-[10px] tracking-widest text-gray-400 uppercase">
             [ PERFORMANCE AT A GLANCE ]
@@ -542,7 +542,11 @@ export default function LiteLLMAlternativePage() {
           </div>
           <div className="mb-8 grid gap-6 md:grid-cols-2">
             {benchmarkBifrost.map((bench) => (
-              <div key={bench.instance} className="border border-gray-200 bg-white p-6">
+              <div key={bench.instance} className="relative border border-gray-200 bg-white p-6">
+                <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+                <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
                 <div className="mb-4 flex items-center gap-3">
                   <div className="flex h-10 w-10 items-center justify-center bg-[var(--accent)]/10 text-[var(--accent-text)]">
                     <Cpu className="h-5 w-5" />
@@ -593,7 +597,11 @@ export default function LiteLLMAlternativePage() {
               </p>
               <div className="space-y-4">
                 {pythonChallenges.map((item) => (
-                  <div key={item.title} className="border border-gray-200 bg-white p-5">
+                  <div key={item.title} className="relative border border-gray-200 bg-white p-5">
+                    <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-gray-300 opacity-40" />
+                    <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-gray-300 opacity-40" />
+                    <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-gray-300 opacity-40" />
+                    <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-gray-300 opacity-40" />
                     <div className="mb-2 flex items-center gap-3">
                       <item.icon className="h-4 w-4 text-gray-400" />
                       <h4 className="text-sm font-medium text-gray-900">{item.title}</h4>
@@ -610,7 +618,11 @@ export default function LiteLLMAlternativePage() {
               </p>
               <div className="space-y-4">
                 {goAdvantages.map((item) => (
-                  <div key={item.title} className="border border-gray-200 bg-white p-5">
+                  <div key={item.title} className="relative border border-gray-200 bg-white p-5">
+                    <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+                    <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+                    <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+                    <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
                     <div className="mb-2 flex items-center gap-3">
                       <item.icon className="h-4 w-4 text-[var(--accent-text)]" />
                       <h4 className="text-sm font-medium text-gray-900">{item.title}</h4>
@@ -749,8 +761,12 @@ export default function LiteLLMAlternativePage() {
             ].map((item) => (
               <div
                 key={item.title}
-                className="border border-gray-200 bg-white p-6 transition-all hover:border-[var(--accent-border)] hover:shadow-sm"
+                className="relative border border-gray-200 bg-white p-6 transition-all hover:border-[var(--accent-border)] hover:shadow-sm"
               >
+                <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+                <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
                 <item.icon className="mb-4 h-6 w-6 text-[var(--accent)]" />
                 <h3 className="mb-2 text-gray-900">{item.title}</h3>
                 <p className="mb-4 text-sm leading-relaxed text-gray-600">{item.description}</p>
@@ -804,7 +820,11 @@ export default function LiteLLMAlternativePage() {
                 ))}
               </ul>
             </div>
-            <div className="border border-gray-200 bg-white">
+            <div className="relative border border-gray-200 bg-white">
+              <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-gray-300 opacity-40" />
+              <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-gray-300 opacity-40" />
+              <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-gray-300 opacity-40" />
+              <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-gray-300 opacity-40" />
               <div className="border-b border-gray-200 bg-gray-50 px-6 py-4">
                 <h3 className="text-sm font-medium tracking-wider text-gray-600 uppercase">
                   LiteLLM might be better when
@@ -904,8 +924,12 @@ export default function LiteLLMAlternativePage() {
                 {...(link.href.startsWith('http')
                   ? { target: '_blank', rel: 'noopener noreferrer' }
                   : {})}
-                className="flex items-center justify-center gap-2 border border-gray-200 bg-white p-4 text-sm text-gray-700 transition-all hover:border-[var(--accent-border)] hover:text-[var(--accent-text)]"
+                className="relative flex items-center justify-center gap-2 border border-gray-200 bg-white p-4 text-sm text-gray-700 transition-all hover:border-[var(--accent-border)] hover:text-[var(--accent-text)]"
               >
+                <div className="absolute top-2 left-2 h-1.5 w-1.5 border-t border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute top-2 right-2 h-1.5 w-1.5 border-t border-r border-[var(--accent)] opacity-40" />
+                <div className="absolute bottom-2 left-2 h-1.5 w-1.5 border-b border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute right-2 bottom-2 h-1.5 w-1.5 border-r border-b border-[var(--accent)] opacity-40" />
                 {link.label}
                 {link.href.startsWith('http') && <ExternalLink className="h-3 w-3" />}
               </a>
