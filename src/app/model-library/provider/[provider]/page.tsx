@@ -201,84 +201,96 @@ export default async function ProviderPage({ params, searchParams }: PageProps) 
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="relative flex min-h-screen w-full justify-center">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        {/* Breadcrumbs */}
-        <Breadcrumbs
-          items={[
-            { label: 'Home', href: `${basePath}` },
-            { label: formatProviderName(decodedProvider) },
-          ]}
-        />
+      <div className="hidden w-20 flex-none flex-col items-end gap-4 border-r border-black/10 xl:flex">
+        <div
+          className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
+            backgroundSize: '4px 4px',
+          }}
+        ></div>
+      </div>
 
-        {/* Header */}
-        <div className="mb-8">
-          {/* <div className="mb-4">
+      <div className="w-full max-w-[1100px] px-4 pb-16">
+        <div className="absolute right-0 left-0 h-px w-full bg-black/10" />
+        <div className="pt-8">
+          {/* Breadcrumbs */}
+          <Breadcrumbs
+            items={[
+              { label: 'Home', href: `${basePath}` },
+              { label: formatProviderName(decodedProvider) },
+            ]}
+          />
+
+          {/* Header */}
+          <div className="mb-8">
+            {/* <div className="mb-4">
             <span className="provider-badge">
               Provider
             </span>
           </div> */}
-          <h1 className="mb-4 flex items-center gap-3 text-3xl font-[400] text-gray-900 md:text-4xl">
-            <img
-              src={getProviderLogo(decodedProvider)}
-              alt={`${formatProviderName(decodedProvider)} logo`}
-              className="h-8 w-8 object-contain"
-              loading="lazy"
-            />
-            {formatProviderName(decodedProvider)} Models
-          </h1>
-          <p className="text-lg text-gray-600">
-            Browse all {totalModels} AI models from {formatProviderName(decodedProvider)}
-            {modeFilter && ` (${statsModels.length} filtered)`}
-          </p>
-        </div>
+            <h1 className="mb-4 flex items-center gap-3 text-3xl font-[400] text-gray-900 md:text-4xl">
+              <img
+                src={getProviderLogo(decodedProvider)}
+                alt={`${formatProviderName(decodedProvider)} logo`}
+                className="h-8 w-8 object-contain"
+                loading="lazy"
+              />
+              {formatProviderName(decodedProvider)} Models
+            </h1>
+            <p className="text-lg text-gray-600">
+              Browse all {totalModels} AI models from {formatProviderName(decodedProvider)}
+              {modeFilter && ` (${statsModels.length} filtered)`}
+            </p>
+          </div>
 
-        {/* Stats */}
-        <div className="mb-12">
-          <div className="w-full border-t border-b border-gray-200">
-            <div className="grid grid-cols-1 divide-y divide-gray-200 md:grid-cols-4 md:divide-x md:divide-y-0">
-              <div className="px-6 py-4 text-center md:py-5">
-                <div className="font-mono text-sm font-medium tracking-wider text-gray-500 uppercase">
-                  Total Models {modeFilter ? '(Filtered)' : ''}
+          {/* Stats */}
+          <div className="mb-12">
+            <div className="w-full border-t border-b border-gray-200">
+              <div className="grid grid-cols-1 divide-y divide-gray-200 md:grid-cols-4 md:divide-x md:divide-y-0">
+                <div className="px-6 py-4 text-center md:py-5">
+                  <div className="font-mono text-sm font-medium tracking-wider text-gray-500 uppercase">
+                    Total Models {modeFilter ? '(Filtered)' : ''}
+                  </div>
+                  <div className="text-accent mb-1 font-mono text-xl leading-none md:text-2xl">
+                    {statsModels.length.toLocaleString()}
+                  </div>
                 </div>
-                <div className="text-accent mb-1 font-mono text-xl leading-none md:text-2xl">
-                  {statsModels.length.toLocaleString()}
+                <div className="px-6 py-4 text-center md:py-5">
+                  <div className="font-mono text-sm font-medium tracking-wider text-gray-500 uppercase">
+                    Modes
+                  </div>
+                  <div className="text-accent mb-1 font-mono text-xl leading-none md:text-2xl">
+                    {modes.length}
+                  </div>
                 </div>
-              </div>
-              <div className="px-6 py-4 text-center md:py-5">
-                <div className="font-mono text-sm font-medium tracking-wider text-gray-500 uppercase">
-                  Modes
+                <div className="px-6 py-4 text-center md:py-5">
+                  <div className="font-mono text-sm font-medium tracking-wider text-gray-500 uppercase">
+                    Avg Input (1M Tokens)
+                  </div>
+                  <div className="text-accent mb-1 font-mono text-xl leading-none md:text-2xl">
+                    {avgInputCost > 0 ? `$${(avgInputCost * 1000000).toFixed(2)}` : '—'}
+                  </div>
                 </div>
-                <div className="text-accent mb-1 font-mono text-xl leading-none md:text-2xl">
-                  {modes.length}
-                </div>
-              </div>
-              <div className="px-6 py-4 text-center md:py-5">
-                <div className="font-mono text-sm font-medium tracking-wider text-gray-500 uppercase">
-                  Avg Input (1M Tokens)
-                </div>
-                <div className="text-accent mb-1 font-mono text-xl leading-none md:text-2xl">
-                  {avgInputCost > 0 ? `$${(avgInputCost * 1000000).toFixed(2)}` : '—'}
-                </div>
-              </div>
-              <div className="px-6 py-4 text-center md:py-5">
-                <div className="font-mono text-sm font-medium tracking-wider text-gray-500 uppercase">
-                  Avg Output (1M Tokens)
-                </div>
-                <div className="text-accent mb-1 font-mono text-xl leading-none md:text-2xl">
-                  {avgOutputCost > 0 ? `$${(avgOutputCost * 1000000).toFixed(2)}` : '—'}
+                <div className="px-6 py-4 text-center md:py-5">
+                  <div className="font-mono text-sm font-medium tracking-wider text-gray-500 uppercase">
+                    Avg Output (1M Tokens)
+                  </div>
+                  <div className="text-accent mb-1 font-mono text-xl leading-none md:text-2xl">
+                    {avgOutputCost > 0 ? `$${(avgOutputCost * 1000000).toFixed(2)}` : '—'}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Models by Mode */}
-        {/* <div className="mb-12">
+          {/* Models by Mode */}
+          {/* <div className="mb-12">
           <h2 className="text-xl font-medium text-gray-900 mb-6">Models by Mode</h2>
           <div className="provider-list-tags">
             {Object.entries(modelsByMode).map(([mode, modeModels]) => (
@@ -293,47 +305,58 @@ export default async function ProviderPage({ params, searchParams }: PageProps) 
           </div>
         </div> */}
 
-        {/* Models Table */}
-        <div className="mb-8">
-          <h2 className="mb-2 text-xl font-medium text-gray-900">
-            {modeFilter
-              ? `${decodeURIComponent(modeFilter).charAt(0).toUpperCase() + decodeURIComponent(modeFilter).slice(1).replace(/_/g, ' ')} Models`
-              : `All ${formatProviderName(decodedProvider)} Models`}
-          </h2>
-          <p className="text-sm text-gray-600">
-            {modeFilter
-              ? `Showing ${statsModels.length} ${decodeURIComponent(modeFilter)} models (and ${totalModels - statsModels.length} others)`
-              : `Click on any model to view details`}
-            {modeFilter && (
-              <a
-                href={`${basePath}/provider/${encodeURIComponent(decodedProvider)}`}
-                className="text-accent ml-2 hover:underline"
-              >
-                (Clear filter)
-              </a>
-            )}
-          </p>
-        </div>
-        <ModelsTable
-          models={pagedModels}
-          hideProviderFilter={true}
-          totalModels={totalModels}
-          searchScope="all"
-          searchProvider={decodedProvider}
-          serverPaginationContainerId="provider-pagination"
-          highlightMode={highlightMode}
-        />
-        {totalModels > PAGE_SIZE && (
-          <div id="provider-pagination">
-            <Pagination
-              basePath={`${basePath}/provider/${encodeURIComponent(decodedProvider)}`}
-              currentPage={currentPage}
-              totalItems={totalModels}
-              pageSize={PAGE_SIZE}
-              query={{ mode: modeFilter }}
-            />
+          {/* Models Table */}
+          <div className="mb-8">
+            <h2 className="mb-2 text-xl font-medium text-gray-900">
+              {modeFilter
+                ? `${decodeURIComponent(modeFilter).charAt(0).toUpperCase() + decodeURIComponent(modeFilter).slice(1).replace(/_/g, ' ')} Models`
+                : `All ${formatProviderName(decodedProvider)} Models`}
+            </h2>
+            <p className="text-sm text-gray-600">
+              {modeFilter
+                ? `Showing ${statsModels.length} ${decodeURIComponent(modeFilter)} models (and ${totalModels - statsModels.length} others)`
+                : `Click on any model to view details`}
+              {modeFilter && (
+                <a
+                  href={`${basePath}/provider/${encodeURIComponent(decodedProvider)}`}
+                  className="text-accent ml-2 hover:underline"
+                >
+                  (Clear filter)
+                </a>
+              )}
+            </p>
           </div>
-        )}
+          <ModelsTable
+            models={pagedModels}
+            hideProviderFilter={true}
+            totalModels={totalModels}
+            searchScope="all"
+            searchProvider={decodedProvider}
+            serverPaginationContainerId="provider-pagination"
+            highlightMode={highlightMode}
+          />
+          {totalModels > PAGE_SIZE && (
+            <div id="provider-pagination">
+              <Pagination
+                basePath={`${basePath}/provider/${encodeURIComponent(decodedProvider)}`}
+                currentPage={currentPage}
+                totalItems={totalModels}
+                pageSize={PAGE_SIZE}
+                query={{ mode: modeFilter }}
+              />
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div className="hidden w-20 flex-none flex-col items-start gap-4 border-l border-black/10 xl:flex">
+        <div
+          className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
+            backgroundSize: '4px 4px',
+          }}
+        ></div>
       </div>
     </div>
   )

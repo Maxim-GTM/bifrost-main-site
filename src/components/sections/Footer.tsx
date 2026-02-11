@@ -185,129 +185,185 @@ function BifrostLogo({ className = '' }: { className?: string }) {
 
 export function Footer() {
   return (
-    <footer className="bg-[#f9f9f9]">
-      {/* CTA Section */}
-      <div className="mx-auto max-w-[1100px] px-4 pt-8 sm:px-6 lg:px-8">
-        <div className="relative border border-gray-200 bg-white px-6 py-12">
-          {/* Corner accents */}
-          {/* <div className="absolute -top-0.5 -left-0.5 h-2 w-2 border-t border-l border-gray-300" />
-          <div className="absolute -top-0.5 -right-0.5 h-2 w-2 border-t border-r border-gray-300" />
-          <div className="absolute -bottom-0.5 -left-0.5 h-2 w-2 border-b border-l border-gray-300" />
-          <div className="absolute -right-0.5 -bottom-0.5 h-2 w-2 border-r border-b border-gray-300" /> */}
+    <div className="flex w-full flex-col justify-center border-t border-black/10">
+      <div className="flex w-full justify-center bg-[#f9f9f9]">
+        {/* Left Side Decoration - Box Style */}
+        <div className="hidden w-20 flex-none flex-col items-end gap-4 border-r border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
+              backgroundSize: '4px 4px',
+            }}
+          ></div>
+        </div>
 
-          <div className="flex flex-col items-center text-center">
-            {/* Headline */}
-            <h2 className="mb-2 text-2xl font-medium text-gray-900 sm:text-3xl md:text-4xl">
-              Ready to build reliable AI applications?
-            </h2>
+        <div className="h-20 w-full max-w-[1100px]"></div>
 
-            {/* Subtitle */}
-            <p className="mb-8 max-w-lg text-gray-500">
-              Join developers who trust Bifrost for their AI infrastructure
-            </p>
-
-            {/* CTA Button */}
-            <Button asChild variant="primary">
-              <Link
-                href="https://calendly.com/maximai/bifrost-demo"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Book a Demo
-              </Link>
-            </Button>
-          </div>
+        {/* Right Side Decoration */}
+        <div className="hidden w-20 flex-none flex-col items-start gap-4 border-l border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
+              backgroundSize: '4px 4px',
+            }}
+          ></div>
         </div>
       </div>
 
-      <div className="mx-auto max-w-[1100px] bg-gray-50 px-4 font-sans text-gray-600 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl border-x border-b border-gray-200 px-8 py-8">
-          {/* Layout Wrapper: Flex Col on Mobile, Flex Row on Desktop */}
-          <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between lg:gap-8">
-            {/* LEFT SECTION: Branding, Copyright, Compliance */}
-            <div className="space-y-4">
-              {/* Logo Area */}
-              <div className="flex items-center gap-2">
-                <Link href="https://getbifrost.ai">
-                  <BifrostLogo className="h-6 w-auto -translate-x-2" />
-                </Link>
-              </div>
+      <footer className="flex w-full justify-center bg-[#f9f9f9]">
+        <div className="flex-1 border-t border-black/10"></div>
 
-              {/* Copyright */}
-              <p className="text-sm text-gray-500">
-                © 2025 H3 Labs Inc. Open source under Apache 2.0 License.
+        {/* Left Side Decoration - Box Style */}
+        <div className="hidden w-20 flex-none flex-col items-end gap-4 border-r border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
+              backgroundSize: '4px 4px',
+            }}
+          ></div>
+        </div>
+
+        <div className="w-full max-w-[1100px] border-t border-black/10 p-4 sm:px-16 sm:pt-8 md:px-24 md:pt-16">
+          {/* CTA Section */}
+          <div className="mx-auto">
+            <div className="relative border border-gray-200 bg-white px-6 py-12">
+              <div className="absolute top-1 left-1 size-1.5 rounded-md border border-black/10"></div>
+              <div className="absolute top-1 right-1 size-1.5 rounded-md border border-black/10"></div>
+              <div className="absolute top-[50%] right-1 size-1.5 rounded-md border border-black/10"></div>
+              <div className="absolute bottom-1 left-1 size-1.5 rounded-md border border-black/10"></div>
+              <div className="absolute bottom-[50%] left-1 size-1.5 rounded-md border border-black/10"></div>
+              <div className="absolute right-1 bottom-1 size-1.5 rounded-md border border-black/10"></div>
+              <div className="flex flex-col items-center text-center">
+                {/* Headline */}
+                <h2 className="mb-2 text-xl font-medium text-gray-900 md:text-2xl">
+                  Ready to build reliable AI applications?
+                </h2>
+
+                {/* Subtitle */}
+                <p className="mb-8 max-w-lg text-gray-500">
+                  Join developers who trust Bifrost for their AI infrastructure
+                </p>
+
+                {/* CTA Button */}
+                <Button asChild variant="primary">
+                  <Link
+                    href="https://calendly.com/maximai/bifrost-demo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Book a Demo
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+
+          <div className="mx-auto bg-gray-50 font-sans text-gray-600">
+            <div className="mx-auto max-w-7xl border-x border-b border-gray-200 px-8 py-8">
+              {/* Layout Wrapper: Flex Col on Mobile, Flex Row on Desktop */}
+              <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between lg:gap-8">
+                {/* LEFT SECTION: Branding, Copyright, Compliance */}
+                <div className="w-fit flex-1 space-y-4">
+                  {/* Logo Area */}
+                  <div className="flex items-center gap-2">
+                    <Link href="https://getbifrost.ai">
+                      <BifrostLogo className="h-6 w-auto -translate-x-2" />
+                    </Link>
+                  </div>
+
+                  {/* Copyright */}
+                  <p className="text-sm text-gray-500">
+                    © 2025 H3 Labs Inc. Open source under Apache 2.0 License.
+                  </p>
+
+                  <div className="flex flex-wrap gap-2">
+                    <img src="/soc.png" alt="AICPA SOC" className="h-12 w-auto object-contain" />
+                    <img src="/gdpr.png" alt="GDPR" className="h-12 w-auto object-contain" />
+                    <img src="/iso.png" alt="ISO" className="h-12 w-auto object-contain" />
+                    <img src="/hipaa.png" alt="HIPAA" className="h-12 w-auto object-contain" />
+                  </div>
+                </div>
+
+                <div className="grid w-fit flex-2 grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-2">
+                  {links.map((link, i) => (
+                    <div key={`footer-link-${i}`} className="space-y-2">
+                      <h3 className="text-xs font-medium tracking-wide text-[var(--primary)] uppercase">
+                        [ {link.name} ]
+                      </h3>
+                      <ul className="space-y-1 font-mono text-gray-500">
+                        {link.links.map((l) => (
+                          <li key={l.name}>
+                            <Link href={l.link} className="text-xs transition-colors">
+                              {l.name}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Section - Full Width */}
+          <div className="order-gray-200 mx-auto">
+            <div className="flex flex-col items-center justify-between gap-4 border-x border-gray-200 px-4 py-2 sm:flex-row sm:px-6 lg:px-8">
+              {/* Made with love */}
+              <p className="text-[12px] tracking-wide text-gray-400 uppercase">
+                Made with lots of ❤️ by{' '}
+                <Link
+                  href="https://www.getmaxim.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#33C19E] underline transition-all hover:no-underline"
+                >
+                  Maxim Team
+                </Link>
               </p>
 
-              <div className="flex flex-wrap gap-2">
-                <img src="/soc.png" alt="AICPA SOC" className="h-12 w-auto object-contain" />
-                <img src="/gdpr.png" alt="GDPR" className="h-12 w-auto object-contain" />
-                <img src="/iso.png" alt="ISO" className="h-12 w-auto object-contain" />
-                <img src="/hipaa.png" alt="HIPAA" className="h-12 w-auto object-contain" />
+              {/* Badges */}
+              <div className="flex items-center gap-2">
+                {/* Product Hunt Badge */}
+                <Link
+                  href="https://www.producthunt.com/products/maxim-ai?embed=true&utm_source=badge-top-post-badge&utm_medium=badge&utm_source=badge-bifrost-2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex w-40 items-center justify-center gap-2 border border-gray-200 bg-white px-3 py-2 transition-all"
+                >
+                  <img src="/producthunt.png" alt="Product Hunt" className="h-6" />
+                </Link>
+
+                {/* Peerlist Badge */}
+                <Link
+                  href="https://peerlist.io/getmaximai/project/bifrost"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex w-40 items-center justify-center gap-2 border border-gray-200 bg-white px-3 py-2 transition-all"
+                >
+                  <img src="/peerlist.svg" alt="Peerlist" className="h-6" />
+                </Link>
               </div>
             </div>
-
-            <div className="grid w-fit grid-cols-2 gap-8 md:grid-cols-4">
-              {links.map((link, i) => (
-                <div key={`footer-link-${i}`} className="space-y-4">
-                  <h3 className="text-sm font-medium tracking-wide text-[var(--primary)] uppercase">
-                    [ {link.name} ]
-                  </h3>
-                  <ul className="space-y-3 font-mono text-gray-500">
-                    {link.links.map((l) => (
-                      <li key={l.name}>
-                        <Link href={l.link} className="text-sm transition-colors">
-                          {l.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
-      </div>
 
-      {/* Bottom Section - Full Width */}
-      <div className="mx-auto max-w-[1100px] border-gray-200 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center justify-between gap-4 border-x border-gray-200 px-4 py-4 sm:flex-row sm:px-6 lg:px-8">
-          {/* Made with love */}
-          <p className="text-[12px] tracking-wide text-gray-400 uppercase">
-            Made with lots of ❤️ by{' '}
-            <Link
-              href="https://www.getmaxim.ai"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#33C19E] underline transition-all hover:no-underline"
-            >
-              Maxim Team
-            </Link>
-          </p>
-
-          {/* Badges */}
-          <div className="flex items-center gap-2">
-            {/* Product Hunt Badge */}
-            <Link
-              href="https://www.producthunt.com/products/maxim-ai?embed=true&utm_source=badge-top-post-badge&utm_medium=badge&utm_source=badge-bifrost-2"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex w-40 items-center justify-center gap-2 border border-gray-200 bg-white px-3 py-2 transition-all"
-            >
-              <img src="/producthunt.png" alt="Product Hunt" className="h-6" />
-            </Link>
-
-            {/* Peerlist Badge */}
-            <Link
-              href="https://peerlist.io/getmaximai/project/bifrost"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex w-40 items-center justify-center gap-2 border border-gray-200 bg-white px-3 py-2 transition-all"
-            >
-              <img src="/peerlist.svg" alt="Peerlist" className="h-6" />
-            </Link>
-          </div>
+        {/* Right Side Decoration */}
+        <div className="hidden w-20 flex-none flex-col items-start gap-4 border-l border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
+              backgroundSize: '4px 4px',
+            }}
+          ></div>
         </div>
-      </div>
-    </footer>
+
+        <div className="flex-1 border-t border-black/10" />
+      </footer>
+    </div>
   )
 }
