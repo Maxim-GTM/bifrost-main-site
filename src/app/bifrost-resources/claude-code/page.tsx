@@ -335,7 +335,7 @@ export default function ClaudeCodePage() {
       </section>
 
       {/* Performance Stats */}
-      <section className="bg-white py-10">
+      <section className="py-10">
         <div className="w-full">
           <p className="mb-4 text-center font-mono text-[10px] tracking-widest text-gray-400 uppercase">
             [ PERFORMANCE AT A GLANCE ]
@@ -396,7 +396,11 @@ export default function ClaudeCodePage() {
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {painPoints.map((item) => (
-              <div key={item.problem} className="border border-gray-200 bg-white p-6">
+              <div key={item.problem} className="relative border border-gray-200 bg-white p-6">
+                <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-gray-300 opacity-40" />
+                <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-gray-300 opacity-40" />
+                <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-gray-300 opacity-40" />
+                <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-gray-300 opacity-40" />
                 <item.icon className="mb-4 h-6 w-6 text-gray-400" />
                 <h3 className="mb-2 text-sm font-medium text-gray-900">{item.problem}</h3>
                 <p className="text-xs leading-relaxed text-gray-600">{item.detail}</p>
@@ -472,7 +476,11 @@ export default function ClaudeCodePage() {
 
           {/* Two perspectives */}
           <div className="grid gap-6 md:grid-cols-2">
-            <div className="border border-gray-200 bg-white p-6">
+            <div className="relative border border-gray-200 bg-white p-6">
+              <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+              <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+              <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+              <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
               <div className="mb-4 flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center bg-[var(--accent)]/10 text-[var(--accent-text)]">
                   <Terminal className="h-5 w-5" />
@@ -497,7 +505,11 @@ export default function ClaudeCodePage() {
                 ))}
               </ul>
             </div>
-            <div className="border border-gray-200 bg-white p-6">
+            <div className="relative border border-gray-200 bg-white p-6">
+              <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+              <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+              <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+              <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
               <div className="mb-4 flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center bg-[var(--accent)]/10 text-[var(--accent-text)]">
                   <Server className="h-5 w-5" />
@@ -547,8 +559,12 @@ export default function ClaudeCodePage() {
             {coreFeatures.map((feature) => (
               <div
                 key={feature.title}
-                className="border border-gray-200 bg-white p-6 transition-all hover:border-[var(--accent-border)] hover:shadow-sm"
+                className="relative border border-gray-200 bg-white p-6 transition-all hover:border-[var(--accent-border)] hover:shadow-sm"
               >
+                <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+                <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
                 <feature.icon className="mb-4 h-6 w-6 text-[var(--accent)]" />
                 <h3 className="mb-2 text-gray-900">{feature.title}</h3>
                 <p className="mb-4 text-sm leading-relaxed text-gray-600">{feature.description}</p>
@@ -654,8 +670,12 @@ export default function ClaudeCodePage() {
             {enterpriseFeatures.map((feature) => (
               <div
                 key={feature.title}
-                className="border border-gray-200 bg-white p-4 transition-all hover:border-[var(--accent)] hover:shadow-sm"
+                className="relative border border-gray-200 bg-white p-4 transition-all hover:border-[var(--accent)] hover:shadow-sm"
               >
+                <div className="absolute top-2 left-2 h-1.5 w-1.5 border-t border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute top-2 right-2 h-1.5 w-1.5 border-t border-r border-[var(--accent)] opacity-40" />
+                <div className="absolute bottom-2 left-2 h-1.5 w-1.5 border-b border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute right-2 bottom-2 h-1.5 w-1.5 border-r border-b border-[var(--accent)] opacity-40" />
                 <feature.icon className="mb-3 h-5 w-5 text-[var(--accent)]" />
                 <h3 className="mb-1 text-sm text-gray-900">{feature.title}</h3>
                 <p className="text-xs leading-relaxed text-gray-500">{feature.description}</p>
@@ -682,7 +702,11 @@ export default function ClaudeCodePage() {
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
-            <div className="border border-gray-200 bg-white p-6">
+            <div className="relative border border-gray-200 bg-white p-6">
+              <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+              <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+              <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+              <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
               <div className="mb-4 flex h-10 w-10 items-center justify-center bg-[var(--accent)]/10 text-[var(--accent-text)]">
                 <RefreshCw className="h-5 w-5" />
               </div>
@@ -693,7 +717,11 @@ export default function ClaudeCodePage() {
                 Bifrost&apos;s dashboard.
               </p>
             </div>
-            <div className="border border-gray-200 bg-white p-6">
+            <div className="relative border border-gray-200 bg-white p-6">
+              <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+              <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+              <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+              <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
               <div className="mb-4 flex h-10 w-10 items-center justify-center bg-[var(--accent)]/10 text-[var(--accent-text)]">
                 <Cpu className="h-5 w-5" />
               </div>
@@ -704,7 +732,11 @@ export default function ClaudeCodePage() {
                 single gateway.
               </p>
             </div>
-            <div className="border border-gray-200 bg-white p-6">
+            <div className="relative border border-gray-200 bg-white p-6">
+              <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+              <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+              <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+              <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
               <div className="mb-4 flex h-10 w-10 items-center justify-center bg-[var(--accent)]/10 text-[var(--accent-text)]">
                 <Database className="h-5 w-5" />
               </div>
@@ -734,8 +766,12 @@ export default function ClaudeCodePage() {
             {useCases.map((useCase) => (
               <div
                 key={useCase.title}
-                className="border border-gray-200 bg-white p-6 transition-all hover:border-[var(--accent-border)] hover:shadow-sm"
+                className="relative border border-gray-200 bg-white p-6 transition-all hover:border-[var(--accent-border)] hover:shadow-sm"
               >
+                <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+                <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
                 <useCase.icon className="mb-4 h-6 w-6 text-[var(--accent)]" />
                 <h3 className="mb-2 text-gray-900">{useCase.title}</h3>
                 <p className="text-sm leading-relaxed text-gray-600">{useCase.description}</p>
@@ -762,7 +798,11 @@ export default function ClaudeCodePage() {
           </div>
           <div className="mb-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {governanceFeatures.map((feature) => (
-              <div key={feature.title} className="border border-gray-200 bg-white p-6">
+              <div key={feature.title} className="relative border border-gray-200 bg-white p-6">
+                <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+                <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
                 <feature.icon className="mb-4 h-6 w-6 text-[var(--accent)]" />
                 <h3 className="mb-2 text-sm text-gray-900">{feature.title}</h3>
                 <p className="text-xs leading-relaxed text-gray-600">{feature.description}</p>

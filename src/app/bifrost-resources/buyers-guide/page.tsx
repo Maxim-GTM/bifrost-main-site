@@ -346,8 +346,12 @@ export default function BuyersGuidePage() {
             {painPoints.map((point) => (
               <div
                 key={point.title}
-                className="rounded-lg border border-gray-200 bg-white p-6 transition-all hover:border-[var(--accent-border)] hover:shadow-sm"
+                className="relative rounded-lg border border-gray-200 bg-white p-6 transition-all hover:border-[var(--accent-border)] hover:shadow-sm"
               >
+                <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+                <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
                 <point.icon className="mb-4 h-8 w-8 text-[var(--accent)]" />
                 <h3 className="mb-2 text-gray-900">{point.title}</h3>
                 <p className="text-sm leading-relaxed text-gray-600">{point.description}</p>
@@ -374,8 +378,12 @@ export default function BuyersGuidePage() {
             {capabilities.map((cap) => (
               <div
                 key={cap.title}
-                className="group rounded-lg border border-gray-200 bg-white p-6 transition-all hover:border-[var(--accent)] hover:shadow-md"
+                className="group relative rounded-lg border border-gray-200 bg-white p-6 transition-all hover:border-[var(--accent)] hover:shadow-md"
               >
+                <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+                <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
                 <cap.icon className="mb-4 h-6 w-6 text-[var(--accent)]" />
                 <h3 className="mb-2 text-sm text-gray-900">{cap.title}</h3>
                 <p className="text-xs leading-relaxed text-gray-600">{cap.description}</p>
@@ -1047,8 +1055,12 @@ export default function BuyersGuidePage() {
             {integrations.map((integration) => (
               <div
                 key={integration.title}
-                className="rounded-lg border border-gray-200 bg-white p-6"
+                className="relative rounded-lg border border-gray-200 bg-white p-6"
               >
+                <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+                <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
                 <div className="mb-4 flex items-center gap-3">
                   <integration.icon className="h-5 w-5 text-[var(--accent)]" />
                   <h3 className="text-gray-900">{integration.title}</h3>

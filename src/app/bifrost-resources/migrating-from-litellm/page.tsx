@@ -360,7 +360,7 @@ export default function MigratingFromLiteLLMPage() {
       </section>
 
       {/* Metrics */}
-      <section className="bg-white py-10">
+      <section className="py-10">
         <div className="w-full">
           <p className="mb-4 text-center font-mono text-[10px] tracking-widest text-gray-400 uppercase">
             [ PERFORMANCE AT A GLANCE ]
@@ -407,8 +407,12 @@ export default function MigratingFromLiteLLMPage() {
             {whyMigrate.map((item) => (
               <div
                 key={item.title}
-                className="border border-gray-200 bg-white p-6 transition-all hover:border-[var(--accent-border)] hover:shadow-sm"
+                className="relative border border-gray-200 bg-white p-6 transition-all hover:border-[var(--accent-border)] hover:shadow-sm"
               >
+                <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+                <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
                 <item.icon className="mb-4 h-6 w-6 text-[var(--accent)]" />
                 <h3 className="mb-2 text-gray-900">{item.title}</h3>
                 <p className="text-sm leading-relaxed text-gray-600">{item.description}</p>
@@ -541,15 +545,27 @@ export default function MigratingFromLiteLLMPage() {
           </div>
           <SetupSteps steps={setupSteps} />
           <div className="mt-8 grid gap-4 md:grid-cols-3">
-            <div className="border border-gray-200 bg-white p-4 text-sm text-gray-700">
+            <div className="relative border border-gray-200 bg-white p-4 text-sm text-gray-700">
+              <div className="absolute top-2 left-2 h-1.5 w-1.5 border-t border-l border-[var(--accent)] opacity-40" />
+              <div className="absolute top-2 right-2 h-1.5 w-1.5 border-t border-r border-[var(--accent)] opacity-40" />
+              <div className="absolute bottom-2 left-2 h-1.5 w-1.5 border-b border-l border-[var(--accent)] opacity-40" />
+              <div className="absolute right-2 bottom-2 h-1.5 w-1.5 border-r border-b border-[var(--accent)] opacity-40" />
               <strong className="text-gray-900">Zero code changes:</strong> OpenAI-compatible API
               means your existing integrations work as-is.
             </div>
-            <div className="border border-gray-200 bg-white p-4 text-sm text-gray-700">
+            <div className="relative border border-gray-200 bg-white p-4 text-sm text-gray-700">
+              <div className="absolute top-2 left-2 h-1.5 w-1.5 border-t border-l border-[var(--accent)] opacity-40" />
+              <div className="absolute top-2 right-2 h-1.5 w-1.5 border-t border-r border-[var(--accent)] opacity-40" />
+              <div className="absolute bottom-2 left-2 h-1.5 w-1.5 border-b border-l border-[var(--accent)] opacity-40" />
+              <div className="absolute right-2 bottom-2 h-1.5 w-1.5 border-r border-b border-[var(--accent)] opacity-40" />
               <strong className="text-gray-900">LiteLLM SDK compatible:</strong> You can even point
               the LiteLLM Python SDK at Bifrost as a proxy.
             </div>
-            <div className="border border-gray-200 bg-white p-4 text-sm text-gray-700">
+            <div className="relative border border-gray-200 bg-white p-4 text-sm text-gray-700">
+              <div className="absolute top-2 left-2 h-1.5 w-1.5 border-t border-l border-[var(--accent)] opacity-40" />
+              <div className="absolute top-2 right-2 h-1.5 w-1.5 border-t border-r border-[var(--accent)] opacity-40" />
+              <div className="absolute bottom-2 left-2 h-1.5 w-1.5 border-b border-l border-[var(--accent)] opacity-40" />
+              <div className="absolute right-2 bottom-2 h-1.5 w-1.5 border-r border-b border-[var(--accent)] opacity-40" />
               <strong className="text-gray-900">Provider prefix routing:</strong> Use{' '}
               <code className="bg-gray-100 px-1 py-0.5 text-xs">openai/gpt-4o</code> format for
               explicit provider control.
@@ -626,7 +642,11 @@ response = client.chat.completions.create(
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">Common Migration Scenarios</h2>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
-            <div className="border border-gray-200 bg-white p-6">
+            <div className="relative border border-gray-200 bg-white p-6">
+              <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+              <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+              <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+              <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
               <h3 className="mb-2 text-gray-900">Migrating Virtual Keys</h3>
               <p className="mb-4 text-sm leading-relaxed text-gray-600">
                 LiteLLM virtual keys for team budgets map directly to Bifrost&apos;s equivalent
@@ -646,7 +666,11 @@ response = client.chat.completions.create(
                 </pre>
               </div>
             </div>
-            <div className="border border-gray-200 bg-white p-6">
+            <div className="relative border border-gray-200 bg-white p-6">
+              <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+              <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+              <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+              <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
               <h3 className="mb-2 text-gray-900">Migrating Custom Callbacks</h3>
               <p className="mb-4 text-sm leading-relaxed text-gray-600">
                 LiteLLM callbacks can be replaced with Bifrost plugins or webhooks.
@@ -664,7 +688,11 @@ response = client.chat.completions.create(
                 </pre>
               </div>
             </div>
-            <div className="border border-gray-200 bg-white p-6">
+            <div className="relative border border-gray-200 bg-white p-6">
+              <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+              <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+              <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+              <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
               <h3 className="mb-2 text-gray-900">Drop-in Replacement</h3>
               <p className="mb-4 text-sm leading-relaxed text-gray-600">
                 Use the standard OpenAI SDK pointed at Bifrost.
@@ -680,7 +708,11 @@ client = openai.OpenAI(
                 </pre>
               </div>
             </div>
-            <div className="border border-gray-200 bg-white p-6">
+            <div className="relative border border-gray-200 bg-white p-6">
+              <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+              <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+              <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+              <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
               <h3 className="mb-2 text-gray-900">LiteLLM SDK Compatibility</h3>
               <p className="mb-4 text-sm leading-relaxed text-gray-600">
                 Use the LiteLLM Python SDK with Bifrost as the proxy backend.
@@ -712,7 +744,11 @@ response = litellm.completion(
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">You Should Migrate If</h2>
           </div>
           <div className="mx-auto max-w-3xl">
-            <div className="border border-gray-200 bg-white">
+            <div className="relative border border-gray-200 bg-white">
+              <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+              <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+              <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+              <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
               <ul className="divide-y divide-gray-200">
                 {whenToMigrate.map((reason) => (
                   <li key={reason} className="flex items-start gap-3 px-6 py-4">

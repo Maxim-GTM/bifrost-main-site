@@ -1,6 +1,7 @@
-import { Zap, Server, Cpu, HardDrive, Clock, CheckCircle2, ExternalLink } from 'lucide-react'
+import { Zap, Server, HardDrive, Clock, CheckCircle2, ExternalLink } from 'lucide-react'
 import BenchmarkLive from '@/components/resources/BenchmarkLive'
 import BenchmarkMetrics from '@/components/resources/BenchmarkMetrics'
+import StressTestLive from '@/components/resources/StressTestLive'
 import DropInReplacement from '@/components/resources/DropInReplacement'
 import FeatureMatrix from '@/components/resources/FeatureMatrix'
 import {
@@ -35,27 +36,40 @@ export default function BenchmarksPage() {
               minimal latency. See the numbers that matter.
             </p>
 
-            {/* Quick Stats */}
-            <div className="flex justify-center">
-              <div className="w-full max-w-4xl border-t border-b border-gray-200">
-                <div className="grid grid-cols-2 divide-y divide-gray-200 md:grid-cols-4 md:divide-x md:divide-y-0">
-                  {highlights.map((item, index) => (
-                    <div key={index} className="px-4 py-5 text-center">
-                      <div className="mb-1 font-mono text-2xl leading-none font-semibold text-[var(--accent-text)] md:text-3xl">
-                        {item.metric}
-                      </div>
-                      <div className="mb-1 font-mono text-xs font-medium tracking-wider text-gray-500 uppercase">
-                        {item.label}
-                      </div>
-                      <div className="text-xs text-gray-400">{item.description}</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Quick Stats */}
+      <section className="py-10">
+        <div className="w-full">
+          <p className="mb-4 text-center font-mono text-[10px] tracking-widest text-gray-400 uppercase">
+            [ PERFORMANCE AT A GLANCE ]
+          </p>
+          <div className="border-y border-gray-200">
+            <div className="mx-auto max-w-7xl">
+              <div className="grid grid-cols-2 divide-y md:grid-cols-6 md:divide-y-0">
+                <div className="hidden border-r border-gray-200 md:col-span-1 md:block" />
+                {highlights.map((item) => (
+                  <div
+                    key={item.label}
+                    className="border-r border-gray-200 px-4 py-5 text-center last:border-r-0"
+                  >
+                    <div className="mb-1 font-mono text-xl leading-none text-[var(--accent-text)] md:text-2xl">
+                      {item.metric}
                     </div>
-                  ))}
-                </div>
+                    <div className="mb-1 font-mono text-[10px] font-medium tracking-wider text-gray-500 uppercase">
+                      {item.label}
+                    </div>
+                    <div className="text-[11px] text-gray-400">{item.description}</div>
+                  </div>
+                ))}
+                <div className="hidden border-gray-200 md:col-span-1 md:block" />
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Live Benchmark Section */}
       <div className="mx-auto mb-12 max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -65,15 +79,15 @@ export default function BenchmarksPage() {
           </p>
         </div>
         <BenchmarkLive />
-        <p className="mt-3 text-center font-mono text-xs text-gray-400">
-          Simulated data based on actual benchmark results. Adjust load intensity to see performance
-          under stress.
-        </p>
       </div>
 
       {/* Test Environment */}
       <div className="mx-auto mb-12 max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="border border-gray-200 bg-white p-6">
+        <div className="relative border border-gray-200 bg-white p-6">
+          <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+          <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+          <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+          <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
           <div className="mb-4 flex items-center gap-2">
             <Server className="h-4 w-4 text-[var(--accent-text)]" />
             <h3 className="text-sm tracking-wider text-gray-900 uppercase">Test Environment</h3>
@@ -147,56 +161,7 @@ export default function BenchmarksPage() {
             [ HIGH-THROUGHPUT STRESS TEST ]
           </p>
         </div>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          {/* t3.medium */}
-          <div className="border border-gray-200 bg-white p-6">
-            <div className="mb-4 flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center bg-[var(--accent)]/10 text-[var(--accent-text)]">
-                <Cpu className="h-5 w-5" />
-              </div>
-              <div>
-                <h4 className="text-sm text-gray-900">t3.medium</h4>
-                <p className="text-xs text-gray-500">2 vCPU, 4GB RAM</p>
-              </div>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="border-l-2 border-[var(--accent)] pl-3">
-                <div className="text-2xl font-bold text-gray-900">59µs</div>
-                <div className="font-mono text-xs text-gray-500 uppercase">Gateway Overhead</div>
-              </div>
-              <div className="border-l-2 border-[var(--accent)] pl-3">
-                <div className="text-2xl font-bold text-gray-900">100%</div>
-                <div className="font-mono text-xs text-gray-500 uppercase">Success Rate</div>
-              </div>
-            </div>
-          </div>
-
-          {/* t3.xlarge */}
-          <div className="border border-gray-200 bg-white p-6">
-            <div className="mb-4 flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center bg-[var(--accent)]/10 text-[var(--accent-text)]">
-                <Cpu className="h-5 w-5" />
-              </div>
-              <div>
-                <h4 className="text-sm text-gray-900">t3.xlarge</h4>
-                <p className="text-xs text-gray-500">4 vCPU, 16GB RAM</p>
-              </div>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="border-l-2 border-[var(--accent)] pl-3">
-                <div className="text-2xl font-bold text-gray-900">11µs</div>
-                <div className="font-mono text-xs text-gray-500 uppercase">Gateway Overhead</div>
-              </div>
-              <div className="border-l-2 border-[var(--accent)] pl-3">
-                <div className="text-2xl font-bold text-gray-900">100%</div>
-                <div className="font-mono text-xs text-gray-500 uppercase">Success Rate</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <p className="mt-4 text-center font-mono text-xs text-gray-400">
-          Tested at 5000 RPS with production-level stress
-        </p>
+        <StressTestLive />
       </div>
 
       {/* Architecture Comparison */}
@@ -242,7 +207,11 @@ export default function BenchmarksPage() {
       {/* Key Insights */}
       <div className="mx-auto mb-12 max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          <div className="border border-gray-200 bg-white p-6">
+          <div className="relative border border-gray-200 bg-white p-6">
+            <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+            <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+            <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+            <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
             <div className="mb-4 flex h-10 w-10 items-center justify-center bg-[var(--accent)]/10 text-[var(--accent-text)]">
               <Zap className="h-5 w-5" />
             </div>
@@ -253,7 +222,11 @@ export default function BenchmarksPage() {
               collector.
             </p>
           </div>
-          <div className="border border-gray-200 bg-white p-6">
+          <div className="relative border border-gray-200 bg-white p-6">
+            <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+            <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+            <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+            <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
             <div className="mb-4 flex h-10 w-10 items-center justify-center bg-[var(--accent)]/10 text-[var(--accent-text)]">
               <Clock className="h-5 w-5" />
             </div>
@@ -263,7 +236,11 @@ export default function BenchmarksPage() {
               efficiently without the Python GIL bottleneck that limits LiteLLM&apos;s parallelism.
             </p>
           </div>
-          <div className="border border-gray-200 bg-white p-6">
+          <div className="relative border border-gray-200 bg-white p-6">
+            <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+            <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+            <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+            <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
             <div className="mb-4 flex h-10 w-10 items-center justify-center bg-[var(--accent)]/10 text-[var(--accent-text)]">
               <HardDrive className="h-5 w-5" />
             </div>
