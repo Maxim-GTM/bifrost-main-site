@@ -254,7 +254,7 @@ export function Footer() {
                   </h3>
                   <ul className="space-y-3 font-mono text-gray-500">
                     {link.links.map((l) => (
-                      <li>
+                      <li key={l.name}>
                         <Link href={l.link} className="text-sm transition-colors">
                           {l.name}
                         </Link>

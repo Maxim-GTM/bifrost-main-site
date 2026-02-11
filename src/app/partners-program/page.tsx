@@ -3,6 +3,18 @@ import { Button } from '@/components/ui/Button'
 import PartnerTypes from '@/components/partners/PartnerTypes'
 import { ArrowRight, ExternalLink, Globe, Zap, ShieldCheck, Users } from 'lucide-react'
 
+const logoUrls = [
+  'aws.amazon.com',
+  'cloud.google.com',
+  'anthropic.com',
+  'openai.com',
+  'langchain.com',
+  'crewai.com',
+  'mistral.ai',
+  'mongodb.com',
+  'vercel.com',
+].map((d) => `https://img.logo.dev/${d}?token=pk_DRMfSAu-ReyrEks2PcRCfw`)
+
 const whyPartner = [
   {
     icon: Zap,
@@ -70,6 +82,12 @@ const partnerLogos = [
 export default function PartnersPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* Preconnect + preload logo images so they appear instantly */}
+      <link rel="preconnect" href="https://img.logo.dev" />
+      <link rel="dns-prefetch" href="https://img.logo.dev" />
+      {logoUrls.map((url) => (
+        <link key={url} rel="preload" as="image" href={url} />
+      ))}
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
@@ -143,7 +161,7 @@ export default function PartnersPage() {
         </div>
       </section>
 
-      {/* Partner Logos / Social Proof Placeholder */}
+      {/* Partner Logos - Horizontal scrolling marquee */}
       <section className="bg-gray-50 py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-10 text-center">
@@ -157,32 +175,39 @@ export default function PartnersPage() {
               Bifrost integrates with the tools and platforms your customers already use.
             </p>
           </div>
-          <div className="border border-gray-200 bg-white">
-            <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9">
-              {partnerLogos.map((partner) => (
-                <a
-                  key={partner.name}
-                  href={partner.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group flex flex-col items-center justify-center border-r border-b border-gray-200 px-3 py-5 last:border-r-0 [&:nth-child(3n)]:border-r-0 sm:[&:nth-child(3n)]:border-r sm:[&:nth-child(5n)]:border-r-0 lg:[&:nth-child(5n)]:border-r lg:[&:nth-child(9n)]:border-r-0"
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={`https://img.logo.dev/${partner.domain}?token=pk_DRMfSAu-ReyrEks2PcRCfw`}
-                    alt={`${partner.name} logo`}
-                    className="mb-2 h-8 w-auto object-contain opacity-60 grayscale transition-all group-hover:opacity-100 group-hover:grayscale-0"
-                  />
-                  <span className="text-center font-mono text-[10px] leading-tight text-gray-400 transition-colors group-hover:text-gray-600">
-                    {partner.name}
-                  </span>
-                </a>
-              ))}
+          <div className="group/marquee relative overflow-hidden">
+            <p className="mb-6 text-center font-mono text-xs font-medium tracking-widest text-gray-400">
+              TRUSTED BY
+            </p>
+            {/* Edge fade overlays */}
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-gray-50 to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-gray-50 to-transparent" />
+            <div className="overflow-hidden">
+              <div className="flex w-max shrink-0 animate-marquee gap-12 pr-12 group-hover/marquee:[animation-play-state:paused]">
+                {[...partnerLogos, ...partnerLogos].map((partner, i) => (
+                  <a
+                    key={`${partner.name}-${i}`}
+                    href={partner.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group/logo flex shrink-0 flex-col items-center justify-center"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={`https://img.logo.dev/${partner.domain}?token=pk_DRMfSAu-ReyrEks2PcRCfw`}
+                      alt={`${partner.name} logo`}
+                      loading="eager"
+                      decoding="async"
+                      className="h-10 w-auto object-contain opacity-60 grayscale transition-all group-hover/logo:opacity-100 group-hover/logo:grayscale-0 md:h-12"
+                    />
+                    <span className="mt-2 text-center font-mono text-[10px] leading-tight text-gray-400 transition-colors group-hover/logo:text-gray-600">
+                      {partner.name}
+                    </span>
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
-          {/* <p className="text-[10px] text-gray-400 text-center mt-3 font-mono">
-                        Logos shown represent integration compatibility — not endorsement or formal partnership.
-                    </p> */}
         </div>
       </section>
 
