@@ -31,12 +31,9 @@ interface MetricConfig {
   shortLabel: string
   getBifrost: (d: DataPoint) => number
   getLitellm: (d: DataPoint) => number
-  bifrostMax: number
-  litellmMax: number
-  bifrostYLabels: string[]
-  litellmYLabels: string[]
-  formatBifrost: (v: number) => string
-  formatLitellm: (v: number) => string
+  yMax: number // shared Y-axis max for both charts
+  yLabels: string[] // shared Y-axis labels
+  formatValue: (v: number) => string
   bifrostBenchmark: string
   litellmBenchmark: string
   multiplier: string
@@ -45,18 +42,21 @@ interface MetricConfig {
   litellmStatusColor: string
 }
 
+// Shared Y-axis per metric so both charts use the same scale.
+// The "winner" will appear compressed near one edge — that IS the point.
 const METRIC_CONFIGS: Record<MetricView, MetricConfig> = {
   latency: {
     label: 'P50 Latency',
     shortLabel: 'Latency',
     getBifrost: (d) => d.bifrostLatency,
     getLitellm: (d) => d.litellmLatency,
-    bifrostMax: 7000,
-    litellmMax: 95000,
-    bifrostYLabels: ['7s', '5s', '3s', '1s', '0'],
-    litellmYLabels: ['90s', '60s', '30s', '0'],
-    formatBifrost: (v) => (v >= 1000 ? `${(v / 1000).toFixed(2)}s` : `${Math.round(v)}ms`),
-    formatLitellm: (v) => (v >= 60000 ? `${(v / 60000).toFixed(1)}m` : `${(v / 1000).toFixed(1)}s`),
+    yMax: 95000, // 95s — accommodates LiteLLM P99 of 90.72s
+    yLabels: ['90s', '60s', '30s', '0'],
+    formatValue: (v) => {
+      if (v >= 60000) return `${(v / 60000).toFixed(1)}m`
+      if (v >= 1000) return `${(v / 1000).toFixed(2)}s`
+      return `${Math.round(v)}ms`
+    },
     bifrostBenchmark: 'P50: 804ms · P99: 1.68s',
     litellmBenchmark: 'P50: 38.65s · P99: 90.72s',
     multiplier: '48x faster P50',
@@ -69,12 +69,9 @@ const METRIC_CONFIGS: Record<MetricView, MetricConfig> = {
     shortLabel: 'Throughput',
     getBifrost: (d) => d.bifrostThroughput,
     getLitellm: (d) => d.litellmThroughput,
-    bifrostMax: 500,
-    litellmMax: 80,
-    bifrostYLabels: ['500', '375', '250', '125', '0'],
-    litellmYLabels: ['80', '60', '40', '20', '0'],
-    formatBifrost: (v) => `${Math.round(v)}/s`,
-    formatLitellm: (v) => `${v.toFixed(1)}/s`,
+    yMax: 500, // Bifrost peaks ~424/s
+    yLabels: ['500', '375', '250', '125', '0'],
+    formatValue: (v) => `${v < 100 ? v.toFixed(1) : Math.round(v)}/s`,
     bifrostBenchmark: '424 req/s sustained',
     litellmBenchmark: '44.84 req/s sustained',
     multiplier: '9.5x higher',
@@ -87,12 +84,9 @@ const METRIC_CONFIGS: Record<MetricView, MetricConfig> = {
     shortLabel: 'Success',
     getBifrost: (d) => d.bifrostSuccess,
     getLitellm: (d) => d.litellmSuccess,
-    bifrostMax: 105,
-    litellmMax: 105,
-    bifrostYLabels: ['100%', '75%', '50%', '25%', '0'],
-    litellmYLabels: ['100%', '75%', '50%', '25%', '0'],
-    formatBifrost: (v) => `${v.toFixed(1)}%`,
-    formatLitellm: (v) => `${v.toFixed(1)}%`,
+    yMax: 105,
+    yLabels: ['100%', '75%', '50%', '25%', '0'],
+    formatValue: (v) => `${v.toFixed(1)}%`,
     bifrostBenchmark: '100% success rate',
     litellmBenchmark: '88.78% — 11.22% dropped',
     multiplier: '100% vs 88.78%',
@@ -105,12 +99,9 @@ const METRIC_CONFIGS: Record<MetricView, MetricConfig> = {
     shortLabel: 'Memory',
     getBifrost: (d) => d.bifrostMemory,
     getLitellm: (d) => d.litellmMemory,
-    bifrostMax: 180,
-    litellmMax: 450,
-    bifrostYLabels: ['180', '135', '90', '45', '0'],
-    litellmYLabels: ['450', '300', '150', '0'],
-    formatBifrost: (v) => `${Math.round(v)} MB`,
-    formatLitellm: (v) => `${Math.round(v)} MB`,
+    yMax: 450, // LiteLLM peaks ~372MB
+    yLabels: ['450', '300', '150', '0'],
+    formatValue: (v) => `${Math.round(v)} MB`,
     bifrostBenchmark: 'Peak: 120 MB',
     litellmBenchmark: 'Peak: 372 MB',
     multiplier: '68% less memory',
@@ -324,7 +315,7 @@ export default function BenchmarkLive() {
         <span className="font-mono text-[10px] text-gray-400">500 RPS on t3.medium</span>
       </div>
 
-      {/* Dual charts */}
+      {/* Dual charts — same Y-axis scale */}
       <div className="grid grid-cols-1 lg:grid-cols-2">
         {/* Bifrost chart */}
         <div className="border-b border-gray-200 p-4 lg:border-r lg:border-b-0">
@@ -335,7 +326,7 @@ export default function BenchmarkLive() {
             </div>
             <div className="flex items-center gap-2">
               <span className="font-mono text-sm font-semibold text-[#35c09e]">
-                {dataPoints.length > 0 ? config.formatBifrost(currentBifrost) : '—'}
+                {dataPoints.length > 0 ? config.formatValue(currentBifrost) : '—'}
               </span>
               <span className="rounded bg-green-50 px-1.5 py-0.5 font-mono text-[9px] font-medium text-green-700">
                 {config.bifrostStatus}
@@ -348,7 +339,7 @@ export default function BenchmarkLive() {
               className="flex flex-col justify-between pr-2 font-mono text-[8px] text-gray-400"
               style={{ height: CHART_HEIGHT }}
             >
-              {config.bifrostYLabels.map((label, i) => (
+              {config.yLabels.map((label, i) => (
                 <span key={i}>{label}</span>
               ))}
             </div>
@@ -373,12 +364,12 @@ export default function BenchmarkLive() {
                 {dataPoints.length > 1 && (
                   <>
                     <path
-                      d={generateAreaPath(config.getBifrost, config.bifrostMax)}
+                      d={generateAreaPath(config.getBifrost, config.yMax)}
                       fill="#35c09e"
                       fillOpacity="0.1"
                     />
                     <path
-                      d={generatePath(config.getBifrost, config.bifrostMax)}
+                      d={generatePath(config.getBifrost, config.yMax)}
                       fill="none"
                       stroke="#35c09e"
                       strokeWidth="1.5"
@@ -393,8 +384,7 @@ export default function BenchmarkLive() {
                       Math.min(
                         CHART_HEIGHT - 2,
                         CHART_HEIGHT -
-                          (Math.min(currentBifrost, config.bifrostMax) / config.bifrostMax) *
-                            CHART_HEIGHT
+                          (Math.min(currentBifrost, config.yMax) / config.yMax) * CHART_HEIGHT
                       )
                     )}
                     r="3"
@@ -417,7 +407,7 @@ export default function BenchmarkLive() {
             </div>
             <div className="flex items-center gap-2">
               <span className="font-mono text-sm font-semibold text-red-500">
-                {dataPoints.length > 0 ? config.formatLitellm(currentLitellm) : '—'}
+                {dataPoints.length > 0 ? config.formatValue(currentLitellm) : '—'}
               </span>
               <span
                 className={`rounded px-1.5 py-0.5 font-mono text-[9px] font-medium ${config.litellmStatusColor}`}
@@ -432,7 +422,7 @@ export default function BenchmarkLive() {
               className="flex flex-col justify-between pr-2 font-mono text-[8px] text-gray-400"
               style={{ height: CHART_HEIGHT }}
             >
-              {config.litellmYLabels.map((label, i) => (
+              {config.yLabels.map((label, i) => (
                 <span key={i}>{label}</span>
               ))}
             </div>
@@ -456,12 +446,12 @@ export default function BenchmarkLive() {
                 {dataPoints.length > 1 && (
                   <>
                     <path
-                      d={generateAreaPath(config.getLitellm, config.litellmMax)}
+                      d={generateAreaPath(config.getLitellm, config.yMax)}
                       fill="#ef4444"
                       fillOpacity="0.08"
                     />
                     <path
-                      d={generatePath(config.getLitellm, config.litellmMax)}
+                      d={generatePath(config.getLitellm, config.yMax)}
                       fill="none"
                       stroke="#ef4444"
                       strokeWidth="1.5"
@@ -477,8 +467,7 @@ export default function BenchmarkLive() {
                       Math.min(
                         CHART_HEIGHT - 2,
                         CHART_HEIGHT -
-                          (Math.min(currentLitellm, config.litellmMax) / config.litellmMax) *
-                            CHART_HEIGHT
+                          (Math.min(currentLitellm, config.yMax) / config.yMax) * CHART_HEIGHT
                       )
                     )}
                     r="3"
