@@ -902,699 +902,756 @@ export default function ModelCompare({
   }, [leftModel, rightModel])
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-      <div className="mb-10 text-center">
-        <span className="provider-badge">[ MODEL COMPARISON ]</span>
-        <h1 className="mb-3 text-3xl font-[400] text-gray-900 md:text-4xl">
-          {leftModel && rightModel
-            ? `Compare ${leftModel.displayName} vs ${rightModel.displayName}`
-            : leftModel
-              ? `Compare ${leftModel.displayName} with other models`
-              : 'Compare Two AI Models'}
-        </h1>
-        <p className="text-sm text-gray-600">
-          {leftModel && rightModel
-            ? `Compare pricing, limits, and capabilities between ${leftModel.displayName} and ${rightModel.displayName}.`
-            : leftModel
-              ? `Select another model to compare pricing, limits, and capabilities with ${leftModel.displayName}.`
-              : 'Pick two models with similar modes to compare pricing, limits, and capabilities.'}
-        </p>
+    <div className="relative flex w-full justify-center">
+      <div className="hidden w-20 flex-none flex-col items-end gap-4 border-r border-black/10 xl:flex">
+        <div
+          className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
+            backgroundSize: '4px 4px',
+          }}
+        ></div>
       </div>
 
-      <div className="mb-10 grid grid-cols-1 items-center gap-6 md:grid-cols-[1fr_auto_1fr]">
-        <div className="bg-transparent p-1">
-          <div className="relative">
-            <div className="focus-within:ring-accent flex items-center rounded-lg border border-gray-300 bg-white px-3 py-2 focus-within:border-transparent focus-within:ring-2">
-              {leftModel && (
-                <img
-                  src={getProviderLogo(leftModel.provider)}
-                  alt={`${formatProviderName(leftModel.provider)} logo`}
-                  className="mr-2 h-5 w-5 object-contain"
-                  loading="lazy"
-                />
-              )}
-              <input
-                ref={leftInputRef}
-                type="text"
-                placeholder="Search model name or provider"
-                value={leftOpen ? leftQuery : leftSelectedLabel || leftQuery}
-                onChange={(e) => {
-                  setLeftQuery(e.target.value)
-                  setLeftOpen(true)
-                }}
-                onFocus={() => setLeftOpen(true)}
-                className="w-full border-0 bg-transparent px-0 py-0 focus:outline-none"
-              />
-              <svg
-                className={`ml-2 h-4 w-4 text-gray-400 transition-transform ${leftOpen ? 'rotate-180' : ''}`}
-                viewBox="0 0 16 16"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M4 6L8 10L12 6"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
-            {leftOpen && (
-              <div
-                ref={leftDropdownRef}
-                className="absolute z-20 mt-2 max-h-60 w-full divide-y divide-gray-100 overflow-y-auto rounded-lg border border-gray-200 bg-white shadow-lg"
-              >
-                {filteredLeftOptions.map((model) => (
-                  <button
-                    key={model.id}
-                    type="button"
-                    onClick={() => {
-                      handleLeftSelect(model.id)
-                      setLeftOpen(false)
-                      setLeftQuery('')
-                    }}
-                    className={`hover:bg-accent-light w-full px-3 py-2 text-left text-sm transition-colors ${
-                      leftId === model.id ? 'bg-accent-light text-accent-dark' : 'text-gray-700'
-                    }`}
-                  >
-                    <div className="flex items-center gap-2">
-                      <img
-                        src={getProviderLogo(model.provider)}
-                        alt={`${formatProviderName(model.provider)} logo`}
-                        className="h-4 w-4 object-contain"
-                        loading="lazy"
-                      />
-                      <div className="font-medium">{model.displayName}</div>
-                    </div>
-                    <div className="ml-6 text-xs text-gray-500">
-                      {formatProviderName(model.provider)} · {getModeDisplayName(model.data.mode)}
-                    </div>
-                  </button>
-                ))}
-                {filteredLeftOptions.length === 0 && (
-                  <div className="px-3 py-2 text-sm text-gray-500">No matching models.</div>
-                )}
-              </div>
-            )}
-          </div>
-        </div>
-
-        <div className="text-center text-lg font-semibold text-gray-400">VS</div>
-
-        <div className="bg-transparent p-1">
-          <div className="relative">
-            <div className="focus-within:ring-accent flex items-center rounded-lg border border-gray-300 bg-white px-3 py-2 focus-within:border-transparent focus-within:ring-2">
-              {rightModel && (
-                <img
-                  src={getProviderLogo(rightModel.provider)}
-                  alt={`${formatProviderName(rightModel.provider)} logo`}
-                  className="mr-2 h-5 w-5 object-contain"
-                  loading="lazy"
-                />
-              )}
-              <input
-                ref={rightInputRef}
-                type="text"
-                placeholder={
-                  leftFamily ? 'Search within similar modes' : 'Search model name or provider'
-                }
-                value={rightOpen ? rightQuery : rightSelectedLabel || rightQuery}
-                onChange={(e) => {
-                  setRightQuery(e.target.value)
-                  setRightOpen(true)
-                }}
-                onFocus={() => setRightOpen(true)}
-                disabled={!leftModel}
-                className="w-full border-0 bg-transparent px-0 py-0 focus:outline-none disabled:text-gray-400"
-              />
-              <svg
-                className={`ml-2 h-4 w-4 text-gray-400 transition-transform ${rightOpen ? 'rotate-180' : ''}`}
-                viewBox="0 0 16 16"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M4 6L8 10L12 6"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
-            {rightOpen && (
-              <div
-                ref={rightDropdownRef}
-                className="absolute z-20 mt-2 max-h-60 w-full divide-y divide-gray-100 overflow-y-auto rounded-lg border border-gray-200 bg-white shadow-lg"
-              >
-                {filteredRightOptions.map((model) => (
-                  <button
-                    key={model.id}
-                    type="button"
-                    onClick={() => {
-                      handleRightSelect(model.id)
-                      setRightOpen(false)
-                      setRightQuery('')
-                    }}
-                    className={`hover:bg-accent-light w-full px-3 py-2 text-left text-sm transition-colors ${
-                      rightId === model.id ? 'bg-accent-light text-accent-dark' : 'text-gray-700'
-                    }`}
-                  >
-                    <div className="flex items-center gap-2">
-                      <img
-                        src={getProviderLogo(model.provider)}
-                        alt={`${formatProviderName(model.provider)} logo`}
-                        className="h-4 w-4 object-contain"
-                        loading="lazy"
-                      />
-                      <div className="font-medium">{model.displayName}</div>
-                    </div>
-                    <div className="ml-6 text-xs text-gray-500">
-                      {formatProviderName(model.provider)} · {getModeDisplayName(model.data.mode)}
-                    </div>
-                  </button>
-                ))}
-                {filteredRightOptions.length === 0 && (
-                  <div className="px-3 py-2 text-sm text-gray-500">
-                    {leftModel ? 'No matching models.' : 'Select Model A first.'}
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-
-      {loading && <div className="text-gray-500">Loading models…</div>}
-      {error && <div className="text-red-600">{error}</div>}
-
-      {leftModel && rightModel && !isComparable && (
-        <div className="mb-8 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
-          These models have different modes and cannot be compared. Please select models with
-          similar modes.
-        </div>
-      )}
-
-      {(leftModel || rightModel) && (
-        <div className="space-y-8">
-          <div
-            ref={comparisonTableRef}
-            className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm"
-          >
-            <div className="grid grid-cols-1 items-center gap-4 border-b border-gray-200 px-6 py-5 md:grid-cols-3">
-              <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
-                Models
-              </div>
-              <div className="flex min-w-0 items-center gap-3">
-                <div className="min-w-0">
-                  <div className="flex min-w-0 items-center gap-2">
-                    {leftModel && (
-                      <img
-                        src={getProviderLogo(leftModel.provider)}
-                        alt={`${formatProviderName(leftModel.provider)} logo`}
-                        className="h-5 w-5 object-contain"
-                        loading="lazy"
-                      />
-                    )}
-                    <span className="truncate text-lg font-semibold text-gray-900">
-                      {leftModel ? leftModel.displayName : '—'}
-                    </span>
-                  </div>
-                  <div className="truncate text-xs text-gray-500">
-                    {leftModel ? leftModel.provider : '—'}
-                  </div>
-                </div>
-              </div>
-              <div className="flex min-w-0 items-center gap-3">
-                <div className="min-w-0">
-                  <div className="flex min-w-0 items-center gap-2">
-                    {rightModel && (
-                      <img
-                        src={getProviderLogo(rightModel.provider)}
-                        alt={`${formatProviderName(rightModel.provider)} logo`}
-                        className="h-5 w-5 object-contain"
-                        loading="lazy"
-                      />
-                    )}
-                    <span className="truncate text-lg font-semibold text-gray-900">
-                      {rightModel ? rightModel.displayName : '—'}
-                    </span>
-                  </div>
-                  <div className="truncate text-xs text-gray-500">
-                    {rightModel ? rightModel.provider : '—'}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="divide-y divide-gray-200">
-              {shouldShowRow(leftContextValue, rightContextValue) && (
-                <div className="grid grid-cols-1 items-center gap-4 px-6 py-4 md:grid-cols-3">
-                  <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
-                    Context Length
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    {leftModel ? formatK(leftContextValue) : '—'}
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    {rightModel ? formatK(rightContextValue) : '—'}
-                  </div>
-                </div>
-              )}
-
-              {shouldShowRow(
-                leftModel?.data.max_output_tokens,
-                rightModel?.data.max_output_tokens
-              ) && (
-                <div className="grid grid-cols-1 items-center gap-4 px-6 py-4 md:grid-cols-3">
-                  <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
-                    Max Output
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    {leftModel ? formatK(leftModel.data.max_output_tokens || 0) : '—'}
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    {rightModel ? formatK(rightModel.data.max_output_tokens || 0) : '—'}
-                  </div>
-                </div>
-              )}
-
-              {shouldShowRow(leftInputCostValue, rightInputCostValue) && (
-                <div className="grid grid-cols-1 items-center gap-4 px-6 py-4 md:grid-cols-3">
-                  <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
-                    Input Cost
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    {leftModel ? getPrimaryInputCost(leftModel) : '—'}
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    {rightModel ? getPrimaryInputCost(rightModel) : '—'}
-                  </div>
-                </div>
-              )}
-
-              {shouldShowRow(leftOutputCostValue, rightOutputCostValue) && (
-                <div className="grid grid-cols-1 items-center gap-4 px-6 py-4 md:grid-cols-3">
-                  <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
-                    Output Cost
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    {leftModel ? getPrimaryOutputCost(leftModel) : '—'}
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    {rightModel ? getPrimaryOutputCost(rightModel) : '—'}
-                  </div>
-                </div>
-              )}
-
-              {shouldShowRow(leftModesValue, rightModesValue) && (
-                <div className="grid grid-cols-1 items-center gap-4 px-6 py-4 md:grid-cols-3">
-                  <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
-                    Mode
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    {leftModel ? getModesDisplay(leftModel) : '—'}
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    {rightModel ? getModesDisplay(rightModel) : '—'}
-                  </div>
-                </div>
-              )}
-
-              {shouldShowRow(
-                leftModel?.data.max_input_tokens,
-                rightModel?.data.max_input_tokens
-              ) && (
-                <div className="grid grid-cols-1 items-center gap-4 px-6 py-4 md:grid-cols-3">
-                  <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
-                    Max Input Tokens
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    {leftModel ? formatK(leftModel.data.max_input_tokens || 0) : '—'}
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    {rightModel ? formatK(rightModel.data.max_input_tokens || 0) : '—'}
-                  </div>
-                </div>
-              )}
-
-              {shouldShowRow(leftModel?.data.max_tokens, rightModel?.data.max_tokens) && (
-                <div className="grid grid-cols-1 items-center gap-4 px-6 py-4 md:grid-cols-3">
-                  <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
-                    Max Tokens
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    {leftModel ? formatK(leftModel.data.max_tokens || 0) : '—'}
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    {rightModel ? formatK(rightModel.data.max_tokens || 0) : '—'}
-                  </div>
-                </div>
-              )}
-
-              {shouldShowRow(
-                leftModel?.data.max_query_tokens,
-                rightModel?.data.max_query_tokens
-              ) && (
-                <div className="grid grid-cols-1 items-center gap-4 px-6 py-4 md:grid-cols-3">
-                  <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
-                    Max Query Tokens
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    {leftModel ? formatK(leftModel.data.max_query_tokens || 0) : '—'}
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    {rightModel ? formatK(rightModel.data.max_query_tokens || 0) : '—'}
-                  </div>
-                </div>
-              )}
-
-              {shouldShowRow(
-                leftModel?.data.supported_endpoints,
-                rightModel?.data.supported_endpoints
-              ) && (
-                <div className="grid grid-cols-1 items-center gap-4 px-6 py-4 md:grid-cols-3">
-                  <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
-                    Supported Endpoints
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    {leftModel ? formatList(leftModel.data.supported_endpoints) : '—'}
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    {rightModel ? formatList(rightModel.data.supported_endpoints) : '—'}
-                  </div>
-                </div>
-              )}
-
-              {shouldShowRow(leftModel?.provider, rightModel?.provider) && (
-                <div className="grid grid-cols-1 items-center gap-4 px-6 py-4 md:grid-cols-3">
-                  <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
-                    Provider
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    {leftModel ? formatProviderName(leftModel.provider) : '—'}
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    {rightModel ? formatProviderName(rightModel.provider) : '—'}
-                  </div>
-                </div>
-              )}
-
-              {shouldShowRow(
-                leftModel?.data.supports_tool_choice,
-                rightModel?.data.supports_tool_choice
-              ) && (
-                <div className="grid grid-cols-1 items-center gap-4 px-6 py-4 md:grid-cols-3">
-                  <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
-                    Tool Choice
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    {leftModel ? formatYesNo(leftModel.data.supports_tool_choice) : '—'}
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    {rightModel ? formatYesNo(rightModel.data.supports_tool_choice) : '—'}
-                  </div>
-                </div>
-              )}
-
-              {shouldShowRow(
-                leftModel?.data.supports_response_schema,
-                rightModel?.data.supports_response_schema
-              ) && (
-                <div className="grid grid-cols-1 items-center gap-4 px-6 py-4 md:grid-cols-3">
-                  <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
-                    Response Schema
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    {leftModel ? formatYesNo(leftModel.data.supports_response_schema) : '—'}
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    {rightModel ? formatYesNo(rightModel.data.supports_response_schema) : '—'}
-                  </div>
-                </div>
-              )}
-
-              {shouldShowRow(
-                leftModel?.data.supports_parallel_function_calling,
-                rightModel?.data.supports_parallel_function_calling
-              ) && (
-                <div className="grid grid-cols-1 items-center gap-4 px-6 py-4 md:grid-cols-3">
-                  <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
-                    Parallel Function Calling
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    {leftModel
-                      ? formatYesNo(leftModel.data.supports_parallel_function_calling)
-                      : '—'}
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    {rightModel
-                      ? formatYesNo(rightModel.data.supports_parallel_function_calling)
-                      : '—'}
-                  </div>
-                </div>
-              )}
-
-              {shouldShowRow(
-                leftModel?.data.supports_prompt_caching,
-                rightModel?.data.supports_prompt_caching
-              ) && (
-                <div className="grid grid-cols-1 items-center gap-4 px-6 py-4 md:grid-cols-3">
-                  <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
-                    Prompt Caching
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    {leftModel ? formatYesNo(leftModel.data.supports_prompt_caching) : '—'}
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    {rightModel ? formatYesNo(rightModel.data.supports_prompt_caching) : '—'}
-                  </div>
-                </div>
-              )}
-
-              {shouldShowRow(
-                leftModel?.data.supports_system_messages,
-                rightModel?.data.supports_system_messages
-              ) && (
-                <div className="grid grid-cols-1 items-center gap-4 px-6 py-4 md:grid-cols-3">
-                  <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
-                    System Messages
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    {leftModel ? formatYesNo(leftModel.data.supports_system_messages) : '—'}
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    {rightModel ? formatYesNo(rightModel.data.supports_system_messages) : '—'}
-                  </div>
-                </div>
-              )}
-
-              {shouldShowRow(
-                leftModel?.data.deprecation_date,
-                rightModel?.data.deprecation_date
-              ) && (
-                <div className="grid grid-cols-1 items-center gap-4 px-6 py-4 md:grid-cols-3">
-                  <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
-                    Deprecation Date
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    {leftModel?.data.deprecation_date || '—'}
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    {rightModel?.data.deprecation_date || '—'}
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-          <div className="mt-10 w-full">
-            <CTA2 />
-          </div>
-        </div>
-      )}
-
-      {(leftModel || rightModel) && (
-        <section className="mt-12">
-          <div className="mb-6 text-center">
-            <h2 className="mb-2 text-2xl font-[400] text-gray-900 md:text-3xl">
-              Comparison Insights
-            </h2>
-            <p className="text-sm text-gray-600">
-              Comprehensive analysis based on the latest model metadata from the comparison table
-              above.
+      <div className="w-full max-w-[1100px] px-4 pb-16">
+        <div className="absolute right-0 left-0 h-px w-full bg-black/10" />
+        <div className="pt-8">
+          <div className="mb-10 text-center">
+            <span className="font-mono text-[12px] leading-[15px] font-medium tracking-[0.04em] text-emerald-500 uppercase">
+              [ MODEL COMPARISON ]
+            </span>
+            <h1 className="mx-auto mt-2 mb-4 max-w-2xl text-[42px] leading-[120%] font-medium tracking-[-0.02em] text-black">
+              {leftModel && rightModel
+                ? `Compare ${leftModel.displayName} vs ${rightModel.displayName}`
+                : leftModel
+                  ? `Compare ${leftModel.displayName} with other models`
+                  : 'Compare Two AI Models'}
+            </h1>
+            <p className="mx-auto max-w-2xl text-[16px] leading-[140%] tracking-[0em] text-[#525252]">
+              {leftModel && rightModel
+                ? `Compare pricing, limits, and capabilities between ${leftModel.displayName} and ${rightModel.displayName}.`
+                : leftModel
+                  ? `Select another model to compare pricing, limits, and capabilities with ${leftModel.displayName}.`
+                  : 'Pick two models with similar modes to compare pricing, limits, and capabilities.'}
             </p>
           </div>
 
-          <div className="space-y-3">
-            {leftModel && (
-              <details className="group rounded-lg border border-gray-200 bg-white">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4">
-                  <span className="text-base font-medium text-gray-900">
-                    What should I know about {leftModel.displayName}?
-                  </span>
-                  <span className="text-gray-500 transition-transform group-open:rotate-180">
-                    <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                      <path
-                        d="M4 6L8 10L12 6"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </span>
-                </summary>
-                <div className="border-t border-gray-200 px-5 pt-3 pb-5">
-                  {buildModelFacts(leftModel).map((section, idx) => (
-                    <div key={idx} className={idx > 0 ? 'mt-4' : ''}>
-                      <h4 className="mb-2 text-sm font-semibold text-gray-900">
-                        {section.category}
-                      </h4>
-                      <ul className="list-outside list-disc space-y-2 pl-6 text-sm leading-relaxed text-gray-700">
-                        {section.items.map((item, itemIdx) => (
-                          <li key={itemIdx}>{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
+          <div className="mb-10 grid grid-cols-1 items-center gap-6 md:grid-cols-[1fr_auto_1fr]">
+            <div className="bg-transparent p-1">
+              <div className="relative">
+                <div className="focus-within:ring-accent flex items-center rounded-lg border border-gray-300 bg-white px-3 py-2 focus-within:border-transparent focus-within:ring-2">
+                  {leftModel && (
+                    <img
+                      src={getProviderLogo(leftModel.provider)}
+                      alt={`${formatProviderName(leftModel.provider)} logo`}
+                      className="mr-2 h-5 w-5 object-contain"
+                      loading="lazy"
+                    />
+                  )}
+                  <input
+                    ref={leftInputRef}
+                    type="text"
+                    placeholder="Search model name or provider"
+                    value={leftOpen ? leftQuery : leftSelectedLabel || leftQuery}
+                    onChange={(e) => {
+                      setLeftQuery(e.target.value)
+                      setLeftOpen(true)
+                    }}
+                    onFocus={() => setLeftOpen(true)}
+                    className="w-full border-0 bg-transparent px-0 py-0 focus:outline-none"
+                  />
+                  <svg
+                    className={`ml-2 h-4 w-4 text-gray-400 transition-transform ${leftOpen ? 'rotate-180' : ''}`}
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M4 6L8 10L12 6"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                 </div>
-              </details>
-            )}
-
-            {rightModel && (
-              <details className="group rounded-lg border border-gray-200 bg-white">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4">
-                  <span className="text-base font-medium text-gray-900">
-                    What should I know about {rightModel.displayName}?
-                  </span>
-                  <span className="text-gray-500 transition-transform group-open:rotate-180">
-                    <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                      <path
-                        d="M4 6L8 10L12 6"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </span>
-                </summary>
-                <div className="border-t border-gray-200 px-5 pt-3 pb-5">
-                  {buildModelFacts(rightModel).map((section, idx) => (
-                    <div key={idx} className={idx > 0 ? 'mt-4' : ''}>
-                      <h4 className="mb-2 text-sm font-semibold text-gray-900">
-                        {section.category}
-                      </h4>
-                      <ul className="list-outside list-disc space-y-2 pl-6 text-sm leading-relaxed text-gray-700">
-                        {section.items.map((item, itemIdx) => (
-                          <li key={itemIdx}>{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              </details>
-            )}
-
-            {leftModel && buildCapabilityRows(leftModel).length > 0 && (
-              <details className="group rounded-lg border border-gray-200 bg-white">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4">
-                  <span className="text-base font-medium text-gray-900">
-                    What capabilities does {leftModel.displayName} support?
-                  </span>
-                  <span className="text-gray-500 transition-transform group-open:rotate-180">
-                    <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                      <path
-                        d="M4 6L8 10L12 6"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </span>
-                </summary>
-                <div className="border-t border-gray-200 px-5 pt-3 pb-5">
-                  <ul className="list-outside list-disc space-y-2 pl-6 text-sm leading-relaxed text-gray-700">
-                    {buildCapabilityRows(leftModel).map((capability, idx) => (
-                      <li key={idx}>{capability}</li>
-                    ))}
-                  </ul>
-                </div>
-              </details>
-            )}
-
-            {rightModel && buildCapabilityRows(rightModel).length > 0 && (
-              <details className="group rounded-lg border border-gray-200 bg-white">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4">
-                  <span className="text-base font-medium text-gray-900">
-                    What capabilities does {rightModel.displayName} support?
-                  </span>
-                  <span className="text-gray-500 transition-transform group-open:rotate-180">
-                    <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                      <path
-                        d="M4 6L8 10L12 6"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </span>
-                </summary>
-                <div className="border-t border-gray-200 px-5 pt-3 pb-5">
-                  <ul className="list-outside list-disc space-y-2 pl-6 text-sm leading-relaxed text-gray-700">
-                    {buildCapabilityRows(rightModel).map((capability, idx) => (
-                      <li key={idx}>{capability}</li>
-                    ))}
-                  </ul>
-                </div>
-              </details>
-            )}
-
-            {leftModel &&
-              rightModel &&
-              buildComparisonAnalysis &&
-              buildComparisonAnalysis.length > 0 && (
-                <details className="group rounded-lg border border-gray-200 bg-white" open>
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4">
-                    <span className="text-base font-medium text-gray-900">
-                      How do {leftModel.displayName} and {rightModel.displayName} compare?
-                    </span>
-                    <span className="text-gray-500 transition-transform group-open:rotate-180">
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 16 16"
-                        fill="none"
-                        aria-hidden="true"
+                {leftOpen && (
+                  <div
+                    ref={leftDropdownRef}
+                    className="absolute z-20 mt-2 max-h-60 w-full divide-y divide-gray-100 overflow-y-auto rounded-lg border border-gray-200 bg-white shadow-lg"
+                  >
+                    {filteredLeftOptions.map((model) => (
+                      <button
+                        key={model.id}
+                        type="button"
+                        onClick={() => {
+                          handleLeftSelect(model.id)
+                          setLeftOpen(false)
+                          setLeftQuery('')
+                        }}
+                        className={`hover:bg-accent-light w-full px-3 py-2 text-left text-sm transition-colors ${
+                          leftId === model.id ? 'bg-accent-light text-accent-dark' : 'text-gray-700'
+                        }`}
                       >
-                        <path
-                          d="M4 6L8 10L12 6"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </span>
-                  </summary>
-                  <div className="space-y-4 border-t border-gray-200 px-5 pt-3 pb-5">
-                    {buildComparisonAnalysis.map((section, idx) => (
-                      <div key={idx}>
-                        <h4 className="mb-2 text-sm font-semibold text-gray-900">
-                          {section.title}
-                        </h4>
-                        <p className="text-sm leading-relaxed text-gray-700">{section.content}</p>
-                      </div>
+                        <div className="flex items-center gap-2">
+                          <img
+                            src={getProviderLogo(model.provider)}
+                            alt={`${formatProviderName(model.provider)} logo`}
+                            className="h-4 w-4 object-contain"
+                            loading="lazy"
+                          />
+                          <div className="font-medium">{model.displayName}</div>
+                        </div>
+                        <div className="ml-6 text-xs text-gray-500">
+                          {formatProviderName(model.provider)} ·{' '}
+                          {getModeDisplayName(model.data.mode)}
+                        </div>
+                      </button>
                     ))}
+                    {filteredLeftOptions.length === 0 && (
+                      <div className="px-3 py-2 text-sm text-gray-500">No matching models.</div>
+                    )}
                   </div>
-                </details>
-              )}
+                )}
+              </div>
+            </div>
+
+            <div className="text-center text-lg font-semibold text-gray-400">VS</div>
+
+            <div className="bg-transparent p-1">
+              <div className="relative">
+                <div className="focus-within:ring-accent flex items-center rounded-lg border border-gray-300 bg-white px-3 py-2 focus-within:border-transparent focus-within:ring-2">
+                  {rightModel && (
+                    <img
+                      src={getProviderLogo(rightModel.provider)}
+                      alt={`${formatProviderName(rightModel.provider)} logo`}
+                      className="mr-2 h-5 w-5 object-contain"
+                      loading="lazy"
+                    />
+                  )}
+                  <input
+                    ref={rightInputRef}
+                    type="text"
+                    placeholder={
+                      leftFamily ? 'Search within similar modes' : 'Search model name or provider'
+                    }
+                    value={rightOpen ? rightQuery : rightSelectedLabel || rightQuery}
+                    onChange={(e) => {
+                      setRightQuery(e.target.value)
+                      setRightOpen(true)
+                    }}
+                    onFocus={() => setRightOpen(true)}
+                    disabled={!leftModel}
+                    className="w-full border-0 bg-transparent px-0 py-0 focus:outline-none disabled:text-gray-400"
+                  />
+                  <svg
+                    className={`ml-2 h-4 w-4 text-gray-400 transition-transform ${rightOpen ? 'rotate-180' : ''}`}
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M4 6L8 10L12 6"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+                {rightOpen && (
+                  <div
+                    ref={rightDropdownRef}
+                    className="absolute z-20 mt-2 max-h-60 w-full divide-y divide-gray-100 overflow-y-auto rounded-lg border border-gray-200 bg-white shadow-lg"
+                  >
+                    {filteredRightOptions.map((model) => (
+                      <button
+                        key={model.id}
+                        type="button"
+                        onClick={() => {
+                          handleRightSelect(model.id)
+                          setRightOpen(false)
+                          setRightQuery('')
+                        }}
+                        className={`hover:bg-accent-light w-full px-3 py-2 text-left text-sm transition-colors ${
+                          rightId === model.id
+                            ? 'bg-accent-light text-accent-dark'
+                            : 'text-gray-700'
+                        }`}
+                      >
+                        <div className="flex items-center gap-2">
+                          <img
+                            src={getProviderLogo(model.provider)}
+                            alt={`${formatProviderName(model.provider)} logo`}
+                            className="h-4 w-4 object-contain"
+                            loading="lazy"
+                          />
+                          <div className="font-medium">{model.displayName}</div>
+                        </div>
+                        <div className="ml-6 text-xs text-gray-500">
+                          {formatProviderName(model.provider)} ·{' '}
+                          {getModeDisplayName(model.data.mode)}
+                        </div>
+                      </button>
+                    ))}
+                    {filteredRightOptions.length === 0 && (
+                      <div className="px-3 py-2 text-sm text-gray-500">
+                        {leftModel ? 'No matching models.' : 'Select Model A first.'}
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
-        </section>
-      )}
+
+          {loading && <div className="text-gray-500">Loading models…</div>}
+          {error && <div className="text-red-600">{error}</div>}
+
+          {leftModel && rightModel && !isComparable && (
+            <div className="mb-8 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
+              These models have different modes and cannot be compared. Please select models with
+              similar modes.
+            </div>
+          )}
+
+          {(leftModel || rightModel) && (
+            <div className="space-y-8">
+              <div
+                ref={comparisonTableRef}
+                className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm"
+              >
+                <div className="grid grid-cols-1 items-center gap-4 border-b border-gray-200 px-6 py-5 md:grid-cols-3">
+                  <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
+                    Models
+                  </div>
+                  <div className="flex min-w-0 items-center gap-3">
+                    <div className="min-w-0">
+                      <div className="flex min-w-0 items-center gap-2">
+                        {leftModel && (
+                          <img
+                            src={getProviderLogo(leftModel.provider)}
+                            alt={`${formatProviderName(leftModel.provider)} logo`}
+                            className="h-5 w-5 object-contain"
+                            loading="lazy"
+                          />
+                        )}
+                        <span className="truncate text-lg font-semibold text-gray-900">
+                          {leftModel ? leftModel.displayName : '—'}
+                        </span>
+                      </div>
+                      <div className="truncate text-xs text-gray-500">
+                        {leftModel ? leftModel.provider : '—'}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex min-w-0 items-center gap-3">
+                    <div className="min-w-0">
+                      <div className="flex min-w-0 items-center gap-2">
+                        {rightModel && (
+                          <img
+                            src={getProviderLogo(rightModel.provider)}
+                            alt={`${formatProviderName(rightModel.provider)} logo`}
+                            className="h-5 w-5 object-contain"
+                            loading="lazy"
+                          />
+                        )}
+                        <span className="truncate text-lg font-semibold text-gray-900">
+                          {rightModel ? rightModel.displayName : '—'}
+                        </span>
+                      </div>
+                      <div className="truncate text-xs text-gray-500">
+                        {rightModel ? rightModel.provider : '—'}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="divide-y divide-gray-200">
+                  {shouldShowRow(leftContextValue, rightContextValue) && (
+                    <div className="grid grid-cols-1 items-center gap-4 px-6 py-4 md:grid-cols-3">
+                      <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
+                        Context Length
+                      </div>
+                      <div className="font-medium text-gray-800">
+                        {leftModel ? formatK(leftContextValue) : '—'}
+                      </div>
+                      <div className="font-medium text-gray-800">
+                        {rightModel ? formatK(rightContextValue) : '—'}
+                      </div>
+                    </div>
+                  )}
+
+                  {shouldShowRow(
+                    leftModel?.data.max_output_tokens,
+                    rightModel?.data.max_output_tokens
+                  ) && (
+                    <div className="grid grid-cols-1 items-center gap-4 px-6 py-4 md:grid-cols-3">
+                      <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
+                        Max Output
+                      </div>
+                      <div className="font-medium text-gray-800">
+                        {leftModel ? formatK(leftModel.data.max_output_tokens || 0) : '—'}
+                      </div>
+                      <div className="font-medium text-gray-800">
+                        {rightModel ? formatK(rightModel.data.max_output_tokens || 0) : '—'}
+                      </div>
+                    </div>
+                  )}
+
+                  {shouldShowRow(leftInputCostValue, rightInputCostValue) && (
+                    <div className="grid grid-cols-1 items-center gap-4 px-6 py-4 md:grid-cols-3">
+                      <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
+                        Input Cost
+                      </div>
+                      <div className="font-medium text-gray-800">
+                        {leftModel ? getPrimaryInputCost(leftModel) : '—'}
+                      </div>
+                      <div className="font-medium text-gray-800">
+                        {rightModel ? getPrimaryInputCost(rightModel) : '—'}
+                      </div>
+                    </div>
+                  )}
+
+                  {shouldShowRow(leftOutputCostValue, rightOutputCostValue) && (
+                    <div className="grid grid-cols-1 items-center gap-4 px-6 py-4 md:grid-cols-3">
+                      <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
+                        Output Cost
+                      </div>
+                      <div className="font-medium text-gray-800">
+                        {leftModel ? getPrimaryOutputCost(leftModel) : '—'}
+                      </div>
+                      <div className="font-medium text-gray-800">
+                        {rightModel ? getPrimaryOutputCost(rightModel) : '—'}
+                      </div>
+                    </div>
+                  )}
+
+                  {shouldShowRow(leftModesValue, rightModesValue) && (
+                    <div className="grid grid-cols-1 items-center gap-4 px-6 py-4 md:grid-cols-3">
+                      <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
+                        Mode
+                      </div>
+                      <div className="font-medium text-gray-800">
+                        {leftModel ? getModesDisplay(leftModel) : '—'}
+                      </div>
+                      <div className="font-medium text-gray-800">
+                        {rightModel ? getModesDisplay(rightModel) : '—'}
+                      </div>
+                    </div>
+                  )}
+
+                  {shouldShowRow(
+                    leftModel?.data.max_input_tokens,
+                    rightModel?.data.max_input_tokens
+                  ) && (
+                    <div className="grid grid-cols-1 items-center gap-4 px-6 py-4 md:grid-cols-3">
+                      <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
+                        Max Input Tokens
+                      </div>
+                      <div className="font-medium text-gray-800">
+                        {leftModel ? formatK(leftModel.data.max_input_tokens || 0) : '—'}
+                      </div>
+                      <div className="font-medium text-gray-800">
+                        {rightModel ? formatK(rightModel.data.max_input_tokens || 0) : '—'}
+                      </div>
+                    </div>
+                  )}
+
+                  {shouldShowRow(leftModel?.data.max_tokens, rightModel?.data.max_tokens) && (
+                    <div className="grid grid-cols-1 items-center gap-4 px-6 py-4 md:grid-cols-3">
+                      <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
+                        Max Tokens
+                      </div>
+                      <div className="font-medium text-gray-800">
+                        {leftModel ? formatK(leftModel.data.max_tokens || 0) : '—'}
+                      </div>
+                      <div className="font-medium text-gray-800">
+                        {rightModel ? formatK(rightModel.data.max_tokens || 0) : '—'}
+                      </div>
+                    </div>
+                  )}
+
+                  {shouldShowRow(
+                    leftModel?.data.max_query_tokens,
+                    rightModel?.data.max_query_tokens
+                  ) && (
+                    <div className="grid grid-cols-1 items-center gap-4 px-6 py-4 md:grid-cols-3">
+                      <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
+                        Max Query Tokens
+                      </div>
+                      <div className="font-medium text-gray-800">
+                        {leftModel ? formatK(leftModel.data.max_query_tokens || 0) : '—'}
+                      </div>
+                      <div className="font-medium text-gray-800">
+                        {rightModel ? formatK(rightModel.data.max_query_tokens || 0) : '—'}
+                      </div>
+                    </div>
+                  )}
+
+                  {shouldShowRow(
+                    leftModel?.data.supported_endpoints,
+                    rightModel?.data.supported_endpoints
+                  ) && (
+                    <div className="grid grid-cols-1 items-center gap-4 px-6 py-4 md:grid-cols-3">
+                      <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
+                        Supported Endpoints
+                      </div>
+                      <div className="font-medium text-gray-800">
+                        {leftModel ? formatList(leftModel.data.supported_endpoints) : '—'}
+                      </div>
+                      <div className="font-medium text-gray-800">
+                        {rightModel ? formatList(rightModel.data.supported_endpoints) : '—'}
+                      </div>
+                    </div>
+                  )}
+
+                  {shouldShowRow(leftModel?.provider, rightModel?.provider) && (
+                    <div className="grid grid-cols-1 items-center gap-4 px-6 py-4 md:grid-cols-3">
+                      <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
+                        Provider
+                      </div>
+                      <div className="font-medium text-gray-800">
+                        {leftModel ? formatProviderName(leftModel.provider) : '—'}
+                      </div>
+                      <div className="font-medium text-gray-800">
+                        {rightModel ? formatProviderName(rightModel.provider) : '—'}
+                      </div>
+                    </div>
+                  )}
+
+                  {shouldShowRow(
+                    leftModel?.data.supports_tool_choice,
+                    rightModel?.data.supports_tool_choice
+                  ) && (
+                    <div className="grid grid-cols-1 items-center gap-4 px-6 py-4 md:grid-cols-3">
+                      <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
+                        Tool Choice
+                      </div>
+                      <div className="font-medium text-gray-800">
+                        {leftModel ? formatYesNo(leftModel.data.supports_tool_choice) : '—'}
+                      </div>
+                      <div className="font-medium text-gray-800">
+                        {rightModel ? formatYesNo(rightModel.data.supports_tool_choice) : '—'}
+                      </div>
+                    </div>
+                  )}
+
+                  {shouldShowRow(
+                    leftModel?.data.supports_response_schema,
+                    rightModel?.data.supports_response_schema
+                  ) && (
+                    <div className="grid grid-cols-1 items-center gap-4 px-6 py-4 md:grid-cols-3">
+                      <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
+                        Response Schema
+                      </div>
+                      <div className="font-medium text-gray-800">
+                        {leftModel ? formatYesNo(leftModel.data.supports_response_schema) : '—'}
+                      </div>
+                      <div className="font-medium text-gray-800">
+                        {rightModel ? formatYesNo(rightModel.data.supports_response_schema) : '—'}
+                      </div>
+                    </div>
+                  )}
+
+                  {shouldShowRow(
+                    leftModel?.data.supports_parallel_function_calling,
+                    rightModel?.data.supports_parallel_function_calling
+                  ) && (
+                    <div className="grid grid-cols-1 items-center gap-4 px-6 py-4 md:grid-cols-3">
+                      <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
+                        Parallel Function Calling
+                      </div>
+                      <div className="font-medium text-gray-800">
+                        {leftModel
+                          ? formatYesNo(leftModel.data.supports_parallel_function_calling)
+                          : '—'}
+                      </div>
+                      <div className="font-medium text-gray-800">
+                        {rightModel
+                          ? formatYesNo(rightModel.data.supports_parallel_function_calling)
+                          : '—'}
+                      </div>
+                    </div>
+                  )}
+
+                  {shouldShowRow(
+                    leftModel?.data.supports_prompt_caching,
+                    rightModel?.data.supports_prompt_caching
+                  ) && (
+                    <div className="grid grid-cols-1 items-center gap-4 px-6 py-4 md:grid-cols-3">
+                      <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
+                        Prompt Caching
+                      </div>
+                      <div className="font-medium text-gray-800">
+                        {leftModel ? formatYesNo(leftModel.data.supports_prompt_caching) : '—'}
+                      </div>
+                      <div className="font-medium text-gray-800">
+                        {rightModel ? formatYesNo(rightModel.data.supports_prompt_caching) : '—'}
+                      </div>
+                    </div>
+                  )}
+
+                  {shouldShowRow(
+                    leftModel?.data.supports_system_messages,
+                    rightModel?.data.supports_system_messages
+                  ) && (
+                    <div className="grid grid-cols-1 items-center gap-4 px-6 py-4 md:grid-cols-3">
+                      <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
+                        System Messages
+                      </div>
+                      <div className="font-medium text-gray-800">
+                        {leftModel ? formatYesNo(leftModel.data.supports_system_messages) : '—'}
+                      </div>
+                      <div className="font-medium text-gray-800">
+                        {rightModel ? formatYesNo(rightModel.data.supports_system_messages) : '—'}
+                      </div>
+                    </div>
+                  )}
+
+                  {shouldShowRow(
+                    leftModel?.data.deprecation_date,
+                    rightModel?.data.deprecation_date
+                  ) && (
+                    <div className="grid grid-cols-1 items-center gap-4 px-6 py-4 md:grid-cols-3">
+                      <div className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
+                        Deprecation Date
+                      </div>
+                      <div className="font-medium text-gray-800">
+                        {leftModel?.data.deprecation_date || '—'}
+                      </div>
+                      <div className="font-medium text-gray-800">
+                        {rightModel?.data.deprecation_date || '—'}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+              <div className="mt-10 w-full">
+                <CTA2 />
+              </div>
+            </div>
+          )}
+
+          {(leftModel || rightModel) && (
+            <section className="mt-12">
+              <div className="mb-6 text-center">
+                <h2 className="mb-2 text-2xl font-[400] text-gray-900 md:text-3xl">
+                  Comparison Insights
+                </h2>
+                <p className="text-sm text-gray-600">
+                  Comprehensive analysis based on the latest model metadata from the comparison
+                  table above.
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                {leftModel && (
+                  <details className="group rounded-lg border border-gray-200 bg-white">
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4">
+                      <span className="text-base font-medium text-gray-900">
+                        What should I know about {leftModel.displayName}?
+                      </span>
+                      <span className="text-gray-500 transition-transform group-open:rotate-180">
+                        <svg
+                          width="18"
+                          height="18"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                          aria-hidden="true"
+                        >
+                          <path
+                            d="M4 6L8 10L12 6"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </span>
+                    </summary>
+                    <div className="border-t border-gray-200 px-5 pt-3 pb-5">
+                      {buildModelFacts(leftModel).map((section, idx) => (
+                        <div key={idx} className={idx > 0 ? 'mt-4' : ''}>
+                          <h4 className="mb-2 text-sm font-semibold text-gray-900">
+                            {section.category}
+                          </h4>
+                          <ul className="list-outside list-disc space-y-2 pl-6 text-sm leading-relaxed text-gray-700">
+                            {section.items.map((item, itemIdx) => (
+                              <li key={itemIdx}>{item}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </details>
+                )}
+
+                {rightModel && (
+                  <details className="group rounded-lg border border-gray-200 bg-white">
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4">
+                      <span className="text-base font-medium text-gray-900">
+                        What should I know about {rightModel.displayName}?
+                      </span>
+                      <span className="text-gray-500 transition-transform group-open:rotate-180">
+                        <svg
+                          width="18"
+                          height="18"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                          aria-hidden="true"
+                        >
+                          <path
+                            d="M4 6L8 10L12 6"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </span>
+                    </summary>
+                    <div className="border-t border-gray-200 px-5 pt-3 pb-5">
+                      {buildModelFacts(rightModel).map((section, idx) => (
+                        <div key={idx} className={idx > 0 ? 'mt-4' : ''}>
+                          <h4 className="mb-2 text-sm font-semibold text-gray-900">
+                            {section.category}
+                          </h4>
+                          <ul className="list-outside list-disc space-y-2 pl-6 text-sm leading-relaxed text-gray-700">
+                            {section.items.map((item, itemIdx) => (
+                              <li key={itemIdx}>{item}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </details>
+                )}
+
+                {leftModel && buildCapabilityRows(leftModel).length > 0 && (
+                  <details className="group rounded-lg border border-gray-200 bg-white">
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4">
+                      <span className="text-base font-medium text-gray-900">
+                        What capabilities does {leftModel.displayName} support?
+                      </span>
+                      <span className="text-gray-500 transition-transform group-open:rotate-180">
+                        <svg
+                          width="18"
+                          height="18"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                          aria-hidden="true"
+                        >
+                          <path
+                            d="M4 6L8 10L12 6"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </span>
+                    </summary>
+                    <div className="border-t border-gray-200 px-5 pt-3 pb-5">
+                      <ul className="list-outside list-disc space-y-2 pl-6 text-sm leading-relaxed text-gray-700">
+                        {buildCapabilityRows(leftModel).map((capability, idx) => (
+                          <li key={idx}>{capability}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </details>
+                )}
+
+                {rightModel && buildCapabilityRows(rightModel).length > 0 && (
+                  <details className="group rounded-lg border border-gray-200 bg-white">
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4">
+                      <span className="text-base font-medium text-gray-900">
+                        What capabilities does {rightModel.displayName} support?
+                      </span>
+                      <span className="text-gray-500 transition-transform group-open:rotate-180">
+                        <svg
+                          width="18"
+                          height="18"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                          aria-hidden="true"
+                        >
+                          <path
+                            d="M4 6L8 10L12 6"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </span>
+                    </summary>
+                    <div className="border-t border-gray-200 px-5 pt-3 pb-5">
+                      <ul className="list-outside list-disc space-y-2 pl-6 text-sm leading-relaxed text-gray-700">
+                        {buildCapabilityRows(rightModel).map((capability, idx) => (
+                          <li key={idx}>{capability}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </details>
+                )}
+
+                {leftModel &&
+                  rightModel &&
+                  buildComparisonAnalysis &&
+                  buildComparisonAnalysis.length > 0 && (
+                    <details className="group rounded-lg border border-gray-200 bg-white" open>
+                      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4">
+                        <span className="text-base font-medium text-gray-900">
+                          How do {leftModel.displayName} and {rightModel.displayName} compare?
+                        </span>
+                        <span className="text-gray-500 transition-transform group-open:rotate-180">
+                          <svg
+                            width="18"
+                            height="18"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            aria-hidden="true"
+                          >
+                            <path
+                              d="M4 6L8 10L12 6"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </span>
+                      </summary>
+                      <div className="space-y-4 border-t border-gray-200 px-5 pt-3 pb-5">
+                        {buildComparisonAnalysis.map((section, idx) => (
+                          <div key={idx}>
+                            <h4 className="mb-2 text-sm font-semibold text-gray-900">
+                              {section.title}
+                            </h4>
+                            <p className="text-sm leading-relaxed text-gray-700">
+                              {section.content}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </details>
+                  )}
+              </div>
+            </section>
+          )}
+        </div>
+      </div>
+
+      <div className="hidden w-20 flex-none flex-col items-start gap-4 border-l border-black/10 xl:flex">
+        <div
+          className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
+            backgroundSize: '4px 4px',
+          }}
+        ></div>
+      </div>
     </div>
   )
 }

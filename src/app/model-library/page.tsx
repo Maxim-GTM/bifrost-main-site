@@ -71,11 +71,13 @@ export default async function HomePage({ searchParams }: PageProps) {
       <div className="relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
           <div className="text-center">
-            <span className="provider-badge">[ BIFROST AI MODEL LIBRARY ]</span>
-            <h1 className="mb-4 text-center text-4xl leading-[1.2] font-normal tracking-tight text-gray-900 md:text-5xl">
+            <span className="font-mono text-[12px] leading-[15px] font-medium tracking-[0.04em] text-emerald-500 uppercase">
+              [ BIFROST AI MODEL LIBRARY ]
+            </span>
+            <h1 className="mx-auto mt-2 mb-4 max-w-2xl text-[42px] leading-[120%] font-medium tracking-[-0.02em] text-black">
               Explore AI Models Across Providers
             </h1>
-            <p className="mx-auto max-w-2xl text-sm leading-relaxed text-gray-500 md:text-base">
+            <p className="mx-auto max-w-2xl text-[16px] leading-[140%] tracking-[0em] text-[#525252]">
               Discover model capabilities, context limits, and pricing across chat, image
               generation, audio, and more.
             </p>
@@ -125,50 +127,108 @@ export default async function HomePage({ searchParams }: PageProps) {
       </div>
 
       {/* Providers Quick Links */}
-      <div className="mx-auto mb-8 max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-4">
-          <h2 className="mb-2 text-xl font-medium tracking-tight text-gray-900 md:text-2xl">
-            Browse by Provider
-          </h2>
-          <p className="text-sm text-gray-600">View all models from a specific provider</p>
+      <div className="relative flex w-full justify-center">
+        {/* Left Side Decoration - Box Style */}
+        <div className="hidden w-20 flex-none flex-col items-end gap-4 border-r border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
+              backgroundSize: '4px 4px',
+            }}
+          ></div>
         </div>
-        <ProvidersList
-          providers={providersWithModels.map((provider) => ({
-            name: provider,
-            count: modelsByProvider[provider]?.length || 0,
-          }))}
-          maxVisible={20}
-          showAllProvidersParam={showAllProviders === 'true'}
-        />
+
+        {/* Center Content - Max 1100px */}
+        <div className="w-full max-w-[1100px] px-4 pb-16">
+          <div className="absolute right-0 left-0 h-px w-full bg-black/10" />
+
+          <div className="pt-8">
+            <div className="mb-4">
+              <h2 className="mb-2 text-xl font-medium tracking-tight text-gray-900 md:text-2xl">
+                Browse by Provider
+              </h2>
+              <p className="text-sm text-gray-600">View all models from a specific provider</p>
+            </div>
+            <ProvidersList
+              providers={providersWithModels.map((provider) => ({
+                name: provider,
+                count: modelsByProvider[provider]?.length || 0,
+              }))}
+              maxVisible={20}
+              showAllProvidersParam={showAllProviders === 'true'}
+            />
+          </div>
+        </div>
+
+        {/* Right Side Decoration */}
+        <div className="hidden w-20 flex-none flex-col items-start gap-4 border-l border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
+              backgroundSize: '4px 4px',
+            }}
+          ></div>
+        </div>
       </div>
 
       {/* Models Table */}
-      <div className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
-        <div className="mb-6">
-          <h2 className="mb-2 text-xl font-medium tracking-tight text-gray-900 md:text-2xl">
-            All Models
-          </h2>
-          <p className="text-sm text-gray-600">
-            Click on any model to view detailed pricing and capabilities
-          </p>
+      <div className="relative flex w-full justify-center">
+        {/* Left Side Decoration - Box Style */}
+        <div className="hidden w-20 flex-none flex-col items-end gap-4 border-r border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
+              backgroundSize: '4px 4px',
+            }}
+          ></div>
         </div>
-        <ModelsTable
-          models={pagedModels}
-          totalModels={totalModels}
-          searchScope="all"
-          serverPaginationContainerId="home-pagination"
-        />
-        {totalModels > PAGE_SIZE && (
-          <div id="home-pagination">
-            <Pagination
-              basePath={basePath}
-              currentPage={currentPage}
-              totalItems={totalModels}
-              pageSize={PAGE_SIZE}
-              query={{ showAllProviders }}
+
+        {/* Center Content - Max 1100px */}
+        <div className="w-full max-w-[1100px] px-4 pb-16">
+          <div className="absolute right-0 left-0 h-px w-full bg-black/10" />
+
+          <div className="pt-8">
+            <div className="mb-6">
+              <h2 className="mb-2 text-xl font-medium tracking-tight text-gray-900 md:text-2xl">
+                All Models
+              </h2>
+              <p className="text-sm text-gray-600">
+                Click on any model to view detailed pricing and capabilities
+              </p>
+            </div>
+            <ModelsTable
+              models={pagedModels}
+              totalModels={totalModels}
+              searchScope="all"
+              serverPaginationContainerId="home-pagination"
             />
+            {totalModels > PAGE_SIZE && (
+              <div id="home-pagination">
+                <Pagination
+                  basePath={basePath}
+                  currentPage={currentPage}
+                  totalItems={totalModels}
+                  pageSize={PAGE_SIZE}
+                  query={{ showAllProviders }}
+                />
+              </div>
+            )}
           </div>
-        )}
+        </div>
+
+        {/* Right Side Decoration */}
+        <div className="hidden w-20 flex-none flex-col items-start gap-4 border-l border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
+              backgroundSize: '4px 4px',
+            }}
+          ></div>
+        </div>
       </div>
     </div>
   )
