@@ -79,7 +79,7 @@ const coreFeatures = [
     title: 'Multi-provider routing with failover',
     description:
       'Automatic failover across Anthropic, AWS Bedrock, and Google Vertex AI when rate limits or outages hit. Adaptive load balancing keeps throughput stable even under heavy load.',
-    tag: '99.99% uptime target',
+    tag: '99.999% uptime target',
   },
   {
     icon: Shield,
@@ -241,7 +241,7 @@ const useCases = [
     icon: Zap,
     title: 'High-availability production deployments',
     description:
-      "Teams running Claude Code at scale rely on Bifrost's automatic failover and load balancing to maintain 99.99% uptime. When Anthropic hits rate limits, requests automatically route to Bedrock or Vertex AI.",
+      "Teams running Claude Code at scale rely on Bifrost's automatic failover and load balancing to maintain 99.999% uptime. When Anthropic hits rate limits, requests automatically route to Bedrock or Vertex AI.",
   },
   {
     icon: Users,
@@ -657,7 +657,12 @@ export default function ClaudeCodePage() {
             </h2>
           </div>
           <div className="overflow-hidden border border-gray-200 bg-white">
-            <table className="w-full">
+            <table className="w-full table-fixed">
+              <colgroup>
+                <col className="w-[20%]" />
+                <col className="w-[30%]" />
+                <col className="w-[30%]" />
+              </colgroup>
               <thead>
                 <tr className="border-b border-gray-200 bg-gray-50">
                   <th className="px-4 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
@@ -677,20 +682,20 @@ export default function ClaudeCodePage() {
                     <td className="px-4 py-3 text-sm text-gray-600">{row.feature}</td>
                     <td className="px-4 py-3 text-sm text-gray-500">
                       <span className="inline-flex items-center gap-1.5">
-                        {row.standalone === null ? (
-                          <span className="text-gray-400">N/A</span>
-                        ) : (
-                          <>
+                        <span className="inline-flex h-3.5 w-3.5 flex-shrink-0 items-center justify-center">
+                          {row.standalone === null ? null : (
                             <XCircle className="h-3.5 w-3.5 text-gray-400" />
-                            No
-                          </>
-                        )}
+                          )}
+                        </span>
+                        <span>{row.standalone === null ? 'N/A' : 'No'}</span>
                       </span>
                     </td>
                     <td className="px-4 py-3 text-sm font-medium text-gray-900">
                       <span className="inline-flex items-center gap-1.5">
-                        <CheckCircle2 className="h-3.5 w-3.5 text-[var(--accent-text)]" />
-                        {row.withBifrost}
+                        <span className="inline-flex h-3.5 w-3.5 flex-shrink-0 items-center justify-center">
+                          <CheckCircle2 className="h-3.5 w-3.5 text-[var(--accent-text)]" />
+                        </span>
+                        <span>{row.withBifrost}</span>
                       </span>
                     </td>
                   </tr>

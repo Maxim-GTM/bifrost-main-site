@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 
 const performanceMetrics = [
   { label: 'Lower P99 Latency', value: '54x', description: 'Consistently fast response times' },
-  { label: 'Uptime SLA', value: '99.99%', description: 'Automatic failover & circuit breakers' },
+  { label: 'Uptime SLA', value: '99.999%', description: 'Automatic failover & circuit breakers' },
   { label: 'Providers', value: '20+', description: 'LLM providers supported natively' },
   { label: 'Migration Time', value: '15 min', description: 'Drop-in OpenAI-compatible API' },
 ]
@@ -41,7 +41,7 @@ const whyMigrate = [
     icon: Shield,
     title: 'Production-Ready Reliability',
     description:
-      '99.99% uptime SLA with automatic failover, circuit breakers, and intelligent retry logic. No more 4-minute latency spikes at high load.',
+      '99.999% uptime SLA with automatic failover, circuit breakers, and intelligent retry logic. No more 4-minute latency spikes at high load.',
   },
   {
     icon: DollarSign,
@@ -70,7 +70,7 @@ const whyMigrate = [
 ]
 
 const benchmarkRows = [
-  { metric: 'Overhead per Request (500 RPS)', bifrost: '0.99ms', litellm: '~40ms (40.4x slower)' },
+  { metric: 'Overhead per Request (500 RPS)', bifrost: '11µs', litellm: '~40ms (40.4x slower)' },
   { metric: 'P99 Latency at 500 RPS', bifrost: '1.68s', litellm: '90.72s' },
   { metric: 'Maximum Sustained RPS', bifrost: '5,000+ stable', litellm: 'Fails at high load' },
 ]
@@ -89,7 +89,7 @@ const featureComparison: { title: string; rows: ComparisonRow[] }[] = [
     rows: [
       {
         feature: 'Overhead at 500 RPS',
-        bifrost: '0.99ms (Go-native)',
+        bifrost: '11µs (Go-native)',
         litellm: '40ms (Python GIL)',
       },
       {
@@ -107,7 +107,7 @@ const featureComparison: { title: string; rows: ComparisonRow[] }[] = [
   {
     title: 'Reliability',
     rows: [
-      { feature: 'Uptime SLA', bifrost: '99.99%', litellm: 'Community-maintained' },
+      { feature: 'Uptime SLA', bifrost: '99.999%', litellm: 'Community-maintained' },
       {
         feature: 'Automatic Failover',
         bifrost: 'Zero-config',
@@ -117,18 +117,12 @@ const featureComparison: { title: string; rows: ComparisonRow[] }[] = [
       },
       {
         feature: 'Circuit Breakers',
-        bifrost: null,
+        bifrost: 'Ship keys with zero weight',
         litellm: null,
         bifrostCheck: true,
         litellmCheck: false,
       },
-      {
-        feature: 'Smart Request Queuing',
-        bifrost: null,
-        litellm: null,
-        bifrostCheck: true,
-        litellmCheck: false,
-      },
+      
       { feature: 'Health Monitoring', bifrost: 'Real-time', litellm: 'Basic' },
     ],
   },
@@ -138,7 +132,7 @@ const featureComparison: { title: string; rows: ComparisonRow[] }[] = [
       {
         feature: 'Virtual Keys',
         bifrost: 'With budgets & rate limits',
-        litellm: null,
+        litellm: 'With budgets & rate limits',
         bifrostCheck: true,
         litellmCheck: true,
       },
@@ -184,25 +178,19 @@ const featureComparison: { title: string; rows: ComparisonRow[] }[] = [
       },
       {
         feature: 'OpenTelemetry',
-        bifrost: null,
-        litellm: null,
+        bifrost: 'OTel compatible',
+        litellm: 'OTel compatible',
         bifrostCheck: true,
         litellmCheck: true,
       },
       {
         feature: 'Request Logging',
-        bifrost: 'SQLite/Postgres',
+        bifrost: 'MySQl',
         litellm: 'Multiple backends',
         bifrostCheck: true,
         litellmCheck: true,
       },
-      {
-        feature: 'Evaluation Platform',
-        bifrost: 'Maxim AI',
-        litellm: 'Third-party tools',
-        bifrostCheck: true,
-        litellmCheck: true,
-      },
+      
     ],
   },
   {
@@ -227,22 +215,45 @@ const featureComparison: { title: string; rows: ComparisonRow[] }[] = [
         bifrostCheck: true,
         litellmCheck: true,
       },
+      {
+        feature: 'Deployment Asset',
+        bifrost: 'Single binary, Docker, K8s',
+        litellm: 'Python package, Docker',
+        bifrostCheck: true,
+        litellmCheck: true,
+      },
+      {
+        feature: 'Docker Size',
+        bifrost: '80 MB',
+        litellm: '',
+      
+      },
     ],
   },
   {
     title: 'Architecture',
     rows: [
       { feature: 'Language', bifrost: 'Go', litellm: 'Python' },
-      {
-        feature: 'Deployment',
-        bifrost: 'Single binary, Docker, K8s',
-        litellm: 'Python package, Docker',
-      },
+      
       {
         feature: 'Clustering',
         bifrost: 'Enterprise',
         litellm: 'Load balancer needed',
         bifrostCheck: true,
+      },
+      {
+        feature: 'Adaptive load Balancing',
+        bifrost: 'Dynamic weight adjustment',
+        litellm: null,
+        bifrostCheck: true,
+        litellmCheck: false,
+      },
+      {
+        feature: 'Usage-Based Routing Rules',
+        bifrost: 'Yes',
+        litellm: null,
+        bifrostCheck: true,
+        litellmCheck: false,
       },
       {
         feature: 'Plugin System',
@@ -300,23 +311,15 @@ const whenToMigrate = [
 ]
 
 function ComparisonCell({ value, hasCheck }: { value: string | null; hasCheck?: boolean }) {
-  if (hasCheck === true) {
-    return (
-      <span className="inline-flex items-center gap-1.5">
-        <CheckCircle2 className="h-3.5 w-3.5 text-[var(--accent-text)]" />
-        {value && <span>{value}</span>}
+  return (
+    <span className="inline-flex items-center gap-1.5">
+      <span className="inline-flex h-3.5 w-3.5 items-center justify-center">
+        {hasCheck === true && <CheckCircle2 className="h-3.5 w-3.5 text-[var(--accent-text)]" />}
+        {hasCheck === false && <XCircle className="h-3.5 w-3.5 text-gray-300" />}
       </span>
-    )
-  }
-  if (hasCheck === false) {
-    return (
-      <span className="inline-flex items-center gap-1.5">
-        <XCircle className="h-3.5 w-3.5 text-gray-300" />
-        {value && <span>{value}</span>}
-      </span>
-    )
-  }
-  return <span>{value}</span>
+      {value && <span>{value}</span>}
+    </span>
+  )
 }
 
 export default function MigratingFromLiteLLMPage() {
@@ -432,7 +435,12 @@ export default function MigratingFromLiteLLMPage() {
             </p>
           </div>
           <div className="overflow-hidden border border-gray-200 bg-white">
-            <table className="w-full">
+            <table className="w-full table-fixed">
+              <colgroup>
+                <col className="w-[40%]" />
+                <col className="w-[30%]" />
+                <col className="w-[30%]" />
+              </colgroup>
               <thead>
                 <tr className="border-b border-gray-200 bg-gray-50">
                   <th className="px-4 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
@@ -492,7 +500,12 @@ export default function MigratingFromLiteLLMPage() {
                     {section.title}
                   </h3>
                 </div>
-                <table className="w-full">
+                <table className="w-full table-fixed">
+                  <colgroup>
+                    <col className="w-[40%]" />
+                    <col className="w-[30%]" />
+                    <col className="w-[30%]" />
+                  </colgroup>
                   <thead>
                     <tr className="border-b border-gray-200">
                       <th className="px-4 py-2.5 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
