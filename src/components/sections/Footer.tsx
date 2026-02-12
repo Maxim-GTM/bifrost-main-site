@@ -144,7 +144,7 @@ const links = [
     links: [
       {
         name: 'Book a Demo',
-        link: 'https://bifrost-site.getmaxim.ai/book-a-demo?utm_medium=Bifrost_Footer',
+        link: 'https://www.getmaxim.ai/bifrost/book-a-demo?utm_medium=Bifrost_Footer',
       },
       {
         name: 'Security',
@@ -250,7 +250,7 @@ export function Footer() {
                 {/* CTA Button */}
                 <Button asChild variant="primary">
                   <Link
-                    href="https://calendly.com/maximai/bifrost-demo"
+                    href="https://www.getmaxim.ai/bifrost/book-a-demo"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

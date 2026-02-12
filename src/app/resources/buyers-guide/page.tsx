@@ -276,10 +276,7 @@ export default function BuyersGuidePage() {
                 </Button>
               </Link>
               <Button size="lg" asChild>
-                <Link
-                  href="https://calendly.com/maximai/bifrost-demo?month=2026-01"
-                  target="_blank"
-                >
+                <Link href="https://www.getmaxim.ai/bifrost/book-a-demo" target="_blank">
                   Book a Demo
                   <ExternalLink className="h-4 w-4" />
                 </Link>

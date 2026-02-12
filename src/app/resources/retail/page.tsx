@@ -380,7 +380,7 @@ export default function RetailPage() {
           </p>
           <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
             <Link
-              href="https://calendly.com/maximai/bifrost-demo?month=2026-01"
+              href="https://www.getmaxim.ai/bifrost/book-a-demo"
               target="_blank"
               rel="noopener noreferrer"
             >

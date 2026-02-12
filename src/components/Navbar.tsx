@@ -166,7 +166,7 @@ export function Navbar() {
             {/* Book a Demo Button - Green with dashed border */}
             <Button asChild variant="primary">
               <Link
-                href="https://calendly.com/maximai/bifrost-demo"
+                href="https://www.getmaxim.ai/bifrost/book-a-demo"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -245,7 +245,7 @@ export function Navbar() {
               Github
             </Link>
             <Link
-              href="https://calendly.com/maximai/bifrost-demo"
+              href="https://www.getmaxim.ai/bifrost/book-a-demo"
               onClick={() => setIsMenuOpen(false)}
               className="bg-accent mt-4 w-full py-4 text-center text-sm font-medium tracking-wider text-white uppercase"
               style={{ border: '2px dashed rgba(0,0,0,0.2)' }}

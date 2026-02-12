@@ -37,7 +37,7 @@ export function CTASection() {
           Join developers who trust Bifrost for their AI infrastructure
         </p>
         <Link
-          href="https://calendly.com/maximai/bifrost-demo"
+          href="https://www.getmaxim.ai/bifrost/book-a-demo"
           target="_blank"
           rel="noopener noreferrer"
         >

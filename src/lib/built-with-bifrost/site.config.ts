@@ -24,7 +24,7 @@ export const SiteConfig = {
     bifrost: 'https://www.getmaxim.ai/bifrost',
     enterprise: 'https://www.getmaxim.ai/bifrost/enterprise',
     blog: 'https://www.getmaxim.ai/bifrost/blog',
-    demo: 'https://calendly.com/maximai/bifrost-demo?month=2026-01',
+    demo: 'https://www.getmaxim.ai/bifrost/book-a-demo',
     home: basePath,
     madeBy: 'https://www.getmaxim.ai',
   },

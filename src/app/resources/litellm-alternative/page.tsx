@@ -943,7 +943,7 @@ export default function LiteLLMAlternativePage() {
               { label: 'Documentation', href: 'https://docs.getbifrost.ai' },
               { label: 'GitHub', href: 'https://github.com/maximhq/bifrost' },
               { label: 'Migration Guide', href: '/resources/migrating-from-litellm' },
-              { label: 'Book a Demo', href: 'https://www.getmaxim.ai/demo' },
+              { label: 'Book a Demo', href: 'https://www.getmaxim.ai/bifrost/book-a-demo' },
             ].map((link) => (
               <a
                 key={link.label}
