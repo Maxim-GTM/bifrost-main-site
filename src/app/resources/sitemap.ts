@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 
-const BASE_URL = 'https://www.getmaxim.ai/bifrost/bifrost-resources'
+const BASE_URL = 'https://www.getmaxim.ai/bifrost/resources'
 
 const subpages = [
   'benchmarks',

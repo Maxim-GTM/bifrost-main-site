@@ -24,11 +24,6 @@ export function PostCard({ post, type, index }: PostCardProps) {
 
         {/* Bottom: Content */}
         <div className="flex flex-1 flex-col p-5">
-          <div className="mb-2 font-mono text-xs font-medium tracking-wider text-gray-500 uppercase">
-            {String(index + 1).padStart(2, '0')}{' '}
-            {post.primary_tag ? post.primary_tag.name : 'Article'}
-          </div>
-
           <h2 className="mb-3 text-lg leading-tight font-semibold text-gray-900 group-hover:text-emerald-600">
             {post.title}
           </h2>
@@ -46,6 +41,12 @@ export function PostCard({ post, type, index }: PostCardProps) {
               </>
             )}
           </div>
+
+          {post && post.primary_tag && (
+            <div className="mt-2 font-mono text-xs font-medium tracking-wider text-gray-500 uppercase">
+              {post.primary_tag.name}
+            </div>
+          )}
         </div>
       </article>
     </Link>

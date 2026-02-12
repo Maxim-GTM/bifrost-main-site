@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   description:
     'Add multi-provider routing, cost control, guardrails, and governance to Claude Code at scale with Bifrost - the fastest enterprise LLM gateway.',
   alternates: {
-    canonical: 'https://www.getmaxim.ai/bifrost/bifrost-resources/claude-code',
+    canonical: 'https://www.getmaxim.ai/bifrost/resources/claude-code',
   },
 }
 

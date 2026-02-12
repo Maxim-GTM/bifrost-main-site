@@ -8,43 +8,45 @@ import { getCostCalculatorBaseUrl } from '@/lib/utils'
 import {
   Activity,
   ArrowRight,
-  ShieldCheck,
+  Banknote,
+  Building2,
+  ExternalLink,
   FileText,
   Lock,
+  Package,
+  ShieldCheck,
+  ShoppingCart,
   SignalHigh,
-  Building2,
-  Stethoscope,
-  Banknote,
-  ExternalLink,
+  Users,
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Bifrost for Healthcare & Life Sciences | Secure AI Gateway',
+  title: 'Bifrost for Retail | Secure AI Gateway',
   description:
-    'Deploy Bifrost as a secure AI gateway for healthcare and life sciences with auditability, governance, and low-latency routing.',
+    'Deploy Bifrost as a secure, low-latency AI gateway for retail organizations with governance, observability, and multi-provider resilience.',
   alternates: {
-    canonical: 'https://www.getmaxim.ai/bifrost/bifrost-resources/healthcare-life-sciences',
+    canonical: 'https://www.getmaxim.ai/bifrost/resources/retail',
   },
 }
 
 const challenges = [
   {
-    icon: ShieldCheck,
-    title: 'Regulatory compliance',
+    icon: ShoppingCart,
+    title: 'Customer experience at scale',
     description:
-      'Strict privacy rules require complete visibility and control over every model request.',
+      'Personalization, recommendations, and support require consistent AI performance across peak shopping periods.',
   },
   {
-    icon: Stethoscope,
-    title: 'Clinical safety',
+    icon: Package,
+    title: 'Supply chain complexity',
     description:
-      'Patient-facing workflows demand guardrails, redaction, and safe fallback behavior.',
+      'Inventory forecasting and logistics optimization demand reliable, high-throughput model access.',
   },
   {
-    icon: SignalHigh,
-    title: 'Operational scale',
+    icon: Users,
+    title: 'Multi-channel coordination',
     description:
-      'High-volume clinical and research workloads require consistent, low-latency routing.',
+      'Unified AI strategy across e-commerce, stores, and mobile requires centralized governance and routing.',
   },
 ]
 
@@ -52,22 +54,53 @@ const governance = [
   {
     icon: Lock,
     title: 'In-VPC and on-prem deployment',
-    description: 'Keep sensitive data inside your network perimeter with private deployments.',
+    description:
+      'Keep customer data and proprietary models inside your network perimeter with private deployments.',
   },
   {
     icon: FileText,
-    title: 'Audit-grade logs',
-    description: 'Capture full request trails for compliance and internal review.',
+    title: 'Comprehensive logging',
+    description:
+      'Capture complete request trails with user, provider, route, token, and latency metadata.',
   },
   {
     icon: ShieldCheck,
-    title: 'Policy enforcement',
-    description: 'Apply content policies, PII redaction, and access controls consistently.',
+    title: 'Role-based access control',
+    description:
+      'Apply fine-grained permissions and rate limits by team, channel, and application.',
   },
   {
     icon: Banknote,
     title: 'Cost governance',
-    description: 'Set budgets and enforce usage limits across departments and teams.',
+    description: 'Virtual keys enforce budgets and spend limits across departments and campaigns.',
+  },
+]
+
+const useCases = [
+  {
+    title: 'Product recommendations',
+    description: 'Deliver personalized suggestions with optimized routing for cost and latency.',
+  },
+  {
+    title: 'Customer support automation',
+    description: 'Scale AI-powered support with guardrails and consistent policy enforcement.',
+  },
+  {
+    title: 'Inventory and demand forecasting',
+    description: 'Route high-volume prediction workloads with reliable throughput and fallback.',
+  },
+  {
+    title: 'Dynamic pricing optimization',
+    description: 'Apply AI models for pricing with centralized governance and audit trails.',
+  },
+  {
+    title: 'Visual search and product discovery',
+    description: 'Enable multimodal AI features with unified provider management.',
+  },
+  {
+    title: 'Marketing personalization',
+    description:
+      'Power personalized campaigns with cost-effective model routing and budget controls.',
   },
 ]
 
@@ -79,18 +112,18 @@ const platformCapabilities = [
   },
   {
     icon: FileText,
-    title: 'Audit-Ready Evidence',
-    description: 'Generate compliance trails for internal and regulatory reviews.',
+    title: 'Complete Request Trails',
+    description: 'Generate detailed logs for analytics and operational reviews.',
   },
   {
     icon: ShieldCheck,
-    title: 'Guardrails and Redaction',
-    description: 'Enforce safety policies and PII protection across workflows.',
+    title: 'Policy Enforcement',
+    description: 'Apply guardrails, content filtering, and access control consistently.',
   },
   {
     icon: Banknote,
     title: 'Budget Governance',
-    description: 'Prevent runaway spend with virtual keys and limits.',
+    description: 'Set limits per team, campaign, and channel to prevent runaway spend.',
   },
   {
     icon: Building2,
@@ -100,7 +133,7 @@ const platformCapabilities = [
   {
     icon: SignalHigh,
     title: 'High-Throughput Routing',
-    description: 'Maintain performance even under peak demand.',
+    description: 'Maintain performance during peak shopping events and flash sales.',
   },
 ]
 
@@ -113,47 +146,19 @@ const interfaceHighlights = [
   },
   {
     src: '/bifrost-screenshot/logs.png',
-    title: 'Audit Logs',
-    description: 'Detailed request trails ready for compliance and forensic analysis.',
+    title: 'Request Logs',
+    description: 'Detailed request trails for debugging and performance analysis.',
     objectPosition: 'center center',
   },
   {
     src: '/bifrost-screenshot/Virtual%20Keys.png',
     title: 'Virtual Keys and Budgets',
-    description: 'Budget enforcement and access segmentation across teams.',
+    description: 'Budget enforcement and access segmentation across teams and channels.',
     objectPosition: 'center',
   },
 ]
 
-const useCases = [
-  {
-    title: 'Clinical documentation',
-    description:
-      'Apply guardrails and redaction for summaries, notes, and documentation workflows.',
-  },
-  {
-    title: 'Care navigation and support',
-    description: 'Scale patient-facing AI with consistent policies and audit trails.',
-  },
-  {
-    title: 'Medical coding and billing',
-    description: 'Route requests through approved providers with full traceability.',
-  },
-  {
-    title: 'Research and trial analysis',
-    description: 'Support high-volume research workflows with predictable performance.',
-  },
-  {
-    title: 'Pharmacovigilance',
-    description: 'Monitor safety signals with governed model access and logging.',
-  },
-  {
-    title: 'Enterprise copilots',
-    description: 'Deploy internal copilots with centralized governance and monitoring.',
-  },
-]
-
-export default function HealthcareLifeSciencesPage() {
+export default function RetailPage() {
   const basePath = getCostCalculatorBaseUrl()
 
   return (
@@ -166,14 +171,14 @@ export default function HealthcareLifeSciencesPage() {
             <h1 className="mb-4 text-center text-4xl leading-[1.2] font-normal tracking-tight text-gray-900 md:text-5xl">
               Secure AI Gateway for
               <br />
-              <span className="text-[var(--accent-text)]">Healthcare &amp; Life Sciences</span>
+              <span className="text-[var(--accent-text)]">Retail</span>
             </h1>
             <p className="mx-auto mb-8 max-w-2xl text-sm leading-relaxed text-gray-500 md:text-base">
-              Bifrost provides centralized governance, auditability, and low-latency routing for
-              regulated healthcare and life sciences workflows.
+              Bifrost provides centralized governance, low-latency routing, and cost control for
+              AI-powered retail experiences across every channel.
             </p>
             <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
-              <Link href={`${basePath}/bifrost-resources/benchmarks`}>
+              <Link href={`${basePath}/resources/benchmarks`}>
                 <Button size="lg">
                   View benchmarks
                   <ArrowRight className="h-4 w-4" />
@@ -202,7 +207,7 @@ export default function HealthcareLifeSciencesPage() {
               [ CHALLENGES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Barriers to Scalable Healthcare AI
+              Barriers to scalable AI in retail
             </h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -232,7 +237,7 @@ export default function HealthcareLifeSciencesPage() {
               [ GOVERNANCE ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Enterprise Controls Without Slowing Care Teams
+              Enterprise-grade controls without slowing teams down
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
               Deploy Bifrost in your environment and enforce consistent policies across every model
@@ -263,11 +268,11 @@ export default function HealthcareLifeSciencesPage() {
               [ PLATFORM CAPABILITIES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Built for Regulated Healthcare Operations
+              Designed for high-volume retail operations
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Unified governance, routing, and observability with the controls healthcare
-              organizations require.
+              Unified governance, routing, and observability with the performance retail workloads
+              demand.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -297,19 +302,20 @@ export default function HealthcareLifeSciencesPage() {
               [ BIFROST INTERFACE ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Operational Views Built for Healthcare Compliance
+              Operational Views Built for Retail Scale
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Focused dashboard panels that highlight routing, audit trails, and budget governance.
+              Focused dashboard panels that highlight routing, request trails, and budget
+              governance.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {interfaceHighlights.map((shot) => (
               <div key={shot.title} className="relative border border-gray-200 bg-white">
-                <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40 z-10" />
-                <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40 z-10" />
-                <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40 z-10" />
-                <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40 z-10" />
+                <div className="absolute top-3 left-3 z-10 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute top-3 right-3 z-10 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+                <div className="absolute bottom-3 left-3 z-10 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute right-3 bottom-3 z-10 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
                 <div className="relative aspect-[16/9] overflow-hidden bg-gray-50">
                   <Image
                     src={shot.src}
@@ -338,7 +344,7 @@ export default function HealthcareLifeSciencesPage() {
               [ USE CASES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Industry Workflows Powered by Bifrost
+              Retail workflows powered by Bifrost
             </h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -366,11 +372,11 @@ export default function HealthcareLifeSciencesPage() {
             [ NEXT STEPS ]
           </p>
           <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-            Bring Regulated Healthcare AI Under Control
+            Scale AI across your retail operations
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-gray-600">
-            Talk to the Bifrost team about deploying a compliant, low-latency gateway in your
-            environment.
+            Talk to the Bifrost team about deploying a high-performance, cost-effective gateway for
+            your retail AI workloads.
           </p>
           <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
             <Link
@@ -383,7 +389,7 @@ export default function HealthcareLifeSciencesPage() {
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
-            <Link href={`${basePath}/bifrost-resources/claude-code`}>
+            <Link href={`${basePath}/resources/claude-code`}>
               <Button variant="outline" size="lg">
                 Claude Code integration
                 <ExternalLink className="h-4 w-4" />

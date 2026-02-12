@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://www.getmaxim.ai/bifrost/bifrost-resources',
+    url: 'https://www.getmaxim.ai/bifrost/resources',
     siteName: 'Bifrost by Maxim AI',
     title: 'Bifrost Resources - Benchmarks, Guides & Integration Playbooks',
     description:
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
       'Explore Bifrost benchmarks, buyer guidance, integration playbooks, and industry solutions.',
   },
   alternates: {
-    canonical: 'https://www.getmaxim.ai/bifrost/bifrost-resources',
+    canonical: 'https://www.getmaxim.ai/bifrost/resources',
   },
 }
 
@@ -55,7 +55,7 @@ const resources = [
     title: 'Performance Benchmarks',
     description:
       'Live comparisons, latency metrics, and throughput data that show why Bifrost is the fastest LLM gateway.',
-    href: `${basePath}/bifrost-resources/benchmarks`,
+    href: `${basePath}/resources/benchmarks`,
     icon: Activity,
     label: 'Performance',
   },
@@ -63,7 +63,7 @@ const resources = [
     title: "LLM Gateway Buyer's Guide",
     description:
       'A comprehensive comparison of leading AI gateway platforms, capabilities, and trade-offs.',
-    href: `${basePath}/bifrost-resources/buyers-guide`,
+    href: `${basePath}/resources/buyers-guide`,
     icon: BookOpen,
     label: 'Guide',
   },
@@ -71,7 +71,7 @@ const resources = [
     title: 'Claude Code Integration',
     description:
       'Enterprise controls for Claude Code with multi-provider routing, governance, and observability.',
-    href: `${basePath}/bifrost-resources/claude-code`,
+    href: `${basePath}/resources/claude-code`,
     icon: ShieldCheck,
     label: 'Integration',
   },
@@ -79,7 +79,7 @@ const resources = [
     title: 'MCP Gateway',
     description:
       'High-performance tool execution for AI agents with explicit approvals and full audit trails.',
-    href: `${basePath}/bifrost-resources/mcp-gateway`,
+    href: `${basePath}/resources/mcp-gateway`,
     icon: Plug,
     label: 'MCP',
   },
@@ -87,7 +87,7 @@ const resources = [
     title: 'Migrating from LiteLLM',
     description:
       'Step-by-step guide to migrate from LiteLLM to Bifrost in 15 minutes with zero code changes.',
-    href: `${basePath}/bifrost-resources/migrating-from-litellm`,
+    href: `${basePath}/resources/migrating-from-litellm`,
     icon: RefreshCw,
     label: 'Migration',
   },
@@ -95,7 +95,7 @@ const resources = [
     title: 'LiteLLM Alternative',
     description:
       'Why teams choose Bifrost over LiteLLM: 50x faster, zero-config deployment, and native observability.',
-    href: `${basePath}/bifrost-resources/litellm-alternative`,
+    href: `${basePath}/resources/litellm-alternative`,
     icon: Zap,
     label: 'Alternative',
   },
@@ -106,7 +106,7 @@ const industries = [
     title: 'Financial Institutions',
     description:
       'Secure AI gateway for regulated banking, insurance, and investment services with audit-grade controls.',
-    href: `${basePath}/bifrost-resources/financial-institutions`,
+    href: `${basePath}/resources/financial-institutions`,
     icon: Building2,
     label: 'Financial Services',
   },
@@ -114,7 +114,7 @@ const industries = [
     title: 'Healthcare & Life Sciences',
     description:
       'Governed AI workflows with auditability and data controls for sensitive clinical systems.',
-    href: `${basePath}/bifrost-resources/healthcare-life-sciences`,
+    href: `${basePath}/resources/healthcare-life-sciences`,
     icon: Stethoscope,
     label: 'Healthcare',
   },
@@ -122,7 +122,7 @@ const industries = [
     title: 'Retail',
     description:
       'High-performance AI gateway for personalization, recommendations, and omnichannel retail experiences.',
-    href: `${basePath}/bifrost-resources/retail`,
+    href: `${basePath}/resources/retail`,
     icon: ShoppingCart,
     label: 'Retail',
   },
@@ -142,7 +142,7 @@ const jsonLd = {
   name: 'Bifrost Resources - Benchmarks, Guides & Integration Playbooks',
   description:
     'Explore Bifrost benchmarks, buyer guidance, integration playbooks, and industry solutions. Everything you need to evaluate and deploy the fastest LLM gateway.',
-  url: 'https://www.getmaxim.ai/bifrost/bifrost-resources',
+  url: 'https://www.getmaxim.ai/bifrost/resources',
   isPartOf: {
     '@type': 'WebSite',
     name: 'Bifrost by Maxim AI',

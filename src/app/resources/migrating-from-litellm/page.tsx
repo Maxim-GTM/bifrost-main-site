@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   description:
     'Migrate from LiteLLM to Bifrost in 15-30 minutes. Get 54x faster performance at 500 RPS, 99.99% uptime, and enterprise-grade security with zero code changes.',
   alternates: {
-    canonical: 'https://www.getmaxim.ai/bifrost/bifrost-resources/migrating-from-litellm',
+    canonical: 'https://www.getmaxim.ai/bifrost/resources/migrating-from-litellm',
   },
 }
 
@@ -125,7 +125,7 @@ const featureComparison: { title: string; rows: ComparisonRow[] }[] = [
         bifrostCheck: true,
         litellmCheck: false,
       },
-      
+
       { feature: 'Health Monitoring', bifrost: 'Real-time', litellm: 'Basic' },
     ],
   },
@@ -193,7 +193,6 @@ const featureComparison: { title: string; rows: ComparisonRow[] }[] = [
         bifrostCheck: true,
         litellmCheck: true,
       },
-      
     ],
   },
   {
@@ -229,7 +228,6 @@ const featureComparison: { title: string; rows: ComparisonRow[] }[] = [
         feature: 'Docker Size',
         bifrost: '80 MB',
         litellm: '',
-      
       },
     ],
   },
@@ -237,7 +235,7 @@ const featureComparison: { title: string; rows: ComparisonRow[] }[] = [
     title: 'Architecture',
     rows: [
       { feature: 'Language', bifrost: 'Go', litellm: 'Python' },
-      
+
       {
         feature: 'Clustering',
         bifrost: 'Enterprise',
