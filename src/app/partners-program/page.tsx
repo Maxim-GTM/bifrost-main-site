@@ -156,13 +156,15 @@ export default function PartnersPage() {
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
           <div className="text-center">
-            <span className="provider-badge">[ PARTNER PROGRAM ]</span>
-            <h1 className="mb-4 text-center text-4xl leading-[1.2] font-normal tracking-tight text-gray-900 md:text-5xl">
+            <span className="font-mono text-[12px] leading-[15px] font-medium tracking-[0.04em] text-emerald-500 uppercase">
+              [&ensp;PARTNER PROGRAM&ensp;]
+            </span>
+            <h1 className="mx-auto mt-2 mb-4 max-w-2xl text-[42px] leading-[120%] font-medium tracking-[-0.02em] text-black">
               Welcome to The Bifrost
               <br />
               <span className="text-[var(--accent-text)]">Partner Program</span>
             </h1>
-            <p className="mx-auto mb-8 max-w-3xl text-sm leading-relaxed text-gray-500 md:text-base">
+            <p className="mx-auto mb-8 max-w-3xl text-[16px] leading-[140%] tracking-[0em] text-[#525252]">
               Join the Bifrost Partner Program and help accelerate the leading AI companies in the
               world. Whether you&apos;re a cloud provider, system integrator, technology vendor, or
               channel partner - there&apos;s a program built for you.
@@ -186,123 +188,231 @@ export default function PartnersPage() {
       </section>
 
       {/* Partner Types */}
-      <section className="bg-gray-50 py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-12 text-center">
-            <p className="mb-4 font-mono text-xs tracking-widest text-gray-400 uppercase">
-              [ BIFROST PARTNERS ]
-            </p>
-            <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">Ways to partner</h2>
-            <p className="mx-auto max-w-2xl text-gray-600">
-              Choose the partnership model that fits your business. Each program is designed for
-              mutual growth with dedicated resources and support.
-            </p>
-          </div>
-          <PartnerTypes />
+      <div className="relative flex w-full justify-center">
+        {/* Left Side Decoration - Box Style */}
+        <div className="hidden w-20 flex-none flex-col items-end gap-4 border-r border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
+              backgroundSize: '4px 4px',
+            }}
+          ></div>
         </div>
-      </section>
+
+        {/* Center Content - Max 1100px */}
+        <div className="w-full max-w-[1100px] px-4 py-0">
+          <div className="absolute right-0 left-0 h-px w-full bg-black/10" />
+
+          <div className="pt-8">
+            <div className="mb-12 text-center">
+              <p className="mb-4 font-mono text-xs tracking-widest text-gray-400 uppercase">
+                [ BIFROST PARTNERS ]
+              </p>
+              <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">Ways to partner</h2>
+              <p className="mx-auto max-w-2xl text-gray-600">
+                Choose the partnership model that fits your business. Each program is designed for
+                mutual growth with dedicated resources and support.
+              </p>
+            </div>
+            <PartnerTypes />
+          </div>
+        </div>
+
+        {/* Right Side Decoration */}
+        <div className="hidden w-20 flex-none flex-col items-start gap-4 border-l border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
+              backgroundSize: '4px 4px',
+            }}
+          ></div>
+        </div>
+      </div>
 
       {/* Why Partner with Bifrost */}
-      <section className="bg-white py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-12 text-center">
-            <p className="mb-4 font-mono text-xs tracking-widest text-gray-400 uppercase">
-              [ WHY BIFROST ]
-            </p>
-            <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              The platform your customers are already asking for
-            </h2>
-          </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {whyPartner.map((item) => (
-              <div key={item.title} className="border border-gray-200 bg-white p-6">
-                <item.icon className="mb-4 h-6 w-6 text-[var(--accent)]" />
-                <h3 className="mb-2 text-sm font-medium text-gray-900">{item.title}</h3>
-                <p className="text-xs leading-relaxed text-gray-600">{item.description}</p>
-              </div>
-            ))}
+      <div className="relative flex w-full justify-center">
+        {/* Left Side Decoration - Box Style */}
+        <div className="hidden w-20 flex-none flex-col items-end gap-4 border-r border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
+              backgroundSize: '4px 4px',
+            }}
+          ></div>
+        </div>
+
+        {/* Center Content - Max 1100px */}
+        <div className="w-full max-w-[1100px] px-4 py-16 md:py-24">
+          <div className="absolute right-0 left-0 h-px w-full bg-black/10" />
+
+          <div className="pt-8">
+            <div className="mb-12 text-center">
+              <p className="mb-4 font-mono text-xs tracking-widest text-gray-400 uppercase">
+                [ WHY BIFROST ]
+              </p>
+              <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
+                The platform your customers are already asking for
+              </h2>
+            </div>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {whyPartner.map((item) => (
+                <div key={item.title} className="border border-gray-200 bg-white p-6">
+                  <item.icon className="mb-4 h-6 w-6 text-[var(--accent)]" />
+                  <h3 className="mb-2 text-sm font-medium text-gray-900">{item.title}</h3>
+                  <p className="text-xs leading-relaxed text-gray-600">{item.description}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </section>
+
+        {/* Right Side Decoration */}
+        <div className="hidden w-20 flex-none flex-col items-start gap-4 border-l border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
+              backgroundSize: '4px 4px',
+            }}
+          ></div>
+        </div>
+      </div>
 
       {/* Partner Logos - Horizontal scrolling marquee */}
-      <section className="bg-gray-50 py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-10 text-center">
-            <p className="mb-4 font-mono text-xs tracking-widest text-gray-400 uppercase">
-              [ ECOSYSTEM ]
-            </p>
-            <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Join a growing partner ecosystem
-            </h2>
-            <p className="mx-auto max-w-2xl text-gray-600">
-              Bifrost integrates with the tools and platforms your customers already use.
-            </p>
-          </div>
-          <div className="group/marquee relative overflow-hidden">
-            <p className="mb-6 text-center font-mono text-xs font-medium tracking-widest text-gray-400">
-              TRUSTED BY
-            </p>
-            {/* Edge fade overlays */}
-            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-gray-50 to-transparent" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-gray-50 to-transparent" />
-            <div className="overflow-hidden">
-              <div className="flex w-max shrink-0 animate-marquee gap-12 pr-12 group-hover/marquee:[animation-play-state:paused]">
-                {[...partnerLogos, ...partnerLogos].map((partner, i) => (
-                  <a
-                    key={`${partner.name}-${i}`}
-                    href={partner.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="group/logo flex shrink-0 flex-col items-center justify-center"
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={`https://img.logo.dev/${partner.domain}?token=pk_DRMfSAu-ReyrEks2PcRCfw`}
-                      alt={`${partner.name} logo`}
-                      loading="eager"
-                      decoding="async"
-                      className="h-10 w-auto object-contain opacity-60 grayscale transition-all group-hover/logo:opacity-100 group-hover/logo:grayscale-0 md:h-12"
-                    />
-                    <span className="mt-2 text-center font-mono text-[10px] leading-tight text-gray-400 transition-colors group-hover/logo:text-gray-600">
-                      {partner.name}
-                    </span>
-                  </a>
-                ))}
+      <div className="relative flex w-full justify-center">
+        {/* Left Side Decoration - Box Style */}
+        <div className="hidden w-20 flex-none flex-col items-end gap-4 border-r border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
+              backgroundSize: '4px 4px',
+            }}
+          ></div>
+        </div>
+
+        {/* Center Content - Max 1100px */}
+        <div className="w-full max-w-[1100px] px-4 py-16 md:py-24">
+          <div className="absolute right-0 left-0 h-px w-full bg-black/10" />
+
+          <div className="pt-8">
+            <div className="mb-10 text-center">
+              <p className="mb-4 font-mono text-xs tracking-widest text-gray-400 uppercase">
+                [ ECOSYSTEM ]
+              </p>
+              <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
+                Join a growing partner ecosystem
+              </h2>
+              <p className="mx-auto max-w-2xl text-gray-600">
+                Bifrost integrates with the tools and platforms your customers already use.
+              </p>
+            </div>
+            <div className="group/marquee relative overflow-hidden">
+              <p className="mb-6 text-center font-mono text-xs font-medium tracking-widest text-gray-400">
+                TRUSTED BY
+              </p>
+              {/* Edge fade overlays */}
+              <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-white to-transparent" />
+              <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-white to-transparent" />
+              <div className="overflow-hidden">
+                <div className="animate-marquee flex w-max shrink-0 gap-12 pr-12 group-hover/marquee:[animation-play-state:paused]">
+                  {[...partnerLogos, ...partnerLogos].map((partner, i) => (
+                    <a
+                      key={`${partner.name}-${i}`}
+                      href={partner.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="group/logo flex shrink-0 flex-col items-center justify-center"
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={`https://img.logo.dev/${partner.domain}?token=pk_DRMfSAu-ReyrEks2PcRCfw`}
+                        alt={`${partner.name} logo`}
+                        loading="eager"
+                        decoding="async"
+                        className="h-10 w-auto object-contain opacity-60 grayscale transition-all group-hover/logo:opacity-100 group-hover/logo:grayscale-0 md:h-12"
+                      />
+                      <span className="mt-2 text-center font-mono text-[10px] leading-tight text-gray-400 transition-colors group-hover/logo:text-gray-600">
+                        {partner.name}
+                      </span>
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
+
+        {/* Right Side Decoration */}
+        <div className="hidden w-20 flex-none flex-col items-start gap-4 border-l border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
+              backgroundSize: '4px 4px',
+            }}
+          ></div>
+        </div>
+      </div>
 
       {/* CTA */}
-      <section className="bg-white py-16 md:py-24">
-        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">Join forces with Bifrost</h2>
-          <p className="mx-auto mb-8 max-w-2xl text-gray-600">
-            Dedicated to the success of our partners&apos; businesses. Let&apos;s build the future
-            of enterprise AI infrastructure together.
-          </p>
-          <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
-            <Link href="/partners-program/become-a-partner">
-              <Button size="lg">
-                Become a partner
-                <ArrowRight className="h-4 w-4" />
-              </Button>
-            </Link>
-            <Link
-              href="https://github.com/maximhq/bifrost"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button variant="outline" size="lg">
-                View on GitHub
-                <ExternalLink className="h-4 w-4" />
-              </Button>
-            </Link>
+      <div className="relative flex w-full justify-center">
+        {/* Left Side Decoration - Box Style */}
+        <div className="hidden w-20 flex-none flex-col items-end gap-4 border-r border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
+              backgroundSize: '4px 4px',
+            }}
+          ></div>
+        </div>
+
+        {/* Center Content - Max 1100px */}
+        <div className="w-full max-w-[1100px] px-4 py-16 md:py-24">
+          <div className="absolute right-0 left-0 h-px w-full bg-black/10" />
+
+          <div className="pt-8 text-center">
+            <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">Join forces with Bifrost</h2>
+            <p className="mx-auto mb-8 max-w-2xl text-gray-600">
+              Dedicated to the success of our partners&apos; businesses. Let&apos;s build the future
+              of enterprise AI infrastructure together.
+            </p>
+            <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+              <Link href="/partners-program/become-a-partner">
+                <Button size="lg">
+                  Become a partner
+                  <ArrowRight className="h-4 w-4" />
+                </Button>
+              </Link>
+              <Link
+                href="https://github.com/maximhq/bifrost"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="outline" size="lg">
+                  View on GitHub
+                  <ExternalLink className="h-4 w-4" />
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
-      </section>
+
+        {/* Right Side Decoration */}
+        <div className="hidden w-20 flex-none flex-col items-start gap-4 border-l border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
+              backgroundSize: '4px 4px',
+            }}
+          ></div>
+        </div>
+      </div>
     </div>
   )
 }

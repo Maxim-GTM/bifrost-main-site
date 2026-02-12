@@ -112,16 +112,29 @@ export default async function HomePage({ searchParams }: PageProps) {
 
   return (
     <div className="min-h-screen">
-      <script
+       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      {/* Hero Section */}
-      <div className="relative overflow-hidden">
-        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
-          <div className="text-center">
+      {/* Hero + Stats Section with Decorations */}
+      <div className="relative flex w-full justify-center">
+        {/* Left Side Decoration - Box Style */}
+        <div className="hidden w-20 flex-none flex-col items-end gap-4 border-r border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
+              backgroundSize: '4px 4px',
+            }}
+          ></div>
+        </div>
+
+        {/* Center Content - Max 1100px */}
+        <div className="w-full max-w-[1100px] px-4 pb-12">
+          {/* Hero Section */}
+          <div className="py-12 text-center md:py-16">
             <span className="font-mono text-[12px] leading-[15px] font-medium tracking-[0.04em] text-emerald-500 uppercase">
-              [ BIFROST AI MODEL LIBRARY ]
+              [&ensp;BIFROST AI MODEL LIBRARY&ensp;]
             </span>
             <h1 className="mx-auto mt-2 mb-4 max-w-2xl text-[42px] leading-[120%] font-medium tracking-[-0.02em] text-black">
               Explore AI Models Across Providers
@@ -131,47 +144,56 @@ export default async function HomePage({ searchParams }: PageProps) {
               generation, audio, and more.
             </p>
           </div>
-        </div>
-      </div>
 
-      {/* Stats Section */}
-      <div className="mx-auto mb-12 max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-6 text-center">
-          <p className="font-mono text-xs font-medium tracking-widest text-gray-400 uppercase">
-            [ OUR NUMBERS AT A GLANCE ]
-          </p>
-        </div>
-        <div className="flex justify-center">
-          <div className="w-full max-w-2xl border-t border-b border-gray-200">
-            <div className="grid grid-cols-1 divide-y divide-gray-200 md:grid-cols-3 md:divide-x md:divide-y-0">
-              <div className="px-6 py-4 text-center md:py-5">
-                <div className="font-mono text-sm font-medium tracking-wider text-gray-500 uppercase">
-                  Models
-                </div>
-
-                <div className="text-accent mb-1 font-mono text-xl leading-none md:text-2xl">
-                  {models.length.toLocaleString()}
-                </div>
-              </div>
-              <div className="px-6 py-4 text-center md:py-5">
-                <div className="font-mono text-sm font-medium tracking-wider text-gray-500 uppercase">
-                  Providers
-                </div>
-
-                <div className="text-accent mb-1 font-mono text-xl leading-none md:text-2xl">
-                  {providers.length}
-                </div>
-              </div>
-              <div className="px-6 py-4 text-center md:py-5">
-                <div className="font-mono text-sm font-medium tracking-wider text-gray-500 uppercase">
-                  Modes
-                </div>
-                <div className="text-accent mb-1 font-mono text-xl leading-none md:text-2xl">
-                  {modes.length}
+          {/* Stats Section */}
+          <div className="mb-4">
+            <div className="mb-6 text-center">
+              <p className="font-mono text-xs font-medium tracking-widest text-gray-400 uppercase">
+                [ OUR NUMBERS AT A GLANCE ]
+              </p>
+            </div>
+            <div className="flex justify-center">
+              <div className="w-full max-w-2xl border-t border-b border-gray-200">
+                <div className="grid grid-cols-1 divide-y divide-gray-200 md:grid-cols-3 md:divide-x md:divide-y-0">
+                  <div className="px-6 py-4 text-center md:py-5">
+                    <div className="font-mono text-sm font-medium tracking-wider text-gray-500 uppercase">
+                      Models
+                    </div>
+                    <div className="text-accent mb-1 font-mono text-xl leading-none md:text-2xl">
+                      {models.length.toLocaleString()}
+                    </div>
+                  </div>
+                  <div className="px-6 py-4 text-center md:py-5">
+                    <div className="font-mono text-sm font-medium tracking-wider text-gray-500 uppercase">
+                      Providers
+                    </div>
+                    <div className="text-accent mb-1 font-mono text-xl leading-none md:text-2xl">
+                      {providers.length}
+                    </div>
+                  </div>
+                  <div className="px-6 py-4 text-center md:py-5">
+                    <div className="font-mono text-sm font-medium tracking-wider text-gray-500 uppercase">
+                      Modes
+                    </div>
+                    <div className="text-accent mb-1 font-mono text-xl leading-none md:text-2xl">
+                      {modes.length}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Right Side Decoration */}
+        <div className="hidden w-20 flex-none flex-col items-start gap-4 border-l border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
+              backgroundSize: '4px 4px',
+            }}
+          ></div>
         </div>
       </div>
 

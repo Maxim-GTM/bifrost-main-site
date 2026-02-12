@@ -157,7 +157,8 @@ const enterpriseFeatures = [
   {
     icon: Database,
     title: 'Semantic caching',
-    description: 'Repeat or near-identical queries resolve instantly, cutting costs and reducing latency.',
+    description:
+      'Repeat or near-identical queries resolve instantly, cutting costs and reducing latency.',
   },
   {
     icon: KeyRound,
@@ -301,8 +302,10 @@ export default function ClaudeCodePage() {
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
           <div className="text-center">
-            <span className="provider-badge">[ CLAUDE CODE + BIFROST ]</span>
-            <h1 className="mb-4 text-center text-4xl leading-[1.2] font-normal tracking-tight text-gray-900 md:text-5xl">
+            <span className="font-mono text-[12px] leading-[15px] font-medium tracking-[0.04em] text-emerald-500 uppercase">
+              [&ensp;CLAUDE CODE + BIFROST&ensp;]
+            </span>
+            <h1 className="mt-2 mb-4 text-center text-4xl leading-[1.2] font-normal tracking-tight text-gray-900 md:text-5xl">
               Enterprise LLM Gateway for
               <br />
               <span className="text-[var(--accent-text)]">Claude Code</span>
@@ -326,7 +329,11 @@ export default function ClaudeCodePage() {
                 </Button>
               </Link>
 
-              <Link href="https://docs.getbifrost.ai/quickstart/gateway/cli-agents#claude-code" target="_blank" rel="noopener noreferrer">
+              <Link
+                href="https://docs.getbifrost.ai/quickstart/gateway/cli-agents#claude-code"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Button variant="outline" size="lg">
                   View documentation
                   <ExternalLink className="h-4 w-4" />
@@ -421,10 +428,12 @@ export default function ClaudeCodePage() {
               [ HOW IT WORKS ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-             Zero-Friction Integration: How Bifrost Works with Claude Code
+              Zero-Friction Integration: How Bifrost Works with Claude Code
             </h2>
             <p className="mx-auto max-w-3xl text-gray-600">
-            Set one environment variable to route Claude Code through Bifrost, developers work unchanged while platform teams gain full control over budgets, guardrails, failover routing, and real-time observability across 20+ providers.
+              Set one environment variable to route Claude Code through Bifrost, developers work
+              unchanged while platform teams gain full control over budgets, guardrails, failover
+              routing, and real-time observability across 20+ providers.
             </p>
           </div>
 
@@ -746,8 +755,8 @@ export default function ClaudeCodePage() {
               <h3 className="mb-2 text-gray-900">Semantic caching at scale</h3>
               <p className="text-sm leading-relaxed text-gray-600">
                 Repeat or near-identical queries across developers resolve instantly from cache.
-                Teams running large codebases see cost savings on common operations like
-                code explanations and documentation generation.
+                Teams running large codebases see cost savings on common operations like code
+                explanations and documentation generation.
               </p>
             </div>
           </div>

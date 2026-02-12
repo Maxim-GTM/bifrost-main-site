@@ -226,7 +226,7 @@ export function Footer() {
           ></div>
         </div>
 
-        <div className="w-full max-w-[1100px] border-t border-black/10 p-4 sm:px-16 sm:pt-8 md:px-24 md:pt-16">
+        <div className="w-full max-w-[1100px] border-t border-black/10 px-4 pt-4 sm:px-16 sm:pt-8 md:px-24 md:pt-16">
           {/* CTA Section */}
           <div className="mx-auto">
             <div className="relative border border-gray-200 bg-white px-6 py-12">
@@ -261,7 +261,7 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="mx-auto bg-gray-50 font-sans text-gray-600">
+          <div className="mx-auto font-sans text-gray-600">
             <div className="mx-auto max-w-7xl border-x border-b border-gray-200 px-8 py-8">
               {/* Layout Wrapper: Flex Col on Mobile, Flex Row on Desktop */}
               <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between lg:gap-8">

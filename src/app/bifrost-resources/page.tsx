@@ -174,13 +174,15 @@ export default function HomePage() {
       />
       {/* Hero Section */}
       <section className="relative overflow-hidden">
-        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-32 lg:px-8">
           <div className="text-center">
-            <span className="provider-badge">[ BIFROST RESOURCES HUB ]</span>
-            <h1 className="mb-4 text-center text-4xl leading-[1.2] font-normal tracking-tight text-gray-900 md:text-5xl">
+            <span className="font-mono text-[12px] leading-[15px] font-medium tracking-[0.04em] text-emerald-500 uppercase">
+              [&ensp;BIFROST RESOURCES HUB&ensp;]
+            </span>
+            <h1 className="mx-auto mt-2 mb-4 max-w-2xl text-[42px] leading-[120%] font-medium tracking-[-0.02em] text-black">
               The Fastest Path to Bifrost Insights
             </h1>
-            <p className="mx-auto max-w-2xl text-sm leading-relaxed text-gray-500 md:text-base">
+            <p className="mx-auto max-w-2xl text-[16px] leading-[140%] tracking-[0em] text-[#525252]">
               Explore benchmarks, buyer guidance, and integration playbooks. Everything you need to
               evaluate and deploy Bifrost with confidence.
             </p>
@@ -189,88 +191,142 @@ export default function HomePage() {
       </section>
 
       {/* Resources Grid */}
-      <section className="pb-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-10 text-center">
-            <p className="font-mono text-xs tracking-widest text-gray-400 uppercase">
-              [ RESOURCES ]
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {resources.map((resource) => (
-              <Link
-                key={resource.title}
-                href={resource.href}
-                className="group relative border border-gray-200 bg-white transition-all hover:border-[var(--accent-border)] hover:shadow-sm"
-              >
-                <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
-                <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
-                <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
-                <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
-                <div className="flex items-center justify-between border-b border-gray-200 p-6">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center bg-[var(--accent)]/10 text-[var(--accent-text)]">
-                      <resource.icon className="h-5 w-5" />
+      <div className="relative flex w-full justify-center">
+        {/* Left Side Decoration - Box Style */}
+        <div className="hidden w-20 flex-none flex-col items-end gap-4 border-r border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
+              backgroundSize: '4px 4px',
+            }}
+          ></div>
+        </div>
+
+        {/* Center Content - Max 1100px */}
+        <div className="w-full max-w-[1100px] px-4 pb-16">
+          <div className="absolute right-0 left-0 h-px w-full bg-black/10" />
+
+          <div className="pt-8">
+            <div className="mb-10 text-center">
+              <p className="font-mono text-xs tracking-widest text-gray-400 uppercase">
+                [ RESOURCES ]
+              </p>
+            </div>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {resources.map((resource) => (
+                <Link
+                  key={resource.title}
+                  href={resource.href}
+                  className="group relative border border-gray-200 bg-white transition-all hover:border-[var(--accent-border)] hover:shadow-sm"
+                >
+                  <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+                  <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+                  <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+                  <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
+                  <div className="flex items-center justify-between border-b border-gray-200 p-6">
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-10 w-10 items-center justify-center bg-[var(--accent)]/10 text-[var(--accent-text)]">
+                        <resource.icon className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <p className="font-mono text-xs tracking-widest text-gray-400 uppercase">
+                          {resource.label}
+                        </p>
+                        <h3 className="text-sm text-gray-900">{resource.title}</h3>
+                      </div>
                     </div>
-                    <div>
-                      <p className="font-mono text-xs tracking-widest text-gray-400 uppercase">
-                        {resource.label}
-                      </p>
-                      <h3 className="text-sm text-gray-900">{resource.title}</h3>
-                    </div>
+                    <ArrowRight className="h-4 w-4 text-gray-400 transition-colors group-hover:text-[var(--accent-text)]" />
                   </div>
-                  <ArrowRight className="h-4 w-4 text-gray-400 transition-colors group-hover:text-[var(--accent-text)]" />
-                </div>
-                <div className="p-6">
-                  <p className="text-sm leading-relaxed text-gray-600">{resource.description}</p>
-                </div>
-              </Link>
-            ))}
+                  <div className="p-6">
+                    <p className="text-sm leading-relaxed text-gray-600">{resource.description}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
-      </section>
+
+        {/* Right Side Decoration */}
+        <div className="hidden w-20 flex-none flex-col items-start gap-4 border-l border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
+              backgroundSize: '4px 4px',
+            }}
+          ></div>
+        </div>
+      </div>
 
       {/* Industries Grid */}
-      <section className="pb-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-10 text-center">
-            <p className="font-mono text-xs tracking-widest text-gray-400 uppercase">
-              [ INDUSTRIES ]
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {industries.map((industry) => (
-              <Link
-                key={industry.title}
-                href={industry.href}
-                className="group relative border border-gray-200 bg-white transition-all hover:border-[var(--accent-border)] hover:shadow-sm"
-              >
-                <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
-                <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
-                <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
-                <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
-                <div className="flex items-center justify-between border-b border-gray-200 p-6">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center bg-[var(--accent)]/10 text-[var(--accent-text)]">
-                      <industry.icon className="h-5 w-5" />
+      <div className="relative flex w-full justify-center">
+        {/* Left Side Decoration - Box Style */}
+        <div className="hidden w-20 flex-none flex-col items-end gap-4 border-r border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
+              backgroundSize: '4px 4px',
+            }}
+          ></div>
+        </div>
+
+        {/* Center Content - Max 1100px */}
+        <div className="w-full max-w-[1100px] px-4 pb-16">
+          <div className="absolute right-0 left-0 h-px w-full bg-black/10" />
+
+          <div className="pt-8">
+            <div className="mb-10 text-center">
+              <p className="font-mono text-xs tracking-widest text-gray-400 uppercase">
+                [ INDUSTRIES ]
+              </p>
+            </div>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {industries.map((industry) => (
+                <Link
+                  key={industry.title}
+                  href={industry.href}
+                  className="group relative border border-gray-200 bg-white transition-all hover:border-[var(--accent-border)] hover:shadow-sm"
+                >
+                  <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+                  <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+                  <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+                  <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
+                  <div className="flex items-center justify-between border-b border-gray-200 p-6">
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-10 w-10 items-center justify-center bg-[var(--accent)]/10 text-[var(--accent-text)]">
+                        <industry.icon className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <p className="font-mono text-xs tracking-widest text-gray-400 uppercase">
+                          {industry.label}
+                        </p>
+                        <h3 className="text-sm text-gray-900">{industry.title}</h3>
+                      </div>
                     </div>
-                    <div>
-                      <p className="font-mono text-xs tracking-widest text-gray-400 uppercase">
-                        {industry.label}
-                      </p>
-                      <h3 className="text-sm text-gray-900">{industry.title}</h3>
-                    </div>
+                    <ArrowRight className="h-4 w-4 text-gray-400 transition-colors group-hover:text-[var(--accent-text)]" />
                   </div>
-                  <ArrowRight className="h-4 w-4 text-gray-400 transition-colors group-hover:text-[var(--accent-text)]" />
-                </div>
-                <div className="p-6">
-                  <p className="text-sm leading-relaxed text-gray-600">{industry.description}</p>
-                </div>
-              </Link>
-            ))}
+                  <div className="p-6">
+                    <p className="text-sm leading-relaxed text-gray-600">{industry.description}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
-      </section>
+
+        {/* Right Side Decoration */}
+        <div className="hidden w-20 flex-none flex-col items-start gap-4 border-l border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
+              backgroundSize: '4px 4px',
+            }}
+          ></div>
+        </div>
+      </div>
     </div>
   )
 }

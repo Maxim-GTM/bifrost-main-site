@@ -587,414 +587,388 @@ export default async function ModelPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        {/* Breadcrumbs */}
-        <Breadcrumbs
-          items={[
-            { label: 'Home', href: `${getCostCalculatorBaseUrl()}/llm-cost-calculator` },
-            {
-              label: formatProviderName(model.provider),
-              href: `${getCostCalculatorBaseUrl()}/llm-cost-calculator/provider/${encodeURIComponent(model.provider)}`,
-            },
-            { label: model.displayName },
-          ]}
-        />
-
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="mb-4 text-3xl font-normal text-gray-900 md:text-4xl">
-            {model.displayName} Cost Calculator - {formatProviderName(model.provider)}
-          </h1>
-          <p className="mb-4 text-lg text-gray-600">
-            Calculate the cost of using {model.displayName} from{' '}
-            {formatProviderName(model.provider)} for your AI applications
-          </p>
+      <div className="relative flex w-full justify-center">
+        {/* Left Side Decoration - Box Style */}
+        <div className="hidden w-20 flex-none flex-col items-end gap-4 border-r border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
+              backgroundSize: '4px 4px',
+            }}
+          ></div>
         </div>
 
-        {/* Calculator and CTA2 */}
-        <div className="mb-12 grid grid-cols-1 gap-8 lg:auto-rows-[1fr] lg:grid-cols-12 xl:grid-cols-[3fr_1fr]">
-          <div className="box-border flex h-full flex-col lg:col-span-8 xl:col-span-1">
-            <div className="flex-1 [&>div]:mx-0 [&>div]:box-border [&>div]:h-full [&>div]:max-w-none">
-              <Calculator modelData={model.data} modelName={model.displayName} />
+        {/* Center Content - Max 1100px */}
+        <div className="w-full max-w-[1100px] px-4 py-8">
+          {/* Breadcrumbs */}
+          <Breadcrumbs
+            items={[
+              { label: 'Home', href: `${getCostCalculatorBaseUrl()}/llm-cost-calculator` },
+              {
+                label: formatProviderName(model.provider),
+                href: `${getCostCalculatorBaseUrl()}/llm-cost-calculator/provider/${encodeURIComponent(model.provider)}`,
+              },
+              { label: model.displayName },
+            ]}
+          />
+
+          {/* Header */}
+          <div className="mb-8">
+            <h1 className="mb-4 text-3xl font-normal text-gray-900 md:text-4xl">
+              {model.displayName} Cost Calculator - {formatProviderName(model.provider)}
+            </h1>
+            <p className="mb-4 text-lg text-gray-600">
+              Calculate the cost of using {model.displayName} from{' '}
+              {formatProviderName(model.provider)} for your AI applications
+            </p>
+          </div>
+
+          {/* Calculator and CTA2 */}
+          <div className="mb-12 grid grid-cols-1 gap-8 lg:auto-rows-[1fr] lg:grid-cols-12 xl:grid-cols-[3fr_1fr]">
+            <div className="box-border flex h-full flex-col lg:col-span-8 xl:col-span-1">
+              <div className="flex-1 [&>div]:mx-0 [&>div]:box-border [&>div]:h-full [&>div]:max-w-none">
+                <Calculator modelData={model.data} modelName={model.displayName} />
+              </div>
+            </div>
+            <div className="box-border flex h-full flex-col lg:col-span-4 xl:col-span-1">
+              <CTA2 />
             </div>
           </div>
-          <div className="box-border flex h-full flex-col lg:col-span-4 xl:col-span-1">
-            <CTA2 />
-          </div>
-        </div>
 
-        {/* Model Details */}
-        {hasLimits && (
-          <div className="mb-12">
-            <h2 className="mb-6 font-sans text-xl font-medium text-gray-900">
-              Model Specifications
-            </h2>
-            <div className="grid grid-cols-1 divide-x divide-y divide-gray-200 border border-gray-200 md:grid-cols-2">
-              {(model.data.supports_function_calling ||
-                model.data.supports_vision ||
-                model.data.supports_reasoning ||
-                model.data.supports_web_search ||
-                model.data.supports_audio_input ||
-                model.data.supports_audio_output) && (
+          {/* Model Details */}
+          {hasLimits && (
+            <div className="mb-12">
+              <h2 className="mb-6 font-sans text-xl font-medium text-gray-900">
+                Model Specifications
+              </h2>
+              <div className="grid grid-cols-1 divide-x divide-y divide-gray-200 border border-gray-200 md:grid-cols-2">
+                {(model.data.supports_function_calling ||
+                  model.data.supports_vision ||
+                  model.data.supports_reasoning ||
+                  model.data.supports_web_search ||
+                  model.data.supports_audio_input ||
+                  model.data.supports_audio_output) && (
+                  <div className="p-6">
+                    <h3 className="mb-3 text-sm font-medium tracking-wide text-gray-500 uppercase">
+                      Capabilities
+                    </h3>
+                    <div className="space-y-2">
+                      {model.data.supports_function_calling && (
+                        <div className="flex items-center">
+                          <span className="text-accent mr-2">✓</span>
+                          <span className="text-gray-700">Function Calling</span>
+                        </div>
+                      )}
+                      {model.data.supports_vision && (
+                        <div className="flex items-center">
+                          <span className="text-accent mr-2">✓</span>
+                          <span className="text-gray-700">Vision</span>
+                        </div>
+                      )}
+                      {model.data.supports_reasoning && (
+                        <div className="flex items-center">
+                          <span className="text-accent mr-2">✓</span>
+                          <span className="text-gray-700">Reasoning</span>
+                        </div>
+                      )}
+                      {model.data.supports_web_search && (
+                        <div className="flex items-center">
+                          <span className="text-accent mr-2">✓</span>
+                          <span className="text-gray-700">Web Search</span>
+                        </div>
+                      )}
+                      {model.data.supports_audio_input && (
+                        <div className="flex items-center">
+                          <span className="text-accent mr-2">✓</span>
+                          <span className="text-gray-700">Audio Input</span>
+                        </div>
+                      )}
+                      {model.data.supports_audio_output && (
+                        <div className="flex items-center">
+                          <span className="text-accent mr-2">✓</span>
+                          <span className="text-gray-700">Audio Output</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
                 <div className="p-6">
-                  <h3 className="mb-3 text-sm font-medium tracking-wide text-gray-500 uppercase">
-                    Capabilities
+                  <h3 className="mb-3 text-sm font-semibold tracking-wide text-gray-500 uppercase">
+                    Limits
                   </h3>
                   <div className="space-y-2">
-                    {model.data.supports_function_calling && (
-                      <div className="flex items-center">
-                        <span className="text-accent mr-2">✓</span>
-                        <span className="text-gray-700">Function Calling</span>
+                    {model.data.max_input_tokens && (
+                      <div className="flex justify-between">
+                        <span className="text-gray-700">Max Input Tokens</span>
+                        <span className="text-accent font-mono font-semibold">
+                          {model.data.max_input_tokens.toLocaleString()}
+                        </span>
                       </div>
                     )}
-                    {model.data.supports_vision && (
-                      <div className="flex items-center">
-                        <span className="text-accent mr-2">✓</span>
-                        <span className="text-gray-700">Vision</span>
+                    {model.data.max_output_tokens && (
+                      <div className="flex justify-between">
+                        <span className="text-gray-700">Max Output Tokens</span>
+                        <span className="text-accent font-mono font-semibold">
+                          {model.data.max_output_tokens.toLocaleString()}
+                        </span>
                       </div>
                     )}
-                    {model.data.supports_reasoning && (
-                      <div className="flex items-center">
-                        <span className="text-accent mr-2">✓</span>
-                        <span className="text-gray-700">Reasoning</span>
-                      </div>
-                    )}
-                    {model.data.supports_web_search && (
-                      <div className="flex items-center">
-                        <span className="text-accent mr-2">✓</span>
-                        <span className="text-gray-700">Web Search</span>
-                      </div>
-                    )}
-                    {model.data.supports_audio_input && (
-                      <div className="flex items-center">
-                        <span className="text-accent mr-2">✓</span>
-                        <span className="text-gray-700">Audio Input</span>
-                      </div>
-                    )}
-                    {model.data.supports_audio_output && (
-                      <div className="flex items-center">
-                        <span className="text-accent mr-2">✓</span>
-                        <span className="text-gray-700">Audio Output</span>
+                    {model.data.max_tokens && (
+                      <div className="flex justify-between">
+                        <span className="text-gray-700">Max Tokens</span>
+                        <span className="text-accent font-mono font-semibold">
+                          {model.data.max_tokens.toLocaleString()}
+                        </span>
                       </div>
                     )}
                   </div>
                 </div>
-              )}
+              </div>
+            </div>
+          )}
+
+          {/* Programmatic Content for SEO */}
+          <div className="mt-12">
+            <div className="mb-12 grid grid-cols-1 divide-x divide-y divide-gray-200 border border-gray-200 md:grid-cols-2">
+              {/* Introduction */}
               <div className="p-6">
-                <h3 className="mb-3 text-sm font-semibold tracking-wide text-gray-500 uppercase">
-                  Limits
+                <h2 className="mb-4 font-sans text-xl font-medium text-gray-900">
+                  About {model.displayName}
+                </h2>
+                <p className="leading-relaxed text-gray-700">{contentData.introduction}</p>
+              </div>
+
+              {/* Pricing Information */}
+              {contentData.pricing.hasPricing && (
+                <div className="p-6">
+                  <h3 className="mb-4 font-sans text-lg font-medium text-gray-900">
+                    Pricing Information
+                  </h3>
+                  <div className="space-y-4">
+                    {contentData.pricing.input > 0 && (
+                      <div className="flex items-center justify-between border-b border-gray-200 py-2">
+                        <span className="text-gray-700">Input Cost</span>
+                        <span className="font-mono font-semibold text-gray-700">
+                          ${contentData.pricing.input.toFixed(2)} per 1M tokens
+                        </span>
+                      </div>
+                    )}
+                    {contentData.pricing.output > 0 && (
+                      <div className="flex items-center justify-between border-b border-gray-200 py-2">
+                        <span className="text-gray-700">Output Cost</span>
+                        <span className="font-mono font-semibold text-gray-700">
+                          ${contentData.pricing.output.toFixed(2)} per 1M tokens
+                        </span>
+                      </div>
+                    )}
+                    {contentData.pricing.units?.perSecondInput != null && (
+                      <div className="flex items-center justify-between border-b border-gray-200 py-2">
+                        <span className="text-gray-700">Audio Input Cost</span>
+                        <span className="font-mono font-semibold text-gray-700">
+                          ${contentData.pricing.units.perSecondInput.toFixed(4)} per second
+                        </span>
+                      </div>
+                    )}
+                    {contentData.pricing.units?.perSecondOutput != null && (
+                      <div className="flex items-center justify-between border-b border-gray-200 py-2">
+                        <span className="text-gray-700">Audio/Video Output Cost</span>
+                        <span className="font-mono font-semibold text-gray-700">
+                          ${contentData.pricing.units.perSecondOutput.toFixed(4)} per second
+                        </span>
+                      </div>
+                    )}
+                    {contentData.pricing.units?.perImageInput != null && (
+                      <div className="flex items-center justify-between border-b border-gray-200 py-2">
+                        <span className="text-gray-700">Image Input Cost</span>
+                        <span className="font-mono font-semibold text-gray-700">
+                          ${contentData.pricing.units.perImageInput.toFixed(4)} per image
+                        </span>
+                      </div>
+                    )}
+                    {contentData.pricing.units?.perImageOutput != null && (
+                      <div className="flex items-center justify-between border-b border-gray-200 py-2">
+                        <span className="text-gray-700">Image Output Cost</span>
+                        <span className="font-mono font-semibold text-gray-700">
+                          ${contentData.pricing.units.perImageOutput.toFixed(4)} per image
+                        </span>
+                      </div>
+                    )}
+                    {contentData.pricing.units?.perPageOCR != null && (
+                      <div className="flex items-center justify-between border-b border-gray-200 py-2">
+                        <span className="text-gray-700">OCR Cost</span>
+                        <span className="font-mono font-semibold text-gray-700">
+                          ${contentData.pricing.units.perPageOCR.toFixed(4)} per page
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                  <p className="mt-4 text-sm text-gray-600">
+                    <strong>Note:</strong> Use the interactive calculator above to estimate costs
+                    for your specific usage patterns.
+                  </p>
+                </div>
+              )}
+            </div>
+
+            {/* Technical Specifications */}
+            {(contentData.specifications.maxInputTokens ||
+              contentData.specifications.maxOutputTokens) && (
+              <div className="mb-6">
+                <h3 className="mb-4 font-sans text-lg font-medium text-gray-900">
+                  Technical Specifications
                 </h3>
-                <div className="space-y-2">
-                  {model.data.max_input_tokens && (
-                    <div className="flex justify-between">
-                      <span className="text-gray-700">Max Input Tokens</span>
-                      <span className="text-accent font-mono font-semibold">
-                        {model.data.max_input_tokens.toLocaleString()}
+                <div className="grid divide-x divide-y divide-gray-200 border border-gray-200 md:grid-cols-2">
+                  {contentData.specifications.maxInputTokens && (
+                    <div className="flex items-center justify-between px-4 py-3">
+                      <span className="text-gray-700">Maximum Input Tokens</span>
+                      <span className="font-mono font-semibold text-gray-700">
+                        {contentData.specifications.maxInputTokens.toLocaleString()}
                       </span>
                     </div>
                   )}
-                  {model.data.max_output_tokens && (
-                    <div className="flex justify-between">
-                      <span className="text-gray-700">Max Output Tokens</span>
-                      <span className="text-accent font-mono font-semibold">
-                        {model.data.max_output_tokens.toLocaleString()}
+                  {contentData.specifications.maxOutputTokens && (
+                    <div className="flex items-center justify-between px-4 py-3">
+                      <span className="text-gray-700">Maximum Output Tokens</span>
+                      <span className="font-mono font-semibold text-gray-700">
+                        {contentData.specifications.maxOutputTokens.toLocaleString()}
                       </span>
                     </div>
                   )}
-                  {model.data.max_tokens && (
-                    <div className="flex justify-between">
-                      <span className="text-gray-700">Max Tokens</span>
-                      <span className="text-accent font-mono font-semibold">
-                        {model.data.max_tokens.toLocaleString()}
+                  {contentData.specifications.maxTokens && (
+                    <div className="flex items-center justify-between px-4 py-3">
+                      <span className="text-gray-700">Maximum Total Tokens</span>
+                      <span className="font-mono font-semibold text-gray-700">
+                        {contentData.specifications.maxTokens.toLocaleString()}
+                      </span>
+                    </div>
+                  )}
+                  {contentData.specifications.maxQueryTokens && (
+                    <div className="flex items-center justify-between px-4 py-3">
+                      <span className="text-gray-700">Maximum Query Tokens</span>
+                      <span className="font-mono font-semibold text-gray-700">
+                        {contentData.specifications.maxQueryTokens.toLocaleString()}
                       </span>
                     </div>
                   )}
                 </div>
               </div>
-            </div>
-          </div>
-        )}
+            )}
 
-        {/* Programmatic Content for SEO */}
-        <div className="mt-12">
-          <div className="mb-12 grid grid-cols-1 divide-x divide-y divide-gray-200 border border-gray-200 md:grid-cols-2">
-            {/* Introduction */}
-            <div className="p-6">
-              <h2 className="mb-4 font-sans text-xl font-medium text-gray-900">
-                About {model.displayName}
-              </h2>
-              <p className="leading-relaxed text-gray-700">{contentData.introduction}</p>
-            </div>
-
-            {/* Pricing Information */}
-            {contentData.pricing.hasPricing && (
-              <div className="p-6">
-                <h3 className="mb-4 font-sans text-lg font-medium text-gray-900">
-                  Pricing Information
-                </h3>
-                <div className="space-y-4">
-                  {contentData.pricing.input > 0 && (
-                    <div className="flex items-center justify-between border-b border-gray-200 py-2">
-                      <span className="text-gray-700">Input Cost</span>
-                      <span className="font-mono font-semibold text-gray-700">
-                        ${contentData.pricing.input.toFixed(2)} per 1M tokens
-                      </span>
-                    </div>
-                  )}
-                  {contentData.pricing.output > 0 && (
-                    <div className="flex items-center justify-between border-b border-gray-200 py-2">
-                      <span className="text-gray-700">Output Cost</span>
-                      <span className="font-mono font-semibold text-gray-700">
-                        ${contentData.pricing.output.toFixed(2)} per 1M tokens
-                      </span>
-                    </div>
-                  )}
-                  {contentData.pricing.units?.perSecondInput != null && (
-                    <div className="flex items-center justify-between border-b border-gray-200 py-2">
-                      <span className="text-gray-700">Audio Input Cost</span>
-                      <span className="font-mono font-semibold text-gray-700">
-                        ${contentData.pricing.units.perSecondInput.toFixed(4)} per second
-                      </span>
-                    </div>
-                  )}
-                  {contentData.pricing.units?.perSecondOutput != null && (
-                    <div className="flex items-center justify-between border-b border-gray-200 py-2">
-                      <span className="text-gray-700">Audio/Video Output Cost</span>
-                      <span className="font-mono font-semibold text-gray-700">
-                        ${contentData.pricing.units.perSecondOutput.toFixed(4)} per second
-                      </span>
-                    </div>
-                  )}
-                  {contentData.pricing.units?.perImageInput != null && (
-                    <div className="flex items-center justify-between border-b border-gray-200 py-2">
-                      <span className="text-gray-700">Image Input Cost</span>
-                      <span className="font-mono font-semibold text-gray-700">
-                        ${contentData.pricing.units.perImageInput.toFixed(4)} per image
-                      </span>
-                    </div>
-                  )}
-                  {contentData.pricing.units?.perImageOutput != null && (
-                    <div className="flex items-center justify-between border-b border-gray-200 py-2">
-                      <span className="text-gray-700">Image Output Cost</span>
-                      <span className="font-mono font-semibold text-gray-700">
-                        ${contentData.pricing.units.perImageOutput.toFixed(4)} per image
-                      </span>
-                    </div>
-                  )}
-                  {contentData.pricing.units?.perPageOCR != null && (
-                    <div className="flex items-center justify-between border-b border-gray-200 py-2">
-                      <span className="text-gray-700">OCR Cost</span>
-                      <span className="font-mono font-semibold text-gray-700">
-                        ${contentData.pricing.units.perPageOCR.toFixed(4)} per page
-                      </span>
-                    </div>
-                  )}
-                </div>
-                <p className="mt-4 text-sm text-gray-600">
-                  <strong>Note:</strong> Use the interactive calculator above to estimate costs for
-                  your specific usage patterns.
+            {/* Pro Tip Callout */}
+            {(contentData.specifications.maxInputTokens ||
+              contentData.specifications.maxOutputTokens) && (
+              <div className="mt-2 mb-12 rounded-r-lg border-l-4 border-amber-400 bg-amber-50 p-4">
+                <h4 className="mb-2 text-sm font-medium text-amber-900">Pro Tip</h4>
+                <p className="text-sm text-amber-800">
+                  Use the maximum token limits shown above to understand the model's capacity.
+                  {contentData.specifications.maxInputTokens &&
+                    ` This model can handle up to ${contentData.specifications.maxInputTokens.toLocaleString()} input tokens.`}
+                  {contentData.specifications.maxOutputTokens &&
+                    ` The maximum output length is ${contentData.specifications.maxOutputTokens.toLocaleString()} tokens.`}
                 </p>
               </div>
             )}
-          </div>
 
-          {/* Technical Specifications */}
-          {(contentData.specifications.maxInputTokens ||
-            contentData.specifications.maxOutputTokens) && (
-            <div className="mb-6">
-              <h3 className="mb-4 font-sans text-lg font-medium text-gray-900">
-                Technical Specifications
-              </h3>
-              <div className="grid divide-x divide-y divide-gray-200 border border-gray-200 md:grid-cols-2">
-                {contentData.specifications.maxInputTokens && (
-                  <div className="flex items-center justify-between px-4 py-3">
-                    <span className="text-gray-700">Maximum Input Tokens</span>
-                    <span className="font-mono font-semibold text-gray-700">
-                      {contentData.specifications.maxInputTokens.toLocaleString()}
-                    </span>
-                  </div>
-                )}
-                {contentData.specifications.maxOutputTokens && (
-                  <div className="flex items-center justify-between px-4 py-3">
-                    <span className="text-gray-700">Maximum Output Tokens</span>
-                    <span className="font-mono font-semibold text-gray-700">
-                      {contentData.specifications.maxOutputTokens.toLocaleString()}
-                    </span>
-                  </div>
-                )}
-                {contentData.specifications.maxTokens && (
-                  <div className="flex items-center justify-between px-4 py-3">
-                    <span className="text-gray-700">Maximum Total Tokens</span>
-                    <span className="font-mono font-semibold text-gray-700">
-                      {contentData.specifications.maxTokens.toLocaleString()}
-                    </span>
-                  </div>
-                )}
-                {contentData.specifications.maxQueryTokens && (
-                  <div className="flex items-center justify-between px-4 py-3">
-                    <span className="text-gray-700">Maximum Query Tokens</span>
-                    <span className="font-mono font-semibold text-gray-700">
-                      {contentData.specifications.maxQueryTokens.toLocaleString()}
-                    </span>
-                  </div>
-                )}
+            {/* Capabilities */}
+            {Object.values(contentData.capabilities).some((v) => v) && (
+              <div className="mb-12">
+                <h3 className="mb-4 font-sans text-lg font-medium text-gray-900">
+                  Model Capabilities
+                </h3>
+                <div className="grid divide-x divide-y divide-gray-200 border border-gray-200 md:grid-cols-2">
+                  {contentData.capabilities.functionCalling && (
+                    <div className="flex items-center gap-2 p-4 text-gray-700">
+                      <span className="text-accent font-bold">✓</span>
+                      <span>
+                        <strong>Function Calling</strong> - Execute custom functions and tools
+                      </span>
+                    </div>
+                  )}
+                  {contentData.capabilities.vision && (
+                    <div className="flex items-center gap-2 p-4 text-gray-700">
+                      <span className="text-accent font-bold">✓</span>
+                      <span>
+                        <strong>Vision</strong> - Process and understand images
+                      </span>
+                    </div>
+                  )}
+                  {contentData.capabilities.audioInput && (
+                    <div className="flex items-center gap-2 p-4 text-gray-700">
+                      <span className="text-accent font-bold">✓</span>
+                      <span>
+                        <strong>Audio Input</strong> - Accept audio data as input
+                      </span>
+                    </div>
+                  )}
+                  {contentData.capabilities.audioOutput && (
+                    <div className="flex items-center gap-2 p-4 text-gray-700">
+                      <span className="text-accent font-bold">✓</span>
+                      <span>
+                        <strong>Audio Output</strong> - Generate audio responses
+                      </span>
+                    </div>
+                  )}
+                  {contentData.capabilities.reasoning && (
+                    <div className="flex items-center gap-2 p-4 text-gray-700">
+                      <span className="text-accent font-bold">✓</span>
+                      <span>
+                        <strong>Advanced Reasoning</strong> - Complex problem-solving capabilities
+                      </span>
+                    </div>
+                  )}
+                  {contentData.capabilities.webSearch && (
+                    <div className="flex items-center gap-2 p-4 text-gray-700">
+                      <span className="text-accent font-bold">✓</span>
+                      <span>
+                        <strong>Web Search</strong> - Access real-time web information
+                      </span>
+                    </div>
+                  )}
+                  {contentData.capabilities.promptCaching && (
+                    <div className="flex items-center gap-2 p-4 text-gray-700">
+                      <span className="text-accent font-bold">✓</span>
+                      <span>
+                        <strong>Prompt Caching</strong> - Optimize repeated prompts
+                      </span>
+                    </div>
+                  )}
+                  {contentData.capabilities.systemMessages && (
+                    <div className="flex items-center gap-2 p-4 text-gray-700">
+                      <span className="text-accent font-bold">✓</span>
+                      <span>
+                        <strong>System Messages</strong> - Configure model behavior
+                      </span>
+                    </div>
+                  )}
+                  {contentData.capabilities.parallelFunctionCalling && (
+                    <div className="flex items-center gap-2 p-4 text-gray-700">
+                      <span className="text-accent font-bold">✓</span>
+                      <span>
+                        <strong>Parallel Function Calling</strong> - Execute multiple functions
+                        simultaneously
+                      </span>
+                    </div>
+                  )}
+                  {contentData.capabilities.responseSchema && (
+                    <div className="flex items-center gap-2 p-4 text-gray-700">
+                      <span className="text-accent font-bold">✓</span>
+                      <span>
+                        <strong>Response Schema</strong> - Structured output formatting
+                      </span>
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
-          {/* Pro Tip Callout */}
-          {(contentData.specifications.maxInputTokens ||
-            contentData.specifications.maxOutputTokens) && (
-            <div className="mt-2 mb-12 rounded-r-lg border-l-4 border-amber-400 bg-amber-50 p-4">
-              <h4 className="mb-2 text-sm font-medium text-amber-900">Pro Tip</h4>
-              <p className="text-sm text-amber-800">
-                Use the maximum token limits shown above to understand the model's capacity.
-                {contentData.specifications.maxInputTokens &&
-                  ` This model can handle up to ${contentData.specifications.maxInputTokens.toLocaleString()} input tokens.`}
-                {contentData.specifications.maxOutputTokens &&
-                  ` The maximum output length is ${contentData.specifications.maxOutputTokens.toLocaleString()} tokens.`}
-              </p>
-            </div>
-          )}
-
-          {/* Capabilities */}
-          {Object.values(contentData.capabilities).some((v) => v) && (
-            <div className="mb-12">
-              <h3 className="mb-4 font-sans text-lg font-medium text-gray-900">
-                Model Capabilities
-              </h3>
-              <div className="grid divide-x divide-y divide-gray-200 border border-gray-200 md:grid-cols-2">
-                {contentData.capabilities.functionCalling && (
-                  <div className="flex items-center gap-2 p-4 text-gray-700">
-                    <span className="text-accent font-bold">✓</span>
-                    <span>
-                      <strong>Function Calling</strong> - Execute custom functions and tools
-                    </span>
-                  </div>
-                )}
-                {contentData.capabilities.vision && (
-                  <div className="flex items-center gap-2 p-4 text-gray-700">
-                    <span className="text-accent font-bold">✓</span>
-                    <span>
-                      <strong>Vision</strong> - Process and understand images
-                    </span>
-                  </div>
-                )}
-                {contentData.capabilities.audioInput && (
-                  <div className="flex items-center gap-2 p-4 text-gray-700">
-                    <span className="text-accent font-bold">✓</span>
-                    <span>
-                      <strong>Audio Input</strong> - Accept audio data as input
-                    </span>
-                  </div>
-                )}
-                {contentData.capabilities.audioOutput && (
-                  <div className="flex items-center gap-2 p-4 text-gray-700">
-                    <span className="text-accent font-bold">✓</span>
-                    <span>
-                      <strong>Audio Output</strong> - Generate audio responses
-                    </span>
-                  </div>
-                )}
-                {contentData.capabilities.reasoning && (
-                  <div className="flex items-center gap-2 p-4 text-gray-700">
-                    <span className="text-accent font-bold">✓</span>
-                    <span>
-                      <strong>Advanced Reasoning</strong> - Complex problem-solving capabilities
-                    </span>
-                  </div>
-                )}
-                {contentData.capabilities.webSearch && (
-                  <div className="flex items-center gap-2 p-4 text-gray-700">
-                    <span className="text-accent font-bold">✓</span>
-                    <span>
-                      <strong>Web Search</strong> - Access real-time web information
-                    </span>
-                  </div>
-                )}
-                {contentData.capabilities.promptCaching && (
-                  <div className="flex items-center gap-2 p-4 text-gray-700">
-                    <span className="text-accent font-bold">✓</span>
-                    <span>
-                      <strong>Prompt Caching</strong> - Optimize repeated prompts
-                    </span>
-                  </div>
-                )}
-                {contentData.capabilities.systemMessages && (
-                  <div className="flex items-center gap-2 p-4 text-gray-700">
-                    <span className="text-accent font-bold">✓</span>
-                    <span>
-                      <strong>System Messages</strong> - Configure model behavior
-                    </span>
-                  </div>
-                )}
-                {contentData.capabilities.parallelFunctionCalling && (
-                  <div className="flex items-center gap-2 p-4 text-gray-700">
-                    <span className="text-accent font-bold">✓</span>
-                    <span>
-                      <strong>Parallel Function Calling</strong> - Execute multiple functions
-                      simultaneously
-                    </span>
-                  </div>
-                )}
-                {contentData.capabilities.responseSchema && (
-                  <div className="flex items-center gap-2 p-4 text-gray-700">
-                    <span className="text-accent font-bold">✓</span>
-                    <span>
-                      <strong>Response Schema</strong> - Structured output formatting
-                    </span>
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
-
-          {/* FAQ-style collapsibles */}
-          <div className="mb-12 space-y-3">
-            {/* When should you use this model? */}
-            <details className="group rounded-lg border border-gray-200 bg-white">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4">
-                <span className="text-base font-medium text-gray-900">
-                  When should you use {model.displayName}?
-                </span>
-                <span className="text-gray-500 transition-transform group-open:rotate-180">
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M4 6L8 10L12 6"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </span>
-              </summary>
-              <div className="border-t border-gray-200 px-5 pt-3 pb-5">
-                <p className="mb-3 text-sm leading-relaxed text-gray-700">
-                  {model.displayName} is best suited for the following scenarios:
-                </p>
-                <ul className="list-outside list-disc space-y-2 pl-6 text-sm leading-relaxed">
-                  {contentData.recommendedUseCases.map((item, i) => (
-                    <li key={i} className="text-gray-700">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </details>
-
-            {/* When should you avoid this model? */}
-            {contentData.avoidUseCases.length > 0 && (
+            {/* FAQ-style collapsibles */}
+            <div className="mb-12 space-y-3">
+              {/* When should you use this model? */}
               <details className="group rounded-lg border border-gray-200 bg-white">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4">
                   <span className="text-base font-medium text-gray-900">
-                    When should you avoid {model.displayName}?
+                    When should you use {model.displayName}?
                   </span>
                   <span className="text-gray-500 transition-transform group-open:rotate-180">
                     <svg
@@ -1015,8 +989,11 @@ export default async function ModelPage({ params }: PageProps) {
                   </span>
                 </summary>
                 <div className="border-t border-gray-200 px-5 pt-3 pb-5">
+                  <p className="mb-3 text-sm leading-relaxed text-gray-700">
+                    {model.displayName} is best suited for the following scenarios:
+                  </p>
                   <ul className="list-outside list-disc space-y-2 pl-6 text-sm leading-relaxed">
-                    {contentData.avoidUseCases.map((item, i) => (
+                    {contentData.recommendedUseCases.map((item, i) => (
                       <li key={i} className="text-gray-700">
                         {item}
                       </li>
@@ -1024,268 +1001,317 @@ export default async function ModelPage({ params }: PageProps) {
                   </ul>
                 </div>
               </details>
-            )}
 
-            <details className="group rounded-lg border border-gray-200 bg-white">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4">
-                <span className="text-base font-medium text-gray-900">
-                  How does {model.displayName} compare to similar models?
-                </span>
-                <span className="text-gray-500 transition-transform group-open:rotate-180">
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M4 6L8 10L12 6"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </span>
-              </summary>
-              <div className="border-t border-gray-200 px-5 pt-3 pb-5">
-                <p className="text-sm leading-relaxed text-gray-700">
-                  {contentData.comparisonText}
-                </p>
-              </div>
-            </details>
+              {/* When should you avoid this model? */}
+              {contentData.avoidUseCases.length > 0 && (
+                <details className="group rounded-lg border border-gray-200 bg-white">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4">
+                    <span className="text-base font-medium text-gray-900">
+                      When should you avoid {model.displayName}?
+                    </span>
+                    <span className="text-gray-500 transition-transform group-open:rotate-180">
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M4 6L8 10L12 6"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </span>
+                  </summary>
+                  <div className="border-t border-gray-200 px-5 pt-3 pb-5">
+                    <ul className="list-outside list-disc space-y-2 pl-6 text-sm leading-relaxed">
+                      {contentData.avoidUseCases.map((item, i) => (
+                        <li key={i} className="text-gray-700">
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </details>
+              )}
 
-            {/* Understanding pricing */}
-            <details className="group rounded-lg border border-gray-200 bg-white">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4">
-                <span className="text-base font-medium text-gray-900">
-                  Understanding {model.displayName} pricing
-                </span>
-                <span className="text-gray-500 transition-transform group-open:rotate-180">
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M4 6L8 10L12 6"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </span>
-              </summary>
-              <div className="border-t border-gray-200 px-5 pt-3 pb-5 text-sm leading-relaxed text-gray-700">
-                <ul className="list-outside list-disc space-y-2 pl-6">
-                  <li>
-                    <strong>{model.displayName}</strong> is a {contentData.modelType} model provided
-                    by {formatProviderName(model.provider)}.
-                  </li>
-                  {contentData.pricing.units?.tokenInputPer1M != null && (
+              <details className="group rounded-lg border border-gray-200 bg-white">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4">
+                  <span className="text-base font-medium text-gray-900">
+                    How does {model.displayName} compare to similar models?
+                  </span>
+                  <span className="text-gray-500 transition-transform group-open:rotate-180">
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M4 6L8 10L12 6"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </span>
+                </summary>
+                <div className="border-t border-gray-200 px-5 pt-3 pb-5">
+                  <p className="text-sm leading-relaxed text-gray-700">
+                    {contentData.comparisonText}
+                  </p>
+                </div>
+              </details>
+
+              {/* Understanding pricing */}
+              <details className="group rounded-lg border border-gray-200 bg-white">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4">
+                  <span className="text-base font-medium text-gray-900">
+                    Understanding {model.displayName} pricing
+                  </span>
+                  <span className="text-gray-500 transition-transform group-open:rotate-180">
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M4 6L8 10L12 6"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </span>
+                </summary>
+                <div className="border-t border-gray-200 px-5 pt-3 pb-5 text-sm leading-relaxed text-gray-700">
+                  <ul className="list-outside list-disc space-y-2 pl-6">
                     <li>
-                      Input tokens are priced at{' '}
-                      <strong>
-                        ${contentData.pricing.units.tokenInputPer1M.toFixed(2)} per 1M tokens
-                      </strong>
-                      .
+                      <strong>{model.displayName}</strong> is a {contentData.modelType} model
+                      provided by {formatProviderName(model.provider)}.
                     </li>
-                  )}
-                  {contentData.pricing.units?.tokenOutputPer1M != null && (
-                    <li>
-                      Output tokens are priced at{' '}
-                      <strong>
-                        ${contentData.pricing.units.tokenOutputPer1M.toFixed(2)} per 1M tokens
-                      </strong>
-                      .
-                    </li>
-                  )}
-                  {contentData.pricing.units?.perSecondInput != null && (
-                    <li>
-                      Audio input is priced at{' '}
-                      <strong>
-                        ${contentData.pricing.units.perSecondInput.toFixed(4)} per second
-                      </strong>
-                      .
-                    </li>
-                  )}
-                  {contentData.pricing.units?.perSecondOutput != null && (
-                    <li>
-                      Audio/video output is priced at{' '}
-                      <strong>
-                        ${contentData.pricing.units.perSecondOutput.toFixed(4)} per second
-                      </strong>
-                      .
-                    </li>
-                  )}
-                  {contentData.pricing.units?.perImageInput != null && (
-                    <li>
-                      Image input is priced at{' '}
-                      <strong>
-                        ${contentData.pricing.units.perImageInput.toFixed(4)} per image
-                      </strong>
-                      .
-                    </li>
-                  )}
-                  {contentData.pricing.units?.perImageOutput != null && (
-                    <li>
-                      Image output is priced at{' '}
-                      <strong>
-                        ${contentData.pricing.units.perImageOutput.toFixed(4)} per image
-                      </strong>
-                      .
-                    </li>
-                  )}
-                  {contentData.pricing.units?.perPageOCR != null && (
-                    <li>
-                      OCR is priced at{' '}
-                      <strong>${contentData.pricing.units.perPageOCR.toFixed(4)} per page</strong>.
-                    </li>
-                  )}
-                  {contentData.specifications.maxInputTokens && (
-                    <li>
-                      The model supports a maximum input capacity of{' '}
-                      <strong>
-                        {contentData.specifications.maxInputTokens.toLocaleString()} tokens
-                      </strong>
-                      {contentData.specifications.maxInputTokens > 100000
-                        ? contentData.isCoding
-                          ? ', capable of working with large codebases and complex software projects'
-                          : contentData.isEmbedding
-                            ? ', enabling large-scale document and text embedding operations'
-                            : ''
-                        : ''}
-                      .
-                    </li>
-                  )}
-                  {contentData.specifications.maxOutputTokens && (
-                    <li>
-                      Maximum output length is{' '}
-                      <strong>
-                        {contentData.specifications.maxOutputTokens.toLocaleString()} tokens
-                      </strong>
-                      .
-                    </li>
-                  )}
-                  {contentData.pricing.units?.tokenInputPer1M != null &&
-                    contentData.pricing.units?.tokenOutputPer1M != null && (
+                    {contentData.pricing.units?.tokenInputPer1M != null && (
                       <li>
-                        For this model, input tokens are{' '}
+                        Input tokens are priced at{' '}
                         <strong>
-                          {contentData.pricing.units.tokenInputPer1M <
-                          contentData.pricing.units.tokenOutputPer1M
-                            ? 'less expensive'
-                            : 'more expensive'}
-                        </strong>{' '}
-                        than output tokens, so optimizing your prompts can help manage costs.
+                          ${contentData.pricing.units.tokenInputPer1M.toFixed(2)} per 1M tokens
+                        </strong>
+                        .
                       </li>
                     )}
-                  {(contentData.signals.isAudioSpeech || contentData.signals.isAudioGeneration) &&
-                    contentData.pricing.units?.perSecondOutput != null && (
+                    {contentData.pricing.units?.tokenOutputPer1M != null && (
                       <li>
-                        Because this is an audio-focused model, your total cost can be driven by{' '}
-                        <strong>output duration (seconds)</strong> in addition to any token-based
-                        costs.
+                        Output tokens are priced at{' '}
+                        <strong>
+                          ${contentData.pricing.units.tokenOutputPer1M.toFixed(2)} per 1M tokens
+                        </strong>
+                        .
                       </li>
                     )}
-                  {contentData.capabilities.vision && (
+                    {contentData.pricing.units?.perSecondInput != null && (
+                      <li>
+                        Audio input is priced at{' '}
+                        <strong>
+                          ${contentData.pricing.units.perSecondInput.toFixed(4)} per second
+                        </strong>
+                        .
+                      </li>
+                    )}
+                    {contentData.pricing.units?.perSecondOutput != null && (
+                      <li>
+                        Audio/video output is priced at{' '}
+                        <strong>
+                          ${contentData.pricing.units.perSecondOutput.toFixed(4)} per second
+                        </strong>
+                        .
+                      </li>
+                    )}
+                    {contentData.pricing.units?.perImageInput != null && (
+                      <li>
+                        Image input is priced at{' '}
+                        <strong>
+                          ${contentData.pricing.units.perImageInput.toFixed(4)} per image
+                        </strong>
+                        .
+                      </li>
+                    )}
+                    {contentData.pricing.units?.perImageOutput != null && (
+                      <li>
+                        Image output is priced at{' '}
+                        <strong>
+                          ${contentData.pricing.units.perImageOutput.toFixed(4)} per image
+                        </strong>
+                        .
+                      </li>
+                    )}
+                    {contentData.pricing.units?.perPageOCR != null && (
+                      <li>
+                        OCR is priced at{' '}
+                        <strong>${contentData.pricing.units.perPageOCR.toFixed(4)} per page</strong>
+                        .
+                      </li>
+                    )}
+                    {contentData.specifications.maxInputTokens && (
+                      <li>
+                        The model supports a maximum input capacity of{' '}
+                        <strong>
+                          {contentData.specifications.maxInputTokens.toLocaleString()} tokens
+                        </strong>
+                        {contentData.specifications.maxInputTokens > 100000
+                          ? contentData.isCoding
+                            ? ', capable of working with large codebases and complex software projects'
+                            : contentData.isEmbedding
+                              ? ', enabling large-scale document and text embedding operations'
+                              : ''
+                          : ''}
+                        .
+                      </li>
+                    )}
+                    {contentData.specifications.maxOutputTokens && (
+                      <li>
+                        Maximum output length is{' '}
+                        <strong>
+                          {contentData.specifications.maxOutputTokens.toLocaleString()} tokens
+                        </strong>
+                        .
+                      </li>
+                    )}
+                    {contentData.pricing.units?.tokenInputPer1M != null &&
+                      contentData.pricing.units?.tokenOutputPer1M != null && (
+                        <li>
+                          For this model, input tokens are{' '}
+                          <strong>
+                            {contentData.pricing.units.tokenInputPer1M <
+                            contentData.pricing.units.tokenOutputPer1M
+                              ? 'less expensive'
+                              : 'more expensive'}
+                          </strong>{' '}
+                          than output tokens, so optimizing your prompts can help manage costs.
+                        </li>
+                      )}
+                    {(contentData.signals.isAudioSpeech || contentData.signals.isAudioGeneration) &&
+                      contentData.pricing.units?.perSecondOutput != null && (
+                        <li>
+                          Because this is an audio-focused model, your total cost can be driven by{' '}
+                          <strong>output duration (seconds)</strong> in addition to any token-based
+                          costs.
+                        </li>
+                      )}
+                    {contentData.capabilities.vision && (
+                      <li>
+                        The model includes <strong>vision capabilities</strong> for processing and
+                        analysing images.
+                      </li>
+                    )}
+                    {contentData.capabilities.functionCalling && (
+                      <li>
+                        Supports <strong>function calling</strong> for{' '}
+                        {contentData.isCoding
+                          ? 'executing code snippets, API calls, and development tools'
+                          : 'executing custom functions and tools'}
+                        .
+                      </li>
+                    )}
+                    {contentData.capabilities.reasoning && (
+                      <li>
+                        Features <strong>advanced reasoning capabilities</strong> for complex
+                        problem-solving tasks.
+                      </li>
+                    )}
+                    {contentData.capabilities.webSearch && (
+                      <li>
+                        Includes <strong>real-time web search capabilities</strong> for accessing
+                        current information.
+                      </li>
+                    )}
+                    {contentData.capabilities.audioInput && (
+                      <li>
+                        Supports <strong>audio input</strong> for processing audio data.
+                      </li>
+                    )}
+                    {contentData.capabilities.audioOutput && (
+                      <li>
+                        Supports <strong>audio output</strong> for generating audio responses.
+                      </li>
+                    )}
+                    {contentData.capabilities.promptCaching && (
+                      <li>
+                        Features <strong>prompt caching</strong> to optimize costs for repeated
+                        prompts.
+                      </li>
+                    )}
                     <li>
-                      The model includes <strong>vision capabilities</strong> for processing and
-                      analysing images.
+                      {formatProviderName(model.provider)} offers {model.displayName} for{' '}
+                      {contentData.modelType} workloads — {contentData.applicationType}.
                     </li>
-                  )}
-                  {contentData.capabilities.functionCalling && (
-                    <li>
-                      Supports <strong>function calling</strong> for{' '}
-                      {contentData.isCoding
-                        ? 'executing code snippets, API calls, and development tools'
-                        : 'executing custom functions and tools'}
-                      .
-                    </li>
-                  )}
-                  {contentData.capabilities.reasoning && (
-                    <li>
-                      Features <strong>advanced reasoning capabilities</strong> for complex
-                      problem-solving tasks.
-                    </li>
-                  )}
-                  {contentData.capabilities.webSearch && (
-                    <li>
-                      Includes <strong>real-time web search capabilities</strong> for accessing
-                      current information.
-                    </li>
-                  )}
-                  {contentData.capabilities.audioInput && (
-                    <li>
-                      Supports <strong>audio input</strong> for processing audio data.
-                    </li>
-                  )}
-                  {contentData.capabilities.audioOutput && (
-                    <li>
-                      Supports <strong>audio output</strong> for generating audio responses.
-                    </li>
-                  )}
-                  {contentData.capabilities.promptCaching && (
-                    <li>
-                      Features <strong>prompt caching</strong> to optimize costs for repeated
-                      prompts.
-                    </li>
-                  )}
-                  <li>
-                    {formatProviderName(model.provider)} offers {model.displayName} for{' '}
-                    {contentData.modelType} workloads — {contentData.applicationType}.
-                  </li>
-                </ul>
-              </div>
-            </details>
-          </div>
+                  </ul>
+                </div>
+              </details>
+            </div>
 
-          {/* Usage Guide */}
-          <div className="mb-12">
-            <h3 className="mb-4 font-sans text-lg font-medium text-gray-900">
-              How to Use This Calculator
-            </h3>
-            <div className="grid divide-x divide-y divide-gray-200 border border-gray-200 md:grid-cols-3">
-              <div className="p-4">
-                <p className="text-gray-700">
-                  <strong>Step 1:</strong> Enter the number of input tokens you expect to use. Input
-                  tokens include your prompt, system messages, and any context you provide to the
-                  model.
-                </p>
-              </div>
-              <div className="p-4">
-                <p className="text-gray-700">
-                  <strong>Step 2:</strong> Specify the number of output tokens you anticipate.
-                  Output tokens are the text generated by the model in response to your input.
-                </p>
-              </div>
-              <div className="p-4">
-                <p className="text-gray-700">
-                  <strong>Step 3:</strong> Review the cost breakdown to see the total estimated cost
-                  for your usage. The calculator automatically updates as you adjust the token
-                  counts.
-                </p>
+            {/* Usage Guide */}
+            <div className="mb-12">
+              <h3 className="mb-4 font-sans text-lg font-medium text-gray-900">
+                How to Use This Calculator
+              </h3>
+              <div className="grid divide-x divide-y divide-gray-200 border border-gray-200 md:grid-cols-3">
+                <div className="p-4">
+                  <p className="text-gray-700">
+                    <strong>Step 1:</strong> Enter the number of input tokens you expect to use.
+                    Input tokens include your prompt, system messages, and any context you provide
+                    to the model.
+                  </p>
+                </div>
+                <div className="p-4">
+                  <p className="text-gray-700">
+                    <strong>Step 2:</strong> Specify the number of output tokens you anticipate.
+                    Output tokens are the text generated by the model in response to your input.
+                  </p>
+                </div>
+                <div className="p-4">
+                  <p className="text-gray-700">
+                    <strong>Step 3:</strong> Review the cost breakdown to see the total estimated
+                    cost for your usage. The calculator automatically updates as you adjust the
+                    token counts.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
+
+          {/* Back Links */}
+          <div className="mt-12 flex flex-col justify-center gap-4 sm:flex-row">
+            <Link href={`${getCostCalculatorBaseUrl()}/llm-cost-calculator`}>
+              <Button size="lg">← Back to All Models</Button>
+            </Link>
+            <Link
+              href={`${getCostCalculatorBaseUrl()}/llm-cost-calculator/provider/${encodeURIComponent(model.provider)}`}
+            >
+              <Button variant="outline" size="lg">
+                View All {formatProviderName(model.provider)} Models
+              </Button>
+            </Link>
+          </div>
         </div>
 
-        {/* Back Links */}
-        <div className="mt-12 flex flex-col justify-center gap-4 sm:flex-row">
-          <Link href={`${getCostCalculatorBaseUrl()}/llm-cost-calculator`}>
-            <Button size="lg">← Back to All Models</Button>
-          </Link>
-          <Link
-            href={`${getCostCalculatorBaseUrl()}/llm-cost-calculator/provider/${encodeURIComponent(model.provider)}`}
-          >
-            <Button variant="outline" size="lg">
-              View All {formatProviderName(model.provider)} Models
-            </Button>
-          </Link>
+        {/* Right Side Decoration */}
+        <div className="hidden w-20 flex-none flex-col items-start gap-4 border-l border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
+              backgroundSize: '4px 4px',
+            }}
+          ></div>
         </div>
       </div>
       <Footer />

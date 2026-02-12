@@ -256,8 +256,10 @@ export default function BuyersGuidePage() {
         />
         <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
-            <span className="provider-badge">[ LLM GATEWAY BUYER&apos;S GUIDE 2026 ]</span>
-            <h1 className="mb-4 text-center text-4xl leading-[1.2] font-normal tracking-tight text-gray-900 md:text-5xl">
+            <span className="font-mono text-[12px] leading-[15px] font-medium tracking-[0.04em] text-emerald-500 uppercase">
+              [&ensp;LLM GATEWAY BUYER&apos;S GUIDE 2026&ensp;]
+            </span>
+            <h1 className="mt-2 mb-4 text-center text-4xl leading-[1.2] font-normal tracking-tight text-gray-900 md:text-5xl">
               Choosing the Right LLM Gateway for
               <br />
               <span className="text-[var(--accent-text)]"> Enterprise AI</span>

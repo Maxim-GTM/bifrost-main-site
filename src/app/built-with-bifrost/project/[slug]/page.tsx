@@ -62,15 +62,17 @@ export default async function ProjectPage({ params }: Props) {
           </Link>
 
           <div className="max-w-4xl">
-            <span className="provider-badge mb-4">[ FEATURED PROJECT ]</span>
-            <h1 className="mb-4 text-4xl leading-tight font-bold tracking-tight text-gray-900 md:text-5xl">
+            <span className="mb-4 block font-mono text-[12px] leading-[15px] font-medium tracking-[0.04em] text-emerald-500 uppercase">
+              [&ensp;FEATURED PROJECT&ensp;]
+            </span>
+            <h1 className="mb-4 text-[42px] leading-[120%] font-medium tracking-[-0.02em] text-gray-900 md:text-5xl">
               {project.title}
             </h1>
-            <p className="mb-6 text-xl leading-relaxed font-light text-gray-500 md:text-2xl">
+            <p className="mb-6 max-w-3xl text-[16px] leading-[140%] tracking-[0em] text-[#525252] md:text-xl">
               {project.subtitle}
             </p>
 
-            <div className="flex flex-wrap items-center gap-6 font-mono text-sm tracking-wide text-gray-500 uppercase">
+            <div className="flex flex-wrap items-center gap-6 font-mono text-xs font-medium tracking-wide text-gray-500 uppercase">
               <div className="flex items-center gap-2">
                 <User size={14} /> {project.authorName}
               </div>

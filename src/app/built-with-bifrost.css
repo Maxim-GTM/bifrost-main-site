@@ -1,7 +1,7 @@
 /* Built-with-Bifrost wrapper */
 .built-with-bifrost {
   min-height: 100vh;
-  background: #f9fafb;
+  background: #f9f9f9;
   color: var(--foreground);
 }
 
@@ -612,7 +612,7 @@
   justify-content: space-between;
   gap: 0.75rem;
   padding: 0.5rem 1rem;
-  background: #f9fafb; /* bg-gray-50 */
+  background: #f9f9f9; /* bg-gray-50 */
   border: 1px solid #d1d5db; /* border-gray-300 */
   border-radius: 0.5rem; /* rounded-lg = 8px */
   color: var(--foreground);
