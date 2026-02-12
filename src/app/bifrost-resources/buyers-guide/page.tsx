@@ -41,6 +41,9 @@ export const metadata: Metadata = {
   title: "LLM Gateway Buyer's Guide 2026 | Compare Top AI Gateway Solutions",
   description:
     'A comprehensive comparison of leading AI gateway platforms including Bifrost, LiteLLM, Portkey, Helicone, and Kong. Find the best LLM gateway for your enterprise.',
+  alternates: {
+    canonical: 'https://www.getmaxim.ai/bifrost/bifrost-resources/buyers-guide',
+  },
 }
 
 const platforms = [

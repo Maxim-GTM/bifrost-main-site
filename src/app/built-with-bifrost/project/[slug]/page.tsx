@@ -29,6 +29,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${project.title} - Built with Bifrost`,
     description: project.shortDescription,
+    alternates: {
+      canonical: `https://www.getmaxim.ai/bifrost/built-with-bifrost/project/${slug}`,
+    },
     openGraph: {
       title: project.title,
       description: project.shortDescription,

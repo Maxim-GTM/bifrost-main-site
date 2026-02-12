@@ -26,6 +26,9 @@ export const metadata: Metadata = {
   title: 'Bifrost — The High-Performance LiteLLM Alternative | LLM Gateway',
   description:
     'Bifrost is a production-grade LiteLLM alternative built in Go. 50x faster, zero-config deployment, native observability, and 100% success rate at 5,000 RPS.',
+  alternates: {
+    canonical: 'https://www.getmaxim.ai/bifrost/bifrost-resources/litellm-alternative',
+  },
 }
 
 const performanceMetrics = [

@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import {
   ArrowRight,
@@ -13,6 +14,39 @@ import {
   Zap,
 } from 'lucide-react'
 import { getCostCalculatorBaseUrl } from '@/lib/utils'
+
+export const metadata: Metadata = {
+  title: 'Bifrost Resources - Benchmarks, Guides & Integration Playbooks',
+  description:
+    'Explore Bifrost benchmarks, buyer guidance, integration playbooks, and industry solutions. Everything you need to evaluate and deploy the fastest LLM gateway.',
+  keywords: [
+    'Bifrost',
+    'LLM gateway',
+    'AI gateway benchmarks',
+    'buyer guide',
+    'Claude Code integration',
+    'MCP gateway',
+    'LiteLLM alternative',
+  ],
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://www.getmaxim.ai/bifrost/bifrost-resources',
+    siteName: 'Bifrost by Maxim AI',
+    title: 'Bifrost Resources - Benchmarks, Guides & Integration Playbooks',
+    description:
+      'Explore Bifrost benchmarks, buyer guidance, integration playbooks, and industry solutions.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Bifrost Resources - Benchmarks, Guides & Integration Playbooks',
+    description:
+      'Explore Bifrost benchmarks, buyer guidance, integration playbooks, and industry solutions.',
+  },
+  alternates: {
+    canonical: 'https://www.getmaxim.ai/bifrost/bifrost-resources',
+  },
+}
 
 const basePath = getCostCalculatorBaseUrl()
 
@@ -60,7 +94,7 @@ const resources = [
   {
     title: 'LiteLLM Alternative',
     description:
-      'Why teams choose Bifrost over LiteLLM — 50x faster, zero-config deployment, and native observability.',
+      'Why teams choose Bifrost over LiteLLM: 50x faster, zero-config deployment, and native observability.',
     href: `${basePath}/bifrost-resources/litellm-alternative`,
     icon: Zap,
     label: 'Alternative',
@@ -102,9 +136,42 @@ const industries = [
   },
 ]
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Bifrost Resources - Benchmarks, Guides & Integration Playbooks',
+  description:
+    'Explore Bifrost benchmarks, buyer guidance, integration playbooks, and industry solutions. Everything you need to evaluate and deploy the fastest LLM gateway.',
+  url: 'https://www.getmaxim.ai/bifrost/bifrost-resources',
+  isPartOf: {
+    '@type': 'WebSite',
+    name: 'Bifrost by Maxim AI',
+    url: 'https://www.getmaxim.ai/bifrost/',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Maxim AI',
+    url: 'https://www.getmaxim.ai',
+  },
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: resources.map((r, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: r.title,
+      description: r.description,
+      url: `https://www.getmaxim.ai${r.href}`,
+    })),
+  },
+}
+
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">

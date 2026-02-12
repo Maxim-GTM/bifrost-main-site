@@ -1,7 +1,41 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
 import PartnerTypes from '@/components/partners/PartnerTypes'
 import { ArrowRight, ExternalLink, Globe, Zap, ShieldCheck, Users } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'Bifrost Partner Program - Cloud, Technology & Channel Partnerships',
+  description:
+    'Join the Bifrost Partner Program. Grow your business as a cloud, technology, or channel partner and help accelerate the leading AI companies in the world.',
+  keywords: [
+    'Bifrost',
+    'Partner Program',
+    'AI partnerships',
+    'LLM Gateway partners',
+    'Cloud Partners',
+    'System Integrators',
+    'Technology Partners',
+  ],
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://www.getmaxim.ai/bifrost/partners-program',
+    siteName: 'Bifrost by Maxim AI',
+    title: 'Bifrost Partner Program - Cloud, Technology & Channel Partnerships',
+    description:
+      'Join the Bifrost Partner Program. Grow your business and help accelerate the leading AI companies in the world.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Bifrost Partner Program',
+    description:
+      'Join the Bifrost Partner Program. Grow your business and help accelerate the leading AI companies in the world.',
+  },
+  alternates: {
+    canonical: 'https://www.getmaxim.ai/bifrost/partners-program',
+  },
+}
 
 const logoUrls = [
   'aws.amazon.com',
@@ -79,9 +113,39 @@ const partnerLogos = [
   },
 ]
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Bifrost Partner Program - Cloud, Technology & Channel Partnerships',
+  description:
+    'Join the Bifrost Partner Program. Grow your business as a cloud, technology, or channel partner and help accelerate the leading AI companies in the world.',
+  url: 'https://www.getmaxim.ai/bifrost/partners-program',
+  isPartOf: {
+    '@type': 'WebSite',
+    name: 'Bifrost by Maxim AI',
+    url: 'https://www.getmaxim.ai/bifrost/',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Maxim AI',
+    url: 'https://www.getmaxim.ai',
+    sameAs: ['https://github.com/maximhq/bifrost'],
+  },
+  about: {
+    '@type': 'Organization',
+    name: 'Bifrost by Maxim AI',
+    description:
+      'The fastest LLM gateway with 11µs overhead, supporting 15+ AI providers across AWS, GCP, Azure, and on-prem deployments.',
+  },
+}
+
 export default function PartnersPage() {
   return (
     <div className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Preconnect + preload logo images so they appear instantly */}
       <link rel="preconnect" href="https://img.logo.dev" />
       <link rel="dns-prefetch" href="https://img.logo.dev" />

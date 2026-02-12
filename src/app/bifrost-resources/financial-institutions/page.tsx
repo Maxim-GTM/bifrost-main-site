@@ -22,6 +22,9 @@ export const metadata: Metadata = {
   title: 'Bifrost for Financial Institutions | Secure AI Gateway',
   description:
     'Deploy Bifrost as a secure, low-latency AI gateway for regulated financial institutions with governance, auditability, and multi-provider resilience.',
+  alternates: {
+    canonical: 'https://www.getmaxim.ai/bifrost/bifrost-resources/financial-institutions',
+  },
 }
 
 const challenges = [

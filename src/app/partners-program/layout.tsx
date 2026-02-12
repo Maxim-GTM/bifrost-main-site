@@ -3,27 +3,17 @@ import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/sections/Footer'
 
 export const metadata: Metadata = {
-  title: {
-    default: 'Bifrost Partner Program',
-    template: '%s | Bifrost Partner Program',
-  },
-  description:
-    'Join the Bifrost Partner Program. Grow your business and help accelerate the leading AI companies in the world.',
-  keywords: [
-    'Bifrost',
-    'Partners',
-    'AI',
-    'LLM Gateway',
-    'Cloud Partners',
-    'System Integrators',
-    'Technology Partners',
-  ],
-  openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    siteName: 'Bifrost Partner Program',
-    title: 'Bifrost Partner Program',
-    description: 'Grow your business and help accelerate the leading AI companies in the world.',
+  metadataBase: new URL('https://www.getmaxim.ai'),
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 }
 

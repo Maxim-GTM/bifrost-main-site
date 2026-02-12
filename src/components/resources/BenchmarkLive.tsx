@@ -22,9 +22,11 @@ interface DataPoint {
   litellmSuccess: number
   bifrostMemory: number
   litellmMemory: number
+  bifrostOverhead: number
+  litellmOverhead: number
 }
 
-type MetricView = 'latency' | 'throughput' | 'success' | 'memory'
+type MetricView = 'latency' | 'throughput' | 'success' | 'memory' | 'overhead'
 
 interface MetricConfig {
   label: string
@@ -62,7 +64,22 @@ const METRIC_CONFIGS: Record<MetricView, MetricConfig> = {
     multiplier: '48x faster P50',
     bifrostStatus: 'STABLE',
     litellmStatus: 'STRUGGLING',
-    litellmStatusColor: 'bg-amber-500 text-white',
+    litellmStatusColor: 'bg-amber-500',
+  },
+  overhead: {
+    label: 'Gateway Overhead (ms)',
+    shortLabel: 'Overhead',
+    getBifrost: (d) => d.bifrostOverhead,
+    getLitellm: (d) => d.litellmOverhead,
+    yMax: 55, // LiteLLM ~40ms overhead
+    yLabels: ['50ms', '30ms', '15ms', '0'],
+    formatValue: (v) => `${v.toFixed(2)}ms`,
+    bifrostBenchmark: 'Overhead: 0.99ms (60ms mock upstream)',
+    litellmBenchmark: 'Overhead: 40ms (60ms mock upstream)',
+    multiplier: '40x less overhead',
+    bifrostStatus: 'NEAR-ZERO',
+    litellmStatus: 'HEAVY OVERHEAD',
+    litellmStatusColor: 'bg-red-500',
   },
   throughput: {
     label: 'Throughput (req/s)',
@@ -175,6 +192,10 @@ export default function BenchmarkLive() {
     const bifrostMemory = 112 + Math.random() * 16
     const litellmMemory = 350 + Math.random() * 44
 
+    // Gateway overhead: Bifrost 0.99ms, LiteLLM 40ms (with 60ms mock upstream)
+    const bifrostOverhead = 0.8 + Math.random() * 0.4
+    const litellmOverhead = 35 + Math.random() * 10
+
     return {
       bifrostLatency: Math.round(bifrostLatency),
       litellmLatency: Math.round(litellmLatency),
@@ -184,6 +205,8 @@ export default function BenchmarkLive() {
       litellmSuccess,
       bifrostMemory,
       litellmMemory,
+      bifrostOverhead,
+      litellmOverhead,
     }
   }, [])
 
@@ -235,6 +258,7 @@ export default function BenchmarkLive() {
     { key: 'throughput', label: 'Throughput' },
     { key: 'success', label: 'Success' },
     { key: 'memory', label: 'Memory' },
+    { key: 'overhead', label: 'Overhead' },
   ]
 
   // Summary stats from blog — shown below chart
@@ -411,6 +435,7 @@ export default function BenchmarkLive() {
               </span>
               <span
                 className={`rounded px-1.5 py-0.5 font-mono text-[9px] font-medium ${config.litellmStatusColor}`}
+                style={{ color: 'white' }}
               >
                 {config.litellmStatus}
               </span>
