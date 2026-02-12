@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   description:
     'Connect AI models to external tools with an open-source MCP gateway that delivers 11µs overhead and complete security control.',
   alternates: {
-    canonical: 'https://www.getmaxim.ai/bifrost/bifrost-resources/mcp-gateway',
+    canonical: 'https://www.getmaxim.ai/bifrost/resources/mcp-gateway',
   },
 }
 
@@ -112,7 +112,8 @@ const coreCapabilities = [
   {
     icon: Code2,
     title: 'Code Mode',
-    description: 'AI writes Python to orchestrate multiple tools. Four meta-tools replace 100+ definitions with on-demand schema loading and sandbox execution. Cuts tokens by 50%+ and LLM calls by 3-4x.',
+    description:
+      'AI writes Python to orchestrate multiple tools. Four meta-tools replace 100+ definitions with on-demand schema loading and sandbox execution. Cuts tokens by 50%+ and LLM calls by 3-4x.',
     tag: 'Token efficiency',
   },
   {
@@ -278,7 +279,6 @@ const architectureFeatures = [
       'Centralized security and audit trails',
     ],
   },
-  
 ]
 
 export default function MCPGatewayPage() {

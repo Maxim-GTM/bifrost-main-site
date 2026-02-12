@@ -10,43 +10,41 @@ import {
   ArrowRight,
   Banknote,
   Building2,
+  CheckCircle2,
   ExternalLink,
   FileText,
   Lock,
-  Package,
   ShieldCheck,
-  ShoppingCart,
   SignalHigh,
-  Users,
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Bifrost for Retail | Secure AI Gateway',
+  title: 'Bifrost for Financial Institutions | Secure AI Gateway',
   description:
-    'Deploy Bifrost as a secure, low-latency AI gateway for retail organizations with governance, observability, and multi-provider resilience.',
+    'Deploy Bifrost as a secure, low-latency AI gateway for regulated financial institutions with governance, auditability, and multi-provider resilience.',
   alternates: {
-    canonical: 'https://www.getmaxim.ai/bifrost/bifrost-resources/retail',
+    canonical: 'https://www.getmaxim.ai/bifrost/resources/financial-institutions',
   },
 }
 
 const challenges = [
   {
-    icon: ShoppingCart,
-    title: 'Customer experience at scale',
+    icon: ShieldCheck,
+    title: 'Compliance bottlenecks',
     description:
-      'Personalization, recommendations, and support require consistent AI performance across peak shopping periods.',
+      'GLBA privacy rules, FFIEC guidance, and audit requirements demand full oversight of every model interaction.',
   },
   {
-    icon: Package,
-    title: 'Supply chain complexity',
+    icon: Building2,
+    title: 'Operational fragmentation',
     description:
-      'Inventory forecasting and logistics optimization demand reliable, high-throughput model access.',
+      'Legacy systems make it difficult to deploy AI consistently across lending, AML monitoring, and risk operations.',
   },
   {
-    icon: Users,
-    title: 'Multi-channel coordination',
+    icon: SignalHigh,
+    title: 'Performance and scale',
     description:
-      'Unified AI strategy across e-commerce, stores, and mobile requires centralized governance and routing.',
+      'Fraud detection and market-risk workflows require low latency and predictable throughput under peak demand.',
   },
 ]
 
@@ -55,52 +53,52 @@ const governance = [
     icon: Lock,
     title: 'In-VPC and on-prem deployment',
     description:
-      'Keep customer data and proprietary models inside your network perimeter with private deployments.',
+      'Keep regulated data inside your network perimeter with private deployments and custom networking controls.',
   },
   {
     icon: FileText,
-    title: 'Comprehensive logging',
+    title: 'Audit-grade logs',
     description:
-      'Capture complete request trails with user, provider, route, token, and latency metadata.',
+      'Capture complete request trails with user, provider, route, token, and latency metadata for compliance reviews.',
   },
   {
-    icon: ShieldCheck,
+    icon: CheckCircle2,
     title: 'Role-based access control',
     description:
-      'Apply fine-grained permissions and rate limits by team, channel, and application.',
+      'Apply fine-grained permissions and rate limits by team, environment, and application.',
   },
   {
     icon: Banknote,
     title: 'Cost governance',
-    description: 'Virtual keys enforce budgets and spend limits across departments and campaigns.',
+    description: 'Virtual keys enforce budgets and spend limits across departments and projects.',
   },
 ]
 
 const useCases = [
   {
-    title: 'Product recommendations',
-    description: 'Deliver personalized suggestions with optimized routing for cost and latency.',
-  },
-  {
-    title: 'Customer support automation',
-    description: 'Scale AI-powered support with guardrails and consistent policy enforcement.',
-  },
-  {
-    title: 'Inventory and demand forecasting',
-    description: 'Route high-volume prediction workloads with reliable throughput and fallback.',
-  },
-  {
-    title: 'Dynamic pricing optimization',
-    description: 'Apply AI models for pricing with centralized governance and audit trails.',
-  },
-  {
-    title: 'Visual search and product discovery',
-    description: 'Enable multimodal AI features with unified provider management.',
-  },
-  {
-    title: 'Marketing personalization',
+    title: 'Fraud detection and investigation',
     description:
-      'Power personalized campaigns with cost-effective model routing and budget controls.',
+      'Route high-sensitivity requests through approved providers with audit logs and policy enforcement.',
+  },
+  {
+    title: 'Regulatory and compliance monitoring',
+    description: 'Centralize model access for monitoring and reporting across business units.',
+  },
+  {
+    title: 'Credit and loan decisioning',
+    description: 'Apply guardrails and data controls while meeting strict latency requirements.',
+  },
+  {
+    title: 'Customer support and servicing',
+    description: 'Scale AI assistance without exposing sensitive data or losing traceability.',
+  },
+  {
+    title: 'Risk and market intelligence',
+    description: 'Optimize routing across providers to balance cost, quality, and latency.',
+  },
+  {
+    title: 'Enterprise AI copilots',
+    description: 'Enable secure internal copilots with centralized governance and monitoring.',
   },
 ]
 
@@ -112,18 +110,18 @@ const platformCapabilities = [
   },
   {
     icon: FileText,
-    title: 'Complete Request Trails',
-    description: 'Generate detailed logs for analytics and operational reviews.',
+    title: 'Audit-Ready Evidence',
+    description: 'Generate compliance trails for internal and regulatory reviews.',
   },
   {
     icon: ShieldCheck,
     title: 'Policy Enforcement',
-    description: 'Apply guardrails, content filtering, and access control consistently.',
+    description: 'Apply guardrails, redaction, and access control consistently.',
   },
   {
     icon: Banknote,
     title: 'Budget Governance',
-    description: 'Set limits per team, campaign, and channel to prevent runaway spend.',
+    description: 'Set limits per team and prevent runaway spend.',
   },
   {
     icon: Building2,
@@ -133,7 +131,7 @@ const platformCapabilities = [
   {
     icon: SignalHigh,
     title: 'High-Throughput Routing',
-    description: 'Maintain performance during peak shopping events and flash sales.',
+    description: 'Maintain performance even under peak load.',
   },
 ]
 
@@ -146,19 +144,19 @@ const interfaceHighlights = [
   },
   {
     src: '/bifrost-screenshot/logs.png',
-    title: 'Request Logs',
-    description: 'Detailed request trails for debugging and performance analysis.',
+    title: 'Audit Logs',
+    description: 'Detailed request trails ready for compliance and forensic analysis.',
     objectPosition: 'center center',
   },
   {
     src: '/bifrost-screenshot/Virtual%20Keys.png',
     title: 'Virtual Keys and Budgets',
-    description: 'Budget enforcement and access segmentation across teams and channels.',
+    description: 'Budget enforcement and access segmentation across teams.',
     objectPosition: 'center',
   },
 ]
 
-export default function RetailPage() {
+export default function FinancialInstitutionsPage() {
   const basePath = getCostCalculatorBaseUrl()
 
   return (
@@ -171,14 +169,14 @@ export default function RetailPage() {
             <h1 className="mb-4 text-center text-4xl leading-[1.2] font-normal tracking-tight text-gray-900 md:text-5xl">
               Secure AI Gateway for
               <br />
-              <span className="text-[var(--accent-text)]">Retail</span>
+              <span className="text-[var(--accent-text)]">Financial Institutions</span>
             </h1>
             <p className="mx-auto mb-8 max-w-2xl text-sm leading-relaxed text-gray-500 md:text-base">
-              Bifrost provides centralized governance, low-latency routing, and cost control for
-              AI-powered retail experiences across every channel.
+              Bifrost provides centralized governance, compliance-grade auditability, and
+              low-latency routing for banks, insurers, and investment platforms.
             </p>
             <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
-              <Link href={`${basePath}/bifrost-resources/benchmarks`}>
+              <Link href={`${basePath}/resources/benchmarks`}>
                 <Button size="lg">
                   View benchmarks
                   <ArrowRight className="h-4 w-4" />
@@ -207,7 +205,7 @@ export default function RetailPage() {
               [ CHALLENGES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Barriers to scalable AI in retail
+              Barriers to scalable AI in financial services
             </h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -268,11 +266,11 @@ export default function RetailPage() {
               [ PLATFORM CAPABILITIES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Designed for high-volume retail operations
+              Designed for regulated financial operations
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Unified governance, routing, and observability with the performance retail workloads
-              demand.
+              Unified governance, routing, and observability with the controls financial
+              institutions require.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -302,20 +300,19 @@ export default function RetailPage() {
               [ BIFROST INTERFACE ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Operational Views Built for Retail Scale
+              Operational Views Built for Compliance
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Focused dashboard panels that highlight routing, request trails, and budget
-              governance.
+              Focused dashboard panels that highlight routing, audit trails, and budget governance.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {interfaceHighlights.map((shot) => (
               <div key={shot.title} className="relative border border-gray-200 bg-white">
-                <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40 z-10" />
-                <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40 z-10" />
-                <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40 z-10" />
-                <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40 z-10" />
+                <div className="absolute top-3 left-3 z-10 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute top-3 right-3 z-10 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+                <div className="absolute bottom-3 left-3 z-10 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute right-3 bottom-3 z-10 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
                 <div className="relative aspect-[16/9] overflow-hidden bg-gray-50">
                   <Image
                     src={shot.src}
@@ -344,7 +341,7 @@ export default function RetailPage() {
               [ USE CASES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Retail workflows powered by Bifrost
+              Industry workflows powered by Bifrost
             </h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -372,11 +369,11 @@ export default function RetailPage() {
             [ NEXT STEPS ]
           </p>
           <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-            Scale AI across your retail operations
+            Bring regulated AI workloads under control
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-gray-600">
-            Talk to the Bifrost team about deploying a high-performance, cost-effective gateway for
-            your retail AI workloads.
+            Talk to the Bifrost team about deploying a compliant, low-latency gateway in your
+            environment.
           </p>
           <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
             <Link
@@ -389,7 +386,7 @@ export default function RetailPage() {
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
-            <Link href={`${basePath}/bifrost-resources/claude-code`}>
+            <Link href={`${basePath}/resources/claude-code`}>
               <Button variant="outline" size="lg">
                 Claude Code integration
                 <ExternalLink className="h-4 w-4" />

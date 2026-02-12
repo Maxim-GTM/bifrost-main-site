@@ -8,43 +8,43 @@ import { getCostCalculatorBaseUrl } from '@/lib/utils'
 import {
   Activity,
   ArrowRight,
-  Banknote,
-  Building2,
-  CheckCircle2,
-  ExternalLink,
+  ShieldCheck,
   FileText,
   Lock,
-  ShieldCheck,
   SignalHigh,
+  Building2,
+  Stethoscope,
+  Banknote,
+  ExternalLink,
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Bifrost for Financial Institutions | Secure AI Gateway',
+  title: 'Bifrost for Healthcare & Life Sciences | Secure AI Gateway',
   description:
-    'Deploy Bifrost as a secure, low-latency AI gateway for regulated financial institutions with governance, auditability, and multi-provider resilience.',
+    'Deploy Bifrost as a secure AI gateway for healthcare and life sciences with auditability, governance, and low-latency routing.',
   alternates: {
-    canonical: 'https://www.getmaxim.ai/bifrost/bifrost-resources/financial-institutions',
+    canonical: 'https://www.getmaxim.ai/bifrost/resources/healthcare-life-sciences',
   },
 }
 
 const challenges = [
   {
     icon: ShieldCheck,
-    title: 'Compliance bottlenecks',
+    title: 'Regulatory compliance',
     description:
-      'GLBA privacy rules, FFIEC guidance, and audit requirements demand full oversight of every model interaction.',
+      'Strict privacy rules require complete visibility and control over every model request.',
   },
   {
-    icon: Building2,
-    title: 'Operational fragmentation',
+    icon: Stethoscope,
+    title: 'Clinical safety',
     description:
-      'Legacy systems make it difficult to deploy AI consistently across lending, AML monitoring, and risk operations.',
+      'Patient-facing workflows demand guardrails, redaction, and safe fallback behavior.',
   },
   {
     icon: SignalHigh,
-    title: 'Performance and scale',
+    title: 'Operational scale',
     description:
-      'Fraud detection and market-risk workflows require low latency and predictable throughput under peak demand.',
+      'High-volume clinical and research workloads require consistent, low-latency routing.',
   },
 ]
 
@@ -52,53 +52,22 @@ const governance = [
   {
     icon: Lock,
     title: 'In-VPC and on-prem deployment',
-    description:
-      'Keep regulated data inside your network perimeter with private deployments and custom networking controls.',
+    description: 'Keep sensitive data inside your network perimeter with private deployments.',
   },
   {
     icon: FileText,
     title: 'Audit-grade logs',
-    description:
-      'Capture complete request trails with user, provider, route, token, and latency metadata for compliance reviews.',
+    description: 'Capture full request trails for compliance and internal review.',
   },
   {
-    icon: CheckCircle2,
-    title: 'Role-based access control',
-    description:
-      'Apply fine-grained permissions and rate limits by team, environment, and application.',
+    icon: ShieldCheck,
+    title: 'Policy enforcement',
+    description: 'Apply content policies, PII redaction, and access controls consistently.',
   },
   {
     icon: Banknote,
     title: 'Cost governance',
-    description: 'Virtual keys enforce budgets and spend limits across departments and projects.',
-  },
-]
-
-const useCases = [
-  {
-    title: 'Fraud detection and investigation',
-    description:
-      'Route high-sensitivity requests through approved providers with audit logs and policy enforcement.',
-  },
-  {
-    title: 'Regulatory and compliance monitoring',
-    description: 'Centralize model access for monitoring and reporting across business units.',
-  },
-  {
-    title: 'Credit and loan decisioning',
-    description: 'Apply guardrails and data controls while meeting strict latency requirements.',
-  },
-  {
-    title: 'Customer support and servicing',
-    description: 'Scale AI assistance without exposing sensitive data or losing traceability.',
-  },
-  {
-    title: 'Risk and market intelligence',
-    description: 'Optimize routing across providers to balance cost, quality, and latency.',
-  },
-  {
-    title: 'Enterprise AI copilots',
-    description: 'Enable secure internal copilots with centralized governance and monitoring.',
+    description: 'Set budgets and enforce usage limits across departments and teams.',
   },
 ]
 
@@ -115,13 +84,13 @@ const platformCapabilities = [
   },
   {
     icon: ShieldCheck,
-    title: 'Policy Enforcement',
-    description: 'Apply guardrails, redaction, and access control consistently.',
+    title: 'Guardrails and Redaction',
+    description: 'Enforce safety policies and PII protection across workflows.',
   },
   {
     icon: Banknote,
     title: 'Budget Governance',
-    description: 'Set limits per team and prevent runaway spend.',
+    description: 'Prevent runaway spend with virtual keys and limits.',
   },
   {
     icon: Building2,
@@ -131,7 +100,7 @@ const platformCapabilities = [
   {
     icon: SignalHigh,
     title: 'High-Throughput Routing',
-    description: 'Maintain performance even under peak load.',
+    description: 'Maintain performance even under peak demand.',
   },
 ]
 
@@ -156,7 +125,35 @@ const interfaceHighlights = [
   },
 ]
 
-export default function FinancialInstitutionsPage() {
+const useCases = [
+  {
+    title: 'Clinical documentation',
+    description:
+      'Apply guardrails and redaction for summaries, notes, and documentation workflows.',
+  },
+  {
+    title: 'Care navigation and support',
+    description: 'Scale patient-facing AI with consistent policies and audit trails.',
+  },
+  {
+    title: 'Medical coding and billing',
+    description: 'Route requests through approved providers with full traceability.',
+  },
+  {
+    title: 'Research and trial analysis',
+    description: 'Support high-volume research workflows with predictable performance.',
+  },
+  {
+    title: 'Pharmacovigilance',
+    description: 'Monitor safety signals with governed model access and logging.',
+  },
+  {
+    title: 'Enterprise copilots',
+    description: 'Deploy internal copilots with centralized governance and monitoring.',
+  },
+]
+
+export default function HealthcareLifeSciencesPage() {
   const basePath = getCostCalculatorBaseUrl()
 
   return (
@@ -169,14 +166,14 @@ export default function FinancialInstitutionsPage() {
             <h1 className="mb-4 text-center text-4xl leading-[1.2] font-normal tracking-tight text-gray-900 md:text-5xl">
               Secure AI Gateway for
               <br />
-              <span className="text-[var(--accent-text)]">Financial Institutions</span>
+              <span className="text-[var(--accent-text)]">Healthcare &amp; Life Sciences</span>
             </h1>
             <p className="mx-auto mb-8 max-w-2xl text-sm leading-relaxed text-gray-500 md:text-base">
-              Bifrost provides centralized governance, compliance-grade auditability, and
-              low-latency routing for banks, insurers, and investment platforms.
+              Bifrost provides centralized governance, auditability, and low-latency routing for
+              regulated healthcare and life sciences workflows.
             </p>
             <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
-              <Link href={`${basePath}/bifrost-resources/benchmarks`}>
+              <Link href={`${basePath}/resources/benchmarks`}>
                 <Button size="lg">
                   View benchmarks
                   <ArrowRight className="h-4 w-4" />
@@ -205,7 +202,7 @@ export default function FinancialInstitutionsPage() {
               [ CHALLENGES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Barriers to scalable AI in financial services
+              Barriers to Scalable Healthcare AI
             </h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -235,7 +232,7 @@ export default function FinancialInstitutionsPage() {
               [ GOVERNANCE ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Enterprise-grade controls without slowing teams down
+              Enterprise Controls Without Slowing Care Teams
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
               Deploy Bifrost in your environment and enforce consistent policies across every model
@@ -266,11 +263,11 @@ export default function FinancialInstitutionsPage() {
               [ PLATFORM CAPABILITIES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Designed for regulated financial operations
+              Built for Regulated Healthcare Operations
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Unified governance, routing, and observability with the controls financial
-              institutions require.
+              Unified governance, routing, and observability with the controls healthcare
+              organizations require.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -300,7 +297,7 @@ export default function FinancialInstitutionsPage() {
               [ BIFROST INTERFACE ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Operational Views Built for Compliance
+              Operational Views Built for Healthcare Compliance
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
               Focused dashboard panels that highlight routing, audit trails, and budget governance.
@@ -309,10 +306,10 @@ export default function FinancialInstitutionsPage() {
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {interfaceHighlights.map((shot) => (
               <div key={shot.title} className="relative border border-gray-200 bg-white">
-                <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40 z-10" />
-                <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40 z-10" />
-                <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40 z-10" />
-                <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40 z-10" />
+                <div className="absolute top-3 left-3 z-10 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute top-3 right-3 z-10 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
+                <div className="absolute bottom-3 left-3 z-10 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
+                <div className="absolute right-3 bottom-3 z-10 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
                 <div className="relative aspect-[16/9] overflow-hidden bg-gray-50">
                   <Image
                     src={shot.src}
@@ -341,7 +338,7 @@ export default function FinancialInstitutionsPage() {
               [ USE CASES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Industry workflows powered by Bifrost
+              Industry Workflows Powered by Bifrost
             </h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -369,7 +366,7 @@ export default function FinancialInstitutionsPage() {
             [ NEXT STEPS ]
           </p>
           <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-            Bring regulated AI workloads under control
+            Bring Regulated Healthcare AI Under Control
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-gray-600">
             Talk to the Bifrost team about deploying a compliant, low-latency gateway in your
@@ -386,7 +383,7 @@ export default function FinancialInstitutionsPage() {
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
-            <Link href={`${basePath}/bifrost-resources/claude-code`}>
+            <Link href={`${basePath}/resources/claude-code`}>
               <Button variant="outline" size="lg">
                 Claude Code integration
                 <ExternalLink className="h-4 w-4" />

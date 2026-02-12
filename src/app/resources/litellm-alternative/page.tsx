@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   description:
     'Bifrost is a production-grade LiteLLM alternative built in Go. 50x faster, zero-config deployment, native observability, and 100% success rate at 5,000 RPS.',
   alternates: {
-    canonical: 'https://www.getmaxim.ai/bifrost/bifrost-resources/litellm-alternative',
+    canonical: 'https://www.getmaxim.ai/bifrost/resources/litellm-alternative',
   },
 }
 
@@ -427,9 +427,7 @@ function CellIcon({ check, warn, none }: { check?: boolean; warn?: boolean; none
     <span className="inline-flex h-3.5 w-3.5 flex-shrink-0 items-center justify-center">
       {check && <CheckCircle2 className="h-3.5 w-3.5 text-[var(--accent-text)]" />}
       {!check && warn && <span className="text-[10px] text-amber-400">⚠️</span>}
-      {!check && !warn && none && (
-        <XCircle className="h-3.5 w-3.5 text-gray-300" />
-      )}
+      {!check && !warn && none && <XCircle className="h-3.5 w-3.5 text-gray-300" />}
     </span>
   )
 }
@@ -441,8 +439,10 @@ export default function LiteLLMAlternativePage() {
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
           <div className="text-center">
-            <span className="provider-badge">[ LITELLM ALTERNATIVE ]</span>
-            <h1 className="mb-4 text-center text-4xl leading-[1.2] font-normal tracking-tight text-gray-900 md:text-5xl">
+            <span className="font-mono text-[12px] leading-[15px] font-medium tracking-[0.04em] text-emerald-500 uppercase">
+              [&ensp;LITELLM ALTERNATIVE&ensp;]
+            </span>
+            <h1 className="mt-2 mb-4 text-center text-4xl leading-[1.2] font-normal tracking-tight text-gray-900 md:text-5xl">
               The High-Performance
               <br />
               <span className="text-[var(--accent-text)]">LiteLLM Alternative</span>
@@ -942,7 +942,7 @@ export default function LiteLLMAlternativePage() {
             {[
               { label: 'Documentation', href: 'https://docs.getbifrost.ai' },
               { label: 'GitHub', href: 'https://github.com/maximhq/bifrost' },
-              { label: 'Migration Guide', href: '/bifrost-resources/migrating-from-litellm' },
+              { label: 'Migration Guide', href: '/resources/migrating-from-litellm' },
               { label: 'Book a Demo', href: 'https://www.getmaxim.ai/demo' },
             ].map((link) => (
               <a

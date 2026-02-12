@@ -19,7 +19,7 @@ export const metadata = {
   description:
     'See how Bifrost outperforms LiteLLM with 9.5x faster throughput, 54x lower P99 latency, and 68% less memory usage. Live benchmark comparison.',
   alternates: {
-    canonical: 'https://www.getmaxim.ai/bifrost/bifrost-resources/benchmarks',
+    canonical: 'https://www.getmaxim.ai/bifrost/resources/benchmarks',
   },
 }
 

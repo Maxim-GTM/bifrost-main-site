@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   description:
     'A comprehensive comparison of leading AI gateway platforms including Bifrost, LiteLLM, Portkey, Helicone, and Kong. Find the best LLM gateway for your enterprise.',
   alternates: {
-    canonical: 'https://www.getmaxim.ai/bifrost/bifrost-resources/buyers-guide',
+    canonical: 'https://www.getmaxim.ai/bifrost/resources/buyers-guide',
   },
 }
 
@@ -978,7 +978,7 @@ export default function BuyersGuidePage() {
                 { name: 'Bifrost', latency: '~11µs', highlight: true, tag: 'Go' },
                 { name: 'Cloudflare AI', latency: '10-50ms', highlight: false, tag: null },
                 { name: 'LiteLLM', latency: '~40ms', highlight: false, tag: 'Python' },
-                { name: 'OpenRouter', latency: '25-40ms', highlight: false, tag: "Typescript" },
+                { name: 'OpenRouter', latency: '25-40ms', highlight: false, tag: 'Typescript' },
               ].map((platform) => (
                 <div
                   key={platform.name}
