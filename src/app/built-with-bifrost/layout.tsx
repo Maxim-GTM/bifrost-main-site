@@ -1,33 +1,9 @@
 import type { Metadata } from 'next'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/sections/Footer'
-import { SiteConfig } from '@/lib/built-with-bifrost/site.config'
-import { getBuiltWithBifrostBaseUrl } from '@/lib/utils'
-
-const basePath = `${getBuiltWithBifrostBaseUrl()}/built-with-bifrost`
 
 export const metadata: Metadata = {
-  metadataBase: new URL(`https://www.getmaxim.ai${basePath}`),
-  title: {
-    default: SiteConfig.title,
-    template: `%s | ${SiteConfig.siteName}`,
-  },
-  description: SiteConfig.description,
-  keywords: SiteConfig.keywords,
-  authors: [{ name: SiteConfig.siteName }],
-  openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: `https://www.getmaxim.ai${basePath}`,
-    siteName: SiteConfig.siteName,
-    title: SiteConfig.title,
-    description: SiteConfig.description,
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: SiteConfig.title,
-    description: SiteConfig.description,
-  },
+  metadataBase: new URL('https://www.getmaxim.ai'),
   robots: {
     index: true,
     follow: true,

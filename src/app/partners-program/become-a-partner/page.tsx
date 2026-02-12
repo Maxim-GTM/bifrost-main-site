@@ -7,6 +7,9 @@ export const metadata = {
   title: 'Become a Partner',
   description:
     'Apply to join the Bifrost Partner Program. Cloud providers, system integrators, technology vendors, and channel partners welcome.',
+  alternates: {
+    canonical: 'https://www.getmaxim.ai/bifrost/partners-program/become-a-partner',
+  },
 }
 
 export default function BecomeAPartnerPage() {

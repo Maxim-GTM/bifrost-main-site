@@ -4,9 +4,21 @@
     <loc>https://www.getmaxim.ai/bifrost/sitemaps/sitemap.xml</loc>
   </sitemap>
   <sitemap>
-     <loc>https://getmaxim.ai/bifrost/blog/sitemap.xml</loc>
+    <loc>https://www.getmaxim.ai/bifrost/blog/sitemap.xml</loc>
   </sitemap>
   <sitemap>
     <loc>https://www.getmaxim.ai/bifrost/llm-cost-calculator/sitemap.xml</loc>
+  </sitemap>
+  <sitemap>
+    <loc>https://www.getmaxim.ai/bifrost/model-library/sitemap.xml</loc>
+  </sitemap>
+  <sitemap>
+    <loc>https://www.getmaxim.ai/bifrost/built-with-bifrost/sitemap.xml</loc>
+  </sitemap>
+  <sitemap>
+    <loc>https://www.getmaxim.ai/bifrost/partners-program/sitemap.xml</loc>
+  </sitemap>
+  <sitemap>
+    <loc>https://www.getmaxim.ai/bifrost/bifrost-resources/sitemap.xml</loc>
   </sitemap>
 </sitemapindex>

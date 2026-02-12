@@ -24,6 +24,9 @@ export const metadata: Metadata = {
   title: 'Bifrost for Retail | Secure AI Gateway',
   description:
     'Deploy Bifrost as a secure, low-latency AI gateway for retail organizations with governance, observability, and multi-provider resilience.',
+  alternates: {
+    canonical: 'https://www.getmaxim.ai/bifrost/bifrost-resources/retail',
+  },
 }
 
 const challenges = [

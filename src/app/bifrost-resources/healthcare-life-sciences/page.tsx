@@ -22,6 +22,9 @@ export const metadata: Metadata = {
   title: 'Bifrost for Healthcare & Life Sciences | Secure AI Gateway',
   description:
     'Deploy Bifrost as a secure AI gateway for healthcare and life sciences with auditability, governance, and low-latency routing.',
+  alternates: {
+    canonical: 'https://www.getmaxim.ai/bifrost/bifrost-resources/healthcare-life-sciences',
+  },
 }
 
 const challenges = [

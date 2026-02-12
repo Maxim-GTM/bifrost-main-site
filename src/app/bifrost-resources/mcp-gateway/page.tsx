@@ -33,6 +33,9 @@ export const metadata: Metadata = {
   title: 'MCP Gateway | High-Performance Tool Execution for AI Agents',
   description:
     'Connect AI models to external tools with an open-source MCP gateway that delivers 11µs overhead and complete security control.',
+  alternates: {
+    canonical: 'https://www.getmaxim.ai/bifrost/bifrost-resources/mcp-gateway',
+  },
 }
 
 const performanceMetrics = [
