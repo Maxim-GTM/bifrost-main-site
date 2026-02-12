@@ -112,7 +112,7 @@ const coreCapabilities = [
   {
     icon: Code2,
     title: 'Code Mode',
-    description: 'Let AI write Python to orchestrate multiple tools in one request.',
+    description: 'AI writes Python to orchestrate multiple tools. Four meta-tools replace 100+ definitions with on-demand schema loading and sandbox execution. Cuts tokens by 50%+ and LLM calls by 3-4x.',
     tag: 'Token efficiency',
   },
   {
@@ -278,6 +278,7 @@ const architectureFeatures = [
       'Centralized security and audit trails',
     ],
   },
+  
 ]
 
 export default function MCPGatewayPage() {
@@ -666,7 +667,12 @@ export default function MCPGatewayPage() {
             </p>
           </div>
           <div className="overflow-hidden border border-gray-200 bg-white">
-            <table className="w-full">
+            <table className="w-full table-fixed">
+              <colgroup>
+                <col className="w-[20%]" />
+                <col className="w-[30%]" />
+                <col className="w-[30%]" />
+              </colgroup>
               <thead>
                 <tr className="border-b border-gray-200 bg-gray-50">
                   <th className="px-4 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
@@ -686,14 +692,18 @@ export default function MCPGatewayPage() {
                     <td className="px-4 py-3 text-sm text-gray-600">{row.feature}</td>
                     <td className="px-4 py-3 text-sm text-gray-500">
                       <span className="inline-flex items-center gap-1.5">
-                        <XCircle className="h-3.5 w-3.5 text-gray-400" />
-                        {row.classic}
+                        <span className="inline-flex h-3.5 w-3.5 flex-shrink-0 items-center justify-center">
+                          <XCircle className="h-3.5 w-3.5 text-gray-400" />
+                        </span>
+                        <span>{row.classic}</span>
                       </span>
                     </td>
                     <td className="px-4 py-3 text-sm font-medium text-gray-900">
                       <span className="inline-flex items-center gap-1.5">
-                        <CheckCircle2 className="h-3.5 w-3.5 text-[var(--accent-text)]" />
-                        {row.bifrost}
+                        <span className="inline-flex h-3.5 w-3.5 flex-shrink-0 items-center justify-center">
+                          <CheckCircle2 className="h-3.5 w-3.5 text-[var(--accent-text)]" />
+                        </span>
+                        <span>{row.bifrost}</span>
                       </span>
                     </td>
                   </tr>

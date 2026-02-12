@@ -180,7 +180,7 @@ const featureComparisonSections: { title: string; rows: ComparisonRow[] }[] = [
     title: 'Performance & Scalability',
     rows: [
       { feature: 'Language', bifrost: 'Go (compiled)', litellm: 'Python (interpreted)' },
-      { feature: 'Gateway Overhead', bifrost: '1.68s P99 at 500 RPS', litellm: '90.72s P99 at 500 RPS' },
+      { feature: 'Gateway Overhead', bifrost: '11µs', litellm: '40ms' },
       {
         feature: 'Concurrency Model',
         bifrost: 'Native goroutines',
@@ -306,6 +306,20 @@ const featureComparisonSections: { title: string; rows: ComparisonRow[] }[] = [
         bifrostCheck: true,
         litellmCheck: true,
       },
+      {
+        feature: 'Deployment Asset',
+        bifrost: 'Single binary',
+        litellm: 'python package + webserver',
+        bifrostCheck: true,
+        litellmCheck: true,
+      },
+      {
+        feature: 'Docker Size',
+        bifrost: '80 MB',
+        litellm: '',
+        bifrostCheck: true,
+        litellmCheck: true,
+      },
       { feature: 'License', bifrost: 'Apache 2.0', litellm: 'MIT' },
     ],
   },
@@ -390,11 +404,11 @@ const summaryTable = [
     bifrost: 'High-throughput production systems',
     litellm: 'Multi-provider abstraction, Python teams',
   },
-  { factor: 'Performance', bifrost: '1.68s P99 overhead at 500 RPS', litellm: '90.72s P99 at 500 RPS' },
+  { factor: 'Performance', bifrost: '11µs', litellm: '40ms' },
   { factor: 'Setup Time', bifrost: '<30 seconds', litellm: '2-10 minutes' },
   { factor: 'Dependencies', bifrost: 'Zero', litellm: 'Redis recommended' },
   {
-    factor: 'Deployment',
+    factor: 'Deployment Asset',
     bifrost: 'Single binary, Docker, npx',
     litellm: 'Python package, Docker',
   },
@@ -409,10 +423,15 @@ const summaryTable = [
 ]
 
 function CellIcon({ check, warn, none }: { check?: boolean; warn?: boolean; none?: boolean }) {
-  if (check) return <CheckCircle2 className="h-3.5 w-3.5 flex-shrink-0 text-[var(--accent-text)]" />
-  if (warn) return <span className="flex-shrink-0 text-xs text-amber-400">⚠️</span>
-  if (none) return <XCircle className="h-3.5 w-3.5 flex-shrink-0 text-gray-300" />
-  return null
+  return (
+    <span className="inline-flex h-3.5 w-3.5 flex-shrink-0 items-center justify-center">
+      {check && <CheckCircle2 className="h-3.5 w-3.5 text-[var(--accent-text)]" />}
+      {!check && warn && <span className="text-[10px] text-amber-400">⚠️</span>}
+      {!check && !warn && none && (
+        <XCircle className="h-3.5 w-3.5 text-gray-300" />
+      )}
+    </span>
+  )
 }
 
 export default function LiteLLMAlternativePage() {
@@ -658,7 +677,12 @@ export default function LiteLLMAlternativePage() {
                     {section.title}
                   </h3>
                 </div>
-                <table className="w-full">
+                <table className="w-full table-fixed">
+                  <colgroup>
+                    <col className="w-[20%]" />
+                    <col className="w-[30%]" />
+                    <col className="w-[30%]" />
+                  </colgroup>
                   <thead>
                     <tr className="border-b border-gray-200">
                       <th className="px-4 py-2.5 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
@@ -679,7 +703,7 @@ export default function LiteLLMAlternativePage() {
                         <td className="px-4 py-2.5 text-sm font-medium text-gray-900">
                           <span className="inline-flex items-center gap-1.5">
                             <CellIcon check={row.bifrostCheck} />
-                            {row.bifrost}
+                            <span>{row.bifrost}</span>
                           </span>
                         </td>
                         <td className="px-4 py-2.5 text-sm text-gray-500">
@@ -689,7 +713,7 @@ export default function LiteLLMAlternativePage() {
                               warn={row.litellmWarn}
                               none={row.litellmNone}
                             />
-                            {row.litellm}
+                            <span>{row.litellm}</span>
                           </span>
                         </td>
                       </tr>

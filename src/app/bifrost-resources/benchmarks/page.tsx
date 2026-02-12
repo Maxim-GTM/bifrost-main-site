@@ -176,7 +176,12 @@ export default function BenchmarksPage() {
           </p>
         </div>
         <div className="overflow-hidden border border-gray-200 bg-white">
-          <table className="w-full">
+          <table className="w-full table-fixed">
+            <colgroup>
+              <col className="w-[20%]" />
+              <col className="w-[30%]" />
+              <col className="w-[30%]" />
+            </colgroup>
             <thead>
               <tr className="border-b border-gray-200 bg-gray-50">
                 <th className="px-4 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
@@ -196,8 +201,10 @@ export default function BenchmarksPage() {
                   <td className="px-4 py-3 text-sm text-gray-600">{row.feature}</td>
                   <td className="px-4 py-3 text-sm font-medium text-gray-900">
                     <span className="inline-flex items-center gap-1.5">
-                      <CheckCircle2 className="h-3.5 w-3.5 text-[var(--accent-text)]" />
-                      {row.bifrost}
+                      <span className="inline-flex h-3.5 w-3.5 flex-shrink-0 items-center justify-center">
+                        <CheckCircle2 className="h-3.5 w-3.5 text-[var(--accent-text)]" />
+                      </span>
+                      <span>{row.bifrost}</span>
                     </span>
                   </td>
                   <td className="px-4 py-3 text-sm text-gray-500">{row.litellm}</td>

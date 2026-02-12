@@ -64,7 +64,7 @@ const platforms = [
     tagline: 'Open Source Multi-Provider Proxy',
     deployment: 'Self-hosted',
     pricing: 'Zero markup',
-    latency: '~8ms P95',
+    latency: '~40ms',
     highlight: false,
     description:
       'Python-based open-source gateway supporting multiple providers. Highly customizable with extensive integration options.',
@@ -91,7 +91,7 @@ const platforms = [
     highlight: false,
     description: 'Gateway optimized for performance and observability with zero markup pricing.',
     strengths: ['Low latency', 'Zero markup', 'Semantic caching', 'Built-in observability'],
-    language: 'N/A',
+    language: 'Typescript',
   },
   {
     name: 'Kong AI Gateway',
@@ -103,7 +103,7 @@ const platforms = [
     description:
       "Extends Kong's proven API gateway platform to support LLM routing with plugin-based architecture.",
     strengths: ['Kong ecosystem', 'Plugin architecture', 'Enterprise support', 'API management'],
-    language: 'N/A',
+    language: 'Lua',
   },
   {
     name: 'OpenRouter',
@@ -115,7 +115,7 @@ const platforms = [
     description:
       'Simplified access to multiple AI models through a single endpoint. Best for rapid prototyping.',
     strengths: ['Simple setup', 'Pay-as-you-go', 'Developer friendly'],
-    language: 'N/A',
+    language: 'Typescript',
   },
 ]
 
@@ -516,19 +516,19 @@ export default function BuyersGuidePage() {
                     <span className="arch-tag">Go</span>
                   </td>
                   <td>
-                    <span className="arch-tag py">Python</span>
+                    <span className="arch-tag">Python</span>
                   </td>
                   <td>
                     <span className="arch-tag nd">N/A</span>
                   </td>
                   <td>
-                    <span className="arch-tag nd">N/A</span>
+                    <span className="arch-tag">Typescript</span>
                   </td>
                   <td>
-                    <span className="arch-tag nd">N/A</span>
+                    <span className="arch-tag">Lua</span>
                   </td>
                   <td>
-                    <span className="arch-tag nd">N/A</span>
+                    <span className="arch-tag">Typescript</span>
                   </td>
                 </tr>
                 <tr>
@@ -537,7 +537,7 @@ export default function BuyersGuidePage() {
                     <span className="sv">&lt;~11µs</span>
                   </td>
                   <td>
-                    <span className="sv">~8ms</span>
+                    <span className="sv">~40ms</span>
                   </td>
                   <td>
                     <span className="sp">10-50ms</span>
@@ -953,7 +953,7 @@ export default function BuyersGuidePage() {
                   { metric: '5,000 RPS', label: 'Sustained throughput on a single node' },
                   { metric: '50x faster', label: 'Than Python-based gateways at P95' },
                   {
-                    metric: '99.99%',
+                    metric: '99.999%',
                     label: 'Uptime enabled by automatic multi-provider failover',
                   },
                 ].map((item) => (
@@ -977,8 +977,8 @@ export default function BuyersGuidePage() {
               {[
                 { name: 'Bifrost', latency: '~11µs', highlight: true, tag: 'Go' },
                 { name: 'Cloudflare AI', latency: '10-50ms', highlight: false, tag: null },
-                { name: 'LiteLLM', latency: '~8ms', highlight: false, tag: 'Python' },
-                { name: 'OpenRouter', latency: '25-40ms', highlight: false, tag: null },
+                { name: 'LiteLLM', latency: '~40ms', highlight: false, tag: 'Python' },
+                { name: 'OpenRouter', latency: '25-40ms', highlight: false, tag: "Typescript" },
               ].map((platform) => (
                 <div
                   key={platform.name}
