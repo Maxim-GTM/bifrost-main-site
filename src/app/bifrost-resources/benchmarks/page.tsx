@@ -18,6 +18,9 @@ export const metadata = {
   title: 'Bifrost vs LiteLLM Benchmarks | 40x Faster LLM Gateway',
   description:
     'See how Bifrost outperforms LiteLLM with 9.5x faster throughput, 54x lower P99 latency, and 68% less memory usage. Live benchmark comparison.',
+  alternates: {
+    canonical: 'https://www.getmaxim.ai/bifrost/bifrost-resources/benchmarks',
+  },
 }
 
 export default function BenchmarksPage() {

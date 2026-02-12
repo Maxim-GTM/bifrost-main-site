@@ -28,6 +28,21 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
       'Browse AI models across providers. Compare capabilities, context limits, and pricing details for chat, image generation, audio, and more.',
     keywords:
       'Bifrost AI Model Library, model catalog, AI providers, model capabilities, model pricing',
+    openGraph: {
+      type: 'website',
+      locale: 'en_US',
+      url: 'https://www.getmaxim.ai/bifrost/model-library',
+      siteName: 'Bifrost by Maxim AI',
+      title: 'Bifrost AI Model Library - Explore Providers and Capabilities',
+      description:
+        'Browse AI models across providers. Compare capabilities, context limits, and pricing details.',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Bifrost AI Model Library',
+      description:
+        'Browse AI models across providers. Compare capabilities, context limits, and pricing details.',
+    },
     alternates: {
       canonical,
     },
@@ -65,8 +80,42 @@ export default async function HomePage({ searchParams }: PageProps) {
     (provider) => (modelsByProvider[provider]?.length || 0) > 0
   )
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'DataCatalog',
+    name: 'Bifrost AI Model Library - Explore Providers and Capabilities',
+    description:
+      'Browse AI models across providers. Compare capabilities, context limits, and pricing details for chat, image generation, audio, and more.',
+    url: `https://www.getmaxim.ai${basePath}`,
+    isPartOf: {
+      '@type': 'WebSite',
+      name: 'Bifrost by Maxim AI',
+      url: 'https://www.getmaxim.ai/bifrost/',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Maxim AI',
+      url: 'https://www.getmaxim.ai',
+    },
+    dataset: {
+      '@type': 'Dataset',
+      name: 'AI Model Catalog',
+      description: `${models.length} AI models from ${providers.length} providers across ${modes.length} modes`,
+      variableMeasured: [
+        'Model capabilities',
+        'Context limits',
+        'Pricing',
+        'Provider information',
+      ],
+    },
+  }
+
   return (
     <div className="min-h-screen">
+       <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero + Stats Section with Decorations */}
       <div className="relative flex w-full justify-center">
         {/* Left Side Decoration - Box Style */}

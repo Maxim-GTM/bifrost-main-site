@@ -21,6 +21,9 @@ export const metadata: Metadata = {
   title: 'Migrating from LiteLLM to Bifrost | 54x Faster LLM Gateway',
   description:
     'Migrate from LiteLLM to Bifrost in 15-30 minutes. Get 54x faster performance at 500 RPS, 99.99% uptime, and enterprise-grade security with zero code changes.',
+  alternates: {
+    canonical: 'https://www.getmaxim.ai/bifrost/bifrost-resources/migrating-from-litellm',
+  },
 }
 
 const performanceMetrics = [

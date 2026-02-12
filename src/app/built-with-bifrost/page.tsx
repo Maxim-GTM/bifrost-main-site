@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { SiteConfig } from '@/lib/built-with-bifrost/site.config'
 import Link from 'next/link'
 import { getApprovedSubmissions } from '@/lib/built-with-bifrost/storage'
@@ -9,12 +10,70 @@ import { Button } from '@/components/ui/Button'
 // Force dynamic rendering to ensure we get the latest submissions
 export const dynamic = 'force-dynamic'
 
+export const metadata: Metadata = {
+  title: 'Built with Bifrost - Community Projects & Showcase',
+  description:
+    'Discover amazing projects, tools, and applications created by the community using Bifrost by Maxim AI.',
+  keywords: ['Bifrost', 'Showcase', 'AI', 'Projects', 'Community'],
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://www.getmaxim.ai/bifrost/built-with-bifrost',
+    siteName: 'Bifrost by Maxim AI',
+    title: 'Built with Bifrost - Community Projects & Showcase',
+    description:
+      'Discover amazing projects, tools, and applications created by the community using Bifrost by Maxim AI.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Built with Bifrost',
+    description:
+      'Discover amazing projects, tools, and applications created by the community using Bifrost by Maxim AI.',
+  },
+  alternates: {
+    canonical: 'https://www.getmaxim.ai/bifrost/built-with-bifrost',
+  },
+}
+
 export default async function HomePage() {
   const projects = await getApprovedSubmissions()
   const basePath = `${getBuiltWithBifrostBaseUrl()}/built-with-bifrost`
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Built with Bifrost - Community Projects & Showcase',
+    description:
+      'Discover amazing projects, tools, and applications created by the community using Bifrost by Maxim AI.',
+    url: `https://www.getmaxim.ai${basePath}`,
+    isPartOf: {
+      '@type': 'WebSite',
+      name: 'Bifrost by Maxim AI',
+      url: 'https://www.getmaxim.ai/bifrost/',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Maxim AI',
+      url: 'https://www.getmaxim.ai',
+    },
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: projects.length,
+      itemListElement: projects.slice(0, 20).map((project, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: project.title,
+        url: `https://www.getmaxim.ai${basePath}/project/${project.slug}`,
+      })),
+    },
+  }
+
   return (
     <div className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero Section */}
       <div className="relative overflow-hidden bg-white">
         <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">

@@ -7,6 +7,9 @@ import { getBuiltWithBifrostBaseUrl } from '@/lib/utils'
 export const metadata = {
   title: `Submit Project - ${SiteConfig.siteName}`,
   description: 'Submit your Bifrost project to the showcase.',
+  alternates: {
+    canonical: 'https://www.getmaxim.ai/bifrost/built-with-bifrost/submit',
+  },
 }
 
 export default function SubmitPage() {
