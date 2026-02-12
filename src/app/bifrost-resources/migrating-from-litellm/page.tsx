@@ -326,16 +326,18 @@ export default function MigratingFromLiteLLMPage() {
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
           <div className="text-center">
-            <span className="provider-badge">[ MIGRATION GUIDE ]</span>
+            <span className="font-mono text-[12px] leading-[15px] font-medium tracking-[0.04em] text-emerald-500 uppercase">
+              [&ensp;MIGRATING GUIDE&ensp;]
+            </span>
             <h1 className="mb-4 text-center text-4xl leading-[1.2] font-normal tracking-tight text-gray-900 md:text-5xl">
               Migrating from LiteLLM
               <br />
               <span className="text-[var(--accent-text)]">to Bifrost</span>
             </h1>
             <p className="mx-auto mb-8 max-w-3xl text-sm leading-relaxed text-gray-500 md:text-base">
-              Get 54x faster performance with 40% less latency overhead and 9.5x faster throughput at 500 RPS
-              compared to Python-based gateways. Built in Go for teams that need 99.99% uptime and
-              infrastructure that scales from prototype to millions of requests.
+              Get 54x faster performance with 40% less latency overhead and 9.5x faster throughput
+              at 500 RPS compared to Python-based gateways. Built in Go for teams that need 99.99%
+              uptime and infrastructure that scales from prototype to millions of requests.
             </p>
             <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
               <Link
@@ -465,8 +467,8 @@ export default function MigratingFromLiteLLMPage() {
                 ))}
               </tbody>
             </table>
-            </div>
-            {/*<div className="mt-6 border border-gray-200 bg-gray-50 p-4">
+          </div>
+          {/*<div className="mt-6 border border-gray-200 bg-gray-50 p-4">
             <p className="text-xs leading-relaxed text-gray-500">
               <span className="font-medium text-gray-700">For multi-step agent architectures:</span>{' '}
               Ten sequential LLM calls through Bifrost add ~110µs of gateway overhead. The same

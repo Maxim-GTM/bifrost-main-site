@@ -284,8 +284,10 @@ export default function MCPGatewayPage() {
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
           <div className="text-center">
-            <span className="provider-badge">[ MCP GATEWAY ]</span>
-            <h1 className="mb-4 text-center text-4xl leading-[1.2] font-normal tracking-tight text-gray-900 md:text-5xl">
+            <span className="font-mono text-[12px] leading-[15px] font-medium tracking-[0.04em] text-emerald-500 uppercase">
+              [&ensp;MCP GATEWAY&ensp;]
+            </span>
+            <h1 className="mt-2 mb-4 text-center text-4xl leading-[1.2] font-normal tracking-tight text-gray-900 md:text-5xl">
               Turn AI Models into
               <br />
               <span className="text-[var(--accent-text)]">Action-Capable Agents</span>
