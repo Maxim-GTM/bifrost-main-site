@@ -1,7 +1,10 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { getOSSFriends } from './actions'
+import { Navbar } from '@/components/Navbar'
+import { Footer } from '@/components/sections/Footer'
 import OSSFriendsClient from './ossFriendsPage'
+import { Button } from '@/components/ui/Button'
 
 export const metadata: Metadata = {
   title: 'OSS Friends | Bifrost',
@@ -26,118 +29,94 @@ export const metadata: Metadata = {
 
 export default async function OSSFriendsPage() {
   const friends = await getOSSFriends()
-  const headerOverlayClassName = `fixed top-0 left-0 right-0 z-50 hidden md:block 'bg-white/80 md:backdrop-blur-md border-b border-green-200/20'`
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className={headerOverlayClassName}>
-        <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
-            <div className="flex items-center">
-              <Link className="flex items-center" href="/bifrost">
-                <img src={'https://bifrost.getmaxim.ai/logo-full.svg'} alt="Bifrost logo" />
-              </Link>
+      <Navbar />
+
+      {/* Main Content with Decorations */}
+      <div className="relative flex w-full justify-center">
+        {/* Left Side Decoration - Box Style */}
+        <div className="hidden w-20 flex-none flex-col items-end gap-4 border-r border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
+              backgroundSize: '4px 4px',
+            }}
+          ></div>
+        </div>
+
+        {/* Center Content - Max 1100px */}
+        <div className="w-full max-w-[1100px] px-4 pb-16">
+          {/* Hero Section */}
+          <div className="mx-auto mb-12 max-w-4xl py-12 text-center">
+            <span className="font-mono text-[12px] leading-[15px] font-medium tracking-[0.04em] text-emerald-500 uppercase">
+              [&ensp;COMMUNITY&ensp;]
+            </span>
+            <h1 className="mx-auto mt-2 mb-4 max-w-3xl text-[42px] leading-[120%] font-medium tracking-[-0.02em] text-black">
+              Our OSS Friends
+            </h1>
+            <p className="mx-auto max-w-2xl text-[16px] leading-[140%] tracking-[0em] text-[#525252]">
+              Amazing open source projects that share our mission of making AI development more
+              accessible and efficient.
+            </p>
+          </div>
+
+          <div className="absolute right-0 left-0 h-px w-full bg-black/10" />
+
+          <div>
+            {/* Client component for interactivity */}
+            <OSSFriendsClient friends={friends} />
+
+            <div className="absolute right-0 left-0 h-px w-full bg-black/10" />
+
+            {/* CTA Section */}
+            <div className="mt-16 text-center">
+              <h2 className="mb-4 text-[32px] leading-[120%] font-medium tracking-[-0.02em] text-black">
+                Want to be featured?
+              </h2>
+              <p className="mx-auto mb-8 max-w-2xl text-[16px] leading-[140%] text-[#525252]">
+                If you&apos;re building something amazing in the open source AI space, we&apos;d
+                love to feature your project!
+              </p>
+              <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row">
+                <Button asChild variant="primary">
+                  <a
+                    href="https://app.formbricks.com/s/clhys1p9r001cpr0hu65rwh17"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Submit Your Project
+                  </a>
+                </Button>
+                <Button asChild variant="outline">
+                  <a
+                    href="https://getmax.im/bifrost-discord"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Join Our Discord
+                  </a>
+                </Button>
+              </div>
             </div>
-            <nav className="hidden items-center space-x-8 md:flex">
-              <a
-                href="https://getmaxim.ai/bifrost#features"
-                className="hover:text-accent text-sm font-medium text-gray-600 transition-colors"
-              >
-                Features
-              </a>
-              <a
-                href="https://getmaxim.ai/bifrost#performance"
-                className="hover:text-accent text-sm font-medium text-gray-600 transition-colors"
-              >
-                Performance
-              </a>
-              <a
-                href="https://getmaxim.ai/bifrost#oss-friends"
-                className="hover:text-accent text-sm font-medium text-gray-600 transition-colors"
-              >
-                OSS Friends
-              </a>
-              <a
-                href="https://docs.getbifrost.ai"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-accent text-sm font-medium text-gray-600 transition-colors"
-              >
-                Docs
-              </a>
-              <a
-                href="https://getmax.im/bifrost-discord"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 rounded-lg border border-gray-300 bg-gray-50 p-2 text-sm font-medium text-gray-700 transition-all duration-200 hover:border-gray-400 hover:bg-gray-50"
-              >
-                Join Discord
-              </a>
-            </nav>
           </div>
         </div>
-      </header>
 
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-green-50 via-white to-green-50/50 pt-36 pb-16">
-        <div className="mx-auto max-w-[1200px] px-4 text-center sm:px-6 lg:px-8">
-          <h1 className="mb-6 text-4xl font-bold text-gray-900 lg:text-5xl">Our OSS Friends</h1>
-          <p className="mx-auto max-w-3xl text-lg text-gray-600 lg:text-xl">
-            Amazing open source projects that share our mission of making AI development more
-            accessible and efficient.
-          </p>
+        {/* Right Side Decoration */}
+        <div className="hidden w-20 flex-none flex-col items-start gap-4 border-l border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
+              backgroundSize: '4px 4px',
+            }}
+          ></div>
         </div>
-      </section>
-      {/* Client component for interactivity */}
-      <OSSFriendsClient friends={friends} />
+      </div>
 
-      {/* CTA Section */}
-      <section className="bg-gradient-to-r from-green-600 to-green-700 py-16">
-        <div className="mx-auto max-w-[1200px] px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="mb-4 text-3xl font-bold text-white">Want to be featured?</h2>
-          <p className="mx-auto mb-8 max-w-2xl text-lg text-green-100">
-            If you&apos;re building something amazing in the open source AI space, we&apos;d love to
-            feature your project!
-          </p>
-          <div className="flex flex-col justify-center gap-4 sm:flex-row">
-            <a
-              href="https://app.formbricks.com/s/clhys1p9r001cpr0hu65rwh17"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accent rounded-lg bg-white px-8 py-3 font-medium transition-colors hover:bg-gray-50"
-            >
-              Submit Your Project
-            </a>
-            <a
-              href="https://getmax.im/bifrost-discord"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-accent rounded-lg border-2 border-white px-8 py-3 font-medium text-white transition-colors hover:bg-white"
-            >
-              Join Our Discord
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 py-12 text-white">
-        <div className="mx-auto max-w-[1200px] px-4 text-center sm:px-6 lg:px-8">
-          <p className="mb-2 text-sm text-gray-400">© {new Date().getFullYear()} H3 Labs Inc</p>
-          <p className="text-xs text-gray-500">
-            Logos provided by{' '}
-            <a
-              href="https://logo.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-green-400 transition-colors hover:text-green-300"
-            >
-              Logo.dev
-            </a>
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }
