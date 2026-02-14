@@ -13,8 +13,7 @@ interface Feature {
 
 const RiveIllustration = dynamic(() => import('@/components/RiveIllustration'), { ssr: false })
 
-// Scale factor to make Rive illustration lines appear thicker
-const RIVE_SCALE = 1.08
+const RIVE_SCALE = 1.0
 
 // Keep enterprise illustrations in the same teal treatment as OSS
 const ENTERPRISE_FILTER = 'none'
@@ -201,7 +200,7 @@ function FeatureCard({ feature, accentColor }: { feature: Feature; accentColor: 
     <div className="flex h-full flex-col bg-white">
       {/* Visual Area */}
       <div
-        className="relative flex h-[200px] flex-shrink-0 items-center justify-center border-b p-6"
+        className="relative flex h-[200px] flex-shrink-0 items-center justify-center border-b p-2"
         style={{ borderColor: 'rgba(0, 0, 0, 0.1)' }}
       >
         {/* Decorative corner accents */}
@@ -222,7 +221,7 @@ function FeatureCard({ feature, accentColor }: { feature: Feature; accentColor: 
           style={{ borderColor: accentColor, opacity: 0.4 }}
         />
 
-        <div className="h-full max-h-[160px] w-full max-w-[180px]">{feature.illustration()}</div>
+        <div className="h-full w-full">{feature.illustration()}</div>
       </div>
 
       {/* Content Area */}

@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic'
 
 const RiveIllustration = dynamic(() => import('@/components/RiveIllustration'), { ssr: false })
 
-const RIVE_SCALE = 1.08
+const RIVE_SCALE = 1.0
 
 interface PartnerType {
   title: string
@@ -28,10 +28,6 @@ const partnerTypes: PartnerType[] = [
     title: 'Channel Partners',
     illustration: '/rive/D0EAkStzIv10JZlvu0Gm71lUl3c.riv',
   },
-  {
-    title: 'Others',
-    illustration: '/rive/ABhpjlXi56FtDgqi0PG1dpwbuk.riv',
-  },
 ]
 
 const ACCENT_COLOR = '#35c09e'
@@ -41,8 +37,8 @@ function PartnerCard({ partner, compact }: { partner: PartnerType; compact?: boo
     <div className="flex h-full flex-col border border-gray-200 bg-white transition-all hover:border-[var(--accent-border)] hover:shadow-sm">
       {/* Illustration Area */}
       <div
-        className={`relative flex flex-shrink-0 items-center justify-center border-b border-gray-100 p-6 ${
-          compact ? 'h-[140px]' : 'h-[200px]'
+        className={`relative flex flex-shrink-0 items-center justify-center border-b border-gray-100 p-2 ${
+          compact ? 'h-[170px]' : 'h-[240px]'
         }`}
       >
         {/* Decorative corner accents */}
@@ -63,11 +59,7 @@ function PartnerCard({ partner, compact }: { partner: PartnerType; compact?: boo
           style={{ borderColor: ACCENT_COLOR, opacity: 0.4 }}
         />
 
-        <div
-          className={`flex h-full w-full items-center justify-center overflow-hidden ${
-            compact ? 'max-h-[100px] max-w-[120px]' : 'max-h-[160px] max-w-[180px]'
-          }`}
-        >
+        <div className="flex h-full w-full items-center justify-center overflow-hidden">
           <RiveIllustration
             src={partner.illustration}
             className="h-full w-full"
@@ -87,21 +79,11 @@ function PartnerCard({ partner, compact }: { partner: PartnerType; compact?: boo
 }
 
 export default function PartnerTypes({ compact }: { compact?: boolean }) {
-  const topRow = partnerTypes.slice(0, 3)
-  const bottomRow = partnerTypes.slice(3)
-
   return (
-    <div className="flex flex-col gap-6">
-      <div className="grid grid-cols-2 gap-6 sm:grid-cols-3">
-        {topRow.map((partner) => (
-          <PartnerCard key={partner.title} partner={partner} compact={compact} />
-        ))}
-      </div>
-      <div className="mx-auto grid w-full max-w-[66.666%] grid-cols-2 gap-6 sm:max-w-[66.666%]">
-        {bottomRow.map((partner) => (
-          <PartnerCard key={partner.title} partner={partner} compact={compact} />
-        ))}
-      </div>
+    <div className="grid grid-cols-2 gap-6">
+      {partnerTypes.map((partner) => (
+        <PartnerCard key={partner.title} partner={partner} compact={compact} />
+      ))}
     </div>
   )
 }

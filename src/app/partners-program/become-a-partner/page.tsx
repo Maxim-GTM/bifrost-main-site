@@ -28,7 +28,11 @@ export default function BecomeAPartnerPage() {
         <div className="grid items-start gap-12 lg:grid-cols-2">
           {/* LHS — Info */}
           <div className="lg:sticky lg:top-24">
-            <span className="provider-badge mb-4">[ PARTNER APPLICATION ]</span>
+            {/* <div className="text-center mb-4">
+                <span className="font-mono text-[12px] leading-[15px] font-medium tracking-[0.04em] text-emerald-500 uppercase">
+                  [&ensp;PARTNER APPLICATION&ensp;]
+                </span>
+            </div> */}
             <h1 className="mb-4 text-3xl leading-[1.2] font-normal tracking-tight text-gray-900 md:text-4xl">
               Join forces with Bifrost
             </h1>
