@@ -1,7 +1,9 @@
 import React from 'react'
 import { Metadata } from 'next'
-import FeatureMatrix from '@/components/resources/FeatureMatrix'
-import DropInReplacement from '@/components/resources/DropInReplacement'
+import Link from 'next/link'
+import FeatureMatrix from '../../../components/resources/FeatureMatrix'
+import DropInReplacement from '../../../components/resources/DropInReplacement'
+import { Button } from '../../../components/ui/Button'
 import {
   Zap,
   Shield,
@@ -34,8 +36,6 @@ import {
   Globe,
   Plug,
 } from 'lucide-react'
-import { Button } from '@/components/ui/Button'
-import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: "LLM Gateway Buyer's Guide 2026 | Compare Top AI Gateway Solutions",
