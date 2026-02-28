@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
 import FeatureMatrix from '@/components/resources/FeatureMatrix'
 import DropInReplacement from '@/components/resources/DropInReplacement'
+import FAQSection from '@/components/resources/FAQSection'
 import SetupSteps from '@/components/resources/SetupSteps'
 import {
   ArrowRight,
@@ -420,6 +421,34 @@ const summaryTable = [
   },
   { factor: 'Cost', bifrost: 'Free (Apache 2.0)', litellm: 'Free (MIT)' },
   { factor: 'Providers', bifrost: '20+ providers, 1000+ models', litellm: '100+ LLM APIs' },
+]
+
+const litellmAlternativeFaqs: { question: string; answer: string }[] = [
+  {
+    question: 'Is Bifrost a drop-in replacement for LiteLLM?',
+    answer:
+      'Yes. Bifrost provides an OpenAI-compatible API, so migrating from LiteLLM typically requires changing only the base URL. Your existing SDKs, request formats, and integrations continue to work without code changes.',
+  },
+  {
+    question: 'Why is Bifrost faster than LiteLLM?',
+    answer:
+      "Bifrost is built in Go, a compiled language with native concurrency via goroutines. LiteLLM is Python-based, which introduces interpreter overhead, GIL limitations, and higher memory consumption. This architectural difference results in Bifrost delivering 11 microsecond gateway overhead compared to LiteLLM's approximately 40 milliseconds.",
+  },
+  {
+    question: 'Does Bifrost require Redis or external databases?',
+    answer:
+      'No. Bifrost handles configuration, caching, logging, and state management internally with zero external dependencies. You can start with a single command (npx or Docker) and have a fully functional gateway in under 30 seconds.',
+  },
+  {
+    question: 'How does Bifrost compare to LiteLLM for provider support?',
+    answer:
+      'Bifrost supports 20+ providers and 1,000+ models out of the box including OpenAI, Anthropic, AWS Bedrock, Google Vertex AI, Azure OpenAI, and more. LiteLLM supports 100+ LLM APIs. Both cover the major providers teams use in production.',
+  },
+  {
+    question: 'Is Bifrost open source?',
+    answer:
+      'Yes. Bifrost is fully open source under the Apache 2.0 license with the complete source code available on GitHub. There is also an enterprise tier with additional features like SSO, clustering, and premium support.',
+  },
 ]
 
 function CellIcon({ check, warn, none }: { check?: boolean; warn?: boolean; none?: boolean }) {
@@ -990,6 +1019,8 @@ export default function LiteLLMAlternativePage() {
           <DropInReplacement />
         </div>
       </section>
+
+      <FAQSection faqs={litellmAlternativeFaqs} />
     </div>
   )
 }

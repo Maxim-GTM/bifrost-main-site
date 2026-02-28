@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
 import FeatureMatrix from '@/components/resources/FeatureMatrix'
 import DropInReplacement from '@/components/resources/DropInReplacement'
+import FAQSection from '@/components/resources/FAQSection'
 import SetupSteps from '@/components/resources/SetupSteps'
 import {
   ArrowRight,
@@ -290,6 +291,29 @@ const whenToMigrate = [
   'Want integrated observability, Maxim platform provides unmatched visibility',
   'Experiencing reliability issues, timeout spikes, memory issues, or unpredictable latency',
   'Need better cost control, semantic caching and adaptive load balancing',
+]
+
+const migrationFaqs: { question: string; answer: string }[] = [
+  {
+    question: 'How long does it take to migrate from LiteLLM to Bifrost?',
+    answer: 'Most migrations take 15-30 minutes. Since Bifrost provides an OpenAI-compatible API, you typically only need to change the base URL in your application. Provider configuration can be done through the web UI without editing config files.',
+  },
+  {
+    question: 'Will my existing LiteLLM virtual keys work with Bifrost?',
+    answer: 'LiteLLM virtual keys need to be recreated in Bifrost, but the concepts map directly. Bifrost virtual keys support the same functionality including team budgets, rate limits, and model restrictions. You can configure them via the web UI or API.',
+  },
+  {
+    question: 'Can I use the LiteLLM Python SDK with Bifrost?',
+    answer: 'Yes. You can point the LiteLLM Python SDK at Bifrost by setting the api_base to your Bifrost URL. This allows a gradual migration where you swap the backend without changing application code.',
+  },
+  {
+    question: 'What happens to my LiteLLM model routing configuration?',
+    answer: "Bifrost uses a provider/model format (e.g., openai/gpt-4o) for explicit routing. You can configure fallback chains, load balancing weights, and routing rules through Bifrost's web UI or configuration files.",
+  },
+  {
+    question: 'Is there any downtime during migration?',
+    answer: 'No. You can run Bifrost alongside LiteLLM during migration and switch traffic gradually. Both gateways can operate simultaneously, allowing you to validate Bifrost performance before fully cutting over.',
+  },
 ]
 
 /** Cell value style for buyers-guide-style table: sy = green/yes, sn = gray/no, sp = orange/partial, sv = green metric */
@@ -831,6 +855,8 @@ response = litellm.completion(
           <DropInReplacement />
         </div>
       </section>
+
+      <FAQSection faqs={migrationFaqs} />
     </div>
   )
 }
