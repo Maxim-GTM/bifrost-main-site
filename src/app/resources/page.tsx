@@ -103,12 +103,12 @@ const resources = [
 
 const industries = [
   {
-    title: 'Financial Institutions',
+    title: 'Financial Services and Banking',
     description:
       'Secure AI gateway for regulated banking, insurance, and investment services with audit-grade controls.',
-    href: `${basePath}/resources/financial-institutions`,
+    href: `${basePath}/resources/financial-services-and-banking`,
     icon: Building2,
-    label: 'Financial Services',
+    label: 'Financial Services and Banking',
   },
   {
     title: 'Healthcare & Life Sciences',

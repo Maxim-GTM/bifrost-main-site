@@ -9,8 +9,9 @@ const subpages = [
   'mcp-gateway',
   'migrating-from-litellm',
   'litellm-alternative',
-  'financial-institutions',
+  'financial-services-and-banking',
   'healthcare-life-sciences',
+  'insurance',
   'retail',
 ]
 
