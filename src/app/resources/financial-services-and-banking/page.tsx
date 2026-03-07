@@ -6,27 +6,29 @@ import DropInReplacement from '@/components/resources/DropInReplacement'
 import { Button } from '@/components/ui/Button'
 import { getCostCalculatorBaseUrl } from '@/lib/utils'
 import {
+  Activity,
+  AlertTriangle,
   ArrowRight,
-  ShieldCheck,
-  FileText,
-  Lock,
-  Scale,
-  Building2,
   Banknote,
+  Bot,
   ExternalLink,
-  PlugZap,
+  FileCheck,
+  FileText,
+  KeyRound,
+  Plug,
   ScrollText,
   Server,
-  Database,
-  AlertTriangle
+  ShieldCheck,
+  SignalHigh,
+  Puzzle,
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Bifrost for Healthcare & Life Sciences | Secure and HIPAA-Compliant AI Gateway',
+  title: 'Bifrost for Financial Services and Banking | Governed AI Gateway',
   description:
-    'Deploy Bifrost as a secure and HIPAA-compliant AI gateway for healthcare and life sciences with auditability, governance, and low-latency routing.',
+    'Deploy AI across your institution with air-gapped security, full audit trails, and controls your regulators and risk teams can stand behind.',
   alternates: {
-    canonical: 'https://www.getmaxim.ai/bifrost/resources/healthcare-life-sciences',
+    canonical: 'https://www.getmaxim.ai/bifrost/resources/financial-services-and-banking',
   },
 }
 
@@ -35,102 +37,46 @@ const challenges = [
     icon: AlertTriangle,
     title: 'Shadow AI exposure',
     description:
-      '40% of healthcare workers use unauthorized AI tools, and 57% input sensitive patient data into ungoverned consumer applications.',
+      'Most financial institutions have usage policies but no technical controls to prevent employees from using ungoverned AI tools with client data.',
   },
   {
-    icon: ShieldCheck,
-    title: 'HIPAA and regulatory complexity',
+    icon: ScrollText,
+    title: 'No audit trail',
     description:
-      'Every LLM vendor requires a separate BAA negotiation, adding 6 to 12 months before a single clinical AI workflow reaches production.',
+      'Most institutions cannot produce a clear audit trail of how AI systems are being used across the organization.',
   },
   {
-    icon: Building2,
-    title: 'Infrastructure burden',
+    icon: Puzzle,
+    title: 'Fragmented model management',
     description:
-      'Over 80% of clinical AI effort goes to data integration, governance, and monitoring, not building the use cases that improve care.',
+      'Teams running separate provider keys create cost overruns, inconsistent audit trails, and no central visibility for platform or compliance teams.',
   },
 ]
 
 const governance = [
   {
-    icon: Lock,
-    title: 'Air-gapped deployment',
+    icon: Server,
+    title: 'Self-hosted deployment',
     description:
-      'Deploy entirely within your VPC or on-prem so PHI never leaves your network.',
+      'Bifrost runs on-premises or in your VPC, giving you full control over how your data and client records are used.',
   },
   {
-    icon: ShieldCheck,
-    title: 'Guardrails and PHI redaction',
+    icon: FileCheck,
+    title: 'Examiner-ready audit logs',
     description:
-      'Enforce input sanitization, PII/PHI detection, and content policies across every request and response.',
+      'Capture model and user activity in tamper-evident logs for risk, compliance, and internal audit review.',
   },
   {
-    icon: FileText,
-    title: 'HIPAA-grade audit trails',
+    icon: KeyRound,
+    title: 'SSO and role-based access',
     description:
-    'Log every LLM interaction with user, provider, token, and latency metadata for compliance reviews.',
+      'Integrate with IdPs such as Okta and Azure AD; enforce role-based permissions and information barriers across every user.',
   },
   {
     icon: Banknote,
-    title: 'Budgeting and cost controls',
+    title: 'Department-level cost controls',
     description:
-      'Set spending limits at the department, project, user, or virtual key level with real-time alerts.',
-  },
-]
-
-const platformCapabilities = [
-  {
-    icon: ShieldCheck,
-    title: 'PHI guardrails',
-    description:
-      'Redact protected health information and block hallucinated clinical content automatically.',
-  },
-  {
-    icon: PlugZap,
-    title: 'Drop-in SDKs',
-    description: 'Replace your existing provider config with a single line of code to access 1,000+ models.',
-  },
-  {
-    icon: ScrollText,
-    title: 'Centralized observability',
-    description: 'Track every request with user, model, latency, cost, and guardrail actions.',
-  },
-  {
-    icon: Scale,
-    title: 'Adaptive load balancing',
-    description: 'Route to the fastest or most cost-effective model with automatic failover.',
-  },
-  {
-    icon: Server,
-    title: 'High-availability clustering',
-    description:
-      'Peer-to-peer clustering delivers 99.99% uptime for 24/7 clinical workflows.',
-  },
-  {
-    icon: Database,
-    title: 'Semantic caching',
-    description: 'Cache repeated clinical and coding queries for 40 to 60% cost reduction.',
-  },
-]
-
-const interfaceHighlights = [
-  {
-    riveSrc: '/rive/lln9t3OuTneA9tQOi8XMPNlfNCk.riv',
-    title: 'Operations dashboard',
-    description:
-      'Live monitoring for system health, routing performance, and usage across departments.',
-  },
-  {
-    riveSrc: '/rive/c0tVyQYkMtvuhTCKvA0SjGVHkY.riv',
-    title: 'Compliance audit logs',
-    description:
-      'Immutable request trails with user, model, and content detail for HIPAA reviews.',
-  },
-  {
-    riveSrc: '/rive/KBbyqDZQ7ko6obmMhOt3hllKA.riv',
-    title: 'Virtual keys and budgets',
-    description:
-      'Granular budget enforcement and access segmentation across clinical and administrative teams.',
+      'Set model access and spending limits by team or user, while tracking LLM costs across the org in real time.',
   },
 ]
 
@@ -138,36 +84,96 @@ const useCases = [
   {
     title: 'Enterprise knowledge search',
     description:
-      'Connect AI to internal knowledge bases with federated auth so staff find protocols, policies, and procedures in seconds.',
+      'Help employees find answers across internal policies, deal history, and product documentation instantly.',
   },
   {
-    title: 'Ambient clinical documentation',
+    title: 'Regulatory intelligence',
     description:
-      'Route ambient scribe traffic through a unified gateway with PHI protection, multi-vendor failover, and cost optimization.',
+      'Monitor regulatory guidance, summarize changes, assess policy impact, and draft updates for compliance review.',
   },
   {
-    title: 'Code generation and IT productivity',
+    title: 'Real-time fraud detection',
     description:
-      'Give engineering teams governed access to coding assistants with drop-in SDKs, RBAC, and model-level usage budgets.',
+      'Add LLM reasoning to existing fraud scoring systems while maintaining required latency and review visibility.',
   },
   {
-    title: 'Contract and compliance review',
+    title: 'Credit and loan analysis',
     description:
-      'Process sensitive legal documents in an air-gapped environment with guardrails, redaction, and full audit trails.',
+      'Extract information from loan packages, populate credit models, and draft underwriting memos with audit history.',
   },
   {
-    title: 'Radiology report generation',
+    title: 'Code generation and modernization',
     description:
-      'Support high-volume imaging workflows with adaptive load balancing, automatic failover, and clustering support for 99.99% uptime.',
+      'Assist developers with code generation, review, and refactoring while enforcing usage controls and credential protection.',
   },
   {
-    title: 'Payer approval workflows',
+    title: 'AML and KYC processing',
     description:
-      'Route prior authorization requests through approved AI models with built-in guardrails, full request and response logging for every payer decision.',
+      'Analyze onboarding documents, verify beneficial ownership, and draft SAR narratives with complete audit records.',
   },
 ]
 
-export default function HealthcareLifeSciencesPage() {
+const platformCapabilities = [
+  {
+    icon: Plug,
+    title: 'Drop-in SDK',
+    description:
+      'Replace existing AI gateways or SDKs and access 1000+ models through a single unified API.',
+  },
+  {
+    icon: Activity,
+    title: 'Centralized observability',
+    description:
+      'Log every user activity, model calls, token usage, and guardrail events.',
+  },
+  {
+    icon: Bot,
+    title: 'MCP Gateway',
+    description:
+      'Give AI agents governed, auditable access to internal systems and approved enterprise tools.',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Guardrails and DLP',
+    description:
+      'Detect and redact SSNs, account numbers, and card data in real time.',
+  },
+  {
+    icon: SignalHigh,
+    title: 'Low-latency, high-throughput routing',
+    description:
+      'Delivers reliable AI routing under peak load of 10k+ RPS, with ~11 µs of gateway overhead.',
+  },
+  {
+    icon: Banknote,
+    title: 'Budget governance',
+    description:
+      'Track spend at a granular usage level, with intelligent routing to lower-cost models for simple tasks.',
+  },
+]
+
+const interfaceHighlights = [
+  {
+    riveSrc: '/rive/lln9t3OuTneA9tQOi8XMPNlfNCk.riv',
+    title: 'Unified request dashboard',
+    description:
+      'Monitor live traffic by provider, model, latency, and error rate across every team and use case from a single view.',
+  },
+  {
+    riveSrc: '/rive/c0tVyQYkMtvuhTCKvA0SjGVHkY.riv',
+    title: 'Model governance controls',
+    description:
+      'Configure approved models, access rules, and guardrails in one place without any code changes.',
+  },
+  {
+    riveSrc: '/rive/KBbyqDZQ7ko6obmMhOt3hllKA.riv',
+    title: 'Budget and cost center tracking',
+    description:
+      'Track real-time spend by department and use case with configurable thresholds, instant alerts, and exportable chargeback reports.',
+  },
+]
+
+export default function FinancialServicesAndBankingPage() {
   const basePath = getCostCalculatorBaseUrl()
 
   return (
@@ -178,12 +184,12 @@ export default function HealthcareLifeSciencesPage() {
           <div className="text-center">
             <span className="provider-badge">[ ENTERPRISE READY: VPC | ON-PREM | AIR-GAPPED ]</span>
             <h1 className="mb-4 text-center text-4xl leading-[1.2] font-normal tracking-tight text-gray-900 md:text-5xl">
-              Secure AI Gateway for
+              Secure and Governed AI Gateway for
               <br />
-              <span className="text-[var(--accent-text)]">Healthcare &amp; Life Sciences</span>
+              <span className="text-[var(--accent-text)]">Financial Services and Banking</span>
             </h1>
             <p className="mx-auto mb-8 max-w-2xl text-sm leading-relaxed text-gray-500 md:text-base">
-            Deploy AI across clinical, research, and operational workflows without sending PHI outside your network. Air-gapped, HIPAA-compliant infrastructure built for healthcare systems.
+            Centralized governance, air-gapped security, and complete audit trails built for regulated financial institutions.
             </p>
             <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
               <Link href={`${basePath}/resources/benchmarks`}>
@@ -215,8 +221,11 @@ export default function HealthcareLifeSciencesPage() {
               [ CHALLENGES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Why healthcare AI stalls before it scales
+              Where AI deployments stall at financial institutions
             </h2>
+            <p className="mx-auto max-w-2xl text-gray-600">
+            Banks move quickly to experiment with AI, but governance, data controls, and platform ownership often lag behind.
+            </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {challenges.map((item) => (
@@ -245,10 +254,10 @@ export default function HealthcareLifeSciencesPage() {
               [ GOVERNANCE ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Enterprise controls that accelerate clinical AI deployment
+              Controls that meet the compliance bar
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-            Governed, air-gapped AI infrastructure with low-latency routing.
+              Enforce consistent AI usage policies across all AI interactions.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -275,10 +284,11 @@ export default function HealthcareLifeSciencesPage() {
               [ PLATFORM CAPABILITIES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Purpose-built for regulated healthcare industry
+              What platform and engineering teams actually need
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Centralized control plane for AI-driven healthcare workflows.
+              Bifrost covers the infrastructure layer so your team can focus on the AI use cases that
+              create value for the business.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -305,13 +315,13 @@ export default function HealthcareLifeSciencesPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
             <p className="mb-4 font-mono text-xs tracking-widest text-gray-400 uppercase">
-              [ OPERATIONAL CAPABILITIES ]
+              [ BIFROST INTERFACE ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Governance, visibility, and control for healthcare teams
+              Operational visibility built for regulated environments
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Focused dashboard panels for routing, audit trails, and budget governance.
+              Functional views for platform teams, compliance officers, and finance stakeholders.
             </p>
           </div>
           <InterfaceHighlights items={interfaceHighlights} />
@@ -326,7 +336,7 @@ export default function HealthcareLifeSciencesPage() {
               [ USE CASES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Healthcare workflows governed by Bifrost
+              AI workflows in financial institutions, governed by Bifrost
             </h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -354,11 +364,10 @@ export default function HealthcareLifeSciencesPage() {
             [ NEXT STEPS ]
           </p>
           <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-            Deploy governed healthcare AI in weeks, not months
+            Control panel for regulated banking AI workflows
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-gray-600">
-            Talk to the Bifrost team about deploying a compliant, air-gapped gateway inside your
-            network.
+            Talk to the Bifrost team about deploying a compliant, air-gapped gateway inside your environment.
           </p>
           <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
             <Link
@@ -371,9 +380,9 @@ export default function HealthcareLifeSciencesPage() {
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
-            <Link href="https://www.getmaxim.ai/bifrost/enterprise">
+            <Link href={`${basePath}/resources/claude-code`}>
               <Button variant="outline" size="lg">
-                Try Bifrost Enterprise
+                Claude Code integration
                 <ExternalLink className="h-4 w-4" />
               </Button>
             </Link>
@@ -390,7 +399,7 @@ export default function HealthcareLifeSciencesPage() {
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">Open Source & Enterprise</h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Everything you need to run AI in production, from free open source to enterprise-grade
+              Everything you need to run AI in production, from free, open source to enterprise-grade
               features.
             </p>
           </div>
