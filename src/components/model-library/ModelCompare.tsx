@@ -315,8 +315,8 @@ export default function ModelCompare({
         }
         const data = (await res.json()) as ProcessedModel[]
         setModels(data)
-      } catch (e: any) {
-        setError(e?.message || 'Failed to load models')
+      } catch (e: unknown) {
+        setError(e instanceof Error ? e.message : 'Failed to load models')
       } finally {
         setLoading(false)
       }

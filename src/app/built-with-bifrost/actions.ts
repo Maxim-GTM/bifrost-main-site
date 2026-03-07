@@ -33,15 +33,15 @@ export async function createSubmission(formData: FormData) {
     await submitProject(data, images)
     console.log('Project submitted successfully')
     return { success: true, message: 'Project submitted successfully!' }
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Submission error details:', error)
     // Check if it's an S3 error
-    if (error?.$metadata) {
-      console.error('AWS Error Metadata:', error.$metadata)
+    if (error && typeof error === 'object' && '$metadata' in error) {
+      console.error('AWS Error Metadata:', (error as Record<string, unknown>).$metadata)
     }
     return {
       success: false,
-      message: `Failed to submit project: ${error.message || 'Unknown error'}`,
+      message: `Failed to submit project: ${error instanceof Error ? error.message : 'Unknown error'}`,
     }
   }
 }

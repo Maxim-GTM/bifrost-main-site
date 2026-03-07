@@ -13,6 +13,7 @@ export type ModelMode =
   | 'audio_speech'
   | 'realtime'
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- index signature must be `any` for dynamic model properties
 export interface ModelData extends Record<string, any> {
   input_cost_per_token?: number
   output_cost_per_token?: number
@@ -26,6 +27,7 @@ export interface ModelData extends Record<string, any> {
   max_tokens?: number
   max_query_tokens?: number
   mode: ModelMode
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   metadata?: any
   provider: string
   output_vector_size?: number
@@ -37,6 +39,7 @@ export interface ModelData extends Record<string, any> {
   cache_creation_input_token_cost?: number
   supports_assistant_prefill?: boolean
   supports_computer_use?: boolean
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   search_context_cost_per_query?: any
   supports_video_input?: boolean
   supports_tool_choice?: boolean

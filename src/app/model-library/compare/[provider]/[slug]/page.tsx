@@ -4,6 +4,7 @@ import ModelCompare from '@/components/model-library/ModelCompare'
 import { buildCanonicalUrl } from '@/lib/model-library/seo'
 import { fetchAllModels, getModelBySlug, processModels } from '@/lib/model-library/api'
 import { isProviderWhitelisted } from '@/config/providers'
+import type { ProcessedModel } from '@/types/model'
 
 export const dynamic = 'force-static'
 export const revalidate = 3600
@@ -39,7 +40,7 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
 
   // Check for comparison model
   const compareParam = resolvedSearchParams?.compare
-  let secondModel: any = null
+  let secondModel: ProcessedModel | null = null
 
   if (typeof compareParam === 'string') {
     const [provider2, slug2] = compareParam.split('/')
@@ -97,7 +98,7 @@ export default async function CompareSinglePage({ params, searchParams }: PagePr
 
   // Check for comparison model
   const compareParam = resolvedSearchParams?.compare
-  let secondModel: any = null
+  let secondModel: ProcessedModel | null = null
 
   if (typeof compareParam === 'string') {
     const parts = compareParam.split('/')

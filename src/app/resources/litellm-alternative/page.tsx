@@ -637,7 +637,7 @@ export default function LiteLLMAlternativePage() {
               [ ARCHITECTURE ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Why "Go" Beats "Python" for LLM Gateways
+              Why &quot;Go&quot; Beats &quot;Python&quot; for LLM Gateways
             </h2>
           </div>
           <div className="grid gap-8 md:grid-cols-2">

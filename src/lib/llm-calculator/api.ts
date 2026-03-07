@@ -152,7 +152,7 @@ export function formatProviderName(provider: string): string {
  */
 export function searchModels(query: string, provider?: string): ProcessedModel[] {
   const lowerQuery = query.toLowerCase()
-  let models = provider ? getModelsByProvider(provider) : LLM_MODELS
+  const models = provider ? getModelsByProvider(provider) : LLM_MODELS
 
   return models.filter(
     (model) =>

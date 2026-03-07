@@ -35,10 +35,12 @@ export const slugify = (text: string) => {
     .replace(/\-\-+/g, '-') // Replace multiple - with single -
 }
 
-// Helper to convert stream to string
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- S3 Body type varies across SDK versions
 const streamToString = (stream: any): Promise<string> =>
   new Promise((resolve, reject) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const chunks: any[] = []
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     stream.on('data', (chunk: any) => chunks.push(chunk))
     stream.on('error', reject)
     stream.on('end', () => resolve(Buffer.concat(chunks).toString('utf8')))
@@ -161,8 +163,8 @@ export async function getProjectBySlug(slug: string): Promise<Submission | null>
       const response = await s3Client.send(command)
       const body = await streamToString(response.Body)
       return JSON.parse(body) as Submission
-    } catch (e: any) {
-      if (e.name === 'NoSuchKey') return null
+    } catch (e: unknown) {
+      if (e instanceof Error && e.name === 'NoSuchKey') return null
       throw e
     }
   } catch (error) {

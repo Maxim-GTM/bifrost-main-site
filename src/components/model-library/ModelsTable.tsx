@@ -83,8 +83,8 @@ export default function ModelsTable({
         }
         const data = (await res.json()) as ProcessedModel[]
         setAllModels(data)
-      } catch (e: any) {
-        setAllModelsError(e?.message || 'Failed to load models')
+      } catch (e: unknown) {
+        setAllModelsError(e instanceof Error ? e.message : 'Failed to load models')
       } finally {
         setLoadingAllModels(false)
       }

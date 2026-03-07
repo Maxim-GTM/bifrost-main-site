@@ -306,7 +306,7 @@ function generateContentData(model: ReturnType<typeof getModelBySlug>) {
                     : 'general-purpose AI workloads'
 
   // Generate introduction
-  let introduction = `${model.displayName} is a powerful ${(modeDisplayName || mode || '').toLowerCase()} AI model offered by ${providerName}. This comprehensive guide provides detailed pricing information, technical specifications, and capabilities to help you understand the costs and features of using ${model.displayName} in your ${isCoding ? 'development' : isEmbedding ? 'embedding' : ''} applications.`
+  const introduction = `${model.displayName} is a powerful ${(modeDisplayName || mode || '').toLowerCase()} AI model offered by ${providerName}. This comprehensive guide provides detailed pricing information, technical specifications, and capabilities to help you understand the costs and features of using ${model.displayName} in your ${isCoding ? 'development' : isEmbedding ? 'embedding' : ''} applications.`
 
   // Generate recommended use cases based on signals
   const recommendedUseCases: string[] = []
@@ -861,7 +861,7 @@ export default async function ModelPage({ params }: PageProps) {
               <div className="mt-2 mb-12 rounded-r-lg border-l-4 border-amber-400 bg-amber-50 p-4">
                 <h4 className="mb-2 text-sm font-medium text-amber-900">Pro Tip</h4>
                 <p className="text-sm text-amber-800">
-                  Use the maximum token limits shown above to understand the model's capacity.
+                  Use the maximum token limits shown above to understand the model&apos;s capacity.
                   {contentData.specifications.maxInputTokens &&
                     ` This model can handle up to ${contentData.specifications.maxInputTokens.toLocaleString()} input tokens.`}
                   {contentData.specifications.maxOutputTokens &&

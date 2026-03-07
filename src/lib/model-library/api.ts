@@ -6,7 +6,7 @@ const BIFROST_API_URL = 'https://getbifrost.ai/datasheet'
 /**
  * Check if a value is a valid number (not null, not undefined, and is a number)
  */
-function isValidNumber(value: any): boolean {
+function isValidNumber(value: unknown): boolean {
   return typeof value === 'number' && !isNaN(value) && value !== null
 }
 
