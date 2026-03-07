@@ -21,11 +21,41 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Bifrost for Retail | Secure AI Gateway',
+  title: 'AI Gateway for Retail | Bifrost',
   description:
-    'Deploy Bifrost as a secure, low-latency AI gateway for retail organizations with governance, observability, and multi-provider resilience.',
+    'Secure AI gateway for retail with centralized governance, low-latency routing, and cost control for AI-powered customer experiences across every channel.',
   alternates: {
-    canonical: 'https://www.getmaxim.ai/bifrost/resources/retail',
+    canonical: 'https://www.getmaxim.ai/bifrost/industry-pages/retail',
+  },
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'AI Gateway for Retail | Bifrost',
+  description:
+    'Secure AI gateway for retail with centralized governance, low-latency routing, and cost control for AI-powered customer experiences across every channel.',
+  url: 'https://www.getmaxim.ai/bifrost/industry-pages/retail',
+  isPartOf: {
+    '@type': 'WebSite',
+    name: 'Bifrost by Maxim AI',
+    url: 'https://www.getmaxim.ai/bifrost/',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Maxim AI',
+    url: 'https://www.getmaxim.ai',
+  },
+  about: {
+    '@type': 'SoftwareApplication',
+    name: 'Bifrost',
+    applicationCategory: 'BusinessApplication',
+    description:
+      'Bifrost is a secure AI gateway for retail teams with centralized governance, low-latency routing, and cost control for customer-facing AI workloads.',
+  },
+  audience: {
+    '@type': 'Audience',
+    audienceType: 'Retail teams',
   },
 }
 
@@ -163,6 +193,10 @@ export default function RetailPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">

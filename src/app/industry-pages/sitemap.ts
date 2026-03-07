@@ -1,14 +1,12 @@
 import { MetadataRoute } from 'next'
 
-const BASE_URL = 'https://www.getmaxim.ai/bifrost/resources'
+const BASE_URL = 'https://www.getmaxim.ai/bifrost/industry-pages'
 
 const subpages = [
-  'benchmarks',
-  'buyers-guide',
-  'claude-code',
-  'mcp-gateway',
-  'migrating-from-litellm',
-  'litellm-alternative',
+  'financial-services-and-banking',
+  'healthcare-life-sciences',
+  'insurance',
+  'retail',
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {

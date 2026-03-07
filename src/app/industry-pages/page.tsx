@@ -1,109 +1,84 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import {
-  ArrowRight,
-  Activity,
-  BookOpen,
-  ShieldCheck,
-  Plug,
-  RefreshCw,
-  Zap,
-} from 'lucide-react'
+import { ArrowRight, Building2, Shield, ShoppingCart, Stethoscope } from 'lucide-react'
 import { getCostCalculatorBaseUrl } from '@/lib/utils'
 
 export const metadata: Metadata = {
-  title: 'Bifrost Resources - Benchmarks, Guides & Integration Playbooks',
+  title: 'Governed AI Infrastructure by Industry | Bifrost',
   description:
-    'Explore Bifrost benchmarks, buyer guidance, and integration playbooks. Everything you need to evaluate and deploy the fastest LLM gateway.',
+    'Explore Bifrost Enterprise AI Gateway  for financial services, healthcare, insurance, and retail with secure deployment, governance, and intelligent model routing.',
   keywords: [
-    'Bifrost',
-    'LLM gateway',
-    'AI gateway benchmarks',
-    'buyer guide',
-    'Claude Code integration',
-    'MCP gateway',
-    'LiteLLM alternative',
+    'AI infrastructure by industry',
+    'Bifrost industry solutions',
+    'AI gateway for banking',
+    'AI gateway for healthcare',
+    'AI gateway for insurance',
+    'AI gateway for retail',
   ],
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://www.getmaxim.ai/bifrost/resources',
+    url: 'https://www.getmaxim.ai/bifrost/industry-pages',
     siteName: 'Bifrost by Maxim AI',
-    title: 'Bifrost Resources - Benchmarks, Guides & Integration Playbooks',
+    title: 'Governed AI Infrastructure by Industry | Bifrost',
     description:
-      'Explore Bifrost benchmarks, buyer guidance, and integration playbooks.',
+      'Explore Bifrost AI infrastructure for financial services, healthcare, insurance, and retail with secure deployment, governance, and low-latency routing.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Bifrost Resources - Benchmarks, Guides & Integration Playbooks',
+    title: 'Governed AI Infrastructure by Industry | Bifrost',
     description:
-      'Explore Bifrost benchmarks, buyer guidance, and integration playbooks.',
+      'Explore Bifrost AI infrastructure for financial services, healthcare, insurance, and retail with secure deployment, governance, and low-latency routing.',
   },
   alternates: {
-    canonical: 'https://www.getmaxim.ai/bifrost/resources',
+    canonical: 'https://www.getmaxim.ai/bifrost/industry-pages',
   },
 }
 
 const basePath = getCostCalculatorBaseUrl()
 
-const resources = [
+const industries = [
   {
-    title: 'Performance Benchmarks',
+    title: 'Financial Services and Banking',
     description:
-      'Live comparisons, latency metrics, and throughput data that show why Bifrost is the fastest LLM gateway.',
-    href: `${basePath}/resources/benchmarks`,
-    icon: Activity,
-    label: 'Performance',
+      'Secure AI infrastructure for banking, investment, and fintech teams that need audit-grade controls and air-gapped deployment options.',
+    href: `${basePath}/industry-pages/financial-services-and-banking`,
+    icon: Building2,
+    label: 'Financial Services',
   },
   {
-    title: "LLM Gateway Buyer's Guide",
+    title: 'Healthcare & Life Sciences',
     description:
-      'A comprehensive comparison of leading AI gateway platforms, capabilities, and trade-offs.',
-    href: `${basePath}/resources/buyers-guide`,
-    icon: BookOpen,
-    label: 'Guide',
+      'Governed AI infrastructure for clinical, research, and operational workflows with PHI protection, auditability, and resilient routing.',
+    href: `${basePath}/industry-pages/healthcare-life-sciences`,
+    icon: Stethoscope,
+    label: 'Healthcare',
   },
   {
-    title: 'Claude Code Integration',
+    title: 'Insurance',
     description:
-      'Enterprise controls for Claude Code with multi-provider routing, governance, and observability.',
-    href: `${basePath}/resources/claude-code`,
-    icon: ShieldCheck,
-    label: 'Integration',
+      'Purpose-built AI infrastructure for carriers with NAIC-ready audit trails, NPI redaction, and cost governance across lines of business.',
+    href: `${basePath}/industry-pages/insurance`,
+    icon: Shield,
+    label: 'Insurance',
   },
   {
-    title: 'MCP Gateway',
+    title: 'Retail',
     description:
-      'High-performance tool execution for AI agents with explicit approvals and full audit trails.',
-    href: `${basePath}/resources/mcp-gateway`,
-    icon: Plug,
-    label: 'MCP',
-  },
-  {
-    title: 'Migrating from LiteLLM',
-    description:
-      'Step-by-step guide to migrate from LiteLLM to Bifrost in 15 minutes with zero code changes.',
-    href: `${basePath}/resources/migrating-from-litellm`,
-    icon: RefreshCw,
-    label: 'Migration',
-  },
-  {
-    title: 'LiteLLM Alternative',
-    description:
-      'Why teams choose Bifrost over LiteLLM: 50x faster, zero-config deployment, and native observability.',
-    href: `${basePath}/resources/litellm-alternative`,
-    icon: Zap,
-    label: 'Alternative',
+      'High-performance AI routing for personalization, support, and omnichannel retail workloads with centralized governance and observability.',
+    href: `${basePath}/industry-pages/retail`,
+    icon: ShoppingCart,
+    label: 'Retail',
   },
 ]
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
-  name: 'Bifrost Resources - Benchmarks, Guides & Integration Playbooks',
+  name: 'Governed AI Infrastructure by Industry',
   description:
-    'Explore Bifrost benchmarks, buyer guidance, and integration playbooks. Everything you need to evaluate and deploy the fastest LLM gateway.',
-  url: 'https://www.getmaxim.ai/bifrost/resources',
+    'Explore Bifrost AI infrastructure for financial services, healthcare, insurance, and retail with secure deployment, governance, and low-latency routing.',
+  url: 'https://www.getmaxim.ai/bifrost/industry-pages',
   isPartOf: {
     '@type': 'WebSite',
     name: 'Bifrost by Maxim AI',
@@ -116,44 +91,42 @@ const jsonLd = {
   },
   mainEntity: {
     '@type': 'ItemList',
-    itemListElement: resources.map((r, i) => ({
+    itemListElement: industries.map((industry, index) => ({
       '@type': 'ListItem',
-      position: i + 1,
-      name: r.title,
-      description: r.description,
-      url: `https://www.getmaxim.ai${r.href}`,
+      position: index + 1,
+      name: industry.title,
+      description: industry.description,
+      url: `https://www.getmaxim.ai${industry.href}`,
     })),
   },
 }
 
-export default function HomePage() {
+export default function IndustryPagesHomePage() {
   return (
     <div className="min-h-screen bg-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      {/* Hero Section */}
+
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-32 lg:px-8">
           <div className="text-center">
             <span className="font-mono text-[12px] leading-[15px] font-medium tracking-[0.04em] text-emerald-500 uppercase">
-              [&ensp;BIFROST RESOURCES HUB&ensp;]
+              [&ensp;BIFROST FOR INDUSTRIES&ensp;]
             </span>
-            <h1 className="mx-auto mt-2 mb-4 max-w-2xl text-[42px] leading-[120%] font-medium tracking-[-0.02em] text-black">
-              The Fastest Path to Bifrost Insights
+            <h1 className="mx-auto mt-2 mb-4 max-w-3xl text-[42px] leading-[120%] font-medium tracking-[-0.02em] text-black">
+              Governed AI Infrastructure for the Industries That Need It Most
             </h1>
-            <p className="mx-auto max-w-2xl text-[16px] leading-[140%] tracking-[0em] text-[#525252]">
-              Explore benchmarks, buyer guidance, and integration playbooks. Everything you need to
-              evaluate and deploy Bifrost with confidence.
+            <p className="mx-auto max-w-3xl text-[16px] leading-[140%] tracking-[0em] text-[#525252]">
+              Explore how Bifrost supports regulated, high-scale, and customer-facing teams with
+              secure deployments, centralized governance, and low-latency AI routing.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Resources Grid */}
       <div className="relative flex w-full justify-center">
-        {/* Left Side Decoration - Box Style */}
         <div className="hidden w-20 flex-none flex-col items-end gap-4 border-r border-black/10 xl:flex">
           <div
             className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
@@ -164,21 +137,25 @@ export default function HomePage() {
           ></div>
         </div>
 
-        {/* Center Content - Max 1100px */}
         <div className="w-full max-w-[1100px] px-4 pb-16">
           <div className="absolute right-0 left-0 h-px w-full bg-black/10" />
 
           <div className="pt-8">
-            <div className="mb-10 text-center">
+            <div className="mx-auto mb-10 max-w-2xl text-center">
               <p className="font-mono text-xs tracking-widest text-gray-400 uppercase">
-                [ RESOURCES ]
+                [ INDUSTRY SOLUTIONS ]
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-gray-500">
+                Choose the deployment context closest to your team, then drill into the governance,
+                architecture, and workflow patterns that matter in production.
               </p>
             </div>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {resources.map((resource) => (
+
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              {industries.map((industry) => (
                 <Link
-                  key={resource.title}
-                  href={resource.href}
+                  key={industry.title}
+                  href={industry.href}
                   className="group relative border border-gray-200 bg-white transition-all hover:border-[var(--accent-border)] hover:shadow-sm"
                 >
                   <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
@@ -188,19 +165,19 @@ export default function HomePage() {
                   <div className="flex items-center justify-between border-b border-gray-200 p-6">
                     <div className="flex items-center gap-3">
                       <div className="flex h-10 w-10 items-center justify-center bg-[var(--accent)]/10 text-[var(--accent-text)]">
-                        <resource.icon className="h-5 w-5" />
+                        <industry.icon className="h-5 w-5" />
                       </div>
                       <div>
                         <p className="font-mono text-xs tracking-widest text-gray-400 uppercase">
-                          {resource.label}
+                          {industry.label}
                         </p>
-                        <h3 className="text-sm text-gray-900">{resource.title}</h3>
+                        <h2 className="text-sm text-gray-900">{industry.title}</h2>
                       </div>
                     </div>
                     <ArrowRight className="h-4 w-4 text-gray-400 transition-colors group-hover:text-[var(--accent-text)]" />
                   </div>
                   <div className="p-6">
-                    <p className="text-sm leading-relaxed text-gray-600">{resource.description}</p>
+                    <p className="text-sm leading-relaxed text-gray-600">{industry.description}</p>
                   </div>
                 </Link>
               ))}
@@ -208,7 +185,6 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Right Side Decoration */}
         <div className="hidden w-20 flex-none flex-col items-start gap-4 border-l border-black/10 xl:flex">
           <div
             className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"

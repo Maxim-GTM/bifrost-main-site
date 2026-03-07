@@ -22,11 +22,41 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Bifrost for Healthcare & Life Sciences | Secure and HIPAA-Compliant AI Gateway',
+  title: 'AI Gateway for Healthcare & Life Sciences | Bifrost',
   description:
-    'Deploy Bifrost as a secure and HIPAA-compliant AI gateway for healthcare and life sciences with auditability, governance, and low-latency routing.',
+    'Secure AI gateway for healthcare and life sciences with air-gapped deployment, HIPAA-compliant infrastructure, PHI protection, and low-latency routing.',
   alternates: {
-    canonical: 'https://www.getmaxim.ai/bifrost/resources/healthcare-life-sciences',
+    canonical: 'https://www.getmaxim.ai/bifrost/industry-pages/healthcare-life-sciences',
+  },
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'AI Gateway for Healthcare & Life Sciences | Bifrost',
+  description:
+    'Secure AI gateway for healthcare and life sciences with air-gapped deployment, HIPAA-compliant infrastructure, PHI protection, and low-latency routing.',
+  url: 'https://www.getmaxim.ai/bifrost/industry-pages/healthcare-life-sciences',
+  isPartOf: {
+    '@type': 'WebSite',
+    name: 'Bifrost by Maxim AI',
+    url: 'https://www.getmaxim.ai/bifrost/',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Maxim AI',
+    url: 'https://www.getmaxim.ai',
+  },
+  about: {
+    '@type': 'SoftwareApplication',
+    name: 'Bifrost',
+    applicationCategory: 'BusinessApplication',
+    description:
+      'Bifrost is a secure AI gateway for healthcare and life sciences teams with HIPAA-aligned controls, PHI protection, and air-gapped deployment options.',
+  },
+  audience: {
+    '@type': 'Audience',
+    audienceType: 'Healthcare and life sciences teams',
   },
 }
 
@@ -172,6 +202,10 @@ export default function HealthcareLifeSciencesPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">

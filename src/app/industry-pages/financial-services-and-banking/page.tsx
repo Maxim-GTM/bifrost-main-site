@@ -6,76 +6,106 @@ import DropInReplacement from '@/components/resources/DropInReplacement'
 import { Button } from '@/components/ui/Button'
 import { getCostCalculatorBaseUrl } from '@/lib/utils'
 import {
+  Activity,
+  AlertTriangle,
   ArrowRight,
   Banknote,
-  ClipboardCheck,
-  Database,
+  Bot,
   ExternalLink,
-  GitBranch,
+  FileCheck,
   KeyRound,
-  PlugZap,
-  Puzzle,
-  Route,
+  Plug,
   ScrollText,
   Server,
-  ShieldAlert,
   ShieldCheck,
+  SignalHigh,
+  Puzzle,
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Bifrost for Insurance | Secure AI Gateway',
+  title: 'AI Gateway for Financial Services & Banking | Bifrost',
   description:
-    'Bifrost gives carriers centralized control over every model request with air-gapped security, NAIC-ready audit trails, and intelligent routing across providers.',
+    'Secure and governed AI gateway for financial services and banking with air-gapped security, centralized governance, and audit trails for regulated institutions.',
   alternates: {
-    canonical: 'https://www.getmaxim.ai/bifrost/resources/insurance',
+    canonical: 'https://www.getmaxim.ai/bifrost/industry-pages/financial-services-and-banking',
+  },
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'AI Gateway for Financial Services & Banking | Bifrost',
+  description:
+    'Secure and governed AI gateway for financial services and banking with air-gapped security, centralized governance, and audit trails for regulated institutions.',
+  url: 'https://www.getmaxim.ai/bifrost/industry-pages/financial-services-and-banking',
+  isPartOf: {
+    '@type': 'WebSite',
+    name: 'Bifrost by Maxim AI',
+    url: 'https://www.getmaxim.ai/bifrost/',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Maxim AI',
+    url: 'https://www.getmaxim.ai',
+  },
+  about: {
+    '@type': 'SoftwareApplication',
+    name: 'Bifrost',
+    applicationCategory: 'BusinessApplication',
+    description:
+      'Bifrost is a secure AI gateway for financial services and banking teams with centralized governance, air-gapped deployment options, and audit-ready controls.',
+  },
+  audience: {
+    '@type': 'Audience',
+    audienceType: 'Financial services and banking teams',
   },
 }
 
 const challenges = [
   {
-    icon: ShieldAlert,
-    title: 'Unsupervised AI usage',
+    icon: AlertTriangle,
+    title: 'Shadow AI exposure',
     description:
-    'Teams use ungoverned public AI tools, sharing policyholder NPI with third-party servers without audit trails or organizational oversight.',
+      'Most financial institutions have usage policies but no technical controls to prevent employees from using ungoverned AI tools with client data.',
   },
   {
-    icon: ClipboardCheck,
-    title: 'NAIC examination readiness',
+    icon: ScrollText,
+    title: 'No audit trail',
     description:
-      'With the Model Bulletin adopted across 20+ states, examiners now expect documented AI governance programs, bias controls, and complete decision trails.',
+      'Most institutions cannot produce a clear audit trail of how AI systems are being used across the organization.',
   },
   {
     icon: Puzzle,
-    title: 'Fragmented provider access',
+    title: 'Fragmented model management',
     description:
-      'Carriers running multiple AI models across claims, underwriting, and operations manage separate API keys, inconsistent controls, and no unified cost visibility.',
+      'Teams running separate provider keys create cost overruns, inconsistent audit trails, and no central visibility for platform or compliance teams.',
   },
 ]
 
 const governance = [
   {
     icon: Server,
-    title: 'Air-gapped deployment',
+    title: 'Self-hosted deployment',
     description:
-      'Keep NPI and proprietary underwriting data inside your network with on-prem or in-VPC deployment.',
+      'Bifrost runs on-premises or in your VPC, giving you full control over how your data and client records are used.',
   },
   {
-    icon: ScrollText,
-    title: 'Examination-ready logs',
+    icon: FileCheck,
+    title: 'Examiner-ready audit logs',
     description:
-      'Capture every AI interaction in tamper-evident logs -- ready for NAIC examination, NYDFS review, or internal audit.',
+      'Capture model and user activity in tamper-evident logs for risk, compliance, and internal audit review.',
   },
   {
     icon: KeyRound,
-    title: 'Role-based access and SSO',
+    title: 'SSO and role-based access',
     description:
-      'Integrate with Okta or Azure AD and assign access by role, department, or line of business across Bifrost resources.',
+      'Integrate with IdPs such as Okta and Azure AD; enforce role-based permissions and information barriers across every user.',
   },
   {
     icon: Banknote,
-    title: 'Line-of-business cost controls',
+    title: 'Department-level cost controls',
     description:
-      'Assign budgets per department, track spend by use case, and route routine queries to lower-cost models.',
+      'Set model access and spending limits by team or user, while tracking LLM costs across the org in real time.',
   },
 ]
 
@@ -83,113 +113,116 @@ const useCases = [
   {
     title: 'Enterprise knowledge search',
     description:
-      'AI-powered search across internal policies, manuals, and regulatory documents with governed access and caching.',
+      'Help employees find answers across internal policies, deal history, and product documentation instantly.',
   },
   {
-    title: 'Claims summarization and triage',
+    title: 'Regulatory intelligence',
     description:
-      'Generate summaries of FNOL reports, medical records, and adjuster notes to accelerate review and reduce manual processing time.',
+      'Monitor regulatory guidance, summarize changes, assess policy impact, and draft updates for compliance review.',
   },
   {
-    title: 'Fraud detection and SIU support',
+    title: 'Real-time fraud detection',
     description:
-      'Analyze unstructured claims documents and adjuster notes for fraud indicators while preserving a complete audit trail for SIU investigations.',
+      'Add LLM reasoning to existing fraud scoring systems while maintaining required latency and review visibility.',
   },
   {
-    title: 'Underwriting document extraction',
+    title: 'Credit and loan analysis',
     description:
-      'Extract data from ACORD forms, loss runs, and financial statements with multimodal support and MCP integration.',
+      'Extract information from loan packages, populate credit models, and draft underwriting memos with audit history.',
   },
   {
-    title: 'Employee AI assistant',
+    title: 'Code generation and modernization',
     description:
-      'Deploy governed AI tools for drafting correspondence, document summarization, and meeting prep with NPI redaction and usage controls.',
+      'Assist developers with code generation, review, and refactoring while enforcing usage controls and credential protection.',
   },
   {
-    title: 'Regulatory compliance automation',
+    title: 'AML and KYC processing',
     description:
-      'Identify relevant state requirements, maintain auditable records of AI use across LoBs, and generate documentation for regulatory examinations.',
+      'Analyze onboarding documents, verify beneficial ownership, and draft SAR narratives with complete audit records.',
   },
 ]
 
 const platformCapabilities = [
   {
-    icon: Route,
-    title: 'Multi-provider routing',
+    icon: Plug,
+    title: 'Drop-in SDK',
     description:
-      'Route requests across 1000+ models including OpenAI, Anthropic, or on-prem models through a unified API.',
+      'Replace existing AI gateways or SDKs and access 1000+ models through a single unified API.',
   },
   {
-    icon: Database,
-    title: 'Semantic caching',
+    icon: Activity,
+    title: 'Centralized observability',
     description:
-      'Reduce repeated query costs on regulatory, policy, and knowledge searches with response and document caching.',
+      'Log every user activity, model calls, token usage, and guardrail events.',
   },
   {
-    icon: PlugZap,
+    icon: Bot,
     title: 'MCP Gateway',
     description:
-      'Connect AI agents to internal and external data sources through governed, audited access to every tool call.',
+      'Give AI agents governed, auditable access to internal systems and approved enterprise tools.',
   },
   {
     icon: ShieldCheck,
-    title: 'NPI redaction and guardrails',
+    title: 'Guardrails and DLP',
     description:
-      'Auto-detect and redact SSNs, policy numbers, and driver\'s license data before it reaches any model or user.',
+      'Detect and redact SSNs, account numbers, and card data in real time.',
   },
   {
-    icon: ScrollText,
-    title: 'SIEM-integrated audit logs',
+    icon: SignalHigh,
+    title: 'Low-latency, high-throughput routing',
     description:
-      'Export structured logs via OpenTelemetry to Splunk, Datadog, or QRadar with configurable long-term retention.',
+      'Delivers reliable AI routing under peak load of 10k+ RPS, with ~11 µs of gateway overhead.',
   },
   {
-    icon: GitBranch,
-    title: 'Intelligent routing and failover',
+    icon: Banknote,
+    title: 'Budget governance',
     description:
-      'Maintain claims and underwriting throughput during provider outages with automatic failover and cost-aware routing.',
+      'Track spend at a granular usage level, with intelligent routing to lower-cost models for simple tasks.',
   },
 ]
 
 const interfaceHighlights = [
   {
     riveSrc: '/rive/lln9t3OuTneA9tQOi8XMPNlfNCk.riv',
-    title: 'Operations dashboard',
+    title: 'Unified request dashboard',
     description:
-      'Real-time monitoring of request volume, model usage, latency, and system health across all lines of business.',
+      'Monitor live traffic by provider, model, latency, and error rate across every team and use case from a single view.',
   },
   {
     riveSrc: '/rive/c0tVyQYkMtvuhTCKvA0SjGVHkY.riv',
-    title: 'Audit logs',
+    title: 'Model governance controls',
     description:
-      'Track authentication, access, configuration changes, and data activity.',
+      'Configure approved models, access rules, and guardrails in one place without any code changes.',
   },
   {
     riveSrc: '/rive/KBbyqDZQ7ko6obmMhOt3hllKA.riv',
-    title: 'Budget and cost tracking',
+    title: 'Budget and cost center tracking',
     description:
-      'Per-department spend monitoring with threshold alerts and chargeback-ready attribution by line of business.',
+      'Track real-time spend by department and use case with configurable thresholds, instant alerts, and exportable chargeback reports.',
   },
 ]
 
-export default function InsuranceTestPage() {
+export default function FinancialServicesAndBankingPage() {
   const basePath = getCostCalculatorBaseUrl()
 
   return (
     <div className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
           <div className="text-center">
             <span className="provider-badge">[ ENTERPRISE READY: VPC | ON-PREM | AIR-GAPPED ]</span>
             <h1 className="mb-4 text-center text-4xl leading-[1.2] font-normal tracking-tight text-gray-900 md:text-5xl">
-            Governed AI Infrastructure for
+              Secure and Governed AI Gateway for
               <br />
-              <span className="text-[var(--accent-text)]">Insurance Carriers</span>
+              <span className="text-[var(--accent-text)]">Financial Services and Banking</span>
             </h1>
             <p className="mx-auto mb-8 max-w-2xl text-sm leading-relaxed text-gray-500 md:text-base">
-              Bifrost provides centralized control over every model request with air-gapped
-              security, NAIC-ready audit trails, and intelligent routing across providers.
+            Centralized governance, air-gapped security, and complete audit trails built for regulated financial institutions.
             </p>
             <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
               <Link href={`${basePath}/resources/benchmarks`}>
@@ -221,8 +254,11 @@ export default function InsuranceTestPage() {
               [ CHALLENGES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-            Operational risks behind insurance AI adoption
+              Where AI deployments stall at financial institutions
             </h2>
+            <p className="mx-auto max-w-2xl text-gray-600">
+            Banks move quickly to experiment with AI, but governance, data controls, and platform ownership often lag behind.
+            </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {challenges.map((item) => (
@@ -251,11 +287,10 @@ export default function InsuranceTestPage() {
               [ GOVERNANCE ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-            NAIC-ready controls without slowing underwriting teams
+              Controls that meet the compliance bar
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Deploy Bifrost in your environment and enforce consistent policies across every
-              model call.
+              Enforce consistent AI usage policies across all AI interactions.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -282,11 +317,11 @@ export default function InsuranceTestPage() {
               [ PLATFORM CAPABILITIES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Give platform teams visibility across every model call
+              What platform and engineering teams actually need
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Centralized governance, routing, and observability for carriers deploying AI across
-              claims, underwriting, and operations.
+              Bifrost covers the infrastructure layer so your team can focus on the AI use cases that
+              create value for the business.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -316,10 +351,10 @@ export default function InsuranceTestPage() {
               [ BIFROST INTERFACE ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Functional views built for carrier compliance teams
+              Operational visibility built for regulated environments
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Designed for the visibility that platform engineers and compliance officers actually need.
+              Functional views for platform teams, compliance officers, and finance stakeholders.
             </p>
           </div>
           <InterfaceHighlights items={interfaceHighlights} />
@@ -334,7 +369,7 @@ export default function InsuranceTestPage() {
               [ USE CASES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              AI-powered insurance workflows with Bifrost
+              AI workflows in financial institutions, governed by Bifrost
             </h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -362,11 +397,10 @@ export default function InsuranceTestPage() {
             [ NEXT STEPS ]
           </p>
           <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-            Deploy compliant AI across insurance workflows
+            Control panel for regulated banking AI workflows
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-gray-600">
-            Talk to the Bifrost team about deploying a compliant, air-gapped AI gateway that
-            satisfies NAIC requirements and gives your platform team visibility from day one.
+            Talk to the Bifrost team about deploying a compliant, air-gapped gateway inside your environment.
           </p>
           <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
             <Link
@@ -379,9 +413,9 @@ export default function InsuranceTestPage() {
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
-            <Link href="https://www.getmaxim.ai/bifrost/enterprise">
+            <Link href={`${basePath}/resources/claude-code`}>
               <Button variant="outline" size="lg">
-                Try Bifrost Enterprise
+                Claude Code integration
                 <ExternalLink className="h-4 w-4" />
               </Button>
             </Link>
@@ -398,7 +432,7 @@ export default function InsuranceTestPage() {
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">Open Source & Enterprise</h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Everything you need to run AI in production, from free open source to enterprise-grade
+              Everything you need to run AI in production, from free, open source to enterprise-grade
               features.
             </p>
           </div>

@@ -1,204 +1,229 @@
 import { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import FeatureMatrix from '@/components/resources/FeatureMatrix'
+import InterfaceHighlights from '@/components/resources/InterfaceHighlights'
 import DropInReplacement from '@/components/resources/DropInReplacement'
 import { Button } from '@/components/ui/Button'
 import { getCostCalculatorBaseUrl } from '@/lib/utils'
 import {
-  Activity,
   ArrowRight,
-  ShieldCheck,
-  FileText,
-  Lock,
-  SignalHigh,
-  Building2,
-  Stethoscope,
   Banknote,
+  ClipboardCheck,
+  Database,
   ExternalLink,
+  GitBranch,
+  KeyRound,
+  PlugZap,
+  Puzzle,
+  Route,
+  ScrollText,
+  Server,
+  ShieldAlert,
+  ShieldCheck,
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Bifrost for Healthcare & Life Sciences | HIPAA-Ready AI Gateway',
+  title: 'AI Infrastructure for Insurance Carriers | Bifrost',
   description:
-    'Deploy AI in regulated healthcare environments with air-gapped infrastructure, HIPAA-grade audit trails, PHI redaction, and per-department cost governance. From clinical documentation to drug discovery.',
+    'Governed AI infrastructure for insurance carriers with centralized control, air-gapped security, NAIC-ready audit trails, and intelligent routing across providers.',
   alternates: {
-    canonical: 'https://www.getmaxim.ai/bifrost/resources/healthcare-life-sciences',
+    canonical: 'https://www.getmaxim.ai/bifrost/industry-pages/insurance',
   },
 }
 
-// ---------------------------------------------------------------------------
-// SECTION DATA
-// ---------------------------------------------------------------------------
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'AI Infrastructure for Insurance Carriers | Bifrost',
+  description:
+    'Governed AI infrastructure for insurance carriers with centralized control, air-gapped security, NAIC-ready audit trails, and intelligent routing across providers.',
+  url: 'https://www.getmaxim.ai/bifrost/industry-pages/insurance',
+  isPartOf: {
+    '@type': 'WebSite',
+    name: 'Bifrost by Maxim AI',
+    url: 'https://www.getmaxim.ai/bifrost/',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Maxim AI',
+    url: 'https://www.getmaxim.ai',
+  },
+  about: {
+    '@type': 'SoftwareApplication',
+    name: 'Bifrost',
+    applicationCategory: 'BusinessApplication',
+    description:
+      'Bifrost is governed AI infrastructure for insurance carriers with air-gapped security, NAIC-ready audit trails, and intelligent routing across AI providers.',
+  },
+  audience: {
+    '@type': 'Audience',
+    audienceType: 'Insurance carriers',
+  },
+}
 
 const challenges = [
   {
-    icon: ShieldCheck,
-    title: 'HIPAA and regulatory complexity',
+    icon: ShieldAlert,
+    title: 'Unsupervised AI usage',
     description:
-      'Sending PHI to third-party LLM APIs triggers BAA negotiations, privacy impact assessments, and security reviews — delaying AI projects by 6–12 months before a single model reaches production.',
+    'Teams use ungoverned public AI tools, sharing policyholder NPI with third-party servers without audit trails or organizational oversight.',
   },
   {
-    icon: Stethoscope,
-    title: 'Clinical safety at inference time',
+    icon: ClipboardCheck,
+    title: 'NAIC examination readiness',
     description:
-      'Patient-facing and clinician-facing workflows demand real-time guardrails, PHI redaction, and deterministic fallback behavior. A single unfiltered response can create liability exposure.',
+      'With the Model Bulletin adopted across 20+ states, examiners now expect documented AI governance programs, bias controls, and complete decision trails.',
   },
   {
-    icon: SignalHigh,
-    title: 'Scale without vendor bottlenecks',
+    icon: Puzzle,
+    title: 'Fragmented provider access',
     description:
-      'A 500-physician hospital generates 10,000+ AI-assisted notes per day. Cloud API rate limits, unpredictable latency, and single-provider lock-in cannot sustain clinical-volume throughput.',
+      'Carriers running multiple AI models across claims, underwriting, and operations manage separate API keys, inconsistent controls, and no unified cost visibility.',
   },
 ]
 
 const governance = [
   {
-    icon: Lock,
-    title: 'Air-gapped and VPC deployment',
+    icon: Server,
+    title: 'Air-gapped deployment',
     description:
-      'Deploy inside your hospital network or private cloud. PHI never transits the public internet — eliminating the need for third-party BAAs with LLM providers.',
+      'Keep NPI and proprietary underwriting data inside your network with on-prem or in-VPC deployment.',
   },
   {
-    icon: FileText,
-    title: 'HIPAA-grade audit trails',
+    icon: ScrollText,
+    title: 'Examination-ready logs',
     description:
-      'Log every request with user identity, timestamp, model, and token counts. OpenTelemetry-native export to your existing SIEM with configurable retention exceeding the 6-year HIPAA minimum.',
+      'Capture every AI interaction in tamper-evident logs -- ready for NAIC examination, NYDFS review, or internal audit.',
   },
   {
-    icon: ShieldCheck,
-    title: 'Guardrails and PHI redaction',
+    icon: KeyRound,
+    title: 'Role-based access and SSO',
     description:
-      'Enforce input sanitization, PII/PHI detection, and content policies across every model call. Block responses containing SSNs, MRNs, or other identifiers before they reach downstream systems.',
-  },
-  {
-    icon: Banknote,
-    title: 'Per-department cost governance',
-    description:
-      'Assign virtual keys with spend limits per department, project, or user role. Track radiology, pathology, and ER spend independently — with real-time alerts at 80% budget thresholds.',
-  },
-]
-
-const platformCapabilities = [
-  {
-    icon: Activity,
-    title: 'Centralized Observability',
-    description:
-      'Monitor every request across departments with latency, token usage, provider, and routing metadata — surfaced in real-time dashboards and exportable to Splunk or LogRhythm.',
-  },
-  {
-    icon: FileText,
-    title: 'Audit-Ready Compliance Evidence',
-    description:
-      'Generate tamper-evident compliance trails for HIPAA audits, FDA inspections, IRB reviews, and internal governance councils with zero manual log assembly.',
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Input/Output Guardrails',
-    description:
-      'Apply prompt injection defenses, PHI redaction, and clinical safety filters consistently across GPT-4, Claude, Llama, and any model behind the unified API.',
+      'Integrate with Okta or Azure AD and assign access by role, department, or line of business across Bifrost resources.',
   },
   {
     icon: Banknote,
-    title: 'Budget Controls and Chargeback',
+    title: 'Line-of-business cost controls',
     description:
-      'Prevent runaway spend with hard and soft limits on virtual keys. Attribute costs by department, project tag, or individual user for accurate internal chargeback.',
-  },
-  {
-    icon: Building2,
-    title: 'On-Prem and Private Cloud',
-    description:
-      'Deploy on bare metal, Kubernetes, or private cloud with no telemetry leakage. Full infrastructure control for air-gapped research hospitals, VA systems, and academic medical centers.',
-  },
-  {
-    icon: SignalHigh,
-    title: 'High-Throughput Routing',
-    description:
-      'Route 5,000+ requests per second with 11µs gateway overhead. Load-balance across on-prem and cloud models with automatic failover — no single-provider dependency.',
-  },
-]
-
-const interfaceHighlights = [
-  {
-    src: '/bifrost-screenshot/dashboard-main.png',
-    title: 'Operations Dashboard',
-    description:
-      'Real-time visibility into request volume, latency percentiles, error rates, and model utilization across clinical and research workloads.',
-    objectPosition: 'center top',
-  },
-  {
-    src: '/bifrost-screenshot/logs.png',
-    title: 'Audit Logs',
-    description:
-      'Searchable, tamper-evident request trails with user identity, timestamps, and full input/output metadata — ready for HIPAA and FDA compliance review.',
-    objectPosition: 'center center',
-  },
-  {
-    src: '/bifrost-screenshot/Virtual%20Keys.png',
-    title: 'Virtual Keys and Budgets',
-    description:
-      'Scoped access keys with per-department spend limits, role-based permissions, and real-time cost tracking across radiology, pathology, and clinical teams.',
-    objectPosition: 'center',
+      'Assign budgets per department, track spend by use case, and route routine queries to lower-cost models.',
   },
 ]
 
 const useCases = [
   {
-    title: 'Clinical documentation automation',
+    title: 'Enterprise knowledge search',
     description:
-      'Route ambient transcription and SOAP note generation through governed models with PHI redaction, audit logging, and EHR integration via MCP — at 10,000+ notes per day.',
+      'AI-powered search across internal policies, manuals, and regulatory documents with governed access and caching.',
   },
   {
-    title: 'Medical coding and billing',
+    title: 'Claims summarization and triage',
     description:
-      'Generate ICD-10 and CPT codes from clinical notes with model-level traceability, human-in-the-loop for high-value claims, and automatic cost attribution to billing teams.',
+      'Generate summaries of FNOL reports, medical records, and adjuster notes to accelerate review and reduce manual processing time.',
   },
   {
-    title: 'Prior authorization',
+    title: 'Fraud detection and SIU support',
     description:
-      'Assemble justification letters and HL7 278 submissions with AI — keeping patient history on-prem while routing to the optimal model for payer-specific guideline matching.',
+      'Analyze unstructured claims documents and adjuster notes for fraud indicators while preserving a complete audit trail for SIU investigations.',
   },
   {
-    title: 'Radiology report generation',
+    title: 'Underwriting document extraction',
     description:
-      'Draft structured radiology reports from DICOM metadata and image embeddings with air-gapped inference, critical findings alerting, and radiologist sign-off workflows.',
+      'Extract data from ACORD forms, loss runs, and financial statements with multimodal support and MCP integration.',
   },
   {
-    title: 'Drug discovery and clinical trials',
+    title: 'Employee AI assistant',
     description:
-      'Run high-throughput molecule generation and trial-matching workloads with zero telemetry leakage — protecting proprietary compound data and IRB-governed patient records.',
+      'Deploy governed AI tools for drafting correspondence, document summarization, and meeting prep with NPI redaction and usage controls.',
   },
   {
-    title: 'Population health and pharmacovigilance',
+    title: 'Regulatory compliance automation',
     description:
-      'Score 50,000+ chronic disease patients daily for readmission risk and automate adverse event reporting — with CMS-ready audit trails and budget-controlled batch processing.',
+      'Identify relevant state requirements, maintain auditable records of AI use across LoBs, and generate documentation for regulatory examinations.',
   },
 ]
 
-// ---------------------------------------------------------------------------
-// PAGE COMPONENT
-// ---------------------------------------------------------------------------
+const platformCapabilities = [
+  {
+    icon: Route,
+    title: 'Multi-provider routing',
+    description:
+      'Route requests across 1000+ models including OpenAI, Anthropic, or on-prem models through a unified API.',
+  },
+  {
+    icon: Database,
+    title: 'Semantic caching',
+    description:
+      'Reduce repeated query costs on regulatory, policy, and knowledge searches with response and document caching.',
+  },
+  {
+    icon: PlugZap,
+    title: 'MCP Gateway',
+    description:
+      'Connect AI agents to internal and external data sources through governed, audited access to every tool call.',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'NPI redaction and guardrails',
+    description:
+      'Auto-detect and redact SSNs, policy numbers, and driver\'s license data before it reaches any model or user.',
+  },
+  {
+    icon: ScrollText,
+    title: 'SIEM-integrated audit logs',
+    description:
+      'Export structured logs via OpenTelemetry to Splunk, Datadog, or QRadar with configurable long-term retention.',
+  },
+  {
+    icon: GitBranch,
+    title: 'Intelligent routing and failover',
+    description:
+      'Maintain claims and underwriting throughput during provider outages with automatic failover and cost-aware routing.',
+  },
+]
 
-export default function HealthcareLifeSciencesPage() {
+const interfaceHighlights = [
+  {
+    riveSrc: '/rive/lln9t3OuTneA9tQOi8XMPNlfNCk.riv',
+    title: 'Operations dashboard',
+    description:
+      'Real-time monitoring of request volume, model usage, latency, and system health across all lines of business.',
+  },
+  {
+    riveSrc: '/rive/c0tVyQYkMtvuhTCKvA0SjGVHkY.riv',
+    title: 'Audit logs',
+    description:
+      'Track authentication, access, configuration changes, and data activity.',
+  },
+  {
+    riveSrc: '/rive/KBbyqDZQ7ko6obmMhOt3hllKA.riv',
+    title: 'Budget and cost tracking',
+    description:
+      'Per-department spend monitoring with threshold alerts and chargeback-ready attribution by line of business.',
+  },
+]
+
+export default function InsuranceTestPage() {
   const basePath = getCostCalculatorBaseUrl()
 
   return (
     <div className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
           <div className="text-center">
             <span className="provider-badge">[ ENTERPRISE READY: VPC | ON-PREM | AIR-GAPPED ]</span>
             <h1 className="mb-4 text-center text-4xl leading-[1.2] font-normal tracking-tight text-gray-900 md:text-5xl">
-              HIPAA-Ready AI Gateway for
+            Governed AI Infrastructure for
               <br />
-              <span className="text-[var(--accent-text)]">Healthcare &amp; Life Sciences</span>
+              <span className="text-[var(--accent-text)]">Insurance Carriers</span>
             </h1>
             <p className="mx-auto mb-8 max-w-2xl text-sm leading-relaxed text-gray-500 md:text-base">
-              Deploy AI across clinical, research, and operational workflows without sending PHI
-              outside your network. Bifrost provides air-gapped inference routing, HIPAA-grade audit
-              trails, and per-department cost governance — cutting deployment timelines from months to
-              weeks.
+              Bifrost provides centralized control over every model request with air-gapped
+              security, NAIC-ready audit trails, and intelligent routing across providers.
             </p>
             <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
               <Link href={`${basePath}/resources/benchmarks`}>
@@ -230,7 +255,7 @@ export default function HealthcareLifeSciencesPage() {
               [ CHALLENGES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Why Healthcare AI Stalls Before It Ships
+            Operational risks behind insurance AI adoption
             </h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -260,12 +285,11 @@ export default function HealthcareLifeSciencesPage() {
               [ GOVERNANCE ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Enterprise Controls That Ship in Weeks, Not Quarters
+            NAIC-ready controls without slowing underwriting teams
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Bifrost deploys inside your network perimeter and enforces HIPAA-aligned policies across
-              every model request — so your compliance, security, and clinical teams approve once
-              instead of per-vendor.
+              Deploy Bifrost in your environment and enforce consistent policies across every
+              model call.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -292,11 +316,11 @@ export default function HealthcareLifeSciencesPage() {
               [ PLATFORM CAPABILITIES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Infrastructure Purpose-Built for Regulated AI
+              Give platform teams visibility across every model call
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Unified governance, intelligent routing, and deep observability with the security
-              posture that healthcare CISOs, CMIOs, and compliance officers require.
+              Centralized governance, routing, and observability for carriers deploying AI across
+              claims, underwriting, and operations.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -326,37 +350,13 @@ export default function HealthcareLifeSciencesPage() {
               [ BIFROST INTERFACE ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Visibility Your Compliance Team Will Actually Use
+              Functional views built for carrier compliance teams
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Purpose-built dashboards for operations monitoring, audit evidence generation, and
-              department-level budget tracking — without stitching together external tools.
+              Designed for the visibility that platform engineers and compliance officers actually need.
             </p>
           </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {interfaceHighlights.map((shot) => (
-              <div key={shot.title} className="relative border border-gray-200 bg-white">
-                <div className="absolute top-3 left-3 z-10 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
-                <div className="absolute top-3 right-3 z-10 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
-                <div className="absolute bottom-3 left-3 z-10 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
-                <div className="absolute right-3 bottom-3 z-10 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
-                <div className="relative aspect-[16/9] overflow-hidden bg-gray-50">
-                  <Image
-                    src={shot.src}
-                    alt={shot.title}
-                    fill
-                    className="object-cover"
-                    style={{ objectPosition: shot.objectPosition }}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
-                </div>
-                <div className="border-t border-gray-200 p-4">
-                  <h3 className="mb-1 text-sm text-gray-900">{shot.title}</h3>
-                  <p className="text-xs text-gray-500">{shot.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <InterfaceHighlights items={interfaceHighlights} />
         </div>
       </section>
 
@@ -368,12 +368,8 @@ export default function HealthcareLifeSciencesPage() {
               [ USE CASES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              From Clinical Workflows to Drug Discovery
+              AI-powered insurance workflows with Bifrost
             </h2>
-            <p className="mx-auto max-w-2xl text-gray-600">
-              One gateway powering the AI use cases with the highest ROI across health systems,
-              academic medical centers, and life sciences organizations.
-            </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {useCases.map((item) => (
@@ -400,11 +396,11 @@ export default function HealthcareLifeSciencesPage() {
             [ NEXT STEPS ]
           </p>
           <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-            Ship Healthcare AI in Weeks, Not Quarters
+            Deploy compliant AI across insurance workflows
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-gray-600">
-            Talk to the Bifrost team about deploying an air-gapped, HIPAA-aligned gateway in your
-            environment — with audit trails, PHI redaction, and cost controls from day one.
+            Talk to the Bifrost team about deploying a compliant, air-gapped AI gateway that
+            satisfies NAIC requirements and gives your platform team visibility from day one.
           </p>
           <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
             <Link
@@ -417,9 +413,9 @@ export default function HealthcareLifeSciencesPage() {
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
-            <Link href={`${basePath}/resources/claude-code`}>
+            <Link href="https://www.getmaxim.ai/bifrost/enterprise">
               <Button variant="outline" size="lg">
-                Claude Code integration
+                Try Bifrost Enterprise
                 <ExternalLink className="h-4 w-4" />
               </Button>
             </Link>
