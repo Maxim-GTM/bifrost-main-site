@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 
 export function useScrollAnimation() {
-  const [scrollY, setScrollY] = useState(0)
+  const [scrollY, setScrollY] = useState(() => (typeof window !== 'undefined' ? window.scrollY : 0))
   const throttleTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   const handleScroll = useCallback(() => {
@@ -18,9 +18,6 @@ export function useScrollAnimation() {
   }, [])
 
   useEffect(() => {
-    // Set initial value
-    setScrollY(window.scrollY)
-
     window.addEventListener('scroll', handleScroll, { passive: true })
 
     return () => {

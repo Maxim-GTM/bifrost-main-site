@@ -88,6 +88,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="bg-gray-50 text-gray-900 antialiased">
         {process.env.NODE_ENV !== 'development' && (
           <>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={`${CRAWL_DOCTOR_ORIGIN}/track/pixel.gif?tid=${CRAWL_DOCTOR_TID}`}
               alt=""

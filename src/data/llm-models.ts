@@ -1,9 +1,9 @@
 // Auto-generated file - DO NOT EDIT
-// Generated at: 2026-03-07T10:54:18.002Z
+// Generated at: 2026-03-07T11:29:53.723Z
 // Source: https://getbifrost.ai/datasheet
 // Run `npm run generate:llm-data` to regenerate
 
-import type { ModelData, ProcessedModel } from '@/types/model';
+import type { ProcessedModel } from '@/types/model';
 
 export const LLM_MODELS: ProcessedModel[] = [
   {
@@ -49582,5 +49582,5 @@ export const LLM_STATS = {
   totalModels: 2088,
   totalProviders: 73,
   totalModes: 10,
-  generatedAt: '2026-03-07T10:54:18.005Z',
+  generatedAt: '2026-03-07T11:29:53.726Z',
 };

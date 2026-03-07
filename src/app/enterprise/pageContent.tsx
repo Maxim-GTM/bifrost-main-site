@@ -24,16 +24,9 @@ function isHardRefresh() {
 }
 
 export default function EnterpriseClientPageContent() {
-  const [isLoaded, setIsLoaded] = useState(true) // Default to loaded
-  const [showLoader, setShowLoader] = useState(false)
-
-  useEffect(() => {
-    // Only show loader on hard refresh
-    if (isHardRefresh()) {
-      setIsLoaded(false)
-      setShowLoader(true)
-    }
-  }, [])
+  const isReload = typeof window !== 'undefined' && isHardRefresh()
+  const [isLoaded, setIsLoaded] = useState(!isReload)
+  const [showLoader, setShowLoader] = useState(isReload)
 
   useEffect(() => {
     // Prevent scrollbar issues and ensure proper sizing

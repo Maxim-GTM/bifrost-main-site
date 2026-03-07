@@ -7,7 +7,6 @@ export function TypewriterCode() {
   const [currentCharIndex, setCurrentCharIndex] = useState(0)
   const [displayedLines, setDisplayedLines] = useState<string[]>([])
   const [showCursor, setShowCursor] = useState(true)
-  const [isClient, setIsClient] = useState(false)
 
   const codeLines = useMemo(
     () => [
@@ -38,12 +37,6 @@ export function TypewriterCode() {
   )
 
   useEffect(() => {
-    setIsClient(true)
-  }, [])
-
-  useEffect(() => {
-    if (!isClient) return
-
     if (currentLineIndex >= codeLines.length) {
       // Animation complete, hide cursor after a delay
       const timer = setTimeout(() => setShowCursor(false), 1000)
@@ -68,18 +61,18 @@ export function TypewriterCode() {
 
       return () => clearTimeout(timer)
     }
-  }, [currentLineIndex, currentCharIndex, codeLines, isClient])
+  }, [currentLineIndex, currentCharIndex, codeLines])
 
   // Cursor blinking effect
   useEffect(() => {
-    if (!isClient || !showCursor) return
+    if (!showCursor) return
 
     const interval = setInterval(() => {
       setShowCursor((prev) => !prev)
     }, 500)
 
     return () => clearInterval(interval)
-  }, [isClient, showCursor])
+  }, [showCursor])
 
   const renderLineWithSyntaxHighlighting = (text: string) => {
     // Apply syntax highlighting for JSON lines

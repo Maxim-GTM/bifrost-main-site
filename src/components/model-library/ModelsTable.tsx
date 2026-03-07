@@ -1,7 +1,8 @@
 'use client'
 
+/* eslint-disable @next/next/no-img-element */
+
 import { useState, useMemo, useRef, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { ProcessedModel } from '@/types/model'
 import { formatCurrency, getModeDisplayName } from '@/lib/model-library/calculator'
@@ -9,7 +10,7 @@ import { formatProviderName } from '@/lib/model-library/api'
 import { getProviderLogo } from '@/lib/model-library/providerLogos'
 import { formatTokenCount, formatNumber } from '@/lib/model-library/format'
 import { getModelLibraryBaseUrl } from '@/lib/utils'
-import Dropdown, { DropdownOption } from './Dropdown'
+import Dropdown from './Dropdown'
 
 interface ModelsTableProps {
   models: ProcessedModel[]
@@ -35,7 +36,6 @@ export default function ModelsTable({
   serverPaginationContainerId,
   highlightMode,
 }: ModelsTableProps) {
-  const router = useRouter()
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedProvider, setSelectedProvider] = useState<string>('all')
   const [selectedMode, setSelectedMode] = useState<string>('all')

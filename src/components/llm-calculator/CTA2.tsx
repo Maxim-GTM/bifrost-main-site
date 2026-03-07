@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/Button'
 export default function CTA2() {
   return (
     <div
-      className="relative box-border flex flex-col border border-gray-200 bg-white lg:h-full lg:min-h-0"
+      className="relative box-border flex h-full flex-col border border-gray-200 bg-white"
       style={{
         backgroundImage: 'radial-gradient(circle, #e5e5e5 1px, transparent 1px)',
         backgroundSize: '16px 16px',
@@ -16,7 +16,7 @@ export default function CTA2() {
       <div className="absolute bottom-0 left-0 h-2 w-2 -translate-x-0.5 translate-y-0.5 border-b border-l border-gray-300"></div>
       <div className="absolute right-0 bottom-0 h-2 w-2 translate-x-0.5 translate-y-0.5 border-r border-b border-gray-300"></div>
 
-      <div className="relative flex min-h-0 flex-col space-y-12 p-8 lg:h-full lg:justify-center lg:p-10">
+      <div className="relative flex h-full min-h-0 flex-1 flex-col justify-between gap-10 p-8 lg:p-10">
         {/* Group 1: Logo + Open Source Tag */}
         <div className="flex shrink-0 flex-col items-center space-y-3">
           <Link href="https://www.getmaxim.ai/bifrost" className="shrink-0">

@@ -1,7 +1,7 @@
 // Static data access for LLM models
 // Uses pre-generated data from scripts/generate-llm-data.ts
 
-import { ProcessedModel, ModelEntry, ModelData } from '@/types/model'
+import { ProcessedModel } from '@/types/model'
 import {
   LLM_MODELS,
   LLM_PROVIDERS,

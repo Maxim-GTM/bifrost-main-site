@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+
 import Link from 'next/link'
 import { Submission } from '@/types/submission'
 import { ArrowUpRight, User } from 'lucide-react'

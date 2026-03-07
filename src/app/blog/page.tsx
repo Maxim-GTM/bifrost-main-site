@@ -3,7 +3,6 @@ import { PostCard } from '../../components/blog'
 import { Navbar } from '../../components/Navbar'
 import { Footer } from '../../components/sections'
 import { getPosts } from '../../lib/ghostBlog'
-import CornerBracketLink from '@/components/CornerBracketLink'
 import './blog.css'
 
 export const metadata: Metadata = {
@@ -60,8 +59,8 @@ export default async function BlogPage() {
           <div className="relative z-10 py-4">
             {posts.length > 0 ? (
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-                {posts.map((post, index) => (
-                  <PostCard key={post.id} post={post} type="blog" index={index} />
+                {posts.map((post) => (
+                  <PostCard key={post.id} post={post} type="blog" />
                 ))}
               </div>
             ) : (

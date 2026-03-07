@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+
 import {
   fetchAllModels,
   getModelsByProvider,
@@ -11,7 +13,6 @@ import { Breadcrumbs } from '@/components/model-library/Breadcrumbs'
 import Pagination from '@/components/model-library/Pagination'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import Link from 'next/link'
 import { buildCanonicalUrl } from '@/lib/model-library/seo'
 import { getProviderLogo } from '@/lib/model-library/providerLogos'
 import { getModelLibraryBaseUrl } from '@/lib/utils'

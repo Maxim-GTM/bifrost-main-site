@@ -237,7 +237,7 @@ async function main() {
 // Source: ${BIFROST_API_URL}
 // Run \`npm run generate:llm-data\` to regenerate
 
-import type { ModelData, ProcessedModel } from '@/types/model';
+import type { ProcessedModel } from '@/types/model';
 
 export const LLM_MODELS: ProcessedModel[] = ${JSON.stringify(processedModels, null, 2)} as const;
 

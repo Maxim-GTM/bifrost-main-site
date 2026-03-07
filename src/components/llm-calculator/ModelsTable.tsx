@@ -4,7 +4,7 @@ import { useState, useMemo, useRef, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { ProcessedModel } from '@/types/model'
-import { formatCurrency, getModeDisplayName } from '@/lib/llm-calculator/calculator'
+import { getModeDisplayName } from '@/lib/llm-calculator/calculator'
 import { formatProviderName } from '@/lib/llm-calculator/api'
 import { LLM_MODELS, MODELS_BY_PROVIDER } from '@/data/llm-models'
 import Dropdown from './Dropdown'
@@ -229,6 +229,7 @@ export default function ModelsTable({
             setFocusedIndex(-1)
             searchInputRef.current?.blur()
           } else {
+            setClientPage(1)
             setSearchQuery(suggestion.value)
             setShowSuggestions(false)
             setFocusedIndex(-1)
@@ -253,6 +254,7 @@ export default function ModelsTable({
       setShowSuggestions(false)
       setFocusedIndex(-1)
     } else {
+      setClientPage(1)
       setSearchQuery(suggestion.value)
       setShowSuggestions(false)
       setFocusedIndex(-1)
@@ -309,10 +311,6 @@ export default function ModelsTable({
   const PAGE_SIZE = 100
   const [clientPage, setClientPage] = useState(1)
 
-  useEffect(() => {
-    setClientPage(1)
-  }, [searchQuery, selectedProvider, selectedMode])
-
   const clientPagingEnabled = searchScope === 'all' && !!allModels && searchActive
   const totalClientPages = Math.max(1, Math.ceil(filteredAndSortedModels.length / PAGE_SIZE))
   const currentClientPage = Math.min(Math.max(1, clientPage), totalClientPages)
@@ -334,7 +332,7 @@ export default function ModelsTable({
 
   // Row navigation is handled via <Link> so it works without JS.
 
-  const SortIcon = ({ column }: { column: typeof sortBy }) => {
+  const getSortIcon = (column: typeof sortBy) => {
     if (sortBy !== column) return null
     return sortOrder === 'asc' ? '↑' : '↓'
   }
@@ -352,6 +350,7 @@ export default function ModelsTable({
               placeholder="Search models, providers..."
               value={searchQuery}
               onChange={(e) => {
+                setClientPage(1)
                 setSearchQuery(e.target.value)
                 setShowSuggestions(true)
                 setFocusedIndex(-1)
@@ -419,6 +418,7 @@ export default function ModelsTable({
               }))}
               value={selectedProvider}
               onChange={(v) => {
+                setClientPage(1)
                 setSelectedProvider(v)
               }}
               placeholder="All Providers"
@@ -435,6 +435,7 @@ export default function ModelsTable({
             }))}
             value={selectedMode}
             onChange={(v) => {
+              setClientPage(1)
               setSelectedMode(v)
             }}
             placeholder="All Modes"
@@ -470,7 +471,7 @@ export default function ModelsTable({
                 >
                   <div className="flex items-center gap-2">
                     Model Name
-                    <SortIcon column="name" />
+                    {getSortIcon('name')}
                   </div>
                 </th>
                 <th
@@ -479,7 +480,7 @@ export default function ModelsTable({
                 >
                   <div className="flex items-center gap-2 leading-tight">
                     Provider
-                    <SortIcon column="provider" />
+                    {getSortIcon('provider')}
                   </div>
                 </th>
                 <th className="min-w-[80px] px-3 py-3 text-left text-xs font-semibold tracking-wider text-gray-700 uppercase sm:px-4 sm:py-4 lg:w-[8%]">
@@ -493,7 +494,7 @@ export default function ModelsTable({
                     <div className="flex items-center gap-1">
                       <span>Input</span>
                       <span className="hidden lg:inline">Cost</span>
-                      <SortIcon column="input" />
+                      {getSortIcon('input')}
                     </div>
                     <div className="mt-1 hidden text-xs font-normal text-gray-500 sm:block">
                       (per 1M tokens)
@@ -508,7 +509,7 @@ export default function ModelsTable({
                     <div className="flex items-center gap-1">
                       <span>Output</span>
                       <span className="hidden lg:inline">Cost</span>
-                      <SortIcon column="output" />
+                      {getSortIcon('output')}
                     </div>
                     <div className="mt-1 hidden text-xs font-normal text-gray-500 sm:block">
                       (per 1M tokens)

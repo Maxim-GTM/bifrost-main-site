@@ -1,12 +1,14 @@
 'use client'
 
+/* eslint-disable @next/next/no-img-element */
+
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, startTransition } from 'react'
 import { useRouter } from 'next/navigation'
 import { ProcessedModel } from '@/types/model'
 import { formatProviderName } from '@/lib/model-library/api'
 import { getModeDisplayName } from '@/lib/model-library/calculator'
 import { getProviderLogo } from '@/lib/model-library/providerLogos'
-import { formatNumber, formatTokenCount } from '@/lib/model-library/format'
+import { formatNumber } from '@/lib/model-library/format'
 import { getModelLibraryBaseUrl } from '@/lib/utils'
 import CTA2 from './CTA2'
 
@@ -40,89 +42,6 @@ function getModeFamily(mode: string): ModeFamily {
   return MODE_FAMILY[mode] || 'other'
 }
 
-function formatPriceLine(label: string, value: number, unit: string) {
-  return `${label}: $${value.toFixed(4)} ${unit}`
-}
-
-function getPricingLines(model: ProcessedModel): string[] {
-  const lines: string[] = []
-  const data = model.data
-
-  if (data.input_cost_per_token != null) {
-    lines.push(`Input: $${(data.input_cost_per_token * 1_000_000).toFixed(2)} / 1M tokens`)
-  }
-  if (data.output_cost_per_token != null) {
-    lines.push(`Output: $${(data.output_cost_per_token * 1_000_000).toFixed(2)} / 1M tokens`)
-  }
-  if (data.input_cost_per_image != null) {
-    lines.push(formatPriceLine('Input image', data.input_cost_per_image, '/ image'))
-  }
-  if (data.output_cost_per_image != null) {
-    lines.push(formatPriceLine('Output image', data.output_cost_per_image, '/ image'))
-  }
-  if (data.input_cost_per_second != null) {
-    lines.push(formatPriceLine('Input seconds', data.input_cost_per_second, '/ second'))
-  }
-  if (data.output_cost_per_second != null) {
-    lines.push(formatPriceLine('Output seconds', data.output_cost_per_second, '/ second'))
-  }
-  if (data.ocr_cost_per_page != null) {
-    lines.push(formatPriceLine('OCR', data.ocr_cost_per_page, '/ page'))
-  }
-
-  return lines
-}
-
-function formatTokens(value?: number) {
-  if (!value) return '—'
-  return formatTokenCount(value)
-}
-
-function ModelHeader({ model }: { model: ProcessedModel }) {
-  return (
-    <div className="flex items-center gap-3">
-      <img
-        src={getProviderLogo(model.provider)}
-        alt={`${formatProviderName(model.provider)} logo`}
-        className="h-8 w-8 object-contain"
-        loading="lazy"
-      />
-      <div>
-        <div className="text-lg font-semibold text-gray-900">{model.displayName}</div>
-        <div className="text-sm text-gray-600">
-          {formatProviderName(model.provider)} • {getModeDisplayName(model.data.mode)}
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function CapabilitiesList({ model }: { model: ProcessedModel }) {
-  const caps = [
-    model.data.supports_function_calling ? 'Function calling' : null,
-    model.data.supports_vision ? 'Vision' : null,
-    model.data.supports_reasoning ? 'Reasoning' : null,
-    model.data.supports_web_search ? 'Web search' : null,
-    model.data.supports_audio_input ? 'Audio input' : null,
-    model.data.supports_audio_output ? 'Audio output' : null,
-  ].filter(Boolean) as string[]
-
-  if (!caps.length) return <span className="text-gray-400">—</span>
-
-  return (
-    <div className="flex flex-wrap gap-2">
-      {caps.map((cap) => (
-        <span
-          key={cap}
-          className="rounded bg-gray-100 px-2 py-0.5 text-xs whitespace-nowrap text-gray-600"
-        >
-          {cap}
-        </span>
-      ))}
-    </div>
-  )
-}
-
 interface ModelCompareProps {
   initialLeftId?: string
   initialRightId?: string
@@ -136,29 +55,6 @@ function getComparePath(left: ProcessedModel, right?: ProcessedModel | null) {
     return `${basePath}/compare/${encodeURIComponent(left.provider)}/${left.slug}`
   }
   return `${basePath}/compare/${encodeURIComponent(left.provider)}/${left.slug}?compare=${encodeURIComponent(right.provider)}/${right.slug}`
-}
-
-function PricingBlock({ model }: { model: ProcessedModel }) {
-  const lines = getPricingLines(model)
-  return lines.length ? (
-    <ul className="space-y-1 text-sm text-gray-700">
-      {lines.map((line) => (
-        <li key={line}>{line}</li>
-      ))}
-    </ul>
-  ) : (
-    <span className="text-sm text-gray-400">—</span>
-  )
-}
-
-function LimitsBlock({ model }: { model: ProcessedModel }) {
-  return (
-    <div className="space-y-1 text-sm text-gray-700">
-      <div>Max input: {formatTokens(model.data.max_input_tokens)}</div>
-      <div>Max output: {formatTokens(model.data.max_output_tokens)}</div>
-      <div>Max tokens: {formatTokens(model.data.max_tokens)}</div>
-    </div>
-  )
 }
 
 function formatPerMillion(value?: number) {
@@ -198,36 +94,6 @@ function getPrimaryOutputCost(model: ProcessedModel) {
     return formatUnitCost(model.data.output_cost_per_second, 'sec')
   }
   return '—'
-}
-
-function inferInputModalities(model: ProcessedModel): string[] {
-  if (model.data.supported_modalities?.length) return model.data.supported_modalities
-
-  const mode = model.data.mode
-  if (mode === 'image_generation' || mode === 'ocr') return ['Image']
-  if (
-    mode === 'audio_transcription' ||
-    mode === 'audio_generation' ||
-    mode === 'audio_speech' ||
-    mode === 'voice'
-  )
-    return ['Audio']
-  return ['Text']
-}
-
-function inferOutputModalities(model: ProcessedModel): string[] {
-  if (model.data.supported_output_modalities?.length) return model.data.supported_output_modalities
-
-  const mode = model.data.mode
-  if (mode === 'image_generation') return ['Image']
-  if (mode === 'video_generation') return ['Video']
-  if (mode === 'audio_generation' || mode === 'audio_speech' || mode === 'voice') return ['Audio']
-  if (mode === 'ocr' || mode === 'audio_transcription') return ['Text']
-  return ['Text']
-}
-
-function formatModalities(modalities: string[]) {
-  return modalities.length ? modalities.join(', ') : '—'
 }
 
 function formatYesNo(value?: boolean) {
@@ -375,31 +241,7 @@ export default function ModelCompare({
   const rightModesValue =
     rightModel?.data.modes ?? rightModel?.data.supported_modes ?? rightModel?.data.mode
 
-  const capabilityDefinitions = [
-    { key: 'supports_function_calling', label: 'Function Calling' },
-    { key: 'supports_vision', label: 'Vision' },
-    { key: 'supports_reasoning', label: 'Reasoning' },
-    { key: 'supports_web_search', label: 'Web Search' },
-    { key: 'supports_audio_input', label: 'Audio Input' },
-    { key: 'supports_audio_output', label: 'Audio Output' },
-    { key: 'supports_tool_choice', label: 'Tool Choice' },
-    { key: 'supports_response_schema', label: 'Response Schema' },
-    { key: 'supports_parallel_function_calling', label: 'Parallel Function Calling' },
-    { key: 'supports_prompt_caching', label: 'Prompt Caching' },
-    { key: 'supports_system_messages', label: 'System Messages' },
-  ] as const
-
   const buildModelFacts = (model: ProcessedModel) => {
-    const inputCostRaw =
-      model.data.input_cost_per_token ??
-      model.data.input_cost_per_image ??
-      model.data.input_cost_per_second ??
-      model.data.ocr_cost_per_page
-    const outputCostRaw =
-      model.data.output_cost_per_token ??
-      model.data.output_cost_per_image ??
-      model.data.output_cost_per_second
-
     const contextLength = getContextLength(model)
     const facts: Array<{ category: string; items: string[] }> = []
 

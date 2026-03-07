@@ -1,7 +1,6 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import { getModeDisplayName } from '@/lib/model-library/calculator'
 import Dropdown, { DropdownOption } from './Dropdown'
 import { getModelLibraryBaseUrl } from '@/lib/utils'
 

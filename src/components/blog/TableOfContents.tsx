@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 interface TocItem {
   id: string
@@ -13,16 +13,17 @@ interface TableOfContentsProps {
 }
 
 export function TableOfContents({ html }: TableOfContentsProps) {
-  const [headings, setHeadings] = useState<TocItem[]>([])
   const [activeId, setActiveId] = useState<string>('')
+  const headings = useMemo<TocItem[]>(() => {
+    if (typeof window === 'undefined') {
+      return []
+    }
 
-  useEffect(() => {
-    // Parse headings from HTML
     const parser = new DOMParser()
     const doc = parser.parseFromString(html, 'text/html')
     const elements = doc.querySelectorAll('h2, h3')
 
-    const items: TocItem[] = Array.from(elements).map((el, index) => {
+    return Array.from(elements).map((el, index) => {
       const id = el.id || `heading-${index}`
       return {
         id,
@@ -30,8 +31,6 @@ export function TableOfContents({ html }: TableOfContentsProps) {
         level: parseInt(el.tagName[1]),
       }
     })
-
-    setHeadings(items)
   }, [html])
 
   useEffect(() => {

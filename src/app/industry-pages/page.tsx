@@ -6,7 +6,7 @@ import { getCostCalculatorBaseUrl } from '@/lib/utils'
 export const metadata: Metadata = {
   title: 'Governed AI Infrastructure by Industry | Bifrost',
   description:
-    'Explore Bifrost Enterprise AI Gateway  for financial services, healthcare, insurance, and retail with secure deployment, governance, and intelligent model routing.',
+    'Explore Bifrost Enterprise AI Gateway for financial services, healthcare, insurance, and retail with secure deployment, governance, and intelligent model routing.',
   keywords: [
     'AI infrastructure by industry',
     'Bifrost industry solutions',
@@ -22,13 +22,13 @@ export const metadata: Metadata = {
     siteName: 'Bifrost by Maxim AI',
     title: 'Governed AI Infrastructure by Industry | Bifrost',
     description:
-      'Explore Bifrost AI infrastructure for financial services, healthcare, insurance, and retail with secure deployment, governance, and low-latency routing.',
+      'Explore Bifrost Enterprise AI Gateway for financial services, healthcare, insurance, and retail with secure deployment, governance, and intelligent model routing.',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Governed AI Infrastructure by Industry | Bifrost',
     description:
-      'Explore Bifrost AI infrastructure for financial services, healthcare, insurance, and retail with secure deployment, governance, and low-latency routing.',
+      'Explore Bifrost Enterprise AI Gateway for financial services, healthcare, insurance, and retail with secure deployment, governance, and intelligent model routing.',
   },
   alternates: {
     canonical: 'https://www.getmaxim.ai/bifrost/industry-pages',

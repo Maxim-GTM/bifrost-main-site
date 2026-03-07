@@ -209,15 +209,6 @@ const connectionTypes = [
   },
 ]
 
-const securityFeatures = [
-  'No automatic execution',
-  'Request-level filtering',
-  'Tool blacklisting',
-  'Permission mapping with RBAC',
-  'Complete audit trail',
-  'Environment-based controls',
-]
-
 const useCases = [
   {
     icon: Wrench,

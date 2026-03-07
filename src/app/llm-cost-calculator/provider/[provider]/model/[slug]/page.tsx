@@ -1,6 +1,5 @@
 import {
   getModelBySlug,
-  getModelsByDisplayName,
   formatProviderName,
 } from '@/lib/llm-calculator/api'
 import { getModeDisplayName } from '@/lib/llm-calculator/calculator'
@@ -519,38 +518,6 @@ export default async function ModelPage({ params }: PageProps) {
 
   if (!model) {
     notFound()
-  }
-
-  // Find other models with the same display name
-  const sameNameModels = getModelsByDisplayName(model.displayName)
-
-  // Check if there are multiple variants (same display name, different provider or mode)
-  const hasMultipleProviders = new Set(sameNameModels.map((m) => m.provider)).size > 1
-  const hasMultipleModes = new Set(sameNameModels.map((m) => m.data.mode)).size > 1
-
-  // Build options for mode selector
-  type SelectorOption = { label: string; value: string; type: 'provider' | 'mode' }
-  const optionProviders: Record<string, string> = {}
-  let uniqueOptions: SelectorOption[] = []
-
-  if (hasMultipleProviders || hasMultipleModes) {
-    const seen = new Set<string>()
-    uniqueOptions = sameNameModels
-      .map((m) => {
-        const label = hasMultipleProviders
-          ? `${formatProviderName(m.provider)} - ${getModeDisplayName(m.data.mode)}`
-          : getModeDisplayName(m.data.mode)
-        const key = `${m.provider}-${m.data.mode}`
-        optionProviders[m.slug] = m.provider
-        if (seen.has(key)) return null
-        seen.add(key)
-        return {
-          label,
-          value: m.slug,
-          type: hasMultipleProviders ? 'provider' : 'mode',
-        } as SelectorOption
-      })
-      .filter((opt): opt is SelectorOption => opt !== null)
   }
 
   const contentData = generateContentData(model)
