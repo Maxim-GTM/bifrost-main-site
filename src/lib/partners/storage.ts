@@ -25,7 +25,6 @@ export type PartnerApplication = {
   companyName: string
   companySize: string
   companyHQ: string
-  partnerType: string
   message: string
   createdAt: string
   status: 'new' | 'reviewed'

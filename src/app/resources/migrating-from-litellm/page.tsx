@@ -1,8 +1,10 @@
+import React from 'react'
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
 import FeatureMatrix from '@/components/resources/FeatureMatrix'
 import DropInReplacement from '@/components/resources/DropInReplacement'
+import FAQSection from '@/components/resources/FAQSection'
 import SetupSteps from '@/components/resources/SetupSteps'
 import {
   ArrowRight,
@@ -13,7 +15,6 @@ import {
   Lock,
   RefreshCw,
   Shield,
-  XCircle,
   Zap,
 } from 'lucide-react'
 
@@ -95,11 +96,7 @@ const featureComparison: { title: string; rows: ComparisonRow[] }[] = [
         bifrost: '11µs (Go-native)',
         litellm: '40ms (Python GIL)',
       },
-      {
-        feature: 'Memory Management',
-        bifrost: 'Deterministic, bounded',
-        litellm: 'Unpredictable GC pauses',
-      },
+      
       {
         feature: 'Concurrent Request Handling',
         bifrost: 'Native Go concurrency',
@@ -110,20 +107,18 @@ const featureComparison: { title: string; rows: ComparisonRow[] }[] = [
   {
     title: 'Reliability',
     rows: [
-      { feature: 'Uptime SLA', bifrost: '99.999%', litellm: 'Community-maintained' },
+      
       {
         feature: 'Automatic Failover',
         bifrost: 'Zero-config',
         litellm: 'Manual config',
-        bifrostCheck: true,
-        litellmCheck: true,
+      
       },
       {
         feature: 'Circuit Breakers',
-        bifrost: 'Ship keys with zero weight',
-        litellm: null,
-        bifrostCheck: true,
-        litellmCheck: false,
+        bifrost: 'Available',
+        litellm: 'N/A',
+      
       },
 
       { feature: 'Health Monitoring', bifrost: 'Real-time', litellm: 'Basic' },
@@ -135,37 +130,32 @@ const featureComparison: { title: string; rows: ComparisonRow[] }[] = [
       {
         feature: 'Virtual Keys',
         bifrost: 'With budgets & rate limits',
-        litellm: 'With budgets & rate limits',
-        bifrostCheck: true,
-        litellmCheck: true,
+        litellm: 'Available',
+      
       },
       {
         feature: 'RBAC',
-        bifrost: 'Enterprise',
-        litellm: 'Enterprise',
-        bifrostCheck: true,
-        litellmCheck: true,
+        bifrost: 'Fine-grained access management',
+        litellm: 'Available',
+    
       },
       {
         feature: 'Audit Logs',
-        bifrost: 'Enterprise',
-        litellm: 'Enterprise',
-        bifrostCheck: true,
-        litellmCheck: true,
+        bifrost: 'Available',
+        litellm: 'Available',
+      
       },
       {
         feature: 'Guardrails',
-        bifrost: 'Enterprise',
+        bifrost: 'Available',
         litellm: 'Available',
-        bifrostCheck: true,
-        litellmCheck: true,
+    
       },
       {
         feature: 'In-VPC Deployment',
-        bifrost: 'Enterprise',
-        litellm: 'Self-hosted',
-        bifrostCheck: true,
-        litellmCheck: true,
+        bifrost: 'Available',
+        litellm: 'Available',
+       
       },
     ],
   },
@@ -176,22 +166,19 @@ const featureComparison: { title: string; rows: ComparisonRow[] }[] = [
         feature: 'Prometheus Metrics',
         bifrost: 'Native, no sidecars',
         litellm: 'Via callbacks',
-        bifrostCheck: true,
-        litellmCheck: true,
+    
       },
       {
         feature: 'OpenTelemetry',
         bifrost: 'OTel compatible',
         litellm: 'OTel compatible',
-        bifrostCheck: true,
-        litellmCheck: true,
+      
       },
       {
         feature: 'Request Logging',
-        bifrost: 'MySQl',
+        bifrost: 'Multiple backends',
         litellm: 'Multiple backends',
-        bifrostCheck: true,
-        litellmCheck: true,
+      
       },
     ],
   },
@@ -201,33 +188,31 @@ const featureComparison: { title: string; rows: ComparisonRow[] }[] = [
       {
         feature: 'Setup Time',
         bifrost: '30 seconds (NPX or Docker)',
-        litellm: 'Quick pip install',
+        litellm: '5-10 minute setup',
       },
       {
         feature: 'Web UI',
         bifrost: 'Real-time config',
         litellm: 'Admin panel available',
-        bifrostCheck: true,
+  
       },
-      { feature: 'Configuration', bifrost: 'Web UI, API, or file-based', litellm: 'YAML config' },
+      { feature: 'Configuration', bifrost: 'Web UI, API, or file-based', litellm: 'Web UI, API, or file-based' },
       {
         feature: 'MCP Support',
         bifrost: 'Native gateway',
         litellm: 'Beta integration',
-        bifrostCheck: true,
-        litellmCheck: true,
+      
       },
       {
         feature: 'Deployment Asset',
         bifrost: 'Single binary, Docker, K8s',
         litellm: 'Python package, Docker',
-        bifrostCheck: true,
-        litellmCheck: true,
+        
       },
       {
         feature: 'Docker Size',
         bifrost: '80 MB',
-        litellm: '',
+        litellm: '> 700 MB',
       },
     ],
   },
@@ -238,30 +223,27 @@ const featureComparison: { title: string; rows: ComparisonRow[] }[] = [
 
       {
         feature: 'Clustering',
-        bifrost: 'Enterprise',
-        litellm: 'Load balancer needed',
-        bifrostCheck: true,
+        bifrost: 'Available',
+        litellm: 'N/A',
+       
       },
       {
         feature: 'Adaptive load Balancing',
         bifrost: 'Dynamic weight adjustment',
-        litellm: null,
-        bifrostCheck: true,
-        litellmCheck: false,
+        litellm: 'N/A',
+      
       },
       {
         feature: 'Usage-Based Routing Rules',
         bifrost: 'Yes',
-        litellm: null,
-        bifrostCheck: true,
-        litellmCheck: false,
+        litellm: 'N/A',
+      
       },
       {
         feature: 'Plugin System',
         bifrost: 'Go-based',
         litellm: 'Python callbacks',
-        bifrostCheck: true,
-        litellmCheck: true,
+      
       },
       { feature: 'License', bifrost: 'Apache 2.0', litellm: 'MIT' },
     ],
@@ -311,15 +293,69 @@ const whenToMigrate = [
   'Need better cost control, semantic caching and adaptive load balancing',
 ]
 
-function ComparisonCell({ value, hasCheck }: { value: string | null; hasCheck?: boolean }) {
+const migrationFaqs: { question: string; answer: string }[] = [
+  {
+    question: 'How long does it take to migrate from LiteLLM to Bifrost?',
+    answer: 'Most migrations take 15-30 minutes. Since Bifrost provides an OpenAI-compatible API, you typically only need to change the base URL in your application. Provider configuration can be done through the web UI without editing config files.',
+  },
+  {
+    question: 'Will my existing LiteLLM virtual keys work with Bifrost?',
+    answer: 'LiteLLM virtual keys need to be recreated in Bifrost, but the concepts map directly. Bifrost virtual keys support the same functionality including team budgets, rate limits, and model restrictions. You can configure them via the web UI or API.',
+  },
+  {
+    question: 'Can I use the LiteLLM Python SDK with Bifrost?',
+    answer: 'Yes. You can point the LiteLLM Python SDK at Bifrost by setting the api_base to your Bifrost URL. This allows a gradual migration where you swap the backend without changing application code.',
+  },
+  {
+    question: 'What happens to my LiteLLM model routing configuration?',
+    answer: "Bifrost uses a provider/model format (e.g., openai/gpt-4o) for explicit routing. You can configure fallback chains, load balancing weights, and routing rules through Bifrost's web UI or configuration files.",
+  },
+  {
+    question: 'Is there any downtime during migration?',
+    answer: 'No. You can run Bifrost alongside LiteLLM during migration and switch traffic gradually. Both gateways can operate simultaneously, allowing you to validate Bifrost performance before fully cutting over.',
+  },
+]
+
+/** Cell value style for buyers-guide-style table: sy = green/yes, sn = gray/no, sp = orange/partial, sv = green metric */
+function tableCellStyle(
+  value: string | null,
+  hasCheck: boolean | undefined,
+  isLiteLLM: boolean
+): 'sy' | 'sn' | 'sp' | 'sv' {
+  if (value === null || value === '') return 'sn'
+  const v = value.toLowerCase().trim()
+  if (v === 'n/a') return 'sn'
+  if (hasCheck === false && isLiteLLM) return 'sn'
+  if (/\d+(\.\d+)?(µs|ms|s|%| rps)/i.test(value) || v.includes('99.999') || v.includes('1.68')) return 'sv'
+  const partialPhrases = [
+    'community-maintained',
+    'manual config',
+    'via callbacks',
+    'basic',
+    'self-hosted',
+    'available',
+    'load balancer needed',
+    'admin panel available',
+    'yaml config',
+    'beta integration',
+    'python package',
+    'python callbacks',
+    'multiple backends',
+    'unpredictable',
+    'async overhead',
+  ]
+  if (partialPhrases.some((s) => v.includes(s))) return 'sp'
+  return 'sy'
+}
+
+/** LiteLLM values that should be shown in orange (e.g. 40ms/GIL, 5-10 min setup, > 700 MB) */
+function isLitellmOrangeValue(val: string | null): boolean {
+  if (!val) return false
+  const v = val.toLowerCase()
   return (
-    <span className="inline-flex items-center gap-1.5">
-      <span className="inline-flex h-3.5 w-3.5 items-center justify-center">
-        {hasCheck === true && <CheckCircle2 className="h-3.5 w-3.5 text-[var(--accent-text)]" />}
-        {hasCheck === false && <XCircle className="h-3.5 w-3.5 text-gray-300" />}
-      </span>
-      {value && <span>{value}</span>}
-    </span>
+    />\s*\d+\s*mb/.test(v) ||
+    (v.includes('40ms') && v.includes('gil')) ||
+    /5-10\s*(minute|min)/.test(v)
   )
 }
 
@@ -499,49 +535,57 @@ export default function MigratingFromLiteLLMPage() {
               Feature-By-Feature Comparison
             </h2>
           </div>
-          <div className="space-y-6">
-            {featureComparison.map((section) => (
-              <div key={section.title} className="overflow-hidden border border-gray-200 bg-white">
-                <div className="border-b border-gray-200 bg-gray-50 px-4 py-3">
-                  <h3 className="text-xs font-medium tracking-wider text-gray-900 uppercase">
-                    {section.title}
-                  </h3>
-                </div>
-                <table className="w-full table-fixed">
-                  <colgroup>
-                    <col className="w-[40%]" />
-                    <col className="w-[30%]" />
-                    <col className="w-[30%]" />
-                  </colgroup>
-                  <thead>
-                    <tr className="border-b border-gray-200">
-                      <th className="px-4 py-2.5 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
-                        Feature
-                      </th>
-                      <th className="px-4 py-2.5 text-left text-xs font-medium tracking-wider text-[var(--accent-text)] uppercase">
-                        Bifrost
-                      </th>
-                      <th className="px-4 py-2.5 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
-                        LiteLLM
-                      </th>
+          <div className="mt-container">
+            <table className="mt">
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th className="col-b">Bifrost</th>
+                  <th>LiteLLM</th>
+                </tr>
+              </thead>
+              <tbody>
+                {featureComparison.map((section) => (
+                  <React.Fragment key={section.title}>
+                    <tr className="row-cat">
+                      <td colSpan={3}>{section.title}</td>
                     </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-200">
-                    {section.rows.map((row) => (
-                      <tr key={row.feature} className="transition-colors hover:bg-gray-50">
-                        <td className="px-4 py-2.5 text-sm text-gray-600">{row.feature}</td>
-                        <td className="px-4 py-2.5 text-sm font-medium text-gray-900">
-                          <ComparisonCell value={row.bifrost} hasCheck={row.bifrostCheck} />
-                        </td>
-                        <td className="px-4 py-2.5 text-sm text-gray-500">
-                          <ComparisonCell value={row.litellm} hasCheck={row.litellmCheck} />
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            ))}
+                    {section.rows.map((row) => {
+                      const isLanguage = row.feature === 'Language'
+                      const bifrostVal = row.bifrost ?? '—'
+                      const litellmVal = row.litellm ?? '—'
+                      const litellmClass = tableCellStyle(row.litellm, row.litellmCheck, true)
+                      const isAvailable =
+                        (row.litellm ?? '').toLowerCase().trim() === 'available'
+                      const litellmDisplayClass = isAvailable
+                        ? 'sy'
+                        : isLitellmOrangeValue(row.litellm)
+                          ? 'sp'
+                          : litellmClass
+                      return (
+                        <tr key={`${section.title}-${row.feature}`}>
+                          <td>{row.feature}</td>
+                          <td className="col-b-c">
+                            {isLanguage ? (
+                              <span className="arch-tag">{bifrostVal}</span>
+                            ) : (
+                              <span className="sy">{bifrostVal}</span>
+                            )}
+                          </td>
+                          <td>
+                            {isLanguage ? (
+                              <span className="arch-tag py">{litellmVal}</span>
+                            ) : (
+                              <span className={litellmDisplayClass}>{litellmVal}</span>
+                            )}
+                          </td>
+                        </tr>
+                      )
+                    })}
+                  </React.Fragment>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
@@ -657,7 +701,7 @@ response = client.chat.completions.create(
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">Common Migration Scenarios</h2>
           </div>
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-3">
             <div className="relative border border-gray-200 bg-white p-6">
               <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
               <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
@@ -682,28 +726,7 @@ response = client.chat.completions.create(
                 </pre>
               </div>
             </div>
-            <div className="relative border border-gray-200 bg-white p-6">
-              <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
-              <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
-              <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
-              <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
-              <h3 className="mb-2 text-gray-900">Migrating Custom Callbacks</h3>
-              <p className="mb-4 text-sm leading-relaxed text-gray-600">
-                LiteLLM callbacks can be replaced with Bifrost plugins or webhooks.
-              </p>
-              <div className="overflow-x-auto bg-gray-900 p-4">
-                <pre className="font-mono text-xs leading-relaxed text-gray-300">
-                  <code>{`{
-  "webhooks": {
-    "on_request":
-      "https://your-api.com/webhook/request",
-    "on_response":
-      "https://your-api.com/webhook/response"
-  }
-}`}</code>
-                </pre>
-              </div>
-            </div>
+            
             <div className="relative border border-gray-200 bg-white p-6">
               <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
               <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
@@ -737,7 +760,7 @@ client = openai.OpenAI(
                 <pre className="font-mono text-xs leading-relaxed text-gray-300">
                   <code>{`import litellm
 
-litellm.api_base = "http://localhost:8080"
+litellm.api_base = "http://localhost:8080/litellm"
 response = litellm.completion(
     model="openai/gpt-4o",
     messages=[{"role": "user",
@@ -832,6 +855,8 @@ response = litellm.completion(
           <DropInReplacement />
         </div>
       </section>
+
+      <FAQSection faqs={migrationFaqs} />
     </div>
   )
 }

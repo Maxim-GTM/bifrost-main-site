@@ -14,7 +14,6 @@ export async function submitPartnerApplication(formData: FormData) {
       companyName: formData.get('companyName') as string,
       companySize: formData.get('companySize') as string,
       companyHQ: formData.get('companyHQ') as string,
-      partnerType: formData.get('partnerType') as string,
       message: formData.get('message') as string,
     }
 
@@ -26,7 +25,6 @@ export async function submitPartnerApplication(formData: FormData) {
       !data.companyName ||
       !data.companySize ||
       !data.companyHQ ||
-      !data.partnerType ||
       !data.message
     ) {
       return { success: false, message: 'All fields are required.' }

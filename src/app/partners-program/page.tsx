@@ -176,12 +176,6 @@ export default function PartnersPage() {
                   <ArrowRight className="h-4 w-4" />
                 </Button>
               </Link>
-              <Link href="https://docs.getbifrost.ai/" target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" size="lg">
-                  View documentation
-                  <ExternalLink className="h-4 w-4" />
-                </Button>
-              </Link>
             </div>
           </div>
         </div>
@@ -215,7 +209,9 @@ export default function PartnersPage() {
                 mutual growth with dedicated resources and support.
               </p>
             </div>
-            <PartnerTypes />
+            <div className="mx-4 sm:mx-8">
+                <PartnerTypes />
+            </div>
           </div>
         </div>
 
@@ -295,30 +291,28 @@ export default function PartnersPage() {
         </div>
 
         {/* Center Content - Max 1100px */}
-        <div className="w-full max-w-[1100px] px-4 py-16 md:py-24">
+        <div className="w-full max-w-[1100px] px-4">
           <div className="absolute right-0 left-0 h-px w-full bg-black/10" />
 
           <div className="pt-8">
-            <div className="mb-10 text-center">
+            <div className="mb-0 text-center">
               <p className="mb-4 font-mono text-xs tracking-widest text-gray-400 uppercase">
                 [ ECOSYSTEM ]
               </p>
               <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
                 Join a growing partner ecosystem
               </h2>
-              <p className="mx-auto max-w-2xl text-gray-600">
+              <p className="mx-auto mb-4 max-w-2xl text-gray-600">
                 Bifrost integrates with the tools and platforms your customers already use.
               </p>
             </div>
-            <div className="group/marquee relative overflow-hidden">
-              <p className="mb-6 text-center font-mono text-xs font-medium tracking-widest text-gray-400">
-                TRUSTED BY
-              </p>
+            <div className="group/marquee relative mt-10 overflow-hidden px-12 py-10">
+              
               {/* Edge fade overlays */}
               <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-white to-transparent" />
               <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-white to-transparent" />
               <div className="overflow-hidden">
-                <div className="animate-marquee flex w-max shrink-0 gap-12 pr-12 group-hover/marquee:[animation-play-state:paused]">
+                <div className="animate-marquee flex w-max shrink-0 gap-12 group-hover/marquee:[animation-play-state:paused]">
                   {[...partnerLogos, ...partnerLogos].map((partner, i) => (
                     <a
                       key={`${partner.name}-${i}`}
@@ -372,7 +366,7 @@ export default function PartnersPage() {
         </div>
 
         {/* Center Content - Max 1100px */}
-        <div className="w-full max-w-[1100px] px-4 py-16 md:py-24">
+        <div className="w-full max-w-[1100px] px-4 py-16">
           <div className="absolute right-0 left-0 h-px w-full bg-black/10" />
 
           <div className="pt-8 text-center">
@@ -386,16 +380,6 @@ export default function PartnersPage() {
                 <Button size="lg">
                   Become a partner
                   <ArrowRight className="h-4 w-4" />
-                </Button>
-              </Link>
-              <Link
-                href="https://github.com/maximhq/bifrost"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button variant="outline" size="lg">
-                  View on GitHub
-                  <ExternalLink className="h-4 w-4" />
                 </Button>
               </Link>
             </div>

@@ -6,14 +6,6 @@ import { Loader2, CheckCircle2 } from 'lucide-react'
 
 const companySizes = ['1-10', '11-50', '51-200', '201-1000', '1001-5000', '5000+']
 
-const partnerTypes = [
-  'Cloud Provider / Hyperscaler',
-  'Global System Integrator',
-  'Technology Partner',
-  'Channel Partner',
-  'Others',
-]
-
 export default function PartnerForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [result, setResult] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
@@ -158,28 +150,6 @@ export default function PartnerForm() {
             placeholder="San Francisco, CA"
           />
         </div>
-      </div>
-
-      <div>
-        <label
-          htmlFor="partnerType"
-          className="mb-1.5 block font-mono text-xs tracking-wider text-gray-500 uppercase"
-        >
-          Partnership Type *
-        </label>
-        <select
-          id="partnerType"
-          name="partnerType"
-          required
-          className="w-full border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-900 transition-colors focus:border-[var(--accent)] focus:outline-none"
-        >
-          <option value="">Select type</option>
-          {partnerTypes.map((type) => (
-            <option key={type} value={type}>
-              {type}
-            </option>
-          ))}
-        </select>
       </div>
 
       <div>

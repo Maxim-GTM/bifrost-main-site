@@ -1,7 +1,10 @@
 import React from 'react'
 import { Metadata } from 'next'
-import FeatureMatrix from '@/components/resources/FeatureMatrix'
-import DropInReplacement from '@/components/resources/DropInReplacement'
+import Link from 'next/link'
+import FeatureMatrix from '../../../components/resources/FeatureMatrix'
+import DropInReplacement from '../../../components/resources/DropInReplacement'
+import FAQSection from '../../../components/resources/FAQSection'
+import { Button } from '../../../components/ui/Button'
 import {
   Zap,
   Shield,
@@ -34,8 +37,6 @@ import {
   Globe,
   Plug,
 } from 'lucide-react'
-import { Button } from '@/components/ui/Button'
-import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: "LLM Gateway Buyer's Guide 2026 | Compare Top AI Gateway Solutions",
@@ -239,6 +240,34 @@ const integrations = [
     icon: Globe,
     title: 'Monitoring',
     items: ['Prometheus metrics', 'OpenTelemetry tracing', 'Custom logging', 'Alert webhooks'],
+  },
+]
+
+const buyersGuideFaqs: { question: string; answer: string }[] = [
+  {
+    question: 'What is an LLM gateway and when do I need one?',
+    answer:
+      'An LLM gateway sits between your applications and AI providers like OpenAI and Anthropic. You need one when scaling beyond a single provider, when you require centralized cost tracking, when compliance demands audit trails, or when you need automatic failover for production reliability.',
+  },
+  {
+    question: 'How do I choose between a self-hosted and SaaS LLM gateway?',
+    answer:
+      'Self-hosted gateways like Bifrost and LiteLLM give you full data control and in-VPC deployment, which regulated industries often require. SaaS options like OpenRouter offer faster setup but route data through third-party infrastructure. Consider your compliance requirements, data sensitivity, and operational capacity.',
+  },
+  {
+    question: 'What makes Bifrost different from other LLM gateways?',
+    answer:
+      "Bifrost is built in Go for production-grade performance with 11 microsecond latency overhead at 5,000 RPS. It includes native MCP support, adaptive load balancing, built-in observability, and integrates with the Maxim AI evaluation platform. It's fully open source under Apache 2.0.",
+  },
+  {
+    question: 'Do LLM gateways add significant latency to API requests?',
+    answer:
+      'It depends on the gateway architecture. Python-based gateways typically add 10-50ms of overhead. Go-based gateways like Bifrost add around 11 microseconds, which is negligible compared to LLM response times of hundreds of milliseconds to seconds.',
+  },
+  {
+    question: 'Can I use multiple LLM gateways together?',
+    answer:
+      'While technically possible, it adds unnecessary complexity. A single gateway like Bifrost supports 20+ providers with automatic failover, semantic caching, and unified observability. Using one gateway simplifies operations and provides consistent governance across all AI workloads.',
   },
 ]
 
@@ -1087,6 +1116,8 @@ export default function BuyersGuidePage() {
           <DropInReplacement />
         </div>
       </section>
+
+      <FAQSection faqs={buyersGuideFaqs} />
     </div>
   )
 }
