@@ -11,6 +11,7 @@ export type ModelMode =
   | 'voice'
   | 'completion'
   | 'audio_speech'
+  | 'realtime'
 
 export interface ModelData extends Record<string, any> {
   input_cost_per_token?: number

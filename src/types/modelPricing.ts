@@ -139,3 +139,4 @@ export type ModelMode =
   | 'audio_speech'
   | 'moderation'
   | 'rerank'
+  | 'realtime'
