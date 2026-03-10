@@ -1,41 +1,28 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useMemo } from 'react'
 import { useScrollAnimation } from '../../hooks/useScrollAnimation'
+
+function seededRandom(seed: number) {
+  const value = Math.sin(seed) * 10000
+  return value - Math.floor(value)
+}
 
 export function FloatingParticles() {
   const { scrollY } = useScrollAnimation()
-  const [particles, setParticles] = useState<
-    Array<{
-      id: number
-      size: number
-      initialX: number
-      initialY: number
-      speed: number
-      delay: number
-      opacity: number
-    }>
-  >([])
-  const [isClient, setIsClient] = useState(false)
-
-  useEffect(() => {
-    setIsClient(true)
-    setParticles(
+  const particles = useMemo(
+    () =>
       Array.from({ length: 30 }, (_, i) => ({
         id: i,
-        size: Math.random() * 8 + 3,
-        initialX: Math.random() * 100,
-        initialY: Math.random() * 100,
-        speed: Math.random() * 0.8 + 0.3,
-        delay: Math.random() * 8,
-        opacity: Math.random() * 0.8 + 0.4,
-      }))
-    )
-  }, [])
-
-  if (!isClient) {
-    return <div className="pointer-events-none absolute inset-0 overflow-hidden" />
-  }
+        size: seededRandom(i + 1) * 8 + 3,
+        initialX: seededRandom(i + 101) * 100,
+        initialY: seededRandom(i + 201) * 100,
+        speed: seededRandom(i + 301) * 0.8 + 0.3,
+        delay: seededRandom(i + 401) * 8,
+        opacity: seededRandom(i + 501) * 0.8 + 0.4,
+      })),
+    []
+  )
 
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden">

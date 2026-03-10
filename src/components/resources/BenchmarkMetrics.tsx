@@ -41,7 +41,6 @@ export default function BenchmarkMetrics({ metrics, title, description }: Benchm
           const bifrostWins = metric.lowerIsBetter
             ? metric.bifrost < metric.litellm
             : metric.bifrost > metric.litellm
-          const barWidth = Math.min(100, (metric.bifrost / metric.litellm) * 100)
 
           return (
             <div key={metric.name} className="p-4">

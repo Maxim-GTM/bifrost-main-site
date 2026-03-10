@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
 import FeatureMatrix from '@/components/resources/FeatureMatrix'
 import DropInReplacement from '@/components/resources/DropInReplacement'
+import FAQSection from '@/components/resources/FAQSection'
 import SetupSteps from '@/components/resources/SetupSteps'
 import {
   Activity,
@@ -208,15 +209,6 @@ const connectionTypes = [
   },
 ]
 
-const securityFeatures = [
-  'No automatic execution',
-  'Request-level filtering',
-  'Tool blacklisting',
-  'Permission mapping with RBAC',
-  'Complete audit trail',
-  'Environment-based controls',
-]
-
 const useCases = [
   {
     icon: Wrench,
@@ -278,6 +270,34 @@ const architectureFeatures = [
       'Unified tool discovery and execution',
       'Centralized security and audit trails',
     ],
+  },
+]
+
+const mcpGatewayFaqs: { question: string; answer: string }[] = [
+  {
+    question: 'What is an MCP gateway and why do I need one?',
+    answer:
+      'An MCP (Model Context Protocol) gateway connects AI models to external tools like filesystems, databases, and APIs. Without a gateway, each AI client needs individual tool configurations. Bifrost centralizes tool management, adds security controls, and provides audit trails for every tool execution.',
+  },
+  {
+    question: 'Does Bifrost automatically execute tool calls from AI models?',
+    answer:
+      'No. By default, Bifrost treats tool calls from LLMs as suggestions only. Your application must explicitly approve and trigger execution via a separate API call. This security-first design prevents unintended actions. Agent Mode with auto-execution is available but requires explicit opt-in configuration.',
+  },
+  {
+    question: 'What is Code Mode and how does it reduce costs?',
+    answer:
+      'Code Mode replaces traditional tool calling with AI-generated Python code that orchestrates multiple tools in a single round-trip. Instead of sending 100+ tool schemas in every request, Code Mode uses four meta-tools for on-demand schema loading. This cuts token usage by 50%+ and reduces LLM calls by 3-4x.',
+  },
+  {
+    question: 'What MCP transport protocols does Bifrost support?',
+    answer:
+      'Bifrost supports all three MCP transport types: STDIO for local process execution, HTTP for remote MCP servers, and SSE (Server-Sent Events) for real-time streaming connections. OAuth 2.0 authentication with automatic token refresh is built in.',
+  },
+  {
+    question: 'Can I use Bifrost as an MCP server for Claude Desktop?',
+    answer:
+      'Yes. Bifrost acts as both an MCP client (connecting to external tool servers) and an MCP server (exposing tools to clients). Claude Desktop and other MCP-compatible clients can connect to a single Bifrost gateway URL to discover and use all registered tools.',
   },
 ]
 
@@ -883,6 +903,8 @@ export default function MCPGatewayPage() {
           <DropInReplacement />
         </div>
       </section>
+
+      <FAQSection faqs={mcpGatewayFaqs} />
     </div>
   )
 }

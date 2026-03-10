@@ -132,6 +132,11 @@ const CornerBracketLink = forwardRef<HTMLAnchorElement, CornerBracketLinkProps>(
     const [displayText, setDisplayText] = useState<string[]>(() => children.split(''))
     const hasAnimated = useRef(false)
     const resolvedHoverColor = hoverColor ?? color
+    const {
+      onMouseEnter: originalOnMouseEnter,
+      onMouseLeave: originalOnMouseLeave,
+      ...restLinkProps
+    } = linkProps
 
     // Run scramble exactly once on mount
     useEffect(() => {
@@ -180,23 +185,23 @@ const CornerBracketLink = forwardRef<HTMLAnchorElement, CornerBracketLinkProps>(
     const handleMouseEnter = useCallback(
       (e: React.MouseEvent<HTMLAnchorElement>) => {
         setHovered(true)
-        linkProps.onMouseEnter?.(e)
+        originalOnMouseEnter?.(e)
       },
-      [linkProps.onMouseEnter]
+      [originalOnMouseEnter]
     )
 
     const handleMouseLeave = useCallback(
       (e: React.MouseEvent<HTMLAnchorElement>) => {
         setHovered(false)
-        linkProps.onMouseLeave?.(e)
+        originalOnMouseLeave?.(e)
       },
-      [linkProps.onMouseLeave]
+      [originalOnMouseLeave]
     )
 
     return (
       <Link
         ref={ref}
-        {...linkProps}
+        {...restLinkProps}
         style={{ textDecoration: 'none', ...style }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}

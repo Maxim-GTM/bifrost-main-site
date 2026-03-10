@@ -1,5 +1,7 @@
 'use client'
 
+/* eslint-disable @next/next/no-img-element */
+
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { formatProviderName } from '@/lib/model-library/api'
@@ -115,7 +117,7 @@ export default function ProvidersModal({ providers, isOpen, onClose }: Providers
           </div>
           {filteredProviders.length === 0 && (
             <div className="py-12 text-center text-gray-500">
-              No providers found matching "{searchQuery}"
+              No providers found matching &quot;{searchQuery}&quot;
             </div>
           )}
         </div>

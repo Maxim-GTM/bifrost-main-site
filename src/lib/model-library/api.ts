@@ -6,32 +6,8 @@ const BIFROST_API_URL = 'https://getbifrost.ai/datasheet'
 /**
  * Check if a value is a valid number (not null, not undefined, and is a number)
  */
-function isValidNumber(value: any): boolean {
+function isValidNumber(value: unknown): boolean {
   return typeof value === 'number' && !isNaN(value) && value !== null
-}
-
-/**
- * Convert string to title case for model names
- * Capitalizes the first letter of each word while preserving acronyms and numbers
- */
-function toTitleCase(str: string): string {
-  return str
-    .split(/\s+/)
-    .map((word) => {
-      // If word is all uppercase (acronym), keep it as is
-      if (word === word.toUpperCase() && word.length > 1 && /^[A-Z]+$/.test(word)) {
-        return word
-      }
-
-      // If word contains numbers or special chars, capitalize first letter only
-      if (/[0-9]/.test(word) || /[._-]/.test(word)) {
-        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
-      }
-
-      // Standard title case: capitalize first letter, lowercase rest
-      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
-    })
-    .join(' ')
 }
 
 /**

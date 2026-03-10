@@ -42,7 +42,7 @@ export default function Pagination({
   const pageHref = (p: number) =>
     buildHref(basePath, { ...query, page: p === 1 ? undefined : String(p) })
 
-  const PageLink = ({
+  const renderPageLink = ({
     p,
     label,
     isCurrent = false,
@@ -64,7 +64,7 @@ export default function Pagination({
     </Link>
   )
 
-  const Ellipsis = () => (
+  const renderEllipsis = () => (
     <span className="inline-flex h-10 min-w-[40px] items-center justify-center px-3 text-gray-400">
       …
     </span>
@@ -101,14 +101,15 @@ export default function Pagination({
 
         {/* Desktop/tablet: full page controls */}
         <div className="hidden items-center gap-2 sm:flex">
-          <PageLink p={1} isCurrent={page === 1} />
-          {start > 2 && <Ellipsis />}
+          {renderPageLink({ p: 1, isCurrent: page === 1 })}
+          {start > 2 && renderEllipsis()}
           {Array.from({ length: Math.max(0, end - start + 1) }, (_, i) => {
             const p = start + i
-            return <PageLink key={p} p={p} isCurrent={p === page} />
+            return <span key={p}>{renderPageLink({ p, isCurrent: p === page })}</span>
           })}
-          {end < totalPages - 1 && <Ellipsis />}
-          {totalPages > 1 && <PageLink p={totalPages} isCurrent={page === totalPages} />}
+          {end < totalPages - 1 && renderEllipsis()}
+          {totalPages > 1 &&
+            renderPageLink({ p: totalPages, isCurrent: page === totalPages })}
         </div>
 
         <Link

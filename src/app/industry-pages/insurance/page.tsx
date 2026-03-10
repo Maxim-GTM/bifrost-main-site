@@ -1,176 +1,229 @@
 import { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import FeatureMatrix from '@/components/resources/FeatureMatrix'
+import InterfaceHighlights from '@/components/resources/InterfaceHighlights'
 import DropInReplacement from '@/components/resources/DropInReplacement'
 import { Button } from '@/components/ui/Button'
 import { getCostCalculatorBaseUrl } from '@/lib/utils'
 import {
-  Activity,
   ArrowRight,
-  ShieldCheck,
-  FileText,
-  Lock,
-  SignalHigh,
-  Building2,
-  Stethoscope,
   Banknote,
+  ClipboardCheck,
+  Database,
   ExternalLink,
+  GitBranch,
+  KeyRound,
+  PlugZap,
+  Puzzle,
+  Route,
+  ScrollText,
+  Server,
+  ShieldAlert,
+  ShieldCheck,
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Bifrost for Healthcare & Life Sciences | Secure AI Gateway',
+  title: 'AI Infrastructure for Insurance Carriers | Bifrost',
   description:
-    'Deploy Bifrost as a secure AI gateway for healthcare and life sciences with auditability, governance, and low-latency routing.',
+    'Governed AI infrastructure for insurance carriers with centralized control, air-gapped security, NAIC-ready audit trails, and intelligent routing across providers.',
   alternates: {
-    canonical: 'https://www.getmaxim.ai/bifrost/resources/healthcare-life-sciences',
+    canonical: 'https://www.getmaxim.ai/bifrost/industry-pages/insurance',
+  },
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'AI Infrastructure for Insurance Carriers | Bifrost',
+  description:
+    'Governed AI infrastructure for insurance carriers with centralized control, air-gapped security, NAIC-ready audit trails, and intelligent routing across providers.',
+  url: 'https://www.getmaxim.ai/bifrost/industry-pages/insurance',
+  isPartOf: {
+    '@type': 'WebSite',
+    name: 'Bifrost by Maxim AI',
+    url: 'https://www.getmaxim.ai/bifrost/',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Maxim AI',
+    url: 'https://www.getmaxim.ai',
+  },
+  about: {
+    '@type': 'SoftwareApplication',
+    name: 'Bifrost',
+    applicationCategory: 'BusinessApplication',
+    description:
+      'Bifrost is governed AI infrastructure for insurance carriers with air-gapped security, NAIC-ready audit trails, and intelligent routing across AI providers.',
+  },
+  audience: {
+    '@type': 'Audience',
+    audienceType: 'Insurance carriers',
   },
 }
 
 const challenges = [
   {
-    icon: ShieldCheck,
-    title: 'Regulatory compliance',
+    icon: ShieldAlert,
+    title: 'Unsupervised AI usage',
     description:
-      'Strict privacy rules require complete visibility and control over every model request.',
+    'Teams use ungoverned public AI tools, sharing policyholder NPI with third-party servers without audit trails or organizational oversight.',
   },
   {
-    icon: Stethoscope,
-    title: 'Clinical safety',
+    icon: ClipboardCheck,
+    title: 'NAIC examination readiness',
     description:
-      'Patient-facing workflows demand guardrails, redaction, and safe fallback behavior.',
+      'With the Model Bulletin adopted across 20+ states, examiners now expect documented AI governance programs, bias controls, and complete decision trails.',
   },
   {
-    icon: SignalHigh,
-    title: 'Operational scale',
+    icon: Puzzle,
+    title: 'Fragmented provider access',
     description:
-      'High-volume clinical and research workloads require consistent, low-latency routing.',
+      'Carriers running multiple AI models across claims, underwriting, and operations manage separate API keys, inconsistent controls, and no unified cost visibility.',
   },
 ]
 
 const governance = [
   {
-    icon: Lock,
-    title: 'In-VPC and on-prem deployment',
-    description: 'Keep sensitive data inside your network perimeter with private deployments.',
+    icon: Server,
+    title: 'Air-gapped deployment',
+    description:
+      'Keep NPI and proprietary underwriting data inside your network with on-prem or in-VPC deployment.',
   },
   {
-    icon: FileText,
-    title: 'Audit-grade logs',
-    description: 'Capture full request trails for compliance and internal review.',
+    icon: ScrollText,
+    title: 'Examination-ready logs',
+    description:
+      'Capture every AI interaction in tamper-evident logs -- ready for NAIC examination, NYDFS review, or internal audit.',
   },
   {
-    icon: ShieldCheck,
-    title: 'Policy enforcement',
-    description: 'Apply content policies, PII redaction, and access controls consistently.',
-  },
-  {
-    icon: Banknote,
-    title: 'Cost governance',
-    description: 'Set budgets and enforce usage limits across departments and teams.',
-  },
-]
-
-const platformCapabilities = [
-  {
-    icon: Activity,
-    title: 'Centralized Observability',
-    description: 'Track every request with latency, provider, and routing details.',
-  },
-  {
-    icon: FileText,
-    title: 'Audit-Ready Evidence',
-    description: 'Generate compliance trails for internal and regulatory reviews.',
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Guardrails and Redaction',
-    description: 'Enforce safety policies and PII protection across workflows.',
+    icon: KeyRound,
+    title: 'Role-based access and SSO',
+    description:
+      'Integrate with Okta or Azure AD and assign access by role, department, or line of business across Bifrost resources.',
   },
   {
     icon: Banknote,
-    title: 'Budget Governance',
-    description: 'Prevent runaway spend with virtual keys and limits.',
-  },
-  {
-    icon: Building2,
-    title: 'Enterprise Deployment',
-    description: 'Deploy in VPC or on-prem with full network control.',
-  },
-  {
-    icon: SignalHigh,
-    title: 'High-Throughput Routing',
-    description: 'Maintain performance even under peak demand.',
-  },
-]
-
-const interfaceHighlights = [
-  {
-    src: '/bifrost-screenshot/dashboard-main.png',
-    title: 'Operations Dashboard',
-    description: 'Live monitoring for system health, routing, and usage visibility.',
-    objectPosition: 'center top',
-  },
-  {
-    src: '/bifrost-screenshot/logs.png',
-    title: 'Audit Logs',
-    description: 'Detailed request trails ready for compliance and forensic analysis.',
-    objectPosition: 'center center',
-  },
-  {
-    src: '/bifrost-screenshot/Virtual%20Keys.png',
-    title: 'Virtual Keys and Budgets',
-    description: 'Budget enforcement and access segmentation across teams.',
-    objectPosition: 'center',
+    title: 'Line-of-business cost controls',
+    description:
+      'Assign budgets per department, track spend by use case, and route routine queries to lower-cost models.',
   },
 ]
 
 const useCases = [
   {
-    title: 'Clinical documentation',
+    title: 'Enterprise knowledge search',
     description:
-      'Apply guardrails and redaction for summaries, notes, and documentation workflows.',
+      'AI-powered search across internal policies, manuals, and regulatory documents with governed access and caching.',
   },
   {
-    title: 'Care navigation and support',
-    description: 'Scale patient-facing AI with consistent policies and audit trails.',
+    title: 'Claims summarization and triage',
+    description:
+      'Generate summaries of FNOL reports, medical records, and adjuster notes to accelerate review and reduce manual processing time.',
   },
   {
-    title: 'Medical coding and billing',
-    description: 'Route requests through approved providers with full traceability.',
+    title: 'Fraud detection and SIU support',
+    description:
+      'Analyze unstructured claims documents and adjuster notes for fraud indicators while preserving a complete audit trail for SIU investigations.',
   },
   {
-    title: 'Research and trial analysis',
-    description: 'Support high-volume research workflows with predictable performance.',
+    title: 'Underwriting document extraction',
+    description:
+      'Extract data from ACORD forms, loss runs, and financial statements with multimodal support and MCP integration.',
   },
   {
-    title: 'Pharmacovigilance',
-    description: 'Monitor safety signals with governed model access and logging.',
+    title: 'Employee AI assistant',
+    description:
+      'Deploy governed AI tools for drafting correspondence, document summarization, and meeting prep with NPI redaction and usage controls.',
   },
   {
-    title: 'Enterprise copilots',
-    description: 'Deploy internal copilots with centralized governance and monitoring.',
+    title: 'Regulatory compliance automation',
+    description:
+      'Identify relevant state requirements, maintain auditable records of AI use across LoBs, and generate documentation for regulatory examinations.',
   },
 ]
 
-export default function HealthcareLifeSciencesPage() {
+const platformCapabilities = [
+  {
+    icon: Route,
+    title: 'Multi-provider routing',
+    description:
+      'Route requests across 1000+ models including OpenAI, Anthropic, or on-prem models through a unified API.',
+  },
+  {
+    icon: Database,
+    title: 'Semantic caching',
+    description:
+      'Reduce repeated query costs on regulatory, policy, and knowledge searches with response and document caching.',
+  },
+  {
+    icon: PlugZap,
+    title: 'MCP Gateway',
+    description:
+      'Connect AI agents to internal and external data sources through governed, audited access to every tool call.',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'NPI redaction and guardrails',
+    description:
+      'Auto-detect and redact SSNs, policy numbers, and driver\'s license data before it reaches any model or user.',
+  },
+  {
+    icon: ScrollText,
+    title: 'SIEM-integrated audit logs',
+    description:
+      'Export structured logs via OpenTelemetry to Splunk, Datadog, or QRadar with configurable long-term retention.',
+  },
+  {
+    icon: GitBranch,
+    title: 'Intelligent routing and failover',
+    description:
+      'Maintain claims and underwriting throughput during provider outages with automatic failover and cost-aware routing.',
+  },
+]
+
+const interfaceHighlights = [
+  {
+    riveSrc: '/rive/lln9t3OuTneA9tQOi8XMPNlfNCk.riv',
+    title: 'Operations dashboard',
+    description:
+      'Real-time monitoring of request volume, model usage, latency, and system health across all lines of business.',
+  },
+  {
+    riveSrc: '/rive/c0tVyQYkMtvuhTCKvA0SjGVHkY.riv',
+    title: 'Audit logs',
+    description:
+      'Track authentication, access, configuration changes, and data activity.',
+  },
+  {
+    riveSrc: '/rive/KBbyqDZQ7ko6obmMhOt3hllKA.riv',
+    title: 'Budget and cost tracking',
+    description:
+      'Per-department spend monitoring with threshold alerts and chargeback-ready attribution by line of business.',
+  },
+]
+
+export default function InsuranceTestPage() {
   const basePath = getCostCalculatorBaseUrl()
 
   return (
     <div className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
           <div className="text-center">
             <span className="provider-badge">[ ENTERPRISE READY: VPC | ON-PREM | AIR-GAPPED ]</span>
             <h1 className="mb-4 text-center text-4xl leading-[1.2] font-normal tracking-tight text-gray-900 md:text-5xl">
-              Secure AI Gateway for
+            Governed AI Infrastructure for
               <br />
-              <span className="text-[var(--accent-text)]">Healthcare &amp; Life Sciences</span>
+              <span className="text-[var(--accent-text)]">Insurance Carriers</span>
             </h1>
             <p className="mx-auto mb-8 max-w-2xl text-sm leading-relaxed text-gray-500 md:text-base">
-              Bifrost provides centralized governance, auditability, and low-latency routing for
-              regulated healthcare and life sciences workflows.
+              Bifrost provides centralized control over every model request with air-gapped
+              security, NAIC-ready audit trails, and intelligent routing across providers.
             </p>
             <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
               <Link href={`${basePath}/resources/benchmarks`}>
@@ -202,7 +255,7 @@ export default function HealthcareLifeSciencesPage() {
               [ CHALLENGES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Barriers to Scalable Healthcare AI
+            Operational risks behind insurance AI adoption
             </h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -232,11 +285,11 @@ export default function HealthcareLifeSciencesPage() {
               [ GOVERNANCE ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Enterprise Controls Without Slowing Care Teams
+            NAIC-ready controls without slowing underwriting teams
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Deploy Bifrost in your environment and enforce consistent policies across every model
-              request.
+              Deploy Bifrost in your environment and enforce consistent policies across every
+              model call.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -263,11 +316,11 @@ export default function HealthcareLifeSciencesPage() {
               [ PLATFORM CAPABILITIES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Built for Regulated Healthcare Operations
+              Give platform teams visibility across every model call
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Unified governance, routing, and observability with the controls healthcare
-              organizations require.
+              Centralized governance, routing, and observability for carriers deploying AI across
+              claims, underwriting, and operations.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -297,36 +350,13 @@ export default function HealthcareLifeSciencesPage() {
               [ BIFROST INTERFACE ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Operational Views Built for Healthcare Compliance
+              Functional views built for carrier compliance teams
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Focused dashboard panels that highlight routing, audit trails, and budget governance.
+              Designed for the visibility that platform engineers and compliance officers actually need.
             </p>
           </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {interfaceHighlights.map((shot) => (
-              <div key={shot.title} className="relative border border-gray-200 bg-white">
-                <div className="absolute top-3 left-3 z-10 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
-                <div className="absolute top-3 right-3 z-10 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
-                <div className="absolute bottom-3 left-3 z-10 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
-                <div className="absolute right-3 bottom-3 z-10 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
-                <div className="relative aspect-[16/9] overflow-hidden bg-gray-50">
-                  <Image
-                    src={shot.src}
-                    alt={shot.title}
-                    fill
-                    className="object-cover"
-                    style={{ objectPosition: shot.objectPosition }}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
-                </div>
-                <div className="border-t border-gray-200 p-4">
-                  <h3 className="mb-1 text-sm text-gray-900">{shot.title}</h3>
-                  <p className="text-xs text-gray-500">{shot.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <InterfaceHighlights items={interfaceHighlights} />
         </div>
       </section>
 
@@ -338,7 +368,7 @@ export default function HealthcareLifeSciencesPage() {
               [ USE CASES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Industry Workflows Powered by Bifrost
+              AI-powered insurance workflows with Bifrost
             </h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -366,11 +396,11 @@ export default function HealthcareLifeSciencesPage() {
             [ NEXT STEPS ]
           </p>
           <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-            Bring Regulated Healthcare AI Under Control
+            Deploy compliant AI across insurance workflows
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-gray-600">
-            Talk to the Bifrost team about deploying a compliant, low-latency gateway in your
-            environment.
+            Talk to the Bifrost team about deploying a compliant, air-gapped AI gateway that
+            satisfies NAIC requirements and gives your platform team visibility from day one.
           </p>
           <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
             <Link
@@ -383,9 +413,9 @@ export default function HealthcareLifeSciencesPage() {
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
-            <Link href={`${basePath}/resources/claude-code`}>
+            <Link href="https://www.getmaxim.ai/bifrost/enterprise">
               <Button variant="outline" size="lg">
-                Claude Code integration
+                Try Bifrost Enterprise
                 <ExternalLink className="h-4 w-4" />
               </Button>
             </Link>

@@ -1,13 +1,14 @@
+/* eslint-disable @next/next/no-img-element */
+
 import Link from 'next/link'
 import { formatDate, type GhostPost } from '../../lib/ghostBlog'
 
 interface PostCardProps {
   post: GhostPost
   type: 'articles' | 'blog'
-  index: number
 }
 
-export function PostCard({ post, type, index }: PostCardProps) {
+export function PostCard({ post, type }: PostCardProps) {
   return (
     <Link href={`/bifrost/${type}/${post.slug}`} className="group block h-full">
       <article className="flex h-full flex-col border border-gray-200 bg-white transition-all duration-300 hover:scale-[1.02] hover:shadow-lg">

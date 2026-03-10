@@ -4,6 +4,7 @@ import BenchmarkMetrics from '@/components/resources/BenchmarkMetrics'
 import StressTestLive from '@/components/resources/StressTestLive'
 import DropInReplacement from '@/components/resources/DropInReplacement'
 import FeatureMatrix from '@/components/resources/FeatureMatrix'
+import FAQSection from '@/components/resources/FAQSection'
 import {
   primaryMetrics,
   overheadMetrics,
@@ -22,6 +23,34 @@ export const metadata = {
     canonical: 'https://www.getmaxim.ai/bifrost/resources/benchmarks',
   },
 }
+
+const benchmarkFaqs: { question: string; answer: string }[] = [
+  {
+    question: 'How were the Bifrost vs LiteLLM benchmarks conducted?',
+    answer:
+      'Both gateways were tested on identical AWS t3.xlarge instances (4 vCPU, 16GB RAM) with a 60ms mock OpenAI response. Tests ran at 500 RPS sustained load with 50 concurrent virtual users over multiple minutes to ensure statistical significance.',
+  },
+  {
+    question: 'Why is Bifrost so much faster than LiteLLM?',
+    answer:
+      "Bifrost is built in Go, which compiles to native machine code and uses goroutines for lightweight concurrency. LiteLLM is Python-based, which means it's subject to the Global Interpreter Lock (GIL), asyncio overhead, and higher memory consumption from dynamic typing and garbage collection.",
+  },
+  {
+    question: 'Does switching from LiteLLM to Bifrost require code changes?',
+    answer:
+      'No. Bifrost provides an OpenAI-compatible API, so you only need to change the base URL in your application. The same SDKs, request formats, and response structures work without modification.',
+  },
+  {
+    question: 'What does "gateway overhead" mean in these benchmarks?',
+    answer:
+      "Gateway overhead measures the additional latency the proxy adds on top of the actual LLM provider response time. Bifrost adds approximately 11 microseconds of overhead per request, meaning it's essentially transparent in the request pipeline.",
+  },
+  {
+    question: 'Can Bifrost handle higher throughput than what the benchmarks show?',
+    answer:
+      'Yes. The published benchmarks test at 500 and 5,000 RPS, but Bifrost maintains 100% success rate and stable latency even under stress tests beyond these levels. The Go architecture scales linearly with available CPU cores.',
+  },
+]
 
 export default function BenchmarksPage() {
   return (
@@ -309,6 +338,8 @@ export default function BenchmarksPage() {
           </div>
         </div>
       </div>
+
+      <FAQSection faqs={benchmarkFaqs} />
     </div>
   )
 }

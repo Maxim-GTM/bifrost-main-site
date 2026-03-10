@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+
 import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 import { formatDate, type GhostPost } from '../../lib/ghostBlog'

@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import Link from 'next/link'
 import { getOSSFriends } from './actions'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/sections/Footer'

@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { SiteConfig } from '@/lib/built-with-bifrost/site.config'
 import Link from 'next/link'
 import { getApprovedSubmissions } from '@/lib/built-with-bifrost/storage'
 import ProjectCard from '@/components/built-with-bifrost/ProjectCard'

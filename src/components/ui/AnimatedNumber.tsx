@@ -16,15 +16,8 @@ export function AnimatedNumber({
   onComplete,
 }: AnimatedNumberProps) {
   const [displayValue, setDisplayValue] = useState(0)
-  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
-    setIsClient(true)
-  }, [])
-
-  useEffect(() => {
-    if (!isClient) return
-
     let startTime: number | undefined
     const startValue = 0
     const endValue = typeof value === 'string' ? parseInt(value.replace(/[^\d]/g, '')) : value
@@ -50,7 +43,7 @@ export function AnimatedNumber({
     }, 500) // Delay start
 
     return () => clearTimeout(timer)
-  }, [value, duration, isClient, onComplete])
+  }, [value, duration, onComplete])
 
   return (
     <span>

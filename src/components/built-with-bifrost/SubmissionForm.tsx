@@ -1,9 +1,10 @@
 'use client'
 
+/* eslint-disable @next/next/no-img-element */
+
 import { useState } from 'react'
 import { createSubmission } from '@/app/built-with-bifrost/actions'
-import { Upload, X, Loader2, FileText, Image as ImageIcon, Eye, Edit2 } from 'lucide-react'
-import ReactMarkdown from 'react-markdown'
+import { X, Loader2, Image as ImageIcon, Eye, Edit2 } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 
 import '@uiw/react-md-editor/markdown-editor.css'

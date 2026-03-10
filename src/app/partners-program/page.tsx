@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
 import PartnerTypes from '@/components/partners/PartnerTypes'
-import { ArrowRight, ExternalLink, Globe, Zap, ShieldCheck, Users } from 'lucide-react'
+import { ArrowRight, Globe, Zap, ShieldCheck, Users } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Bifrost Partner Program - Cloud, Technology & Channel Partnerships',

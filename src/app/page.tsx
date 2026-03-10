@@ -24,27 +24,12 @@ function isHardRefresh() {
 }
 
 export default function Home() {
-  const [isLoaded, setIsLoaded] = useState(true) // Default to loaded
-  const [showLoader, setShowLoader] = useState(false)
-  const [iframeSrc, setIframeSrc] = useState<string | null>(null)
+  const isReload = typeof window !== 'undefined' && isHardRefresh()
+  const [isLoaded, setIsLoaded] = useState(!isReload)
+  const [showLoader, setShowLoader] = useState(isReload)
   const iframeRef = useRef<HTMLIFrameElement>(null)
-  const initialHashRef = useRef<string>('')
-
-  useEffect(() => {
-    // Capture initial hash from URL on page load
-    const hash = typeof window !== 'undefined' ? window.location.hash : ''
-    initialHashRef.current = hash
-    // Load iframe without hash first, we'll navigate to hash after load
-    setIframeSrc('https://bifrost-site.getmaxim.ai/')
-  }, [])
-
-  useEffect(() => {
-    // Only show loader on hard refresh
-    if (isHardRefresh()) {
-      setIsLoaded(false)
-      setShowLoader(true)
-    }
-  }, [])
+  const initialHashRef = useRef<string>(typeof window !== 'undefined' ? window.location.hash : '')
+  const iframeSrc = 'https://bifrost-site.getmaxim.ai/'
 
   useEffect(() => {
     // Prevent scrollbar issues and ensure proper sizing
@@ -114,28 +99,26 @@ export default function Home() {
         </div>
       )}
 
-      {iframeSrc && (
-        <iframe
-          ref={iframeRef}
-          src={iframeSrc}
-          title="Bifrost Website"
-          loading="eager"
-          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
-          onLoad={handleLoad}
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            border: 'none',
-            margin: 0,
-            padding: 0,
-            display: 'block',
-            backgroundColor: 'white',
-          }}
-        />
-      )}
+      <iframe
+        ref={iframeRef}
+        src={iframeSrc}
+        title="Bifrost Website"
+        loading="eager"
+        sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
+        onLoad={handleLoad}
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          border: 'none',
+          margin: 0,
+          padding: 0,
+          display: 'block',
+          backgroundColor: 'white',
+        }}
+      />
 
       {/* Preload enterprise page iframe */}
       <IframePreloader src="https://bifrost-site.getmaxim.ai/enterprise" />

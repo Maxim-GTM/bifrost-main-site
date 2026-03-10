@@ -23,24 +23,20 @@ export default function ProvidersList({
   maxVisible = 20,
   showAllProvidersParam = false,
 }: ProvidersListProps) {
-  const [isModalOpen, setIsModalOpen] = useState(false)
   const searchParams = useSearchParams()
   const router = useRouter()
   const showAllProviders = showAllProvidersParam || searchParams?.get('showAllProviders') === 'true'
+  const [isModalOpen, setIsModalOpen] = useState(showAllProviders)
 
   const visibleProviders = showAllProviders ? providers : providers.slice(0, maxVisible)
   const remainingCount = providers.length - maxVisible
 
   // Open modal if URL parameter is set (for JS-enabled users)
   useEffect(() => {
-    if (showAllProviders && !isModalOpen && typeof window !== 'undefined') {
-      setIsModalOpen(true)
-      // Clean up URL parameter without page reload
-      if (searchParams?.get('showAllProviders') === 'true') {
-        router.replace(`${getCostCalculatorBaseUrl()}/llm-cost-calculator`, { scroll: false })
-      }
+    if (searchParams?.get('showAllProviders') === 'true') {
+      router.replace(`${getCostCalculatorBaseUrl()}/llm-cost-calculator`, { scroll: false })
     }
-  }, [showAllProviders, isModalOpen, router, searchParams])
+  }, [router, searchParams])
 
   return (
     <>

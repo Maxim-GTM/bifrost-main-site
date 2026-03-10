@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { use3DTilt } from '../../hooks/use3DTilt'
 
 export function AnimatedTerminal() {
@@ -14,46 +14,53 @@ export function AnimatedTerminal() {
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
   const { tilt, handleMouseMove, handleMouseEnter, handleMouseLeave } = use3DTilt()
 
-  const scenes = [
-    {
-      title: 'Load Testing',
-      lines: [
-        { text: '$ bifrost benchmark --rps 5000 --instance t3.xlarge', type: 'command', delay: 0 },
-        { text: 'Running benchmark on t3.xlarge instance...', type: 'info', delay: 1000 },
-        { text: '', type: 'empty', delay: 800 },
-        { text: '📊 Performance Metrics:', type: 'info', delay: 500 },
-        { text: '   Success Rate: 100.00% ✓', type: 'success', delay: 400 },
-        { text: '   Average Latency: 1.61s ✓', type: 'success', delay: 400 },
-        { text: '   Response Size: 10.32 KB ✓', type: 'success', delay: 400 },
-        { text: '   Peak Memory: 3.34 GB ✓', type: 'success', delay: 400 },
-        { text: '   Queue Wait: 1.67 µs ✓', type: 'success', delay: 400 },
-        { text: '   HTTP Request: 1.50s ✓', type: 'success', delay: 400 },
-        { text: '   Bifrost Overhead: 11 µs ✓', type: 'success', delay: 400 },
-        { text: '', type: 'empty', delay: 300 },
-        { text: '🏆 Benchmark complete!', type: 'highlight', delay: 600 },
-        { text: '   Ultra-low gateway overhead', type: 'success', delay: 300 },
-        { text: '   100% success rate maintained', type: 'success', delay: 300 },
-      ],
-    },
-    {
-      title: 'Failover Demo',
-      lines: [
-        { text: '$ bifrost failover --demo', type: 'command', delay: 0 },
-        { text: 'Initializing failover test...', type: 'info', delay: 800 },
-        { text: '', type: 'empty', delay: 500 },
-        { text: '🔄 Primary: OpenAI GPT-4 (active)', type: 'success', delay: 600 },
-        { text: '⚡ Backup: Anthropic Claude-3.5 (standby)', type: 'info', delay: 400 },
-        { text: '', type: 'empty', delay: 800 },
-        { text: '❌ Primary endpoint failure detected!', type: 'error', delay: 1200 },
-        { text: '⚡ Switching to backup provider...', type: 'warning', delay: 600 },
-        { text: '✅ Failover completed in 89ms', type: 'success', delay: 800 },
-        { text: '', type: 'empty', delay: 400 },
-        { text: '🔄 New Primary: Anthropic Claude-3.5 (active)', type: 'success', delay: 500 },
-        { text: '📊 Zero requests dropped during failover', type: 'highlight', delay: 600 },
-        { text: '🎯 99.9999% uptime maintained', type: 'success', delay: 400 },
-      ],
-    },
-  ]
+  const scenes = useMemo(
+    () => [
+      {
+        title: 'Load Testing',
+        lines: [
+          {
+            text: '$ bifrost benchmark --rps 5000 --instance t3.xlarge',
+            type: 'command',
+            delay: 0,
+          },
+          { text: 'Running benchmark on t3.xlarge instance...', type: 'info', delay: 1000 },
+          { text: '', type: 'empty', delay: 800 },
+          { text: '📊 Performance Metrics:', type: 'info', delay: 500 },
+          { text: '   Success Rate: 100.00% ✓', type: 'success', delay: 400 },
+          { text: '   Average Latency: 1.61s ✓', type: 'success', delay: 400 },
+          { text: '   Response Size: 10.32 KB ✓', type: 'success', delay: 400 },
+          { text: '   Peak Memory: 3.34 GB ✓', type: 'success', delay: 400 },
+          { text: '   Queue Wait: 1.67 µs ✓', type: 'success', delay: 400 },
+          { text: '   HTTP Request: 1.50s ✓', type: 'success', delay: 400 },
+          { text: '   Bifrost Overhead: 11 µs ✓', type: 'success', delay: 400 },
+          { text: '', type: 'empty', delay: 300 },
+          { text: '🏆 Benchmark complete!', type: 'highlight', delay: 600 },
+          { text: '   Ultra-low gateway overhead', type: 'success', delay: 300 },
+          { text: '   100% success rate maintained', type: 'success', delay: 300 },
+        ],
+      },
+      {
+        title: 'Failover Demo',
+        lines: [
+          { text: '$ bifrost failover --demo', type: 'command', delay: 0 },
+          { text: 'Initializing failover test...', type: 'info', delay: 800 },
+          { text: '', type: 'empty', delay: 500 },
+          { text: '🔄 Primary: OpenAI GPT-4 (active)', type: 'success', delay: 600 },
+          { text: '⚡ Backup: Anthropic Claude-3.5 (standby)', type: 'info', delay: 400 },
+          { text: '', type: 'empty', delay: 800 },
+          { text: '❌ Primary endpoint failure detected!', type: 'error', delay: 1200 },
+          { text: '⚡ Switching to backup provider...', type: 'warning', delay: 600 },
+          { text: '✅ Failover completed in 89ms', type: 'success', delay: 800 },
+          { text: '', type: 'empty', delay: 400 },
+          { text: '🔄 New Primary: Anthropic Claude-3.5 (active)', type: 'success', delay: 500 },
+          { text: '📊 Zero requests dropped during failover', type: 'highlight', delay: 600 },
+          { text: '🎯 99.9999% uptime maintained', type: 'success', delay: 400 },
+        ],
+      },
+    ],
+    []
+  )
 
   // Cleanup function
   const cleanup = useCallback(() => {
@@ -132,7 +139,7 @@ export function AnimatedTerminal() {
         }
       }, typingSpeed)
     }
-  }, [currentScene, currentLineIndex, currentCharIndex])
+  }, [currentScene, currentLineIndex, currentCharIndex, scenes])
 
   // Main animation controller
   useEffect(() => {

@@ -5,10 +5,6 @@ import {
   Activity,
   BookOpen,
   ShieldCheck,
-  Building2,
-  Stethoscope,
-  Shield,
-  ShoppingCart,
   Plug,
   RefreshCw,
   Zap,
@@ -18,7 +14,7 @@ import { getCostCalculatorBaseUrl } from '@/lib/utils'
 export const metadata: Metadata = {
   title: 'Bifrost Resources - Benchmarks, Guides & Integration Playbooks',
   description:
-    'Explore Bifrost benchmarks, buyer guidance, integration playbooks, and industry solutions. Everything you need to evaluate and deploy the fastest LLM gateway.',
+    'Explore Bifrost benchmarks, buyer guidance, and integration playbooks. Everything you need to evaluate and deploy the fastest LLM gateway.',
   keywords: [
     'Bifrost',
     'LLM gateway',
@@ -35,13 +31,13 @@ export const metadata: Metadata = {
     siteName: 'Bifrost by Maxim AI',
     title: 'Bifrost Resources - Benchmarks, Guides & Integration Playbooks',
     description:
-      'Explore Bifrost benchmarks, buyer guidance, integration playbooks, and industry solutions.',
+      'Explore Bifrost benchmarks, buyer guidance, and integration playbooks.',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Bifrost Resources - Benchmarks, Guides & Integration Playbooks',
     description:
-      'Explore Bifrost benchmarks, buyer guidance, integration playbooks, and industry solutions.',
+      'Explore Bifrost benchmarks, buyer guidance, and integration playbooks.',
   },
   alternates: {
     canonical: 'https://www.getmaxim.ai/bifrost/resources',
@@ -101,47 +97,12 @@ const resources = [
   },
 ]
 
-const industries = [
-  {
-    title: 'Financial Institutions',
-    description:
-      'Secure AI gateway for regulated banking, insurance, and investment services with audit-grade controls.',
-    href: `${basePath}/resources/financial-institutions`,
-    icon: Building2,
-    label: 'Financial Services',
-  },
-  {
-    title: 'Healthcare & Life Sciences',
-    description:
-      'Governed AI workflows with auditability and data controls for sensitive clinical systems.',
-    href: `${basePath}/resources/healthcare-life-sciences`,
-    icon: Stethoscope,
-    label: 'Healthcare',
-  },
-  {
-    title: 'Retail',
-    description:
-      'High-performance AI gateway for personalization, recommendations, and omnichannel retail experiences.',
-    href: `${basePath}/resources/retail`,
-    icon: ShoppingCart,
-    label: 'Retail',
-  },
-  {
-    title: 'Public Sector',
-    description:
-      'Secure deployments with policy enforcement for government and regulated programs.',
-    href: '#',
-    icon: Shield,
-    label: 'Government',
-  },
-]
-
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
   name: 'Bifrost Resources - Benchmarks, Guides & Integration Playbooks',
   description:
-    'Explore Bifrost benchmarks, buyer guidance, integration playbooks, and industry solutions. Everything you need to evaluate and deploy the fastest LLM gateway.',
+    'Explore Bifrost benchmarks, buyer guidance, and integration playbooks. Everything you need to evaluate and deploy the fastest LLM gateway.',
   url: 'https://www.getmaxim.ai/bifrost/resources',
   isPartOf: {
     '@type': 'WebSite',
@@ -240,75 +201,6 @@ export default function HomePage() {
                   </div>
                   <div className="p-6">
                     <p className="text-sm leading-relaxed text-gray-600">{resource.description}</p>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Right Side Decoration */}
-        <div className="hidden w-20 flex-none flex-col items-start gap-4 border-l border-black/10 xl:flex">
-          <div
-            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
-              backgroundSize: '4px 4px',
-            }}
-          ></div>
-        </div>
-      </div>
-
-      {/* Industries Grid */}
-      <div className="relative flex w-full justify-center">
-        {/* Left Side Decoration - Box Style */}
-        <div className="hidden w-20 flex-none flex-col items-end gap-4 border-r border-black/10 xl:flex">
-          <div
-            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
-              backgroundSize: '4px 4px',
-            }}
-          ></div>
-        </div>
-
-        {/* Center Content - Max 1100px */}
-        <div className="w-full max-w-[1100px] px-4 pb-16">
-          <div className="absolute right-0 left-0 h-px w-full bg-black/10" />
-
-          <div className="pt-8">
-            <div className="mb-10 text-center">
-              <p className="font-mono text-xs tracking-widest text-gray-400 uppercase">
-                [ INDUSTRIES ]
-              </p>
-            </div>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {industries.map((industry) => (
-                <Link
-                  key={industry.title}
-                  href={industry.href}
-                  className="group relative border border-gray-200 bg-white transition-all hover:border-[var(--accent-border)] hover:shadow-sm"
-                >
-                  <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
-                  <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
-                  <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
-                  <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
-                  <div className="flex items-center justify-between border-b border-gray-200 p-6">
-                    <div className="flex items-center gap-3">
-                      <div className="flex h-10 w-10 items-center justify-center bg-[var(--accent)]/10 text-[var(--accent-text)]">
-                        <industry.icon className="h-5 w-5" />
-                      </div>
-                      <div>
-                        <p className="font-mono text-xs tracking-widest text-gray-400 uppercase">
-                          {industry.label}
-                        </p>
-                        <h3 className="text-sm text-gray-900">{industry.title}</h3>
-                      </div>
-                    </div>
-                    <ArrowRight className="h-4 w-4 text-gray-400 transition-colors group-hover:text-[var(--accent-text)]" />
-                  </div>
-                  <div className="p-6">
-                    <p className="text-sm leading-relaxed text-gray-600">{industry.description}</p>
                   </div>
                 </Link>
               ))}

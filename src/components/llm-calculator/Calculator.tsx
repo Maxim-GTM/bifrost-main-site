@@ -37,8 +37,8 @@ export default function Calculator({ modelData, modelName }: CalculatorProps) {
   }
 
   return (
-    <div className="mx-auto w-full max-w-4xl">
-      <div className="rounded-lg border border-gray-200 bg-white p-8 shadow-sm">
+    <div className="mx-auto flex h-full w-full max-w-4xl">
+      <div className="flex h-full w-full flex-col rounded-lg border border-gray-200 bg-white p-8 shadow-sm">
         <div className="mb-6">
           <h2 className="mb-2 text-2xl font-medium text-gray-900">{modelName} Cost Calculator</h2>
           <p className="text-sm text-gray-500">
@@ -460,7 +460,7 @@ export default function Calculator({ modelData, modelName }: CalculatorProps) {
         </div>
 
         {/* Pricing Info */}
-        <div className="mt-6 border-t border-gray-200 pt-6">
+        <div className="mt-auto border-t border-gray-200 pt-6">
           <h4 className="mb-3 text-sm font-medium text-gray-700">Pricing Details</h4>
           <div className="grid grid-cols-1 gap-4 text-sm md:grid-cols-2">
             {modelData.input_cost_per_token != null && modelData.input_cost_per_token !== 0 && (

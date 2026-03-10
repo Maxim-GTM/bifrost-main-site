@@ -1,5 +1,7 @@
 'use client'
 
+/* eslint-disable @next/next/no-img-element */
+
 import { useState, useEffect } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
@@ -24,25 +26,21 @@ export default function ProvidersList({
   maxVisible = 20,
   showAllProvidersParam = false,
 }: ProvidersListProps) {
-  const [isModalOpen, setIsModalOpen] = useState(false)
   const searchParams = useSearchParams()
   const router = useRouter()
   const showAllProviders = showAllProvidersParam || searchParams?.get('showAllProviders') === 'true'
   const basePath = `${getModelLibraryBaseUrl()}/model-library`
+  const [isModalOpen, setIsModalOpen] = useState(showAllProviders)
 
   const visibleProviders = showAllProviders ? providers : providers.slice(0, maxVisible)
   const remainingCount = providers.length - maxVisible
 
   // Open modal if URL parameter is set (for JS-enabled users)
   useEffect(() => {
-    if (showAllProviders && !isModalOpen && typeof window !== 'undefined') {
-      setIsModalOpen(true)
-      // Clean up URL parameter without page reload
-      if (searchParams?.get('showAllProviders') === 'true') {
-        router.replace(basePath, { scroll: false })
-      }
+    if (searchParams?.get('showAllProviders') === 'true') {
+      router.replace(basePath, { scroll: false })
     }
-  }, [showAllProviders, isModalOpen, router, searchParams])
+  }, [basePath, router, searchParams])
 
   return (
     <>

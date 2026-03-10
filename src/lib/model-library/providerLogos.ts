@@ -9,7 +9,6 @@ import {
   getProviderMetadata,
   getProviderLogo as getProviderLogoFromConfig,
   getProviderDisplayName as getProviderDisplayNameFromConfig,
-  type ProviderMetadata,
 } from '@/config/providers'
 
 type ProviderInfo = {

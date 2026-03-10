@@ -9,9 +9,6 @@ const subpages = [
   'mcp-gateway',
   'migrating-from-litellm',
   'litellm-alternative',
-  'financial-institutions',
-  'healthcare-life-sciences',
-  'retail',
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {

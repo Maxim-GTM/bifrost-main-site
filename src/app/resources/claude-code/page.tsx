@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import SetupSteps from '@/components/resources/SetupSteps'
 import FeatureMatrix from '@/components/resources/FeatureMatrix'
 import DropInReplacement from '@/components/resources/DropInReplacement'
+import FAQSection from '@/components/resources/FAQSection'
 import {
   Zap,
   ArrowRight,
@@ -293,6 +294,34 @@ const complianceBadges = [
   { icon: Globe, label: 'GDPR', sub: 'EU data residency' },
   { icon: Heart, label: 'HIPAA', sub: 'BAA available' },
   { icon: Award, label: 'ISO 27001', sub: 'Certified' },
+]
+
+const claudeCodeFaqs: { question: string; answer: string }[] = [
+  {
+    question: 'How does Bifrost integrate with Claude Code?',
+    answer:
+      'Bifrost integrates through a single environment variable (ANTHROPIC_BASE_URL). Developers point Claude Code at the Bifrost gateway, and all requests are routed, logged, and governed transparently. No plugins, no code changes, no workflow disruption.',
+  },
+  {
+    question: 'Can I use Claude Code with other LLM providers through Bifrost?',
+    answer:
+      'Yes. Bifrost supports 20+ providers including Anthropic, AWS Bedrock, Google Vertex AI, OpenAI, and more. You can configure automatic failover so if Anthropic hits rate limits, requests transparently route to Bedrock or Vertex AI.',
+  },
+  {
+    question: 'How does Bifrost help control Claude Code costs across teams?',
+    answer:
+      'Bifrost provides virtual keys with per-team budgets, real-time cost tracking per request, and automated alerts when budgets approach limits. Platform teams get a centralized dashboard showing spend by team, project, and developer.',
+  },
+  {
+    question: 'Does Bifrost add latency to Claude Code requests?',
+    answer:
+      'Bifrost adds approximately 11 microseconds of gateway overhead per request at 5,000 RPS. This is effectively invisible in the context of LLM response times that typically range from hundreds of milliseconds to several seconds.',
+  },
+  {
+    question: 'What security features does Bifrost provide for Claude Code?',
+    answer:
+      'Bifrost includes PII redaction, content policy enforcement, role-based access control, SSO integration, complete audit trails, and in-VPC deployment. All requests are logged with metadata for SOC 2, HIPAA, and GDPR compliance.',
+  },
 ]
 
 export default function ClaudeCodePage() {
@@ -905,6 +934,8 @@ export default function ClaudeCodePage() {
           <DropInReplacement />
         </div>
       </section>
+
+      <FAQSection faqs={claudeCodeFaqs} />
     </div>
   )
 }

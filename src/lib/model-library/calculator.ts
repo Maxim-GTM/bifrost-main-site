@@ -1,4 +1,4 @@
-import { ModelData, ModelMode } from '@/types/model'
+import { ModelData } from '@/types/model'
 
 export interface CalculationInput {
   inputTokens?: number

@@ -1,179 +1,228 @@
 import { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import FeatureMatrix from '@/components/resources/FeatureMatrix'
+import InterfaceHighlights from '@/components/resources/InterfaceHighlights'
 import DropInReplacement from '@/components/resources/DropInReplacement'
 import { Button } from '@/components/ui/Button'
 import { getCostCalculatorBaseUrl } from '@/lib/utils'
 import {
   Activity,
+  AlertTriangle,
   ArrowRight,
   Banknote,
-  Building2,
-  CheckCircle2,
+  Bot,
   ExternalLink,
-  FileText,
-  Lock,
+  FileCheck,
+  KeyRound,
+  Plug,
+  ScrollText,
+  Server,
   ShieldCheck,
   SignalHigh,
+  Puzzle,
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Bifrost for Financial Institutions | Secure AI Gateway',
+  title: 'AI Gateway for Financial Services & Banking | Bifrost',
   description:
-    'Deploy Bifrost as a secure, low-latency AI gateway for regulated financial institutions with governance, auditability, and multi-provider resilience.',
+    'Secure and governed AI gateway for financial services and banking with air-gapped security, centralized governance, and audit trails for regulated institutions.',
   alternates: {
-    canonical: 'https://www.getmaxim.ai/bifrost/resources/financial-institutions',
+    canonical: 'https://www.getmaxim.ai/bifrost/industry-pages/financial-services-and-banking',
+  },
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'AI Gateway for Financial Services & Banking | Bifrost',
+  description:
+    'Secure and governed AI gateway for financial services and banking with air-gapped security, centralized governance, and audit trails for regulated institutions.',
+  url: 'https://www.getmaxim.ai/bifrost/industry-pages/financial-services-and-banking',
+  isPartOf: {
+    '@type': 'WebSite',
+    name: 'Bifrost by Maxim AI',
+    url: 'https://www.getmaxim.ai/bifrost/',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Maxim AI',
+    url: 'https://www.getmaxim.ai',
+  },
+  about: {
+    '@type': 'SoftwareApplication',
+    name: 'Bifrost',
+    applicationCategory: 'BusinessApplication',
+    description:
+      'Bifrost is a secure AI gateway for financial services and banking teams with centralized governance, air-gapped deployment options, and audit-ready controls.',
+  },
+  audience: {
+    '@type': 'Audience',
+    audienceType: 'Financial services and banking teams',
   },
 }
 
 const challenges = [
   {
-    icon: ShieldCheck,
-    title: 'Compliance bottlenecks',
+    icon: AlertTriangle,
+    title: 'Shadow AI exposure',
     description:
-      'GLBA privacy rules, FFIEC guidance, and audit requirements demand full oversight of every model interaction.',
+      'Most financial institutions have usage policies but no technical controls to prevent employees from using ungoverned AI tools with client data.',
   },
   {
-    icon: Building2,
-    title: 'Operational fragmentation',
+    icon: ScrollText,
+    title: 'No audit trail',
     description:
-      'Legacy systems make it difficult to deploy AI consistently across lending, AML monitoring, and risk operations.',
+      'Most institutions cannot produce a clear audit trail of how AI systems are being used across the organization.',
   },
   {
-    icon: SignalHigh,
-    title: 'Performance and scale',
+    icon: Puzzle,
+    title: 'Fragmented model management',
     description:
-      'Fraud detection and market-risk workflows require low latency and predictable throughput under peak demand.',
+      'Teams running separate provider keys create cost overruns, inconsistent audit trails, and no central visibility for platform or compliance teams.',
   },
 ]
 
 const governance = [
   {
-    icon: Lock,
-    title: 'In-VPC and on-prem deployment',
+    icon: Server,
+    title: 'Self-hosted deployment',
     description:
-      'Keep regulated data inside your network perimeter with private deployments and custom networking controls.',
+      'Bifrost runs on-premises or in your VPC, giving you full control over how your data and client records are used.',
   },
   {
-    icon: FileText,
-    title: 'Audit-grade logs',
+    icon: FileCheck,
+    title: 'Examiner-ready audit logs',
     description:
-      'Capture complete request trails with user, provider, route, token, and latency metadata for compliance reviews.',
+      'Capture model and user activity in tamper-evident logs for risk, compliance, and internal audit review.',
   },
   {
-    icon: CheckCircle2,
-    title: 'Role-based access control',
+    icon: KeyRound,
+    title: 'SSO and role-based access',
     description:
-      'Apply fine-grained permissions and rate limits by team, environment, and application.',
+      'Integrate with IdPs such as Okta and Azure AD; enforce role-based permissions and information barriers across every user.',
   },
   {
     icon: Banknote,
-    title: 'Cost governance',
-    description: 'Virtual keys enforce budgets and spend limits across departments and projects.',
+    title: 'Department-level cost controls',
+    description:
+      'Set model access and spending limits by team or user, while tracking LLM costs across the org in real time.',
   },
 ]
 
 const useCases = [
   {
-    title: 'Fraud detection and investigation',
+    title: 'Enterprise knowledge search',
     description:
-      'Route high-sensitivity requests through approved providers with audit logs and policy enforcement.',
+      'Help employees find answers across internal policies, deal history, and product documentation instantly.',
   },
   {
-    title: 'Regulatory and compliance monitoring',
-    description: 'Centralize model access for monitoring and reporting across business units.',
+    title: 'Regulatory intelligence',
+    description:
+      'Monitor regulatory guidance, summarize changes, assess policy impact, and draft updates for compliance review.',
   },
   {
-    title: 'Credit and loan decisioning',
-    description: 'Apply guardrails and data controls while meeting strict latency requirements.',
+    title: 'Real-time fraud detection',
+    description:
+      'Add LLM reasoning to existing fraud scoring systems while maintaining required latency and review visibility.',
   },
   {
-    title: 'Customer support and servicing',
-    description: 'Scale AI assistance without exposing sensitive data or losing traceability.',
+    title: 'Credit and loan analysis',
+    description:
+      'Extract information from loan packages, populate credit models, and draft underwriting memos with audit history.',
   },
   {
-    title: 'Risk and market intelligence',
-    description: 'Optimize routing across providers to balance cost, quality, and latency.',
+    title: 'Code generation and modernization',
+    description:
+      'Assist developers with code generation, review, and refactoring while enforcing usage controls and credential protection.',
   },
   {
-    title: 'Enterprise AI copilots',
-    description: 'Enable secure internal copilots with centralized governance and monitoring.',
+    title: 'AML and KYC processing',
+    description:
+      'Analyze onboarding documents, verify beneficial ownership, and draft SAR narratives with complete audit records.',
   },
 ]
 
 const platformCapabilities = [
   {
-    icon: Activity,
-    title: 'Centralized Observability',
-    description: 'Track every request with latency, provider, and routing details.',
+    icon: Plug,
+    title: 'Drop-in SDK',
+    description:
+      'Replace existing AI gateways or SDKs and access 1000+ models through a single unified API.',
   },
   {
-    icon: FileText,
-    title: 'Audit-Ready Evidence',
-    description: 'Generate compliance trails for internal and regulatory reviews.',
+    icon: Activity,
+    title: 'Centralized observability',
+    description:
+      'Log every user activity, model calls, token usage, and guardrail events.',
+  },
+  {
+    icon: Bot,
+    title: 'MCP Gateway',
+    description:
+      'Give AI agents governed, auditable access to internal systems and approved enterprise tools.',
   },
   {
     icon: ShieldCheck,
-    title: 'Policy Enforcement',
-    description: 'Apply guardrails, redaction, and access control consistently.',
-  },
-  {
-    icon: Banknote,
-    title: 'Budget Governance',
-    description: 'Set limits per team and prevent runaway spend.',
-  },
-  {
-    icon: Building2,
-    title: 'Enterprise Deployment',
-    description: 'Deploy in VPC or on-prem with full network control.',
+    title: 'Guardrails and DLP',
+    description:
+      'Detect and redact SSNs, account numbers, and card data in real time.',
   },
   {
     icon: SignalHigh,
-    title: 'High-Throughput Routing',
-    description: 'Maintain performance even under peak load.',
+    title: 'Low-latency, high-throughput routing',
+    description:
+      'Delivers reliable AI routing under peak load of 10k+ RPS, with ~11 µs of gateway overhead.',
+  },
+  {
+    icon: Banknote,
+    title: 'Budget governance',
+    description:
+      'Track spend at a granular usage level, with intelligent routing to lower-cost models for simple tasks.',
   },
 ]
 
 const interfaceHighlights = [
   {
-    src: '/bifrost-screenshot/dashboard-main.png',
-    title: 'Operations Dashboard',
-    description: 'Live monitoring for system health, routing, and usage visibility.',
-    objectPosition: 'center top',
+    riveSrc: '/rive/lln9t3OuTneA9tQOi8XMPNlfNCk.riv',
+    title: 'Unified request dashboard',
+    description:
+      'Monitor live traffic by provider, model, latency, and error rate across every team and use case from a single view.',
   },
   {
-    src: '/bifrost-screenshot/logs.png',
-    title: 'Audit Logs',
-    description: 'Detailed request trails ready for compliance and forensic analysis.',
-    objectPosition: 'center center',
+    riveSrc: '/rive/c0tVyQYkMtvuhTCKvA0SjGVHkY.riv',
+    title: 'Model governance controls',
+    description:
+      'Configure approved models, access rules, and guardrails in one place without any code changes.',
   },
   {
-    src: '/bifrost-screenshot/Virtual%20Keys.png',
-    title: 'Virtual Keys and Budgets',
-    description: 'Budget enforcement and access segmentation across teams.',
-    objectPosition: 'center',
+    riveSrc: '/rive/KBbyqDZQ7ko6obmMhOt3hllKA.riv',
+    title: 'Budget and cost center tracking',
+    description:
+      'Track real-time spend by department and use case with configurable thresholds, instant alerts, and exportable chargeback reports.',
   },
 ]
 
-export default function FinancialInstitutionsPage() {
+export default function FinancialServicesAndBankingPage() {
   const basePath = getCostCalculatorBaseUrl()
 
   return (
     <div className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
           <div className="text-center">
             <span className="provider-badge">[ ENTERPRISE READY: VPC | ON-PREM | AIR-GAPPED ]</span>
             <h1 className="mb-4 text-center text-4xl leading-[1.2] font-normal tracking-tight text-gray-900 md:text-5xl">
-              Secure AI Gateway for
+              Secure and Governed AI Gateway for
               <br />
-              <span className="text-[var(--accent-text)]">Financial Institutions</span>
+              <span className="text-[var(--accent-text)]">Financial Services and Banking</span>
             </h1>
             <p className="mx-auto mb-8 max-w-2xl text-sm leading-relaxed text-gray-500 md:text-base">
-              Bifrost provides centralized governance, compliance-grade auditability, and
-              low-latency routing for banks, insurers, and investment platforms.
+            Centralized governance, air-gapped security, and complete audit trails built for regulated financial institutions.
             </p>
             <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
               <Link href={`${basePath}/resources/benchmarks`}>
@@ -205,8 +254,11 @@ export default function FinancialInstitutionsPage() {
               [ CHALLENGES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Barriers to scalable AI in financial services
+              Where AI deployments stall at financial institutions
             </h2>
+            <p className="mx-auto max-w-2xl text-gray-600">
+            Banks move quickly to experiment with AI, but governance, data controls, and platform ownership often lag behind.
+            </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {challenges.map((item) => (
@@ -235,11 +287,10 @@ export default function FinancialInstitutionsPage() {
               [ GOVERNANCE ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Enterprise-grade controls without slowing teams down
+              Controls that meet the compliance bar
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Deploy Bifrost in your environment and enforce consistent policies across every model
-              request.
+              Enforce consistent AI usage policies across all AI interactions.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -266,11 +317,11 @@ export default function FinancialInstitutionsPage() {
               [ PLATFORM CAPABILITIES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Designed for regulated financial operations
+              What platform and engineering teams actually need
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Unified governance, routing, and observability with the controls financial
-              institutions require.
+              Bifrost covers the infrastructure layer so your team can focus on the AI use cases that
+              create value for the business.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -300,36 +351,13 @@ export default function FinancialInstitutionsPage() {
               [ BIFROST INTERFACE ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Operational Views Built for Compliance
+              Operational visibility built for regulated environments
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Focused dashboard panels that highlight routing, audit trails, and budget governance.
+              Functional views for platform teams, compliance officers, and finance stakeholders.
             </p>
           </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {interfaceHighlights.map((shot) => (
-              <div key={shot.title} className="relative border border-gray-200 bg-white">
-                <div className="absolute top-3 left-3 z-10 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
-                <div className="absolute top-3 right-3 z-10 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
-                <div className="absolute bottom-3 left-3 z-10 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
-                <div className="absolute right-3 bottom-3 z-10 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
-                <div className="relative aspect-[16/9] overflow-hidden bg-gray-50">
-                  <Image
-                    src={shot.src}
-                    alt={shot.title}
-                    fill
-                    className="object-cover"
-                    style={{ objectPosition: shot.objectPosition }}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
-                </div>
-                <div className="border-t border-gray-200 p-4">
-                  <h3 className="mb-1 text-sm text-gray-900">{shot.title}</h3>
-                  <p className="text-xs text-gray-500">{shot.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <InterfaceHighlights items={interfaceHighlights} />
         </div>
       </section>
 
@@ -341,7 +369,7 @@ export default function FinancialInstitutionsPage() {
               [ USE CASES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Industry workflows powered by Bifrost
+              AI workflows in financial institutions, governed by Bifrost
             </h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -369,11 +397,10 @@ export default function FinancialInstitutionsPage() {
             [ NEXT STEPS ]
           </p>
           <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-            Bring regulated AI workloads under control
+            Control panel for regulated banking AI workflows
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-gray-600">
-            Talk to the Bifrost team about deploying a compliant, low-latency gateway in your
-            environment.
+            Talk to the Bifrost team about deploying a compliant, air-gapped gateway inside your environment.
           </p>
           <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
             <Link
@@ -405,7 +432,7 @@ export default function FinancialInstitutionsPage() {
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">Open Source & Enterprise</h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Everything you need to run AI in production, from free open source to enterprise-grade
+              Everything you need to run AI in production, from free, open source to enterprise-grade
               features.
             </p>
           </div>

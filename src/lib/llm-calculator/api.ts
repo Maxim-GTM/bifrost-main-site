@@ -1,7 +1,7 @@
 // Static data access for LLM models
 // Uses pre-generated data from scripts/generate-llm-data.ts
 
-import { ProcessedModel, ModelEntry, ModelData } from '@/types/model'
+import { ProcessedModel } from '@/types/model'
 import {
   LLM_MODELS,
   LLM_PROVIDERS,
@@ -152,7 +152,7 @@ export function formatProviderName(provider: string): string {
  */
 export function searchModels(query: string, provider?: string): ProcessedModel[] {
   const lowerQuery = query.toLowerCase()
-  let models = provider ? getModelsByProvider(provider) : LLM_MODELS
+  const models = provider ? getModelsByProvider(provider) : LLM_MODELS
 
   return models.filter(
     (model) =>

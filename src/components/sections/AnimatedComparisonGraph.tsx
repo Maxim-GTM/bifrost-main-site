@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 export function AnimatedComparisonGraph() {
   const [currentView, setCurrentView] = useState<'overview' | 'detailed'>('overview')
@@ -9,7 +9,6 @@ export function AnimatedComparisonGraph() {
     'idle' | 'loading' | 'revealing' | 'complete'
   >('idle')
   const [visibleMetrics, setVisibleMetrics] = useState<number[]>([])
-  const [isClient, setIsClient] = useState(false)
   const observerRef = useRef<HTMLDivElement>(null)
 
   const metrics = [
@@ -112,13 +111,30 @@ export function AnimatedComparisonGraph() {
     },
   ]
 
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
+  const startAnimation = useCallback(() => {
+    if (animationPhase !== 'idle') return
+
+    setAnimationPhase('loading')
+
+    setTimeout(() => {
+      setAnimationPhase('revealing')
+
+      for (let index = 0; index < overviewMetrics.length; index += 1) {
+        setTimeout(() => {
+          setVisibleMetrics((prev) => [...prev, index])
+        }, index * 200)
+      }
+
+      setTimeout(
+        () => {
+          setAnimationPhase('complete')
+        },
+        overviewMetrics.length * 200 + 1000
+      )
+    }, 500)
+  }, [animationPhase, overviewMetrics.length])
 
   useEffect(() => {
-    if (!isClient) return
-
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
@@ -133,31 +149,7 @@ export function AnimatedComparisonGraph() {
     }
 
     return () => observer.disconnect()
-  }, [isClient])
-
-  const startAnimation = () => {
-    if (animationPhase !== 'idle') return
-
-    setAnimationPhase('loading')
-
-    setTimeout(() => {
-      setAnimationPhase('revealing')
-
-      // Reveal metrics one by one
-      overviewMetrics.forEach((_, index) => {
-        setTimeout(() => {
-          setVisibleMetrics((prev) => [...prev, index])
-        }, index * 200)
-      })
-
-      setTimeout(
-        () => {
-          setAnimationPhase('complete')
-        },
-        overviewMetrics.length * 200 + 1000
-      )
-    }, 500)
-  }
+  }, [startAnimation])
 
   const handleMetricClick = (index: number) => {
     setSelectedMetric(index)
@@ -170,10 +162,6 @@ export function AnimatedComparisonGraph() {
 
   const currentMetric = metrics[selectedMetric]
   const maxValue = Math.max(currentMetric.bifrost.value, currentMetric.litellm.value)
-
-  if (!isClient) {
-    return <div className="h-96 animate-pulse rounded-xl bg-gray-100" />
-  }
 
   return (
     <div ref={observerRef} className="mb-16">
