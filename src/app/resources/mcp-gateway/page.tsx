@@ -285,6 +285,11 @@ const mcpGatewayFaqs: { question: string; answer: string }[] = [
       'No. By default, Bifrost treats tool calls from LLMs as suggestions only. Your application must explicitly approve and trigger execution via a separate API call. This security-first design prevents unintended actions. Agent Mode with auto-execution is available but requires explicit opt-in configuration.',
   },
   {
+    question: 'How do I manage rate limits and resource usage across MCP servers?',
+    answer:
+      'An MCP gateway solves the problem of runaway tool-calling that can overload internal systems or hit provider API limits. The main objective is to regulate resource consumption while maintaining a smooth developer experience.\n\nKey features for resource management include:\n• Token & Request Budgeting: Set hard limits on tool calls per team to prevent backend system overloads and control costs.\n• Automated Failover: Reroute traffic to secondary servers or models if an MCP connection times out or fails.\n• Scale-Ready Architecture: Built to handle thousands of tool-calls concurrently without degrading performance or reliability.',
+  },
+  {
     question: 'What is Code Mode and how does it reduce costs?',
     answer:
       'Code Mode replaces traditional tool calling with AI-generated Python code that orchestrates multiple tools in a single round-trip. Instead of sending 100+ tool schemas in every request, Code Mode uses four meta-tools for on-demand schema loading. This cuts token usage by 50%+ and reduces LLM calls by 3-4x.',

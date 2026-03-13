@@ -432,7 +432,7 @@ const litellmAlternativeFaqs: { question: string; answer: string }[] = [
   {
     question: 'Why is Bifrost faster than LiteLLM?',
     answer:
-      "Bifrost is built in Go, a compiled language with native concurrency via goroutines. LiteLLM is Python-based, which introduces interpreter overhead, GIL limitations, and higher memory consumption. This architectural difference results in Bifrost delivering 11 microsecond gateway overhead compared to LiteLLM's approximately 40 milliseconds.",
+      "Bifrost is built in Go, a compiled language with native concurrency via goroutines. LiteLLM is Python-based, which introduces interpreter overhead, GIL limitations, and higher memory consumption. This architectural difference results in Bifrost delivering 11µs gateway overhead compared to LiteLLM's approximately 40 milliseconds.",
   },
   {
     question: 'Does Bifrost require Redis or external databases?',

@@ -236,9 +236,9 @@ const integrations = [
 
 const buyersGuideFaqs: { question: string; answer: string }[] = [
   {
-    question: 'What is an LLM gateway and when do I need one?',
+    question: 'How do I choose the right AI gateway for enterprise AI production?',
     answer:
-      'An LLM gateway sits between your applications and AI providers like OpenAI and Anthropic. You need one when scaling beyond a single provider, when you require centralized cost tracking, when compliance demands audit trails, or when you need automatic failover for production reliability.',
+      'Choosing an enterprise AI gateway solves the complexity of managing multiple providers while ensuring AI applications remain fast and secure even at scale. The main objective is to provide a unified layer that handles high-volume traffic with governance and reliability.\n\nTo meet production standards, a gateway should offer:\n• Minimal Latency: Sub-microsecond overhead, like Bifrost\'s 11µs latency, prevents infrastructure bottlenecks.\n• Operational Reliability: Multi-model routing and automated failover ensure constant uptime.\n• Enterprise Governance: RBAC and token budgeting are essential for cost and access control.\n• Security at Scale: VPC or on-premise deployment ensures data privacy while handling thousands of concurrent requests.',
   },
   {
     question: 'How do I choose between a self-hosted and SaaS LLM gateway?',
@@ -248,17 +248,17 @@ const buyersGuideFaqs: { question: string; answer: string }[] = [
   {
     question: 'What makes Bifrost different from other LLM gateways?',
     answer:
-      "Bifrost is built in Go for production-grade performance with 11 microsecond latency overhead at 5,000 RPS. It includes native MCP support, adaptive load balancing, built-in observability, and integrates with the Maxim AI evaluation platform. It's fully open source under Apache 2.0.",
+      "Bifrost is built in Go for production-grade performance with 11 µs latency overhead at 5,000 RPS. It includes native MCP support, adaptive load balancing, built-in observability, and integrates with the Maxim AI evaluation platform. It's fully open source under Apache 2.0.",
   },
   {
     question: 'Do LLM gateways add significant latency to API requests?',
     answer:
-      'It depends on the gateway architecture. Python-based gateways typically add 10-50ms of overhead. Go-based gateways like Bifrost add around 11 microseconds, which is negligible compared to LLM response times of hundreds of milliseconds to seconds.',
+      'It depends on the gateway architecture. Python-based gateways typically add 10-50ms of overhead. Go-based gateways like Bifrost add around 11µs, which is negligible compared to LLM response times of hundreds of milliseconds to seconds.',
   },
   {
-    question: 'Can I use multiple LLM gateways together?',
+    question: 'How does Bifrost handle LLM provider downtime?',
     answer:
-      'While technically possible, it adds unnecessary complexity. A single gateway like Bifrost supports 20+ providers with automatic failover, semantic caching, and unified observability. Using one gateway simplifies operations and provides consistent governance across all AI workloads.',
+      'Bifrost ensures 99.999% uptime through automatic multi-provider failover. If a primary provider (like OpenAI) experiences an outage or rate limit, Bifrost instantly routes traffic to a pre-configured fallback (like Anthropic or AWS Bedrock) without requiring any code changes, ensuring your application stays live.',
   },
 ]
 

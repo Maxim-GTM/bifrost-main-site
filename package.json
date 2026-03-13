@@ -11,7 +11,8 @@
     "pages:build": "npm run generate:llm-data && npx @cloudflare/next-on-pages",
     "pages:dev": "npx wrangler pages dev .vercel/output/static --kv=BIFROST_KV --compatibility-date=2024-09-23 --compatibility-flag=nodejs_compat_v2 --compatibility-flag=nodejs_compat_populate_process_env",
     "dev:cf": "npm run pages:build && npm run pages:dev",
-    "generate:llm-data": "npx -y tsx scripts/generate-llm-data.ts"
+    "generate:llm-data": "npx -y tsx scripts/generate-llm-data.ts",
+    "build:pdf": "node generate-pdf.js"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.983.0",
@@ -75,6 +76,7 @@
     "eslint-config-prettier": "10.1.8",
     "prettier": "3.7.4",
     "prettier-plugin-tailwindcss": "0.7.2",
+    "puppeteer": "^24.38.0",
     "react-email": "5.0.6",
     "tailwindcss": "4.1.17",
     "typescript": "5.9.3",

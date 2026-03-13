@@ -1442,6 +1442,24 @@ input {
   min-width: 800px;
 }
 
+.mt.mt-fixed {
+  table-layout: fixed;
+}
+
+.mt-col-feature {
+  width: auto;
+}
+
+.mt-col-platform-wide {
+  /* Wider columns for 2-platform comparisons (Bifrost vs LiteLLM) */
+  width: clamp(300px, 28vw, 420px);
+}
+
+.mt-col-platform-narrow {
+  /* Narrower columns for multi-platform comparisons */
+  width: clamp(120px, 10vw, 155px);
+}
+
 .mt th {
   text-align: left;
   padding: 1rem;

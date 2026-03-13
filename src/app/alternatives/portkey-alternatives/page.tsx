@@ -25,45 +25,45 @@ import {
   Zap,
 } from 'lucide-react'
 export const metadata: Metadata = {
-    title: 'Bifrost — The High-Performance LiteLLM Alternative | LLM Gateway',
+    title: 'Bifrost — The High-Performance Portkey Alternative | LLM Gateway',
     description:
       'Bifrost is a production-grade LiteLLM alternative built in Go. 50x faster, zero-config deployment, native observability, and 100% success rate at 5,000 RPS.',
     alternates: {
-      canonical: 'https://www.getmaxim.ai/bifrost/alternatives/litellm-alternatives',
+      canonical: 'https://www.getmaxim.ai/bifrost/alternatives/portkey-alternatives',
     },
   }
 
   const performanceMetrics = [
-    { label: 'Faster Throughput', value: '9.5x', description: 'More requests processed per second' },
-    { label: 'Lower P99 Latency', value: '54x', description: 'Consistently fast response times' },
-    { label: 'Less Memory', value: '68%', description: 'More efficient resource usage' },
-    { label: 'Less Overhead', value: '40x', description: 'Minimal gateway processing time' },
+    { label: 'Mean Latency', value: '11µs', description: 'Gateway overhead per request' },
+    { label: 'Throughput', value: '5K RPS', description: 'Requests per second sustained' },
+    { label: 'Faster', value: '50x', description: 'Than Python-based gateways' },
+    { label: 'Providers', value: '20+', description: 'Model APIs supported' },
   ]
 
   const litellmLimitations = [
     {
       icon: Lock,
-      title: 'Python GIL bottleneck',
+      title: 'Usage-Based Pricing',
       description:
-        "Python's Global Interpreter Lock limits true parallelism, creating concurrency bottlenecks under high load.",
+        "Charges per recorded log ($9/100K requests). At 100M requests/month, costs can reach $9,000+ before LLM provider fees.",
     },
     {
       icon: RefreshCw,
-      title: 'Async Overhead',
+      title: 'SaaS-First Lock-in',
       description:
-        "Python's asyncio adds overhead in context switching and event loop management, especially with thousands of concurrent requests.",
+        "Self-hosted deployment is enterprise-only and multi-component. Most teams must route data through Portkey's cloud.",
     },
     {
       icon: HardDrive,
-      title: 'Database Dependency',
+      title: 'Limited MCP Support',
       description:
-        " Requires PostgreSQL and Redis for production deployments, adding operational complexity.",
+        " MCP gateway features remain basic. No native Agent Mode, Code Mode, or Tool Hosting for agentic AI workflows.",
     },
     {
       icon: Server,
-      title: 'Limited Enterprise Governance',
+      title: 'Log Retention Limits',
       description:
-        'No native RBAC, workspaces, audit logs, or granular budget controls out of the box.',
+        'Pro tier capped at 30-day log retention. Regulated industries (HIPAA, SOX, government) require 3-7+ years.',
     },
 
   ]
@@ -71,66 +71,67 @@ export const metadata: Metadata = {
   const litellmStrengths = [
     {
       icon: Zap,
-      title: 'Unified Provider Access',
+      title: 'Broad Provider Support',
       description:
-        "Single API for multiple LLM providers with OpenAI-compatible interface, enabling fast model switching during experimentation.",
+        "Unified API for 200+ providers and 1,600+ models across text, vision, audio, and image generation.",
     },
     {
       icon: Gauge,
-      title: 'Self-hosted and open source',
+      title: 'Full-Stack LLMOps',
       description:
-        'Full control over deployment, networking, and data flow under MIT license.',
+        'Combines gateway, observability, prompt management, and guardrails in a single managed platform.',
     },
     {
       icon: HardDrive,
-      title: 'Broad provider catalog',
+      title: 'Enterprise Compliance',
       description:
-        'Supports 100+ LLM APIs across major and niche providers.',
+        'SOC2 Type 2, ISO 27001, HIPAA, and GDPR certifications with SSO/SCIM integration.',
     },
     {
       icon: Cpu,
-      title: 'Strong community',
+      title: 'Developer Experience',
       description:
-        'Widely used and discussed across developer communities with active open-source contributions.',
+        'Well-documented SDKs for Python and Node.js with quick integration paths and active community.',
     },
   ]
 
   const whyMigrate = [
     {
       icon: Zap,
-      title: 'Performance at Scale',
+      title: 'Unpredictable Costs at Scale',
       description:
-        "Python’s architectural limits (GIL and async overhead) can lead to latency spikes exceeding 4 minutes at high concurrency (>500+ RPS), which compounds in multi-step agent workflows.",
+        "Usage-based pricing tied to log volume means costs grow linearly with traffic. A 100M request/month workload costs ~$9,000/month in gateway fees alone, on top of LLM provider charges.",
     },
     {
       icon: Shield,
-      title: 'Complex Self-Hosting',
+      title: 'Cloud-First Data Flow',
       description:
-        'Managing the community edition requires teams to handle their own uptime, security patches, database maintenance (PostgreSQL/Redis), and incident response without an SLA.',
+        'Most Portkey deployments route requests through their managed cloud. Self-hosting requires enterprise contracts and multi-component infrastructure, limiting data sovereignty options.',
     },
     {
       icon: DollarSign,
-      title: 'Basic Observability',
+      title: 'Performance Overhead',
       description:
-        'Built-in visibility for token analytics and cost attribution is limited, forcing teams to integrate complex external monitoring tools.',
+        'TypeScript/Node.js architecture introduces higher gateway latency compared to compiled alternatives. At high concurrency, event loop saturation can degrade throughput.',
     },
     {
       icon: Lock,
-      title: 'Limited Governance',
+      title: 'Limited Self-Host Flexibility',
       description:
-        'The lack of native support for virtual keys, hierarchical access, SSO/SCIM, or audit logs requires significant engineering effort to build custom governance layers.',
+        'The open-source gateway is lightweight but lacks enterprise features. Full governance, RBAC, and advanced routing require the commercial SaaS or enterprise self-host tier.',
+
     },
     {
       icon: BarChart3,
-      title: 'No Native MCP Support',
+      title: 'No Native MCP Agent Support',
       description:
-        "As AI agents become standard, the absence of native Model Context Protocol (MCP) governance restricts agentic tool orchestration.",
+        "As agentic AI workflows become mainstream, Portkey's MCP gateway capabilities remain limited. No native Agent Mode, Code Mode, or centralized tool hosting.",
     },
     {
       icon: RefreshCw,
-      title: 'No Guardrails',
+      title: 'No Adaptive Load Balancing',
       description:
-        "Without built-in guardrails for content moderation or PII redaction, teams must implement separate safety controls, risking compliance gaps in regulated industries.",
+        "Portkey supports basic weighted routing and fallbacks but lacks true adaptive load balancing that dynamically adjusts based on real-time latency and provider health.",
     },
   ]
 
@@ -147,31 +148,14 @@ export const metadata: Metadata = {
       title: 'Speed & Performance',
       rows: [
 
-        { feature: 'Language', bifrost: 'Go', litellm: 'Python' },
+        { feature: 'Language', bifrost: 'Go', litellm: 'TypeScript (Node.js)' },
 
         
         {
             feature: 'Gateway Overhead (per request)',
             bifrost: '11µs (Go native)',
-            litellm: '~8ms (Python GIL)',
+            litellm: '~20-25 ms @ 100 RPS',
           },
-        {
-          feature: 'Overhead at 5000 RPS',
-          bifrost: '11µs (t3.xlarge)',
-          litellm: 'Cannot sustain - fails',
-        },
-        
-        {
-            feature: 'Success Rate @ High Load',
-            bifrost: '100% @ 5K RPS',
-            litellm: 'Degrades >500 RPS',
-          },
-
-          {
-            feature: 'Memory Usage vs LiteLLM',
-            bifrost: '68% less',
-            litellm: 'Baseline (high)',
-          },  
 
           {
             feature: 'Object Pooling',
@@ -183,7 +167,7 @@ export const metadata: Metadata = {
       ],
     },
     {
-      title: 'ADAPTIVE LOAD BALANCING',
+      title: 'ROUTING AND RELIABILITY',
       rows: [
         
         {
@@ -198,10 +182,21 @@ export const metadata: Metadata = {
           litellm: '❌',
         
         },
-  
+        {
+            feature: 'Backpressure',
+            bifrost: '✅',
+            litellm: '❌',
+          
+          },
+          {
+            feature: 'Geo-Aware Routing',
+            bifrost: '✅',
+            litellm: '❌',
+          
+          },  
         { feature: 'Health-Aware Routing', bifrost: '✅', litellm: 'Fallback only' },
 
-        { feature: 'Latency-Based Routing', bifrost: '✅', litellm: 'Latency-aware' },
+        { feature: 'Latency-Based Routing', bifrost: '✅', litellm: '❌' },
       ],
     },
 
@@ -214,6 +209,12 @@ export const metadata: Metadata = {
             feature: 'MCP Server Management',
             bifrost: '✅',
             litellm: '✅',
+          
+          },
+          {
+            feature: 'MCP Agent Mode',
+            bifrost: '✅',
+            litellm: '❌',
           
           },
           {
@@ -256,7 +257,7 @@ export const metadata: Metadata = {
           {
             feature: 'Jailbreak Detection',
             bifrost: '✅',
-            litellm: '❌',
+            litellm: '✅',
           
           },
           {
@@ -281,13 +282,13 @@ export const metadata: Metadata = {
           {
             feature: 'Semantic Cache',
             bifrost: '✅',
-            litellm: '❌',
+            litellm: '✅(Cloud)',
           
           },
           {
             feature: 'Built-in Vector Store',
             bifrost: '✅',
-            litellm: '❌',
+            litellm: 'Cloud-managed',
           
           },
         ],
@@ -359,39 +360,81 @@ export const metadata: Metadata = {
       ],
     },
     {
-      title: 'Developer Experience',
-      rows: [
-        {
-          feature: 'Setup Time',
-          bifrost: '30 seconds (NPX or Docker)',
-          litellm: '5-10 minute setup',
-        },
-        {
-          feature: 'Web UI',
-          bifrost: 'Real-time config',
-          litellm: 'Admin panel available',
-    
-        },
-        { feature: 'Configuration', bifrost: 'Web UI, API, or file-based', litellm: 'Web UI, API, or file-based' },
-        {
-          feature: 'MCP Support',
-          bifrost: 'Native gateway',
-          litellm: 'Beta integration',
-        
-        },
-        {
-          feature: 'Deployment Asset',
-          bifrost: 'Single binary, Docker, K8s',
-          litellm: 'Python package, Docker',
+        title: 'SDK INTEGRATIONS',
+        rows: [
+         
+            {
+                feature: 'OpenAI SDK Drop-in',
+                bifrost: '✅',
+                litellm: '✅',
+               
+              },
+
+          {
+            feature: 'Anthropic SDK Drop-in',
+            bifrost: '✅',
+            litellm: '❌',
+           
+          },
+          {
+            feature: 'GenAI SDK Drop-in',
+            bifrost: '✅',
+            litellm: '❌',
           
-        },
-        {
-          feature: 'Docker Size',
-          bifrost: '80 MB',
-          litellm: '> 700 MB',
-        },
-      ],
-    },
+          },
+          {
+            feature: 'Bedrock SDK Drop-in',
+            bifrost: '✅',
+            litellm: '❌',
+          
+          },
+          {
+            feature: 'LiteLLM SDK Compat',
+            bifrost: '✅',
+            litellm: '❌',
+          
+          },
+          {
+            feature: 'Go SDK (Library)',
+            bifrost: '✅',
+            litellm: '❌',
+          
+          },
+        ],
+      },
+      {
+        title: 'ENTERPRISE AND DEPLOYMENT',
+        rows: [
+         
+            {
+                feature: 'Cluster Mode / HA',
+                bifrost: '✅',
+                litellm: '✅',
+               
+              },
+
+          {
+            feature: 'In-VPC Deployment',
+            bifrost: '✅',
+            litellm: '✅',
+           
+          },
+          {
+            feature: 'Helm Charts',
+            bifrost: '✅',
+            litellm: '❌',
+          
+          },
+          {
+            feature: 'Vault Support',
+            bifrost: '✅',
+            litellm: '✅',
+          
+          },
+          
+        ],
+      },
+    
     {
       title: 'UNIQUE FEATURES',
       rows: [
@@ -406,21 +449,45 @@ export const metadata: Metadata = {
         {
           feature: 'LiteLLM SDK Compat Layer',
           bifrost: '✅',
-          litellm: 'N/A',
+          litellm: '❌',
         
         },
         {
           feature: 'Prompt Studio / Editor',
           bifrost: '✅',
-          litellm: '❌',
+          litellm: '✅',
         
         },
         {
           feature: 'Circuit Breaker',
           bifrost: '✅',
-          litellm: '❌',
+          litellm: '✅',
         
         },
+        {
+            feature: 'Traffic Mirroring',
+            bifrost: '✅',
+            litellm: '❌',
+          
+          },
+          {
+            feature: 'Mock Responses',
+            bifrost: '✅',
+            litellm: '❌',
+          
+          },
+          {
+            feature: 'Self-Hosted Model Mgmt',
+            bifrost: '✅',
+            litellm: '❌',
+          
+          },
+          {
+            feature: 'Inference Endpoint Picker',
+            bifrost: '✅',
+            litellm: '❌',
+          
+          },
       ],
     },
   ]
@@ -471,10 +538,10 @@ export const metadata: Metadata = {
   ]
 
   const chooseLitellm = [
-    'You need 100+ provider integrations out of the box',
-    'Your entire stack is Python and you have deep Python expertise',
-    'You have heavily customized LiteLLM configurations and need time to migrate',
-    'You prefer extending functionality using Python callbacks and integrations',
+    'You need access to 200+ providers and 1,600+ models out of the box',
+    "You prefer a fully managed SaaS experience and don't want to self-host",
+    'Your request volume is low enough that usage-based pricing remains economical',
+    'Your team prefers Node.js/TypeScript ecosystem and extensibility',
   ]
   
   const summaryTable = [
@@ -541,16 +608,15 @@ export const metadata: Metadata = {
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
           <div className="text-center">
             <span className="font-mono text-[12px] leading-[15px] font-medium tracking-[0.04em] text-emerald-500 uppercase">
-              [&ensp;LITELLM ALTERNATIVES&ensp;]
+              [&ensp;PORTKEY ALTERNATIVES&ensp;]
             </span>
             <h1 className="mt-2 mb-4 text-center text-4xl leading-[1.2] font-normal tracking-tight text-gray-900 md:text-5xl">
-              Top LiteLLM Alternatives
+              Top Portkey Alternatives
               <br />
-              <span className="text-[var(--accent-text)]">for Scalable Enterprise AI </span>
+              <span className="text-[var(--accent-text)]">for Production-Grade Enterprise AI </span>
             </h1>
             <p className="mx-auto mb-8 max-w-3xl text-sm leading-relaxed text-gray-500 md:text-base">
-            LiteLLM can introduce performance bottlenecks, infrastructure overhead, and governance gaps as your application scales. 
-            Compare leading AI gateway platforms for multi-provider routing, cost management, access control, governance, observability, and enterprise-grade reliability.
+            Portkey can hit capability ceilings as teams scale agentic AI workflows and high-throughput systems. Compare leading AI gateway platforms for multi-provider routing, cost management, governance, observability, and enterprise-grade reliability.
             </p>
             <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
               <Link
@@ -574,51 +640,20 @@ export const metadata: Metadata = {
         </div>
       </section>
 
-      <section className="py-10">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <p className="mb-4 text-center font-mono text-[10px] tracking-widest text-gray-400 uppercase">
-            [ BIFROST PERFORMANCE AT A GLANCE ]
-          </p>
-          <div className="border-y border-gray-200">
-            <div className="w-full">
-              <div className="grid grid-cols-2 divide-y md:grid-cols-6 md:divide-y-0">
-                <div className="hidden border-r border-gray-200 md:col-span-1 md:block" />
-                {performanceMetrics.map((item) => (
-                  <div
-                    key={item.label}
-                    className="border-r border-gray-200 px-4 py-5 text-center last:border-r-0"
-                  >
-                    <div className="mb-1 font-mono text-xl leading-none text-[var(--accent-text)] md:text-2xl">
-                      {item.value}
-                    </div>
-                    <div className="mb-1 font-mono text-[10px] font-medium tracking-wider text-gray-500 uppercase">
-                      {item.label}
-                    </div>
-                    <div className="text-[11px] text-gray-400">{item.description}</div>
-                  </div>
-                ))}
-                <div className="hidden border-gray-200 md:col-span-1 md:block" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      
       <section className="bg-white py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-3xl text-center">
       <p className="mb-4 font-mono text-xs tracking-widest text-gray-400 uppercase">
-        [ LITELLM GATEWAY OVERVIEW ]
+        [ PORTKEY GATEWAY OVERVIEW ]
       </p>
 
       <h2 className="mb-6 text-2xl text-gray-900 md:text-3xl">
-        What is LiteLLM?
+        What is Portkey?
       </h2>
 
       <p className="leading-relaxed text-gray-600">
-        LiteLLM is an open-source, Python-based LLM proxy that provides a unified OpenAI-compatible
-        API for routing requests across multiple LLM providers. It has been widely adopted as a
-        lightweight gateway for teams getting started with multi-provider LLM integration.
+      Portkey is a TypeScript/Node.js-based AI gateway that provides a unified API for routing requests across multiple LLM providers. It offers observability, guardrails, and governance through a SaaS-first model, but its usage-based pricing and cloud-first deployment can introduce cost unpredictability at scale.
       </p>
     </div>
 
@@ -627,7 +662,7 @@ export const metadata: Metadata = {
       {/* Strengths of LiteLLM */}
       <div className="flex min-w-0 flex-col gap-6">
         <p className="font-mono text-xs font-medium uppercase tracking-widest text-[var(--accent-text)]">
-          Strengths of LiteLLM
+          Strengths of Portkey
         </p>
         <div className="flex min-h-0 flex-col gap-6">
           {litellmStrengths.map((item) => (
@@ -648,7 +683,7 @@ export const metadata: Metadata = {
       {/* Limitations of LiteLLM */}
       <div className="flex min-w-0 flex-col gap-6">
         <p className="font-mono text-xs font-medium uppercase tracking-widest text-gray-400">
-          Limitations of LiteLLM
+          Limitations of Portkey
         </p>
         <div className="flex min-h-0 flex-col gap-6">
           {litellmLimitations.map((item) => (
@@ -676,9 +711,9 @@ export const metadata: Metadata = {
             <p className="mb-4 font-mono text-xs tracking-widest text-gray-400 uppercase">
               [ PRODUCTION CHALLENGES ]
             </p>
-            <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">Why Teams Look for LiteLLM Alternatives?</h2>
+            <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">Why Teams Look for Portkey Alternatives?</h2>
             <p className="mx-auto max-w-3xl text-gray-600">
-            While LiteLLM works well for prototyping, teams scaling to production need infrastructure that doesn&apos;t become a bottleneck.
+            While Portkey works well for early-stage teams, scaling to production often exposes pricing overhead and deployment constraints.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -723,7 +758,7 @@ export const metadata: Metadata = {
                 <tr>
                   <th>Feature</th>
                   <th className="col-b">Bifrost</th>
-                  <th>LiteLLM</th>
+                  <th>Portkey</th>
                 </tr>
               </thead>
               <tbody>
@@ -818,7 +853,7 @@ export const metadata: Metadata = {
                 <tr>
                   <th>Features</th>
                   <th className="col-b">Bifrost</th>
-                  <th>Portkey</th>
+                  <th>LiteLLM</th>
                   <th>TrueFoundry</th>
                   <th>HAProxy</th>
                   <th>Envoy AI GW</th>
@@ -879,7 +914,7 @@ export const metadata: Metadata = {
                     <span className="sy inline-flex items-center"><Check className="h-5 w-5 shrink-0" strokeWidth={2.5} /></span>
                   </td>
                   <td>
-                    <span className="sp">Cloud</span>
+                    <span className="sn inline-flex items-center"><X className="h-5 w-5 shrink-0 text-red-500" strokeWidth={2.5} /></span>
                   </td>
                   <td>
                     <span className="sy inline-flex items-center"><Check className="h-5 w-5 shrink-0" strokeWidth={2.5} /></span>
@@ -980,7 +1015,7 @@ export const metadata: Metadata = {
                     <span className="sy inline-flex items-center"><Check className="h-5 w-5 shrink-0" strokeWidth={2.5} /></span>
                   </td>
                   <td>
-                    <span className="sn inline-flex items-center"><X className="h-5 w-5 shrink-0 text-red-500" strokeWidth={2.5} /></span>
+                    <span className="sy inline-flex items-center"><Check className="h-5 w-5 shrink-0" strokeWidth={2.5} /></span>
                   </td>
                   <td>
                     <span className="sn inline-flex items-center"><X className="h-5 w-5 shrink-0 text-red-500" strokeWidth={2.5} /></span>
@@ -1015,7 +1050,7 @@ export const metadata: Metadata = {
                     <span className="sn inline-flex items-center"><X className="h-5 w-5 shrink-0 text-red-500" strokeWidth={2.5} /></span>
                   </td>
                   <td>
-                    <span className="sn inline-flex items-center"><X className="h-5 w-5 shrink-0 text-red-500" strokeWidth={2.5} /></span>
+                    <span className="sy inline-flex items-center"><Check className="h-5 w-5 shrink-0" strokeWidth={2.5} /></span>
                   </td>
                   
                 </tr>
@@ -1025,7 +1060,7 @@ export const metadata: Metadata = {
                     <span className="sy inline-flex items-center"><Check className="h-5 w-5 shrink-0" strokeWidth={2.5} /></span>
                   </td>
                   <td>
-                    <span className="sn inline-flex items-center"><X className="h-5 w-5 shrink-0 text-red-500" strokeWidth={2.5} /></span>
+                    <span className="sy inline-flex items-center"><Check className="h-5 w-5 shrink-0" strokeWidth={2.5} /></span>
                   </td>
                   <td>
                     <span className="sn inline-flex items-center"><X className="h-5 w-5 shrink-0 text-red-500" strokeWidth={2.5} /></span>
@@ -1090,7 +1125,7 @@ export const metadata: Metadata = {
               <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-gray-300 opacity-40" />
               <div className="border-b border-gray-200 bg-gray-50 px-6 py-4">
                 <h3 className="text-sm font-medium tracking-wider text-gray-600 uppercase">
-                  LiteLLM might be better when
+                  Portkey might be better when
                 </h3>
               </div>
               <ul className="divide-y divide-gray-200">
@@ -1109,42 +1144,7 @@ export const metadata: Metadata = {
       </section>
 
       {/* Summary Table */}
-      <section className="bg-white py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-12 text-center">
-            <p className="mb-4 font-mono text-xs tracking-widest text-gray-400 uppercase">
-              [ COMPARISON SUMMARY ]
-            </p>
-            <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">At a Glance</h2>
-          </div>
-          <div className="overflow-hidden border border-gray-200 bg-white">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b border-gray-200 bg-gray-50">
-                  <th className="px-4 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
-                    Factor
-                  </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium tracking-wider text-[var(--accent-text)] uppercase">
-                    Bifrost
-                  </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
-                    LiteLLM
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                {summaryTable.map((row) => (
-                  <tr key={row.factor} className="transition-colors hover:bg-gray-50">
-                    <td className="px-4 py-3 text-sm font-medium text-gray-600">{row.factor}</td>
-                    <td className="px-4 py-3 text-sm font-medium text-gray-900">{row.bifrost}</td>
-                    <td className="px-4 py-3 text-sm text-gray-500">{row.litellm}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
+      
 
       <section className="bg-gray-50 py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">

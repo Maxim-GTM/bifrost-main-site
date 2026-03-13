@@ -308,14 +308,14 @@ const claudeCodeFaqs: { question: string; answer: string }[] = [
       'Yes. Bifrost supports 20+ providers including Anthropic, AWS Bedrock, Google Vertex AI, OpenAI, and more. You can configure automatic failover so if Anthropic hits rate limits, requests transparently route to Bedrock or Vertex AI.',
   },
   {
-    question: 'How does Bifrost help control Claude Code costs across teams?',
+    question: 'How do enterprises manage and track costs for Claude Code usage?',
     answer:
-      'Bifrost provides virtual keys with per-team budgets, real-time cost tracking per request, and automated alerts when budgets approach limits. Platform teams get a centralized dashboard showing spend by team, project, and developer.',
+      'Managing AI spend across multiple teams requires the granular governance tools provided by an LLM gateway. Bifrost provides virtual keys with per-team budgets, real-time cost tracking per request, and automated alerts when budgets approach limits. Enterprise teams get a centralized dashboard showing spend by team, project, and developer.',
   },
   {
     question: 'Does Bifrost add latency to Claude Code requests?',
     answer:
-      'Bifrost adds approximately 11 microseconds of gateway overhead per request at 5,000 RPS. This is effectively invisible in the context of LLM response times that typically range from hundreds of milliseconds to several seconds.',
+      'Bifrost adds approximately 11µs of gateway overhead per request at 5,000 RPS. This is effectively invisible in the context of LLM response times that typically range from hundreds of milliseconds to several seconds.',
   },
   {
     question: 'What security features does Bifrost provide for Claude Code?',

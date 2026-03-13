@@ -9,7 +9,7 @@ import './built-with-bifrost.css'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
-  subsets: ['latin'],
+  subsets: ['latin'], 
   display: 'swap',
 })
 

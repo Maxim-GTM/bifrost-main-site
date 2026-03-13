@@ -76,8 +76,43 @@ export default function FAQSection({
                 }`}
               >
                 <div className="overflow-hidden">
-                  <div className="border-t border-gray-200 px-5 pt-3 pb-5">
-                    <p className="text-sm leading-relaxed text-gray-600">{faq.answer}</p>
+                  <div className="border-t border-gray-200 px-5 pt-3 pb-5 text-sm leading-relaxed text-gray-600">
+                    {(() => {
+                      const blocks: { type: 'text' | 'bullet'; content: string }[] = []
+                      faq.answer.split('\n').forEach((line) => {
+                        const trimmed = line.trim()
+                        if (!trimmed) return
+                        if (trimmed.startsWith('•')) {
+                          blocks.push({ type: 'bullet', content: trimmed.replace(/^•\s*/, '') })
+                        } else {
+                          blocks.push({ type: 'text', content: trimmed })
+                        }
+                      })
+                      const elements: React.ReactNode[] = []
+                      let bulletGroup: string[] = []
+                      const flushBullets = () => {
+                        if (bulletGroup.length > 0) {
+                          elements.push(
+                            <ul key={`ul-${elements.length}`} className="mt-2 space-y-1.5 list-disc pl-5">
+                              {bulletGroup.map((b, i) => (
+                                <li key={i}>{b}</li>
+                              ))}
+                            </ul>
+                          )
+                          bulletGroup = []
+                        }
+                      }
+                      blocks.forEach((block) => {
+                        if (block.type === 'bullet') {
+                          bulletGroup.push(block.content)
+                        } else {
+                          flushBullets()
+                          elements.push(<p key={`p-${elements.length}`} className={elements.length > 0 ? 'mt-2' : ''}>{block.content}</p>)
+                        }
+                      })
+                      flushBullets()
+                      return elements
+                    })()}
                   </div>
                 </div>
               </div>

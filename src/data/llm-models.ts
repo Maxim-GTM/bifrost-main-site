@@ -1,5 +1,5 @@
 // Auto-generated file - DO NOT EDIT
-// Generated at: 2026-03-07T11:29:53.723Z
+// Generated at: 2026-03-11T13:03:43.339Z
 // Source: https://getbifrost.ai/datasheet
 // Run `npm run generate:llm-data` to regenerate
 
@@ -95,7 +95,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "us.writer.palmyra-x4-v1:0",
     "name": "us.writer.palmyra-x4-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 0.0000025,
       "max_input_tokens": 128000,
@@ -105,7 +105,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 0.00001,
       "supports_function_calling": true,
       "supports_pdf_input": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "palmyra-x4"
     },
     "slug": "us.writer.palmyra-x4-v1-0",
@@ -114,7 +114,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "us.writer.palmyra-x5-v1:0",
     "name": "us.writer.palmyra-x5-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 6e-7,
       "max_input_tokens": 1000000,
@@ -124,7 +124,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 0.000006,
       "supports_function_calling": true,
       "supports_pdf_input": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "palmyra-x5"
     },
     "slug": "us.writer.palmyra-x5-v1-0",
@@ -133,7 +133,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "writer.palmyra-x4-v1:0",
     "name": "writer.palmyra-x4-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 0.0000025,
       "max_input_tokens": 128000,
@@ -143,7 +143,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 0.00001,
       "supports_function_calling": true,
       "supports_pdf_input": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "palmyra-x4"
     },
     "slug": "writer.palmyra-x4-v1-0",
@@ -152,7 +152,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "writer.palmyra-x5-v1:0",
     "name": "writer.palmyra-x5-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 6e-7,
       "max_input_tokens": 1000000,
@@ -162,7 +162,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 0.000006,
       "supports_function_calling": true,
       "supports_pdf_input": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "palmyra-x5"
     },
     "slug": "writer.palmyra-x5-v1-0",
@@ -171,7 +171,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "amazon.nova-lite-v1:0",
     "name": "amazon.nova-lite-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 6e-8,
       "max_input_tokens": 300000,
@@ -184,7 +184,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_prompt_caching": true,
       "supports_response_schema": true,
       "supports_vision": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "nova-lite"
     },
     "slug": "amazon.nova-lite-v1-0",
@@ -193,7 +193,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "amazon.nova-2-lite-v1:0",
     "name": "amazon.nova-2-lite-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_read_input_token_cost": 7.5e-8,
       "input_cost_per_token": 3e-7,
@@ -209,7 +209,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_response_schema": true,
       "supports_video_input": true,
       "supports_vision": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "nova-2-lite"
     },
     "slug": "amazon.nova-2-lite-v1-0",
@@ -218,7 +218,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "amazon.nova-2-pro-preview-20251202-v1:0",
     "name": "amazon.nova-2-pro-preview-20251202-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_read_input_token_cost": 5.46875e-7,
       "input_cost_per_token": 0.0000021875,
@@ -236,7 +236,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_response_schema": true,
       "supports_video_input": true,
       "supports_vision": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "nova-2-pro"
     },
     "slug": "amazon.nova-2-pro-preview-20251202-v1-0",
@@ -245,7 +245,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "apac.amazon.nova-2-lite-v1:0",
     "name": "apac.amazon.nova-2-lite-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_read_input_token_cost": 8.25e-8,
       "input_cost_per_token": 3.3e-7,
@@ -261,7 +261,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_response_schema": true,
       "supports_video_input": true,
       "supports_vision": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "nova-2-lite"
     },
     "slug": "apac.amazon.nova-2-lite-v1-0",
@@ -270,7 +270,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "apac.amazon.nova-2-pro-preview-20251202-v1:0",
     "name": "apac.amazon.nova-2-pro-preview-20251202-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_read_input_token_cost": 5.46875e-7,
       "input_cost_per_token": 0.0000021875,
@@ -288,7 +288,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_response_schema": true,
       "supports_video_input": true,
       "supports_vision": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "nova-2-pro"
     },
     "slug": "apac.amazon.nova-2-pro-preview-20251202-v1-0",
@@ -297,7 +297,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "eu.amazon.nova-2-lite-v1:0",
     "name": "eu.amazon.nova-2-lite-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_read_input_token_cost": 8.25e-8,
       "input_cost_per_token": 3.3e-7,
@@ -313,7 +313,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_response_schema": true,
       "supports_video_input": true,
       "supports_vision": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "nova-2-lite"
     },
     "slug": "eu.amazon.nova-2-lite-v1-0",
@@ -322,7 +322,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "eu.amazon.nova-2-pro-preview-20251202-v1:0",
     "name": "eu.amazon.nova-2-pro-preview-20251202-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_read_input_token_cost": 5.46875e-7,
       "input_cost_per_token": 0.0000021875,
@@ -340,7 +340,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_response_schema": true,
       "supports_video_input": true,
       "supports_vision": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "nova-2-pro"
     },
     "slug": "eu.amazon.nova-2-pro-preview-20251202-v1-0",
@@ -349,7 +349,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "us.amazon.nova-2-lite-v1:0",
     "name": "us.amazon.nova-2-lite-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_read_input_token_cost": 8.25e-8,
       "input_cost_per_token": 3.3e-7,
@@ -365,7 +365,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_response_schema": true,
       "supports_video_input": true,
       "supports_vision": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "nova-2-lite"
     },
     "slug": "us.amazon.nova-2-lite-v1-0",
@@ -374,7 +374,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "us.amazon.nova-2-pro-preview-20251202-v1:0",
     "name": "us.amazon.nova-2-pro-preview-20251202-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_read_input_token_cost": 5.46875e-7,
       "input_cost_per_token": 0.0000021875,
@@ -392,7 +392,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_response_schema": true,
       "supports_video_input": true,
       "supports_vision": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "nova-2-pro"
     },
     "slug": "us.amazon.nova-2-pro-preview-20251202-v1-0",
@@ -426,7 +426,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "amazon.nova-micro-v1:0",
     "name": "amazon.nova-micro-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 3.5e-8,
       "max_input_tokens": 128000,
@@ -437,7 +437,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_function_calling": true,
       "supports_prompt_caching": true,
       "supports_response_schema": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "nova-micro"
     },
     "slug": "amazon.nova-micro-v1-0",
@@ -446,7 +446,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "amazon.nova-pro-v1:0",
     "name": "amazon.nova-pro-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 8e-7,
       "max_input_tokens": 300000,
@@ -459,7 +459,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_prompt_caching": true,
       "supports_response_schema": true,
       "supports_vision": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "nova-pro"
     },
     "slug": "amazon.nova-pro-v1-0",
@@ -710,7 +710,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "anthropic.claude-haiku-4-5-20251001-v1:0",
     "name": "anthropic.claude-haiku-4-5-20251001-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.00000125,
       "cache_read_input_token_cost": 1e-7,
@@ -731,7 +731,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 346,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-haiku-4-5"
     },
     "slug": "anthropic.claude-haiku-4-5-20251001-v1-0",
@@ -740,7 +740,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "anthropic.claude-haiku-4-5@20251001",
     "name": "anthropic.claude-haiku-4-5@20251001",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.00000125,
       "cache_read_input_token_cost": 1e-7,
@@ -762,7 +762,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 346,
       "supports_native_streaming": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-haiku-4-5"
     },
     "slug": "anthropic.claude-haiku-4-5-20251001",
@@ -862,7 +862,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "anthropic.claude-3-7-sonnet-20250219-v1:0",
     "name": "anthropic.claude-3-7-sonnet-20250219-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.00000375,
       "cache_read_input_token_cost": 3e-7,
@@ -881,7 +881,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_response_schema": true,
       "supports_tool_choice": true,
       "supports_vision": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-3-7-sonnet"
     },
     "slug": "anthropic.claude-3-7-sonnet-20250219-v1-0",
@@ -979,7 +979,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "anthropic.claude-opus-4-1-20250805-v1:0",
     "name": "anthropic.claude-opus-4-1-20250805-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.00001875,
       "cache_read_input_token_cost": 0.0000015,
@@ -1004,7 +1004,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 159,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-opus-4-1"
     },
     "slug": "anthropic.claude-opus-4-1-20250805-v1-0",
@@ -1013,7 +1013,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "anthropic.claude-opus-4-20250514-v1:0",
     "name": "anthropic.claude-opus-4-20250514-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.00001875,
       "cache_read_input_token_cost": 0.0000015,
@@ -1038,7 +1038,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 159,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-opus-4"
     },
     "slug": "anthropic.claude-opus-4-20250514-v1-0",
@@ -1047,7 +1047,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "anthropic.claude-opus-4-5-20251101-v1:0",
     "name": "anthropic.claude-opus-4-5-20251101-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.00000625,
       "cache_read_input_token_cost": 5e-7,
@@ -1072,7 +1072,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 159,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-opus-4-5"
     },
     "slug": "anthropic.claude-opus-4-5-20251101-v1-0",
@@ -1081,7 +1081,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "anthropic.claude-opus-4-6-v1",
     "name": "anthropic.claude-opus-4-6-v1",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.00000625,
       "cache_creation_input_token_cost_above_200k_tokens": 0.0000125,
@@ -1110,7 +1110,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 346,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-opus-4-6"
     },
     "slug": "anthropic.claude-opus-4-6-v1",
@@ -1119,7 +1119,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "global.anthropic.claude-opus-4-6-v1",
     "name": "global.anthropic.claude-opus-4-6-v1",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.00000625,
       "cache_creation_input_token_cost_above_200k_tokens": 0.0000125,
@@ -1148,7 +1148,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 346,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-opus-4-6"
     },
     "slug": "global.anthropic.claude-opus-4-6-v1",
@@ -1157,7 +1157,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "us.anthropic.claude-opus-4-6-v1",
     "name": "us.anthropic.claude-opus-4-6-v1",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.000006875,
       "cache_creation_input_token_cost_above_200k_tokens": 0.00001375,
@@ -1186,7 +1186,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 346,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-opus-4-6"
     },
     "slug": "us.anthropic.claude-opus-4-6-v1",
@@ -1195,7 +1195,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "eu.anthropic.claude-opus-4-6-v1",
     "name": "eu.anthropic.claude-opus-4-6-v1",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.000006875,
       "cache_creation_input_token_cost_above_200k_tokens": 0.00001375,
@@ -1224,7 +1224,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 346,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-opus-4-6"
     },
     "slug": "eu.anthropic.claude-opus-4-6-v1",
@@ -1233,7 +1233,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "au.anthropic.claude-opus-4-6-v1",
     "name": "au.anthropic.claude-opus-4-6-v1",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.000006875,
       "cache_creation_input_token_cost_above_200k_tokens": 0.00001375,
@@ -1262,7 +1262,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 346,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-opus-4-6"
     },
     "slug": "au.anthropic.claude-opus-4-6-v1",
@@ -1271,7 +1271,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "anthropic.claude-sonnet-4-6",
     "name": "anthropic.claude-sonnet-4-6",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.00000375,
       "cache_creation_input_token_cost_above_200k_tokens": 0.0000075,
@@ -1300,7 +1300,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 346,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-sonnet-4-6"
     },
     "slug": "anthropic.claude-sonnet-4-6",
@@ -1309,7 +1309,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "global.anthropic.claude-sonnet-4-6",
     "name": "global.anthropic.claude-sonnet-4-6",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.00000375,
       "cache_creation_input_token_cost_above_200k_tokens": 0.0000075,
@@ -1338,7 +1338,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 346,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-sonnet-4-6"
     },
     "slug": "global.anthropic.claude-sonnet-4-6",
@@ -1347,7 +1347,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "us.anthropic.claude-sonnet-4-6",
     "name": "us.anthropic.claude-sonnet-4-6",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.000004125,
       "cache_creation_input_token_cost_above_200k_tokens": 0.00000825,
@@ -1376,7 +1376,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 346,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-sonnet-4-6"
     },
     "slug": "us.anthropic.claude-sonnet-4-6",
@@ -1385,7 +1385,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "eu.anthropic.claude-sonnet-4-6",
     "name": "eu.anthropic.claude-sonnet-4-6",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.000004125,
       "cache_creation_input_token_cost_above_200k_tokens": 0.00000825,
@@ -1414,7 +1414,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 346,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-sonnet-4-6"
     },
     "slug": "eu.anthropic.claude-sonnet-4-6",
@@ -1423,7 +1423,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "au.anthropic.claude-sonnet-4-6",
     "name": "au.anthropic.claude-sonnet-4-6",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.000004125,
       "cache_creation_input_token_cost_above_200k_tokens": 0.00000825,
@@ -1452,7 +1452,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 346,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-sonnet-4-6"
     },
     "slug": "au.anthropic.claude-sonnet-4-6",
@@ -1461,7 +1461,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "anthropic.claude-sonnet-4-20250514-v1:0",
     "name": "anthropic.claude-sonnet-4-20250514-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.00000375,
       "cache_read_input_token_cost": 3e-7,
@@ -1490,7 +1490,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 159,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-sonnet-4"
     },
     "slug": "anthropic.claude-sonnet-4-20250514-v1-0",
@@ -1499,7 +1499,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "anthropic.claude-sonnet-4-5-20250929-v1:0",
     "name": "anthropic.claude-sonnet-4-5-20250929-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.00000375,
       "cache_read_input_token_cost": 3e-7,
@@ -1528,7 +1528,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 159,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-sonnet-4-5"
     },
     "slug": "anthropic.claude-sonnet-4-5-20250929-v1-0",
@@ -1786,7 +1786,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "apac.amazon.nova-lite-v1:0",
     "name": "apac.amazon.nova-lite-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 6.3e-8,
       "max_input_tokens": 300000,
@@ -1799,7 +1799,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_prompt_caching": true,
       "supports_response_schema": true,
       "supports_vision": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "nova-lite"
     },
     "slug": "apac.amazon.nova-lite-v1-0",
@@ -1808,7 +1808,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "apac.amazon.nova-micro-v1:0",
     "name": "apac.amazon.nova-micro-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 3.7e-8,
       "max_input_tokens": 128000,
@@ -1819,7 +1819,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_function_calling": true,
       "supports_prompt_caching": true,
       "supports_response_schema": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "nova-micro"
     },
     "slug": "apac.amazon.nova-micro-v1-0",
@@ -1828,7 +1828,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "apac.amazon.nova-pro-v1:0",
     "name": "apac.amazon.nova-pro-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 8.4e-7,
       "max_input_tokens": 300000,
@@ -1841,7 +1841,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_prompt_caching": true,
       "supports_response_schema": true,
       "supports_vision": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "nova-pro"
     },
     "slug": "apac.amazon.nova-pro-v1-0",
@@ -1925,7 +1925,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "apac.anthropic.claude-haiku-4-5-20251001-v1:0",
     "name": "apac.anthropic.claude-haiku-4-5-20251001-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.000001375,
       "cache_read_input_token_cost": 1.1e-7,
@@ -1946,7 +1946,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 346,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-haiku-4-5"
     },
     "slug": "apac.anthropic.claude-haiku-4-5-20251001-v1-0",
@@ -1979,7 +1979,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "apac.anthropic.claude-sonnet-4-20250514-v1:0",
     "name": "apac.anthropic.claude-sonnet-4-20250514-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.00000375,
       "cache_read_input_token_cost": 3e-7,
@@ -2008,7 +2008,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 159,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-sonnet-4"
     },
     "slug": "apac.anthropic.claude-sonnet-4-20250514-v1-0",
@@ -2017,7 +2017,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "au.anthropic.claude-sonnet-4-5-20250929-v1:0",
     "name": "au.anthropic.claude-sonnet-4-5-20250929-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.000004125,
       "cache_read_input_token_cost": 3.3e-7,
@@ -2046,7 +2046,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 346,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-sonnet-4-5"
     },
     "slug": "au.anthropic.claude-sonnet-4-5-20250929-v1-0",
@@ -2124,9 +2124,9 @@ export const LLM_MODELS: ProcessedModel[] = [
     "displayName": "command-r-plus"
   },
   {
-    "id": "azure_ai/claude-haiku-4-5",
+    "id": "azure/claude-haiku-4-5",
     "name": "claude-haiku-4-5",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "cache_creation_input_token_cost": 0.00000125,
       "cache_creation_input_token_cost_above_1hr": 0.000002,
@@ -2146,16 +2146,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_response_schema": true,
       "supports_tool_choice": true,
       "supports_vision": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "claude-haiku-4-5"
     },
     "slug": "claude-haiku-4-5",
     "displayName": "claude-haiku-4-5"
   },
   {
-    "id": "azure_ai/claude-opus-4-5",
+    "id": "azure/claude-opus-4-5",
     "name": "claude-opus-4-5",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "cache_creation_input_token_cost": 0.00000625,
       "cache_creation_input_token_cost_above_1hr": 0.00001,
@@ -2175,16 +2175,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_response_schema": true,
       "supports_tool_choice": true,
       "supports_vision": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "claude-opus-4-5"
     },
     "slug": "claude-opus-4-5",
     "displayName": "claude-opus-4-5"
   },
   {
-    "id": "azure_ai/claude-opus-4-6",
+    "id": "azure/claude-opus-4-6",
     "name": "claude-opus-4-6",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 0.000005,
       "output_cost_per_token": 0.000025,
@@ -2210,16 +2210,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 159,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "claude-opus-4-6"
     },
     "slug": "claude-opus-4-6",
     "displayName": "claude-opus-4-6"
   },
   {
-    "id": "azure_ai/claude-opus-4-1",
+    "id": "azure/claude-opus-4-1",
     "name": "claude-opus-4-1",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "cache_creation_input_token_cost": 0.00001875,
       "cache_creation_input_token_cost_above_1hr": 0.00003,
@@ -2239,16 +2239,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_response_schema": true,
       "supports_tool_choice": true,
       "supports_vision": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "claude-opus-4-1"
     },
     "slug": "claude-opus-4-1",
     "displayName": "claude-opus-4-1"
   },
   {
-    "id": "azure_ai/claude-sonnet-4-5",
+    "id": "azure/claude-sonnet-4-5",
     "name": "claude-sonnet-4-5",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "cache_creation_input_token_cost": 0.00000375,
       "cache_creation_input_token_cost_above_1hr": 0.000006,
@@ -2268,16 +2268,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_response_schema": true,
       "supports_tool_choice": true,
       "supports_vision": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "claude-sonnet-4-5"
     },
     "slug": "claude-sonnet-4-5",
     "displayName": "claude-sonnet-4-5"
   },
   {
-    "id": "azure_ai/claude-sonnet-4-6",
+    "id": "azure/claude-sonnet-4-6",
     "name": "claude-sonnet-4-6",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "cache_creation_input_token_cost": 0.00000375,
       "cache_creation_input_token_cost_above_1hr": 0.000006,
@@ -2298,7 +2298,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 346,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "claude-sonnet-4-6"
     },
     "slug": "claude-sonnet-4-6",
@@ -2340,9 +2340,9 @@ export const LLM_MODELS: ProcessedModel[] = [
     "displayName": "computer-use-preview"
   },
   {
-    "id": "azure_ai/gpt-oss-120b",
+    "id": "azure/gpt-oss-120b",
     "name": "gpt-oss-120b",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 1.5e-7,
       "output_cost_per_token": 6e-7,
@@ -2355,23 +2355,23 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_parallel_function_calling": true,
       "supports_response_schema": true,
       "supports_tool_choice": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "gpt-oss-120b"
     },
     "slug": "gpt-oss-120b",
     "displayName": "gpt-oss-120b"
   },
   {
-    "id": "azure_ai/model_router",
+    "id": "azure/model_router",
     "name": "model_router",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 1.4e-7,
       "output_cost_per_token": 0,
       "mode": "chat",
       "source": "https://azure.microsoft.com/en-us/pricing/details/ai-services/",
       "comment": "Flat cost of $0.14 per M input tokens for Azure AI Foundry Model Router infrastructure. Use pattern: azure_ai/model_router/<deployment-name> where deployment-name is your Azure deployment (e.g., azure-model-router)",
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "model-router"
     },
     "slug": "model_router",
@@ -2654,6 +2654,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_system_messages": true,
       "supports_tool_choice": true,
       "supports_vision": true,
+      "supports_none_reasoning_effort": true,
       "provider": "azure",
       "base_model": "gpt-5.1"
     },
@@ -2695,6 +2696,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_system_messages": true,
       "supports_tool_choice": true,
       "supports_vision": true,
+      "supports_none_reasoning_effort": true,
       "provider": "azure",
       "base_model": "gpt-5.1-chat"
     },
@@ -3066,6 +3068,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_system_messages": true,
       "supports_tool_choice": true,
       "supports_vision": true,
+      "supports_none_reasoning_effort": true,
       "provider": "azure",
       "base_model": "gpt-5.1"
     },
@@ -3107,6 +3110,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_system_messages": true,
       "supports_tool_choice": true,
       "supports_vision": true,
+      "supports_none_reasoning_effort": true,
       "provider": "azure",
       "base_model": "gpt-5.1-chat"
     },
@@ -4536,6 +4540,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_service_tier": true,
       "supports_vision": true,
+      "supports_none_reasoning_effort": true,
       "provider": "azure",
       "base_model": "gpt-5.1"
     },
@@ -4579,6 +4584,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_system_messages": true,
       "supports_tool_choice": false,
       "supports_vision": true,
+      "supports_none_reasoning_effort": true,
       "provider": "azure",
       "base_model": "gpt-5.1-chat"
     },
@@ -5098,6 +5104,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_system_messages": true,
       "supports_tool_choice": true,
       "supports_vision": true,
+      "supports_none_reasoning_effort": true,
       "provider": "azure",
       "base_model": "gpt-5.1"
     },
@@ -5139,6 +5146,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_system_messages": true,
       "supports_tool_choice": true,
       "supports_vision": true,
+      "supports_none_reasoning_effort": true,
       "provider": "azure",
       "base_model": "gpt-5.1-chat"
     },
@@ -5468,6 +5476,49 @@ export const LLM_MODELS: ProcessedModel[] = [
     "displayName": "gpt-5.2-codex"
   },
   {
+    "id": "azure/gpt-5.3-chat",
+    "name": "gpt-5.3-chat",
+    "provider": "azure",
+    "data": {
+      "cache_read_input_token_cost": 1.75e-7,
+      "cache_read_input_token_cost_priority": 3.5e-7,
+      "input_cost_per_token": 0.00000175,
+      "input_cost_per_token_priority": 0.0000035,
+      "max_input_tokens": 128000,
+      "max_output_tokens": 16384,
+      "max_tokens": 16384,
+      "mode": "chat",
+      "output_cost_per_token": 0.000014,
+      "output_cost_per_token_priority": 0.000028,
+      "supported_endpoints": [
+        "/v1/chat/completions",
+        "/v1/responses"
+      ],
+      "supported_modalities": [
+        "text",
+        "image"
+      ],
+      "supported_output_modalities": [
+        "text"
+      ],
+      "supports_function_calling": true,
+      "supports_native_streaming": true,
+      "supports_parallel_function_calling": true,
+      "supports_pdf_input": true,
+      "supports_prompt_caching": true,
+      "supports_reasoning": true,
+      "supports_response_schema": true,
+      "supports_system_messages": true,
+      "supports_tool_choice": true,
+      "supports_service_tier": true,
+      "supports_vision": true,
+      "provider": "azure",
+      "base_model": "gpt-5.3-chat"
+    },
+    "slug": "gpt-5.3-chat",
+    "displayName": "gpt-5.3-chat"
+  },
+  {
     "id": "azure/gpt-5.3-codex",
     "name": "gpt-5.3-codex",
     "provider": "azure",
@@ -5584,6 +5635,192 @@ export const LLM_MODELS: ProcessedModel[] = [
     "displayName": "gpt-5.2-pro-2025-12-11"
   },
   {
+    "id": "azure/gpt-5.4",
+    "name": "gpt-5.4",
+    "provider": "azure",
+    "data": {
+      "cache_read_input_token_cost": 2.5e-7,
+      "cache_read_input_token_cost_above_272k_tokens": 5e-7,
+      "cache_read_input_token_cost_priority": 5e-7,
+      "cache_read_input_token_cost_above_272k_tokens_priority": 0.000001,
+      "input_cost_per_token": 0.0000025,
+      "input_cost_per_token_above_272k_tokens": 0.000005,
+      "input_cost_per_token_priority": 0.000005,
+      "input_cost_per_token_above_272k_tokens_priority": 0.00001,
+      "max_input_tokens": 1050000,
+      "max_output_tokens": 128000,
+      "max_tokens": 128000,
+      "mode": "chat",
+      "output_cost_per_token": 0.000015,
+      "output_cost_per_token_above_272k_tokens": 0.0000225,
+      "output_cost_per_token_priority": 0.00003,
+      "output_cost_per_token_above_272k_tokens_priority": 0.000045,
+      "supported_endpoints": [
+        "/v1/chat/completions",
+        "/v1/batch",
+        "/v1/responses"
+      ],
+      "supported_modalities": [
+        "text",
+        "image"
+      ],
+      "supported_output_modalities": [
+        "text"
+      ],
+      "supports_function_calling": true,
+      "supports_native_streaming": true,
+      "supports_parallel_function_calling": true,
+      "supports_pdf_input": true,
+      "supports_prompt_caching": true,
+      "supports_reasoning": true,
+      "supports_response_schema": true,
+      "supports_system_messages": true,
+      "supports_tool_choice": true,
+      "supports_service_tier": true,
+      "supports_vision": true,
+      "provider": "azure",
+      "base_model": "gpt-5.4"
+    },
+    "slug": "gpt-5.4",
+    "displayName": "gpt-5.4"
+  },
+  {
+    "id": "azure/gpt-5.4-2026-03-05",
+    "name": "gpt-5.4-2026-03-05",
+    "provider": "azure",
+    "data": {
+      "cache_read_input_token_cost": 2.5e-7,
+      "cache_read_input_token_cost_above_272k_tokens": 5e-7,
+      "cache_read_input_token_cost_priority": 5e-7,
+      "cache_read_input_token_cost_above_272k_tokens_priority": 0.000001,
+      "input_cost_per_token": 0.0000025,
+      "input_cost_per_token_above_272k_tokens": 0.000005,
+      "input_cost_per_token_priority": 0.000005,
+      "input_cost_per_token_above_272k_tokens_priority": 0.00001,
+      "max_input_tokens": 1050000,
+      "max_output_tokens": 128000,
+      "max_tokens": 128000,
+      "mode": "chat",
+      "output_cost_per_token": 0.000015,
+      "output_cost_per_token_above_272k_tokens": 0.0000225,
+      "output_cost_per_token_priority": 0.00003,
+      "output_cost_per_token_above_272k_tokens_priority": 0.000045,
+      "supported_endpoints": [
+        "/v1/chat/completions",
+        "/v1/batch",
+        "/v1/responses"
+      ],
+      "supported_modalities": [
+        "text",
+        "image"
+      ],
+      "supported_output_modalities": [
+        "text"
+      ],
+      "supports_function_calling": true,
+      "supports_native_streaming": true,
+      "supports_parallel_function_calling": true,
+      "supports_pdf_input": true,
+      "supports_prompt_caching": true,
+      "supports_reasoning": true,
+      "supports_response_schema": true,
+      "supports_system_messages": true,
+      "supports_tool_choice": true,
+      "supports_service_tier": true,
+      "supports_vision": true,
+      "provider": "azure",
+      "base_model": "gpt-5.4"
+    },
+    "slug": "gpt-5.4-2026-03-05",
+    "displayName": "gpt-5.4-2026-03-05"
+  },
+  {
+    "id": "azure/gpt-5.4-pro",
+    "name": "gpt-5.4-pro",
+    "provider": "azure",
+    "data": {
+      "cache_read_input_token_cost": 0.000003,
+      "cache_read_input_token_cost_above_272k_tokens": 0.000006,
+      "input_cost_per_token": 0.00003,
+      "input_cost_per_token_above_272k_tokens": 0.00006,
+      "max_input_tokens": 1050000,
+      "max_output_tokens": 128000,
+      "max_tokens": 128000,
+      "mode": "responses",
+      "output_cost_per_token": 0.00018,
+      "output_cost_per_token_above_272k_tokens": 0.00027,
+      "supported_endpoints": [
+        "/v1/batch",
+        "/v1/responses"
+      ],
+      "supported_modalities": [
+        "text",
+        "image"
+      ],
+      "supported_output_modalities": [
+        "text"
+      ],
+      "supports_function_calling": true,
+      "supports_native_streaming": true,
+      "supports_parallel_function_calling": true,
+      "supports_pdf_input": true,
+      "supports_prompt_caching": true,
+      "supports_reasoning": true,
+      "supports_response_schema": false,
+      "supports_system_messages": true,
+      "supports_tool_choice": true,
+      "supports_vision": true,
+      "supports_web_search": true,
+      "provider": "azure",
+      "base_model": "gpt-5.4-pro"
+    },
+    "slug": "gpt-5.4-pro",
+    "displayName": "gpt-5.4-pro"
+  },
+  {
+    "id": "azure/gpt-5.4-pro-2026-03-05",
+    "name": "gpt-5.4-pro-2026-03-05",
+    "provider": "azure",
+    "data": {
+      "cache_read_input_token_cost": 0.000003,
+      "cache_read_input_token_cost_above_272k_tokens": 0.000006,
+      "input_cost_per_token": 0.00003,
+      "input_cost_per_token_above_272k_tokens": 0.00006,
+      "max_input_tokens": 1050000,
+      "max_output_tokens": 128000,
+      "max_tokens": 128000,
+      "mode": "responses",
+      "output_cost_per_token": 0.00018,
+      "output_cost_per_token_above_272k_tokens": 0.00027,
+      "supported_endpoints": [
+        "/v1/batch",
+        "/v1/responses"
+      ],
+      "supported_modalities": [
+        "text",
+        "image"
+      ],
+      "supported_output_modalities": [
+        "text"
+      ],
+      "supports_function_calling": true,
+      "supports_native_streaming": true,
+      "supports_parallel_function_calling": true,
+      "supports_pdf_input": true,
+      "supports_prompt_caching": true,
+      "supports_reasoning": true,
+      "supports_response_schema": false,
+      "supports_system_messages": true,
+      "supports_tool_choice": true,
+      "supports_vision": true,
+      "supports_web_search": true,
+      "provider": "azure",
+      "base_model": "gpt-5.4-pro"
+    },
+    "slug": "gpt-5.4-pro-2026-03-05",
+    "displayName": "gpt-5.4-pro-2026-03-05"
+  },
+  {
     "id": "azure/gpt-image-1",
     "name": "gpt-image-1",
     "provider": "azure",
@@ -5689,12 +5926,15 @@ export const LLM_MODELS: ProcessedModel[] = [
     "name": "mistral-large-latest",
     "provider": "azure",
     "data": {
-      "input_cost_per_token": 0.000008,
-      "max_input_tokens": 32000,
-      "max_tokens": 32000,
+      "input_cost_per_token": 0.000002,
+      "max_input_tokens": 128000,
+      "max_output_tokens": 4096,
+      "max_tokens": 4096,
       "mode": "chat",
-      "output_cost_per_token": 0.000024,
+      "output_cost_per_token": 0.000006,
+      "source": "https://azuremarketplace.microsoft.com/en/marketplace/apps/000-000.mistral-ai-large-2407-offer?tab=Overview",
       "supports_function_calling": true,
+      "supports_tool_choice": true,
       "provider": "azure",
       "base_model": "mistral-large"
     },
@@ -6631,6 +6871,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_system_messages": true,
       "supports_tool_choice": true,
       "supports_vision": true,
+      "supports_none_reasoning_effort": true,
       "provider": "azure",
       "base_model": "gpt-5.1"
     },
@@ -6672,6 +6913,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_system_messages": true,
       "supports_tool_choice": true,
       "supports_vision": true,
+      "supports_none_reasoning_effort": true,
       "provider": "azure",
       "base_model": "gpt-5.1-chat"
     },
@@ -6911,9 +7153,9 @@ export const LLM_MODELS: ProcessedModel[] = [
     "displayName": "o4-mini-2025-04-16"
   },
   {
-    "id": "azure_ai/Cohere-embed-v3-english",
+    "id": "azure/Cohere-embed-v3-english",
     "name": "Cohere-embed-v3-english",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 1e-7,
       "max_input_tokens": 512,
@@ -6923,16 +7165,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_vector_size": 1024,
       "source": "https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cohere.cohere-embed-v3-english-offer?tab=PlansAndPrice",
       "supports_embedding_image_input": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "embed-v3-english"
     },
     "slug": "cohere-embed-v3-english",
     "displayName": "Cohere-embed-v3-english"
   },
   {
-    "id": "azure_ai/Cohere-embed-v3-multilingual",
+    "id": "azure/Cohere-embed-v3-multilingual",
     "name": "Cohere-embed-v3-multilingual",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 1e-7,
       "max_input_tokens": 512,
@@ -6942,16 +7184,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_vector_size": 1024,
       "source": "https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cohere.cohere-embed-v3-english-offer?tab=PlansAndPrice",
       "supports_embedding_image_input": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "embed-v3-multilingual"
     },
     "slug": "cohere-embed-v3-multilingual",
     "displayName": "Cohere-embed-v3-multilingual"
   },
   {
-    "id": "azure_ai/Llama-3.2-11B-Vision-Instruct",
+    "id": "azure/Llama-3.2-11B-Vision-Instruct",
     "name": "Llama-3.2-11B-Vision-Instruct",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 3.7e-7,
       "max_input_tokens": 128000,
@@ -6963,16 +7205,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_function_calling": true,
       "supports_tool_choice": true,
       "supports_vision": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "llama-3.2-11b-vision-instruct"
     },
     "slug": "llama-3.2-11b-vision-instruct",
     "displayName": "Llama-3.2-11B-Vision-Instruct"
   },
   {
-    "id": "azure_ai/Llama-3.2-90B-Vision-Instruct",
+    "id": "azure/Llama-3.2-90B-Vision-Instruct",
     "name": "Llama-3.2-90B-Vision-Instruct",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 0.00000204,
       "max_input_tokens": 128000,
@@ -6984,16 +7226,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_function_calling": true,
       "supports_tool_choice": true,
       "supports_vision": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "llama-3.2-90b-vision-instruct"
     },
     "slug": "llama-3.2-90b-vision-instruct",
     "displayName": "Llama-3.2-90B-Vision-Instruct"
   },
   {
-    "id": "azure_ai/Llama-3.3-70B-Instruct",
+    "id": "azure/Llama-3.3-70B-Instruct",
     "name": "Llama-3.3-70B-Instruct",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 7.1e-7,
       "max_input_tokens": 128000,
@@ -7004,16 +7246,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "source": "https://azuremarketplace.microsoft.com/en/marketplace/apps/metagenai.llama-3-3-70b-instruct-offer?tab=Overview",
       "supports_function_calling": true,
       "supports_tool_choice": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "llama-3.3-70b-instruct"
     },
     "slug": "llama-3.3-70b-instruct",
     "displayName": "Llama-3.3-70B-Instruct"
   },
   {
-    "id": "azure_ai/Llama-4-Maverick-17B-128E-Instruct-FP8",
+    "id": "azure/Llama-4-Maverick-17B-128E-Instruct-FP8",
     "name": "Llama-4-Maverick-17B-128E-Instruct-FP8",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 0.00000141,
       "max_input_tokens": 1000000,
@@ -7025,16 +7267,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_function_calling": true,
       "supports_tool_choice": true,
       "supports_vision": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "llama-4-maverick-17b-128e-instruct-fp8"
     },
     "slug": "llama-4-maverick-17b-128e-instruct-fp8",
     "displayName": "Llama-4-Maverick-17B-128E-Instruct-FP8"
   },
   {
-    "id": "azure_ai/Llama-4-Scout-17B-16E-Instruct",
+    "id": "azure/Llama-4-Scout-17B-16E-Instruct",
     "name": "Llama-4-Scout-17B-16E-Instruct",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 2e-7,
       "max_input_tokens": 10000000,
@@ -7046,16 +7288,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_function_calling": true,
       "supports_tool_choice": true,
       "supports_vision": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "llama-4-scout-17b-16e-instruct"
     },
     "slug": "llama-4-scout-17b-16e-instruct",
     "displayName": "Llama-4-Scout-17B-16E-Instruct"
   },
   {
-    "id": "azure_ai/Meta-Llama-3-70B-Instruct",
+    "id": "azure/Meta-Llama-3-70B-Instruct",
     "name": "Meta-Llama-3-70B-Instruct",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 0.0000011,
       "max_input_tokens": 8192,
@@ -7064,16 +7306,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "mode": "chat",
       "output_cost_per_token": 3.7e-7,
       "supports_tool_choice": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "llama-3-70b-instruct"
     },
     "slug": "meta-llama-3-70b-instruct",
     "displayName": "Meta-Llama-3-70B-Instruct"
   },
   {
-    "id": "azure_ai/Meta-Llama-3.1-405B-Instruct",
+    "id": "azure/Meta-Llama-3.1-405B-Instruct",
     "name": "Meta-Llama-3.1-405B-Instruct",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 0.00000533,
       "max_input_tokens": 128000,
@@ -7083,16 +7325,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 0.000016,
       "source": "https://azuremarketplace.microsoft.com/en-us/marketplace/apps/metagenai.meta-llama-3-1-405b-instruct-offer?tab=PlansAndPrice",
       "supports_tool_choice": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "llama-3.1-405b-instruct"
     },
     "slug": "meta-llama-3.1-405b-instruct",
     "displayName": "Meta-Llama-3.1-405B-Instruct"
   },
   {
-    "id": "azure_ai/Meta-Llama-3.1-70B-Instruct",
+    "id": "azure/Meta-Llama-3.1-70B-Instruct",
     "name": "Meta-Llama-3.1-70B-Instruct",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 0.00000268,
       "max_input_tokens": 128000,
@@ -7102,16 +7344,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 0.00000354,
       "source": "https://azuremarketplace.microsoft.com/en-us/marketplace/apps/metagenai.meta-llama-3-1-70b-instruct-offer?tab=PlansAndPrice",
       "supports_tool_choice": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "llama-3.1-70b-instruct"
     },
     "slug": "meta-llama-3.1-70b-instruct",
     "displayName": "Meta-Llama-3.1-70B-Instruct"
   },
   {
-    "id": "azure_ai/Meta-Llama-3.1-8B-Instruct",
+    "id": "azure/Meta-Llama-3.1-8B-Instruct",
     "name": "Meta-Llama-3.1-8B-Instruct",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 3e-7,
       "max_input_tokens": 128000,
@@ -7121,16 +7363,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 6.1e-7,
       "source": "https://azuremarketplace.microsoft.com/en-us/marketplace/apps/metagenai.meta-llama-3-1-8b-instruct-offer?tab=PlansAndPrice",
       "supports_tool_choice": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "llama-3.1-8b-instruct"
     },
     "slug": "meta-llama-3.1-8b-instruct",
     "displayName": "Meta-Llama-3.1-8B-Instruct"
   },
   {
-    "id": "azure_ai/Phi-3-medium-128k-instruct",
+    "id": "azure/Phi-3-medium-128k-instruct",
     "name": "Phi-3-medium-128k-instruct",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 1.7e-7,
       "max_input_tokens": 128000,
@@ -7141,16 +7383,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "source": "https://azure.microsoft.com/en-us/pricing/details/phi-3/",
       "supports_tool_choice": true,
       "supports_vision": false,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "phi-3-medium-128k-instruct"
     },
     "slug": "phi-3-medium-128k-instruct",
     "displayName": "Phi-3-medium-128k-instruct"
   },
   {
-    "id": "azure_ai/Phi-3-medium-4k-instruct",
+    "id": "azure/Phi-3-medium-4k-instruct",
     "name": "Phi-3-medium-4k-instruct",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 1.7e-7,
       "max_input_tokens": 4096,
@@ -7161,16 +7403,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "source": "https://azure.microsoft.com/en-us/pricing/details/phi-3/",
       "supports_tool_choice": true,
       "supports_vision": false,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "phi-3-medium-4k-instruct"
     },
     "slug": "phi-3-medium-4k-instruct",
     "displayName": "Phi-3-medium-4k-instruct"
   },
   {
-    "id": "azure_ai/Phi-3-mini-128k-instruct",
+    "id": "azure/Phi-3-mini-128k-instruct",
     "name": "Phi-3-mini-128k-instruct",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 1.3e-7,
       "max_input_tokens": 128000,
@@ -7181,16 +7423,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "source": "https://azure.microsoft.com/en-us/pricing/details/phi-3/",
       "supports_tool_choice": true,
       "supports_vision": false,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "phi-3-mini-128k-instruct"
     },
     "slug": "phi-3-mini-128k-instruct",
     "displayName": "Phi-3-mini-128k-instruct"
   },
   {
-    "id": "azure_ai/Phi-3-mini-4k-instruct",
+    "id": "azure/Phi-3-mini-4k-instruct",
     "name": "Phi-3-mini-4k-instruct",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 1.3e-7,
       "max_input_tokens": 4096,
@@ -7201,16 +7443,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "source": "https://azure.microsoft.com/en-us/pricing/details/phi-3/",
       "supports_tool_choice": true,
       "supports_vision": false,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "phi-3-mini-4k-instruct"
     },
     "slug": "phi-3-mini-4k-instruct",
     "displayName": "Phi-3-mini-4k-instruct"
   },
   {
-    "id": "azure_ai/Phi-3-small-128k-instruct",
+    "id": "azure/Phi-3-small-128k-instruct",
     "name": "Phi-3-small-128k-instruct",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 1.5e-7,
       "max_input_tokens": 128000,
@@ -7221,16 +7463,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "source": "https://azure.microsoft.com/en-us/pricing/details/phi-3/",
       "supports_tool_choice": true,
       "supports_vision": false,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "phi-3-small-128k-instruct"
     },
     "slug": "phi-3-small-128k-instruct",
     "displayName": "Phi-3-small-128k-instruct"
   },
   {
-    "id": "azure_ai/Phi-3-small-8k-instruct",
+    "id": "azure/Phi-3-small-8k-instruct",
     "name": "Phi-3-small-8k-instruct",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 1.5e-7,
       "max_input_tokens": 8192,
@@ -7241,16 +7483,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "source": "https://azure.microsoft.com/en-us/pricing/details/phi-3/",
       "supports_tool_choice": true,
       "supports_vision": false,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "phi-3-small-8k-instruct"
     },
     "slug": "phi-3-small-8k-instruct",
     "displayName": "Phi-3-small-8k-instruct"
   },
   {
-    "id": "azure_ai/Phi-3.5-MoE-instruct",
+    "id": "azure/Phi-3.5-MoE-instruct",
     "name": "Phi-3.5-MoE-instruct",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 1.6e-7,
       "max_input_tokens": 128000,
@@ -7261,16 +7503,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "source": "https://azure.microsoft.com/en-us/pricing/details/phi-3/",
       "supports_tool_choice": true,
       "supports_vision": false,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "phi-3.5-moe-instruct"
     },
     "slug": "phi-3.5-moe-instruct",
     "displayName": "Phi-3.5-MoE-instruct"
   },
   {
-    "id": "azure_ai/Phi-3.5-mini-instruct",
+    "id": "azure/Phi-3.5-mini-instruct",
     "name": "Phi-3.5-mini-instruct",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 1.3e-7,
       "max_input_tokens": 128000,
@@ -7281,16 +7523,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "source": "https://azure.microsoft.com/en-us/pricing/details/phi-3/",
       "supports_tool_choice": true,
       "supports_vision": false,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "phi-3.5-mini-instruct"
     },
     "slug": "phi-3.5-mini-instruct",
     "displayName": "Phi-3.5-mini-instruct"
   },
   {
-    "id": "azure_ai/Phi-3.5-vision-instruct",
+    "id": "azure/Phi-3.5-vision-instruct",
     "name": "Phi-3.5-vision-instruct",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 1.3e-7,
       "max_input_tokens": 128000,
@@ -7301,16 +7543,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "source": "https://azure.microsoft.com/en-us/pricing/details/phi-3/",
       "supports_tool_choice": true,
       "supports_vision": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "phi-3.5-vision-instruct"
     },
     "slug": "phi-3.5-vision-instruct",
     "displayName": "Phi-3.5-vision-instruct"
   },
   {
-    "id": "azure_ai/Phi-4",
+    "id": "azure/Phi-4",
     "name": "Phi-4",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 1.25e-7,
       "max_input_tokens": 16384,
@@ -7322,16 +7564,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_function_calling": true,
       "supports_tool_choice": true,
       "supports_vision": false,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "phi-4"
     },
     "slug": "phi-4",
     "displayName": "Phi-4"
   },
   {
-    "id": "azure_ai/Phi-4-mini-instruct",
+    "id": "azure/Phi-4-mini-instruct",
     "name": "Phi-4-mini-instruct",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 7.5e-8,
       "max_input_tokens": 131072,
@@ -7341,16 +7583,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 3e-7,
       "source": "https://techcommunity.microsoft.com/blog/Azure-AI-Services-blog/announcing-new-phi-pricing-empowering-your-business-with-small-language-models/4395112",
       "supports_function_calling": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "phi-4-mini-instruct"
     },
     "slug": "phi-4-mini-instruct",
     "displayName": "Phi-4-mini-instruct"
   },
   {
-    "id": "azure_ai/Phi-4-multimodal-instruct",
+    "id": "azure/Phi-4-multimodal-instruct",
     "name": "Phi-4-multimodal-instruct",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_audio_token": 0.000004,
       "input_cost_per_token": 8e-8,
@@ -7363,16 +7605,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_audio_input": true,
       "supports_function_calling": true,
       "supports_vision": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "phi-4-multimodal-instruct"
     },
     "slug": "phi-4-multimodal-instruct",
     "displayName": "Phi-4-multimodal-instruct"
   },
   {
-    "id": "azure_ai/Phi-4-mini-reasoning",
+    "id": "azure/Phi-4-mini-reasoning",
     "name": "Phi-4-mini-reasoning",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 8e-8,
       "max_input_tokens": 131072,
@@ -7382,16 +7624,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 3.2e-7,
       "source": "https://azure.microsoft.com/en-us/pricing/details/ai-foundry-models/microsoft/",
       "supports_function_calling": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "phi-4-mini"
     },
     "slug": "phi-4-mini-reasoning",
     "displayName": "Phi-4-mini-reasoning"
   },
   {
-    "id": "azure_ai/Phi-4-reasoning",
+    "id": "azure/Phi-4-reasoning",
     "name": "Phi-4-reasoning",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 1.25e-7,
       "max_input_tokens": 32768,
@@ -7403,16 +7645,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_function_calling": true,
       "supports_tool_choice": true,
       "supports_reasoning": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "phi-4"
     },
     "slug": "phi-4-reasoning",
     "displayName": "Phi-4-reasoning"
   },
   {
-    "id": "azure_ai/MAI-DS-R1",
+    "id": "azure/MAI-DS-R1",
     "name": "MAI-DS-R1",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 0.00000135,
       "max_input_tokens": 128000,
@@ -7423,16 +7665,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "source": "https://azure.microsoft.com/en-us/pricing/details/ai-foundry-models/microsoft/",
       "supports_reasoning": true,
       "supports_tool_choice": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "mai-ds-r1"
     },
     "slug": "mai-ds-r1",
     "displayName": "MAI-DS-R1"
   },
   {
-    "id": "azure_ai/deepseek-v3.2",
+    "id": "azure/deepseek-v3.2",
     "name": "deepseek-v3.2",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 5.8e-7,
       "max_input_tokens": 163840,
@@ -7445,16 +7687,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_prompt_caching": true,
       "supports_reasoning": true,
       "supports_tool_choice": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "deepseek"
     },
     "slug": "deepseek-v3.2",
     "displayName": "deepseek-v3.2"
   },
   {
-    "id": "azure_ai/deepseek-v3.2-speciale",
+    "id": "azure/deepseek-v3.2-speciale",
     "name": "deepseek-v3.2-speciale",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 5.8e-7,
       "max_input_tokens": 163840,
@@ -7467,16 +7709,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_prompt_caching": true,
       "supports_reasoning": true,
       "supports_tool_choice": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "deepseek-v3.2"
     },
     "slug": "deepseek-v3.2-speciale",
     "displayName": "deepseek-v3.2-speciale"
   },
   {
-    "id": "azure_ai/deepseek-r1",
+    "id": "azure/deepseek-r1",
     "name": "deepseek-r1",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 0.00000135,
       "max_input_tokens": 128000,
@@ -7487,16 +7729,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "source": "https://techcommunity.microsoft.com/blog/machinelearningblog/deepseek-r1-improved-performance-higher-limits-and-transparent-pricing/4386367",
       "supports_reasoning": true,
       "supports_tool_choice": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "deepseek-r1"
     },
     "slug": "deepseek-r1",
     "displayName": "deepseek-r1"
   },
   {
-    "id": "azure_ai/deepseek-v3",
+    "id": "azure/deepseek-v3",
     "name": "deepseek-v3",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 0.00000114,
       "max_input_tokens": 128000,
@@ -7506,16 +7748,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 0.00000456,
       "source": "https://techcommunity.microsoft.com/blog/machinelearningblog/announcing-deepseek-v3-on-azure-ai-foundry-and-github/4390438",
       "supports_tool_choice": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "deepseek-v3"
     },
     "slug": "deepseek-v3",
     "displayName": "deepseek-v3"
   },
   {
-    "id": "azure_ai/deepseek-v3-0324",
+    "id": "azure/deepseek-v3-0324",
     "name": "deepseek-v3-0324",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 0.00000114,
       "max_input_tokens": 128000,
@@ -7526,16 +7768,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "source": "https://techcommunity.microsoft.com/blog/machinelearningblog/announcing-deepseek-v3-on-azure-ai-foundry-and-github/4390438",
       "supports_function_calling": true,
       "supports_tool_choice": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "deepseek-v3"
     },
     "slug": "deepseek-v3-0324",
     "displayName": "deepseek-v3-0324"
   },
   {
-    "id": "azure_ai/embed-v-4-0",
+    "id": "azure/embed-v-4-0",
     "name": "embed-v-4-0",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 1.2e-7,
       "max_input_tokens": 128000,
@@ -7552,16 +7794,16 @@ export const LLM_MODELS: ProcessedModel[] = [
         "image"
       ],
       "supports_embedding_image_input": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "embed-v-4-0"
     },
     "slug": "embed-v-4-0",
     "displayName": "embed-v-4-0"
   },
   {
-    "id": "azure_ai/global/grok-3",
+    "id": "azure/global/grok-3",
     "name": "grok-3",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 0.000003,
       "max_input_tokens": 131072,
@@ -7574,16 +7816,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_response_schema": false,
       "supports_tool_choice": true,
       "supports_web_search": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "grok-3"
     },
     "slug": "grok-3",
     "displayName": "grok-3"
   },
   {
-    "id": "azure_ai/global/grok-3-mini",
+    "id": "azure/global/grok-3-mini",
     "name": "grok-3-mini",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 2.5e-7,
       "max_input_tokens": 131072,
@@ -7597,16 +7839,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_response_schema": false,
       "supports_tool_choice": true,
       "supports_web_search": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "grok-3-mini"
     },
     "slug": "grok-3-mini",
     "displayName": "grok-3-mini"
   },
   {
-    "id": "azure_ai/grok-3",
+    "id": "azure/grok-3",
     "name": "grok-3",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 0.000003,
       "max_input_tokens": 131072,
@@ -7619,16 +7861,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_response_schema": false,
       "supports_tool_choice": true,
       "supports_web_search": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "grok-3"
     },
     "slug": "grok-3",
     "displayName": "grok-3"
   },
   {
-    "id": "azure_ai/grok-3-mini",
+    "id": "azure/grok-3-mini",
     "name": "grok-3-mini",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 2.5e-7,
       "max_input_tokens": 131072,
@@ -7642,16 +7884,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_response_schema": false,
       "supports_tool_choice": true,
       "supports_web_search": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "grok-3-mini"
     },
     "slug": "grok-3-mini",
     "displayName": "grok-3-mini"
   },
   {
-    "id": "azure_ai/grok-4",
+    "id": "azure/grok-4",
     "name": "grok-4",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 0.000003,
       "max_input_tokens": 131072,
@@ -7664,16 +7906,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_response_schema": true,
       "supports_tool_choice": true,
       "supports_web_search": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "grok-4"
     },
     "slug": "grok-4",
     "displayName": "grok-4"
   },
   {
-    "id": "azure_ai/grok-4-fast-non-reasoning",
+    "id": "azure/grok-4-fast-non-reasoning",
     "name": "grok-4-fast-non-reasoning",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 2e-7,
       "output_cost_per_token": 5e-7,
@@ -7685,16 +7927,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_response_schema": true,
       "supports_tool_choice": true,
       "supports_web_search": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "grok-4-fast-non"
     },
     "slug": "grok-4-fast-non-reasoning",
     "displayName": "grok-4-fast-non-reasoning"
   },
   {
-    "id": "azure_ai/grok-4-fast-reasoning",
+    "id": "azure/grok-4-fast-reasoning",
     "name": "grok-4-fast-reasoning",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 2e-7,
       "output_cost_per_token": 5e-7,
@@ -7707,16 +7949,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_response_schema": true,
       "supports_tool_choice": true,
       "supports_web_search": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "grok-4-fast"
     },
     "slug": "grok-4-fast-reasoning",
     "displayName": "grok-4-fast-reasoning"
   },
   {
-    "id": "azure_ai/grok-4-1-fast-non-reasoning",
+    "id": "azure/grok-4-1-fast-non-reasoning",
     "name": "grok-4-1-fast-non-reasoning",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 2e-7,
       "output_cost_per_token": 5e-7,
@@ -7729,16 +7971,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_response_schema": true,
       "supports_tool_choice": true,
       "supports_web_search": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "grok-4-1-fast-non"
     },
     "slug": "grok-4-1-fast-non-reasoning",
     "displayName": "grok-4-1-fast-non-reasoning"
   },
   {
-    "id": "azure_ai/grok-4-1-fast-reasoning",
+    "id": "azure/grok-4-1-fast-reasoning",
     "name": "grok-4-1-fast-reasoning",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 2e-7,
       "output_cost_per_token": 5e-7,
@@ -7752,16 +7994,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_response_schema": true,
       "supports_tool_choice": true,
       "supports_web_search": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "grok-4-1-fast"
     },
     "slug": "grok-4-1-fast-reasoning",
     "displayName": "grok-4-1-fast-reasoning"
   },
   {
-    "id": "azure_ai/grok-code-fast-1",
+    "id": "azure/grok-code-fast-1",
     "name": "grok-code-fast-1",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 2e-7,
       "max_input_tokens": 131072,
@@ -7774,16 +8016,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_response_schema": true,
       "supports_tool_choice": true,
       "supports_web_search": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "grok-code-fast-1"
     },
     "slug": "grok-code-fast-1",
     "displayName": "grok-code-fast-1"
   },
   {
-    "id": "azure_ai/jamba-instruct",
+    "id": "azure/jamba-instruct",
     "name": "jamba-instruct",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 5e-7,
       "max_input_tokens": 70000,
@@ -7792,16 +8034,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "mode": "chat",
       "output_cost_per_token": 7e-7,
       "supports_tool_choice": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "jamba-instruct"
     },
     "slug": "jamba-instruct",
     "displayName": "jamba-instruct"
   },
   {
-    "id": "azure_ai/kimi-k2.5",
+    "id": "azure/kimi-k2.5",
     "name": "kimi-k2.5",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 6e-7,
       "max_input_tokens": 262144,
@@ -7814,16 +8056,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_video_input": true,
       "supports_vision": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "kimi-k2.5"
     },
     "slug": "kimi-k2.5",
     "displayName": "kimi-k2.5"
   },
   {
-    "id": "azure_ai/ministral-3b",
+    "id": "azure/ministral-3b",
     "name": "ministral-3b",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 4e-8,
       "max_input_tokens": 128000,
@@ -7834,16 +8076,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "source": "https://azuremarketplace.microsoft.com/en/marketplace/apps/000-000.ministral-3b-2410-offer?tab=Overview",
       "supports_function_calling": true,
       "supports_tool_choice": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "ministral-3b"
     },
     "slug": "ministral-3b",
     "displayName": "ministral-3b"
   },
   {
-    "id": "azure_ai/mistral-large",
+    "id": "azure/mistral-large",
     "name": "mistral-large",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 0.000004,
       "max_input_tokens": 32000,
@@ -7853,16 +8095,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 0.000012,
       "supports_function_calling": true,
       "supports_tool_choice": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "mistral-large"
     },
     "slug": "mistral-large",
     "displayName": "mistral-large"
   },
   {
-    "id": "azure_ai/mistral-large-2407",
+    "id": "azure/mistral-large-2407",
     "name": "mistral-large-2407",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 0.000002,
       "max_input_tokens": 128000,
@@ -7873,36 +8115,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "source": "https://azuremarketplace.microsoft.com/en/marketplace/apps/000-000.mistral-ai-large-2407-offer?tab=Overview",
       "supports_function_calling": true,
       "supports_tool_choice": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "mistral-large"
     },
     "slug": "mistral-large-2407",
     "displayName": "mistral-large-2407"
   },
   {
-    "id": "azure_ai/mistral-large-latest",
-    "name": "mistral-large-latest",
-    "provider": "azure_ai",
-    "data": {
-      "input_cost_per_token": 0.000002,
-      "max_input_tokens": 128000,
-      "max_output_tokens": 4096,
-      "max_tokens": 4096,
-      "mode": "chat",
-      "output_cost_per_token": 0.000006,
-      "source": "https://azuremarketplace.microsoft.com/en/marketplace/apps/000-000.mistral-ai-large-2407-offer?tab=Overview",
-      "supports_function_calling": true,
-      "supports_tool_choice": true,
-      "provider": "azure_ai",
-      "base_model": "mistral-large"
-    },
-    "slug": "mistral-large-latest",
-    "displayName": "mistral-large-latest"
-  },
-  {
-    "id": "azure_ai/mistral-large-3",
+    "id": "azure/mistral-large-3",
     "name": "mistral-large-3",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 5e-7,
       "max_input_tokens": 256000,
@@ -7914,16 +8136,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_function_calling": true,
       "supports_tool_choice": true,
       "supports_vision": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "mistral-large-3"
     },
     "slug": "mistral-large-3",
     "displayName": "mistral-large-3"
   },
   {
-    "id": "azure_ai/mistral-medium-2505",
+    "id": "azure/mistral-medium-2505",
     "name": "mistral-medium-2505",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 4e-7,
       "max_input_tokens": 131072,
@@ -7934,16 +8156,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_assistant_prefill": true,
       "supports_function_calling": true,
       "supports_tool_choice": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "mistral-medium"
     },
     "slug": "mistral-medium-2505",
     "displayName": "mistral-medium-2505"
   },
   {
-    "id": "azure_ai/mistral-nemo",
+    "id": "azure/mistral-nemo",
     "name": "mistral-nemo",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 1.5e-7,
       "max_input_tokens": 131072,
@@ -7953,16 +8175,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 1.5e-7,
       "source": "https://azuremarketplace.microsoft.com/en/marketplace/apps/000-000.mistral-nemo-12b-2407?tab=PlansAndPrice",
       "supports_function_calling": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "mistral-nemo"
     },
     "slug": "mistral-nemo",
     "displayName": "mistral-nemo"
   },
   {
-    "id": "azure_ai/mistral-small",
+    "id": "azure/mistral-small",
     "name": "mistral-small",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 0.000001,
       "max_input_tokens": 32000,
@@ -7972,16 +8194,16 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 0.000003,
       "supports_function_calling": true,
       "supports_tool_choice": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "mistral-small"
     },
     "slug": "mistral-small",
     "displayName": "mistral-small"
   },
   {
-    "id": "azure_ai/mistral-small-2503",
+    "id": "azure/mistral-small-2503",
     "name": "mistral-small-2503",
-    "provider": "azure_ai",
+    "provider": "azure",
     "data": {
       "input_cost_per_token": 1e-7,
       "max_input_tokens": 128000,
@@ -7992,7 +8214,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_function_calling": true,
       "supports_tool_choice": true,
       "supports_vision": true,
-      "provider": "azure_ai",
+      "provider": "azure",
       "base_model": "mistral-small"
     },
     "slug": "mistral-small-2503",
@@ -10443,76 +10665,6 @@ export const LLM_MODELS: ProcessedModel[] = [
     "displayName": "gpt-4o-transcribe-diarize"
   },
   {
-    "id": "claude-3-5-haiku-20241022",
-    "name": "claude-3-5-haiku-20241022",
-    "provider": "anthropic",
-    "data": {
-      "cache_creation_input_token_cost": 0.000001,
-      "cache_creation_input_token_cost_above_1hr": 0.000006,
-      "cache_read_input_token_cost": 8e-8,
-      "deprecation_date": "2025-10-01",
-      "input_cost_per_token": 8e-7,
-      "max_input_tokens": 200000,
-      "max_output_tokens": 8192,
-      "max_tokens": 8192,
-      "mode": "chat",
-      "output_cost_per_token": 0.000004,
-      "search_context_cost_per_query": {
-        "search_context_size_high": 0.01,
-        "search_context_size_low": 0.01,
-        "search_context_size_medium": 0.01
-      },
-      "supports_assistant_prefill": true,
-      "supports_function_calling": true,
-      "supports_pdf_input": true,
-      "supports_prompt_caching": true,
-      "supports_response_schema": true,
-      "supports_tool_choice": true,
-      "supports_vision": true,
-      "supports_web_search": true,
-      "tool_use_system_prompt_tokens": 264,
-      "provider": "anthropic",
-      "base_model": "claude-3-5-haiku"
-    },
-    "slug": "claude-3-5-haiku-20241022",
-    "displayName": "claude-3-5-haiku-20241022"
-  },
-  {
-    "id": "claude-3-5-haiku-latest",
-    "name": "claude-3-5-haiku-latest",
-    "provider": "anthropic",
-    "data": {
-      "cache_creation_input_token_cost": 0.00000125,
-      "cache_creation_input_token_cost_above_1hr": 0.000006,
-      "cache_read_input_token_cost": 1e-7,
-      "deprecation_date": "2025-10-01",
-      "input_cost_per_token": 0.000001,
-      "max_input_tokens": 200000,
-      "max_output_tokens": 8192,
-      "max_tokens": 8192,
-      "mode": "chat",
-      "output_cost_per_token": 0.000005,
-      "search_context_cost_per_query": {
-        "search_context_size_high": 0.01,
-        "search_context_size_low": 0.01,
-        "search_context_size_medium": 0.01
-      },
-      "supports_assistant_prefill": true,
-      "supports_function_calling": true,
-      "supports_pdf_input": true,
-      "supports_prompt_caching": true,
-      "supports_response_schema": true,
-      "supports_tool_choice": true,
-      "supports_vision": true,
-      "supports_web_search": true,
-      "tool_use_system_prompt_tokens": 264,
-      "provider": "anthropic",
-      "base_model": "claude-3-5-haiku"
-    },
-    "slug": "claude-3-5-haiku-latest",
-    "displayName": "claude-3-5-haiku-latest"
-  },
-  {
     "id": "claude-haiku-4-5-20251001",
     "name": "claude-haiku-4-5-20251001",
     "provider": "anthropic",
@@ -10571,180 +10723,6 @@ export const LLM_MODELS: ProcessedModel[] = [
     "displayName": "claude-haiku-4-5"
   },
   {
-    "id": "claude-3-5-sonnet-20240620",
-    "name": "claude-3-5-sonnet-20240620",
-    "provider": "anthropic",
-    "data": {
-      "cache_creation_input_token_cost": 0.00000375,
-      "cache_creation_input_token_cost_above_1hr": 0.000006,
-      "cache_read_input_token_cost": 3e-7,
-      "deprecation_date": "2025-06-01",
-      "input_cost_per_token": 0.000003,
-      "max_input_tokens": 200000,
-      "max_output_tokens": 8192,
-      "max_tokens": 8192,
-      "mode": "chat",
-      "output_cost_per_token": 0.000015,
-      "supports_assistant_prefill": true,
-      "supports_function_calling": true,
-      "supports_pdf_input": true,
-      "supports_prompt_caching": true,
-      "supports_response_schema": true,
-      "supports_tool_choice": true,
-      "supports_vision": true,
-      "tool_use_system_prompt_tokens": 159,
-      "provider": "anthropic",
-      "base_model": "claude-3-5-sonnet"
-    },
-    "slug": "claude-3-5-sonnet-20240620",
-    "displayName": "claude-3-5-sonnet-20240620"
-  },
-  {
-    "id": "claude-3-5-sonnet-20241022",
-    "name": "claude-3-5-sonnet-20241022",
-    "provider": "anthropic",
-    "data": {
-      "cache_creation_input_token_cost": 0.00000375,
-      "cache_creation_input_token_cost_above_1hr": 0.000006,
-      "cache_read_input_token_cost": 3e-7,
-      "deprecation_date": "2025-10-01",
-      "input_cost_per_token": 0.000003,
-      "max_input_tokens": 200000,
-      "max_output_tokens": 8192,
-      "max_tokens": 8192,
-      "mode": "chat",
-      "output_cost_per_token": 0.000015,
-      "search_context_cost_per_query": {
-        "search_context_size_high": 0.01,
-        "search_context_size_low": 0.01,
-        "search_context_size_medium": 0.01
-      },
-      "supports_assistant_prefill": true,
-      "supports_computer_use": true,
-      "supports_function_calling": true,
-      "supports_pdf_input": true,
-      "supports_prompt_caching": true,
-      "supports_response_schema": true,
-      "supports_tool_choice": true,
-      "supports_vision": true,
-      "supports_web_search": true,
-      "tool_use_system_prompt_tokens": 159,
-      "provider": "anthropic",
-      "base_model": "claude-3-5-sonnet"
-    },
-    "slug": "claude-3-5-sonnet-20241022",
-    "displayName": "claude-3-5-sonnet-20241022"
-  },
-  {
-    "id": "claude-3-5-sonnet-latest",
-    "name": "claude-3-5-sonnet-latest",
-    "provider": "anthropic",
-    "data": {
-      "cache_creation_input_token_cost": 0.00000375,
-      "cache_creation_input_token_cost_above_1hr": 0.000006,
-      "cache_read_input_token_cost": 3e-7,
-      "deprecation_date": "2025-06-01",
-      "input_cost_per_token": 0.000003,
-      "max_input_tokens": 200000,
-      "max_output_tokens": 8192,
-      "max_tokens": 8192,
-      "mode": "chat",
-      "output_cost_per_token": 0.000015,
-      "search_context_cost_per_query": {
-        "search_context_size_high": 0.01,
-        "search_context_size_low": 0.01,
-        "search_context_size_medium": 0.01
-      },
-      "supports_assistant_prefill": true,
-      "supports_computer_use": true,
-      "supports_function_calling": true,
-      "supports_pdf_input": true,
-      "supports_prompt_caching": true,
-      "supports_response_schema": true,
-      "supports_tool_choice": true,
-      "supports_vision": true,
-      "supports_web_search": true,
-      "tool_use_system_prompt_tokens": 159,
-      "provider": "anthropic",
-      "base_model": "claude-3-5-sonnet"
-    },
-    "slug": "claude-3-5-sonnet-latest",
-    "displayName": "claude-3-5-sonnet-latest"
-  },
-  {
-    "id": "claude-3-7-sonnet-20250219",
-    "name": "claude-3-7-sonnet-20250219",
-    "provider": "anthropic",
-    "data": {
-      "cache_creation_input_token_cost": 0.00000375,
-      "cache_creation_input_token_cost_above_1hr": 0.000006,
-      "cache_read_input_token_cost": 3e-7,
-      "deprecation_date": "2026-02-19",
-      "input_cost_per_token": 0.000003,
-      "max_input_tokens": 200000,
-      "max_output_tokens": 64000,
-      "max_tokens": 64000,
-      "mode": "chat",
-      "output_cost_per_token": 0.000015,
-      "search_context_cost_per_query": {
-        "search_context_size_high": 0.01,
-        "search_context_size_low": 0.01,
-        "search_context_size_medium": 0.01
-      },
-      "supports_assistant_prefill": true,
-      "supports_computer_use": true,
-      "supports_function_calling": true,
-      "supports_pdf_input": true,
-      "supports_prompt_caching": true,
-      "supports_reasoning": true,
-      "supports_response_schema": true,
-      "supports_tool_choice": true,
-      "supports_vision": true,
-      "supports_web_search": true,
-      "tool_use_system_prompt_tokens": 159,
-      "provider": "anthropic",
-      "base_model": "claude-3-7-sonnet"
-    },
-    "slug": "claude-3-7-sonnet-20250219",
-    "displayName": "claude-3-7-sonnet-20250219"
-  },
-  {
-    "id": "claude-3-7-sonnet-latest",
-    "name": "claude-3-7-sonnet-latest",
-    "provider": "anthropic",
-    "data": {
-      "cache_creation_input_token_cost": 0.00000375,
-      "cache_creation_input_token_cost_above_1hr": 0.000006,
-      "cache_read_input_token_cost": 3e-7,
-      "deprecation_date": "2025-06-01",
-      "input_cost_per_token": 0.000003,
-      "max_input_tokens": 200000,
-      "max_output_tokens": 64000,
-      "max_tokens": 64000,
-      "mode": "chat",
-      "output_cost_per_token": 0.000015,
-      "search_context_cost_per_query": {
-        "search_context_size_high": 0.01,
-        "search_context_size_low": 0.01,
-        "search_context_size_medium": 0.01
-      },
-      "supports_assistant_prefill": true,
-      "supports_computer_use": true,
-      "supports_function_calling": true,
-      "supports_pdf_input": true,
-      "supports_prompt_caching": true,
-      "supports_reasoning": true,
-      "supports_response_schema": true,
-      "supports_tool_choice": true,
-      "supports_vision": true,
-      "tool_use_system_prompt_tokens": 159,
-      "provider": "anthropic",
-      "base_model": "claude-3-7-sonnet"
-    },
-    "slug": "claude-3-7-sonnet-latest",
-    "displayName": "claude-3-7-sonnet-latest"
-  },
-  {
     "id": "claude-3-haiku-20240307",
     "name": "claude-3-haiku-20240307",
     "provider": "anthropic",
@@ -10770,62 +10748,6 @@ export const LLM_MODELS: ProcessedModel[] = [
     },
     "slug": "claude-3-haiku-20240307",
     "displayName": "claude-3-haiku-20240307"
-  },
-  {
-    "id": "claude-3-opus-20240229",
-    "name": "claude-3-opus-20240229",
-    "provider": "anthropic",
-    "data": {
-      "cache_creation_input_token_cost": 0.00001875,
-      "cache_creation_input_token_cost_above_1hr": 0.000006,
-      "cache_read_input_token_cost": 0.0000015,
-      "deprecation_date": "2026-05-01",
-      "input_cost_per_token": 0.000015,
-      "max_input_tokens": 200000,
-      "max_output_tokens": 4096,
-      "max_tokens": 4096,
-      "mode": "chat",
-      "output_cost_per_token": 0.000075,
-      "supports_assistant_prefill": true,
-      "supports_function_calling": true,
-      "supports_prompt_caching": true,
-      "supports_response_schema": true,
-      "supports_tool_choice": true,
-      "supports_vision": true,
-      "tool_use_system_prompt_tokens": 395,
-      "provider": "anthropic",
-      "base_model": "claude-3-opus"
-    },
-    "slug": "claude-3-opus-20240229",
-    "displayName": "claude-3-opus-20240229"
-  },
-  {
-    "id": "claude-3-opus-latest",
-    "name": "claude-3-opus-latest",
-    "provider": "anthropic",
-    "data": {
-      "cache_creation_input_token_cost": 0.00001875,
-      "cache_creation_input_token_cost_above_1hr": 0.000006,
-      "cache_read_input_token_cost": 0.0000015,
-      "deprecation_date": "2025-03-01",
-      "input_cost_per_token": 0.000015,
-      "max_input_tokens": 200000,
-      "max_output_tokens": 4096,
-      "max_tokens": 4096,
-      "mode": "chat",
-      "output_cost_per_token": 0.000075,
-      "supports_assistant_prefill": true,
-      "supports_function_calling": true,
-      "supports_prompt_caching": true,
-      "supports_response_schema": true,
-      "supports_tool_choice": true,
-      "supports_vision": true,
-      "tool_use_system_prompt_tokens": 395,
-      "provider": "anthropic",
-      "base_model": "claude-3-opus"
-    },
-    "slug": "claude-3-opus-latest",
-    "displayName": "claude-3-opus-latest"
   },
   {
     "id": "claude-4-opus-20250514",
@@ -11120,42 +11042,6 @@ export const LLM_MODELS: ProcessedModel[] = [
     "displayName": "claude-opus-4-1-20250805"
   },
   {
-    "id": "claude-opus-4-20250514",
-    "name": "claude-opus-4-20250514",
-    "provider": "anthropic",
-    "data": {
-      "cache_creation_input_token_cost": 0.00001875,
-      "cache_creation_input_token_cost_above_1hr": 0.00003,
-      "cache_read_input_token_cost": 0.0000015,
-      "input_cost_per_token": 0.000015,
-      "deprecation_date": "2026-05-14",
-      "max_input_tokens": 200000,
-      "max_output_tokens": 32000,
-      "max_tokens": 32000,
-      "mode": "chat",
-      "output_cost_per_token": 0.000075,
-      "search_context_cost_per_query": {
-        "search_context_size_high": 0.01,
-        "search_context_size_low": 0.01,
-        "search_context_size_medium": 0.01
-      },
-      "supports_assistant_prefill": true,
-      "supports_computer_use": true,
-      "supports_function_calling": true,
-      "supports_pdf_input": true,
-      "supports_prompt_caching": true,
-      "supports_reasoning": true,
-      "supports_response_schema": true,
-      "supports_tool_choice": true,
-      "supports_vision": true,
-      "tool_use_system_prompt_tokens": 159,
-      "provider": "anthropic",
-      "base_model": "claude-opus-4"
-    },
-    "slug": "claude-opus-4-20250514",
-    "displayName": "claude-opus-4-20250514"
-  },
-  {
     "id": "claude-opus-4-5-20251101",
     "name": "claude-opus-4-5-20251101",
     "provider": "anthropic",
@@ -11267,49 +11153,6 @@ export const LLM_MODELS: ProcessedModel[] = [
     },
     "slug": "claude-opus-4-6",
     "displayName": "claude-opus-4-6"
-  },
-  {
-    "id": "claude-opus-4-6-20260205",
-    "name": "claude-opus-4-6-20260205",
-    "provider": "anthropic",
-    "data": {
-      "cache_creation_input_token_cost": 0.00000625,
-      "cache_creation_input_token_cost_above_200k_tokens": 0.0000125,
-      "cache_creation_input_token_cost_above_1hr": 0.00001,
-      "cache_read_input_token_cost": 5e-7,
-      "cache_read_input_token_cost_above_200k_tokens": 0.000001,
-      "input_cost_per_token": 0.000005,
-      "input_cost_per_token_above_200k_tokens": 0.00001,
-      "max_input_tokens": 1000000,
-      "max_output_tokens": 128000,
-      "max_tokens": 128000,
-      "mode": "chat",
-      "output_cost_per_token": 0.000025,
-      "output_cost_per_token_above_200k_tokens": 0.0000375,
-      "search_context_cost_per_query": {
-        "search_context_size_high": 0.01,
-        "search_context_size_low": 0.01,
-        "search_context_size_medium": 0.01
-      },
-      "supports_assistant_prefill": false,
-      "supports_computer_use": true,
-      "supports_function_calling": true,
-      "supports_pdf_input": true,
-      "supports_prompt_caching": true,
-      "supports_reasoning": true,
-      "supports_response_schema": true,
-      "supports_tool_choice": true,
-      "supports_vision": true,
-      "tool_use_system_prompt_tokens": 346,
-      "provider_specific_entry": {
-        "us": 1.1,
-        "fast": 6
-      },
-      "provider": "anthropic",
-      "base_model": "claude-opus-4-6"
-    },
-    "slug": "claude-opus-4-6-20260205",
-    "displayName": "claude-opus-4-6-20260205"
   },
   {
     "id": "claude-sonnet-4-20250514",
@@ -11917,7 +11760,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "command-a-03-2025",
     "name": "command-a-03-2025",
-    "provider": "cohere_chat",
+    "provider": "cohere",
     "data": {
       "input_cost_per_token": 0.0000025,
       "max_input_tokens": 256000,
@@ -11927,7 +11770,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 0.00001,
       "supports_function_calling": true,
       "supports_tool_choice": true,
-      "provider": "cohere_chat",
+      "provider": "cohere",
       "base_model": "command-a"
     },
     "slug": "command-a-03-2025",
@@ -11936,7 +11779,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "command-light",
     "name": "command-light",
-    "provider": "cohere_chat",
+    "provider": "cohere",
     "data": {
       "input_cost_per_token": 3e-7,
       "max_input_tokens": 4096,
@@ -11945,7 +11788,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "mode": "chat",
       "output_cost_per_token": 6e-7,
       "supports_tool_choice": true,
-      "provider": "cohere_chat",
+      "provider": "cohere",
       "base_model": "command-light"
     },
     "slug": "command-light",
@@ -11971,7 +11814,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "command-r",
     "name": "command-r",
-    "provider": "cohere_chat",
+    "provider": "cohere",
     "data": {
       "input_cost_per_token": 1.5e-7,
       "max_input_tokens": 128000,
@@ -11981,7 +11824,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 6e-7,
       "supports_function_calling": true,
       "supports_tool_choice": true,
-      "provider": "cohere_chat",
+      "provider": "cohere",
       "base_model": "command-r"
     },
     "slug": "command-r",
@@ -11990,7 +11833,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "command-r-08-2024",
     "name": "command-r-08-2024",
-    "provider": "cohere_chat",
+    "provider": "cohere",
     "data": {
       "input_cost_per_token": 1.5e-7,
       "max_input_tokens": 128000,
@@ -12000,7 +11843,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 6e-7,
       "supports_function_calling": true,
       "supports_tool_choice": true,
-      "provider": "cohere_chat",
+      "provider": "cohere",
       "base_model": "command-r"
     },
     "slug": "command-r-08-2024",
@@ -12009,7 +11852,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "command-r-plus",
     "name": "command-r-plus",
-    "provider": "cohere_chat",
+    "provider": "cohere",
     "data": {
       "input_cost_per_token": 0.0000025,
       "max_input_tokens": 128000,
@@ -12019,7 +11862,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 0.00001,
       "supports_function_calling": true,
       "supports_tool_choice": true,
-      "provider": "cohere_chat",
+      "provider": "cohere",
       "base_model": "command-r-plus"
     },
     "slug": "command-r-plus",
@@ -12028,7 +11871,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "command-r-plus-08-2024",
     "name": "command-r-plus-08-2024",
-    "provider": "cohere_chat",
+    "provider": "cohere",
     "data": {
       "input_cost_per_token": 0.0000025,
       "max_input_tokens": 128000,
@@ -12038,7 +11881,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 0.00001,
       "supports_function_calling": true,
       "supports_tool_choice": true,
-      "provider": "cohere_chat",
+      "provider": "cohere",
       "base_model": "command-r-plus"
     },
     "slug": "command-r-plus-08-2024",
@@ -12047,7 +11890,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "command-r7b-12-2024",
     "name": "command-r7b-12-2024",
-    "provider": "cohere_chat",
+    "provider": "cohere",
     "data": {
       "input_cost_per_token": 1.5e-7,
       "max_input_tokens": 128000,
@@ -12058,7 +11901,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "source": "https://docs.cohere.com/v2/docs/command-r7b",
       "supports_function_calling": true,
       "supports_tool_choice": true,
-      "provider": "cohere_chat",
+      "provider": "cohere",
       "base_model": "command-r7b"
     },
     "slug": "command-r7b-12-2024",
@@ -14655,7 +14498,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "deepseek.v3-v1:0",
     "name": "deepseek.v3-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 5.8e-7,
       "max_input_tokens": 163840,
@@ -14666,7 +14509,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_function_calling": true,
       "supports_reasoning": true,
       "supports_tool_choice": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "deepseek-v3"
     },
     "slug": "deepseek.v3-v1-0",
@@ -14675,7 +14518,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "deepseek.v3.2",
     "name": "deepseek.v3.2",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 6.2e-7,
       "max_input_tokens": 163840,
@@ -14687,7 +14530,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_reasoning": true,
       "supports_tool_choice": true,
       "source": "https://aws.amazon.com/bedrock/pricing/",
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "deepseek"
     },
     "slug": "deepseek.v3.2",
@@ -14833,7 +14676,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "eu.amazon.nova-lite-v1:0",
     "name": "eu.amazon.nova-lite-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 7.8e-8,
       "max_input_tokens": 300000,
@@ -14846,7 +14689,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_prompt_caching": true,
       "supports_response_schema": true,
       "supports_vision": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "nova-lite"
     },
     "slug": "eu.amazon.nova-lite-v1-0",
@@ -14855,7 +14698,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "eu.amazon.nova-micro-v1:0",
     "name": "eu.amazon.nova-micro-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 4.6e-8,
       "max_input_tokens": 128000,
@@ -14866,7 +14709,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_function_calling": true,
       "supports_prompt_caching": true,
       "supports_response_schema": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "nova-micro"
     },
     "slug": "eu.amazon.nova-micro-v1-0",
@@ -14875,7 +14718,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "eu.amazon.nova-pro-v1:0",
     "name": "eu.amazon.nova-pro-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 0.00000105,
       "max_input_tokens": 300000,
@@ -14889,7 +14732,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_prompt_caching": true,
       "supports_response_schema": true,
       "supports_vision": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "nova-pro"
     },
     "slug": "eu.amazon.nova-pro-v1-0",
@@ -14923,7 +14766,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "eu.anthropic.claude-haiku-4-5-20251001-v1:0",
     "name": "eu.anthropic.claude-haiku-4-5-20251001-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.000001375,
       "cache_read_input_token_cost": 1.1e-7,
@@ -14945,7 +14788,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 346,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-haiku-4-5"
     },
     "slug": "eu.anthropic.claude-haiku-4-5-20251001-v1-0",
@@ -15104,7 +14947,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "eu.anthropic.claude-opus-4-1-20250805-v1:0",
     "name": "eu.anthropic.claude-opus-4-1-20250805-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.00001875,
       "cache_read_input_token_cost": 0.0000015,
@@ -15129,7 +14972,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 159,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-opus-4-1"
     },
     "slug": "eu.anthropic.claude-opus-4-1-20250805-v1-0",
@@ -15138,7 +14981,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "eu.anthropic.claude-opus-4-20250514-v1:0",
     "name": "eu.anthropic.claude-opus-4-20250514-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.00001875,
       "cache_read_input_token_cost": 0.0000015,
@@ -15163,7 +15006,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 159,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-opus-4"
     },
     "slug": "eu.anthropic.claude-opus-4-20250514-v1-0",
@@ -15172,7 +15015,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "eu.anthropic.claude-sonnet-4-20250514-v1:0",
     "name": "eu.anthropic.claude-sonnet-4-20250514-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.00000375,
       "cache_read_input_token_cost": 3e-7,
@@ -15201,7 +15044,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 159,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-sonnet-4"
     },
     "slug": "eu.anthropic.claude-sonnet-4-20250514-v1-0",
@@ -15210,7 +15053,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "eu.anthropic.claude-sonnet-4-5-20250929-v1:0",
     "name": "eu.anthropic.claude-sonnet-4-5-20250929-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.000004125,
       "cache_read_input_token_cost": 3.3e-7,
@@ -15239,7 +15082,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 346,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-sonnet-4-5"
     },
     "slug": "eu.anthropic.claude-sonnet-4-5-20250929-v1-0",
@@ -15286,7 +15129,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "eu.mistral.pixtral-large-2502-v1:0",
     "name": "eu.mistral.pixtral-large-2502-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 0.000002,
       "max_input_tokens": 128000,
@@ -15296,7 +15139,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 0.000006,
       "supports_function_calling": true,
       "supports_tool_choice": false,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "pixtral-large"
     },
     "slug": "eu.mistral.pixtral-large-2502-v1-0",
@@ -19970,6 +19813,50 @@ export const LLM_MODELS: ProcessedModel[] = [
     "displayName": "gemini-3-pro-image-preview"
   },
   {
+    "id": "gemini/gemini-3.1-flash-image-preview",
+    "name": "gemini-3.1-flash-image-preview",
+    "provider": "gemini",
+    "data": {
+      "input_cost_per_token": 2.5e-7,
+      "input_cost_per_token_batches": 1.25e-7,
+      "max_input_tokens": 65536,
+      "max_output_tokens": 32768,
+      "max_tokens": 32768,
+      "mode": "image_generation",
+      "output_cost_per_image": 0.045,
+      "output_cost_per_image_token": 0.00006,
+      "output_cost_per_image_token_batches": 0.00003,
+      "output_cost_per_token": 0.0000015,
+      "output_cost_per_token_batches": 7.5e-7,
+      "rpm": 1000,
+      "tpm": 4000000,
+      "source": "https://ai.google.dev/gemini-api/docs/pricing#gemini-3.1-flash-image-preview",
+      "supported_endpoints": [
+        "/v1/chat/completions",
+        "/v1/completions",
+        "/v1/batch"
+      ],
+      "supported_modalities": [
+        "text",
+        "image"
+      ],
+      "supported_output_modalities": [
+        "text",
+        "image"
+      ],
+      "supports_function_calling": false,
+      "supports_prompt_caching": true,
+      "supports_response_schema": true,
+      "supports_system_messages": true,
+      "supports_vision": true,
+      "supports_web_search": true,
+      "provider": "gemini",
+      "base_model": "gemini-3.1-flash-image"
+    },
+    "slug": "gemini-3.1-flash-image-preview",
+    "displayName": "gemini-3.1-flash-image-preview"
+  },
+  {
     "id": "gemini/deep-research-pro-preview-12-2025",
     "name": "deep-research-pro-preview-12-2025",
     "provider": "gemini",
@@ -21551,7 +21438,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "google.gemma-3-12b-it",
     "name": "google.gemma-3-12b-it",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 9e-8,
       "max_input_tokens": 128000,
@@ -21561,7 +21448,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 2.9e-7,
       "supports_system_messages": true,
       "supports_vision": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "gemma-3-12b-it"
     },
     "slug": "google.gemma-3-12b-it",
@@ -21570,7 +21457,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "google.gemma-3-27b-it",
     "name": "google.gemma-3-27b-it",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 2.3e-7,
       "max_input_tokens": 128000,
@@ -21580,7 +21467,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 3.8e-7,
       "supports_system_messages": true,
       "supports_vision": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "gemma-3-27b-it"
     },
     "slug": "google.gemma-3-27b-it",
@@ -21589,7 +21476,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "google.gemma-3-4b-it",
     "name": "google.gemma-3-4b-it",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 4e-8,
       "max_input_tokens": 128000,
@@ -21599,7 +21486,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 8e-8,
       "supports_system_messages": true,
       "supports_vision": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "gemma-3-4b-it"
     },
     "slug": "google.gemma-3-4b-it",
@@ -21608,7 +21495,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "global.anthropic.claude-sonnet-4-5-20250929-v1:0",
     "name": "global.anthropic.claude-sonnet-4-5-20250929-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.00000375,
       "cache_read_input_token_cost": 3e-7,
@@ -21637,7 +21524,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 346,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-sonnet-4-5"
     },
     "slug": "global.anthropic.claude-sonnet-4-5-20250929-v1-0",
@@ -21646,7 +21533,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "global.anthropic.claude-sonnet-4-20250514-v1:0",
     "name": "global.anthropic.claude-sonnet-4-20250514-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.00000375,
       "cache_read_input_token_cost": 3e-7,
@@ -21675,7 +21562,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 159,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-sonnet-4"
     },
     "slug": "global.anthropic.claude-sonnet-4-20250514-v1-0",
@@ -21684,7 +21571,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "global.anthropic.claude-haiku-4-5-20251001-v1:0",
     "name": "global.anthropic.claude-haiku-4-5-20251001-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.00000125,
       "cache_read_input_token_cost": 1e-7,
@@ -21705,7 +21592,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 346,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-haiku-4-5"
     },
     "slug": "global.anthropic.claude-haiku-4-5-20251001-v1-0",
@@ -21714,7 +21601,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "global.amazon.nova-2-lite-v1:0",
     "name": "global.amazon.nova-2-lite-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_read_input_token_cost": 7.5e-8,
       "input_cost_per_token": 3e-7,
@@ -21730,7 +21617,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_response_schema": true,
       "supports_video_input": true,
       "supports_vision": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "nova-2-lite"
     },
     "slug": "global.amazon.nova-2-lite-v1-0",
@@ -22242,6 +22129,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_service_tier": true,
       "supports_vision": true,
+      "supports_web_search": true,
       "provider": "openai",
       "base_model": "gpt-4.1"
     },
@@ -22284,6 +22172,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_service_tier": true,
       "supports_vision": true,
+      "supports_web_search": true,
       "provider": "openai",
       "base_model": "gpt-4.1"
     },
@@ -22329,6 +22218,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_service_tier": true,
       "supports_vision": true,
+      "supports_web_search": true,
       "provider": "openai",
       "base_model": "gpt-4.1-mini"
     },
@@ -22371,6 +22261,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_service_tier": true,
       "supports_vision": true,
+      "supports_web_search": true,
       "provider": "openai",
       "base_model": "gpt-4.1-mini"
     },
@@ -23552,6 +23443,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_service_tier": true,
       "supports_vision": true,
+      "supports_web_search": true,
       "supports_none_reasoning_effort": false,
       "supports_xhigh_reasoning_effort": false,
       "provider": "openai",
@@ -24098,7 +23990,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "max_input_tokens": 1050000,
       "max_output_tokens": 128000,
       "max_tokens": 128000,
-      "mode": "chat",
+      "mode": "responses",
       "output_cost_per_token": 0.00018,
       "output_cost_per_token_above_272k_tokens": 0.00027,
       "output_cost_per_token_flex": 0.00009,
@@ -24106,9 +23998,8 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token_priority": 0.00027,
       "output_cost_per_token_above_272k_tokens_priority": 0.000405,
       "supported_endpoints": [
-        "/v1/chat/completions",
-        "/v1/batch",
-        "/v1/responses"
+        "/v1/responses",
+        "/v1/batch"
       ],
       "supported_modalities": [
         "text",
@@ -24155,7 +24046,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "max_input_tokens": 1050000,
       "max_output_tokens": 128000,
       "max_tokens": 128000,
-      "mode": "chat",
+      "mode": "responses",
       "output_cost_per_token": 0.00018,
       "output_cost_per_token_above_272k_tokens": 0.00027,
       "output_cost_per_token_flex": 0.00009,
@@ -24163,9 +24054,8 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token_priority": 0.00027,
       "output_cost_per_token_above_272k_tokens_priority": 0.000405,
       "supported_endpoints": [
-        "/v1/chat/completions",
-        "/v1/batch",
-        "/v1/responses"
+        "/v1/responses",
+        "/v1/batch"
       ],
       "supported_modalities": [
         "text",
@@ -24321,6 +24211,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_service_tier": true,
       "supports_vision": true,
+      "supports_web_search": true,
       "supports_none_reasoning_effort": false,
       "supports_xhigh_reasoning_effort": false,
       "provider": "openai",
@@ -24445,6 +24336,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_system_messages": false,
       "supports_tool_choice": true,
       "supports_vision": true,
+      "supports_web_search": true,
       "supports_none_reasoning_effort": false,
       "supports_xhigh_reasoning_effort": false,
       "provider": "openai",
@@ -24488,6 +24380,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_system_messages": false,
       "supports_tool_choice": true,
       "supports_vision": true,
+      "supports_web_search": true,
       "supports_none_reasoning_effort": false,
       "supports_xhigh_reasoning_effort": false,
       "provider": "openai",
@@ -24528,6 +24421,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_system_messages": false,
       "supports_tool_choice": true,
       "supports_vision": true,
+      "supports_web_search": true,
       "supports_none_reasoning_effort": false,
       "supports_xhigh_reasoning_effort": true,
       "provider": "openai",
@@ -24571,6 +24465,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_system_messages": false,
       "supports_tool_choice": true,
       "supports_vision": true,
+      "supports_web_search": true,
       "supports_none_reasoning_effort": false,
       "supports_xhigh_reasoning_effort": false,
       "provider": "openai",
@@ -24614,6 +24509,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_system_messages": false,
       "supports_tool_choice": true,
       "supports_vision": true,
+      "supports_web_search": true,
       "supports_none_reasoning_effort": false,
       "supports_xhigh_reasoning_effort": true,
       "provider": "openai",
@@ -24657,6 +24553,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_system_messages": false,
       "supports_tool_choice": true,
       "supports_vision": true,
+      "supports_web_search": true,
       "supports_none_reasoning_effort": false,
       "supports_xhigh_reasoning_effort": false,
       "provider": "openai",
@@ -24706,6 +24603,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_service_tier": true,
       "supports_vision": true,
+      "supports_web_search": true,
       "supports_none_reasoning_effort": false,
       "supports_xhigh_reasoning_effort": false,
       "provider": "openai",
@@ -24755,6 +24653,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_service_tier": true,
       "supports_vision": true,
+      "supports_web_search": true,
       "supports_none_reasoning_effort": false,
       "supports_xhigh_reasoning_effort": false,
       "provider": "openai",
@@ -24801,6 +24700,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_system_messages": true,
       "supports_tool_choice": true,
       "supports_vision": true,
+      "supports_web_search": true,
       "supports_none_reasoning_effort": false,
       "supports_xhigh_reasoning_effort": false,
       "provider": "openai",
@@ -24846,6 +24746,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_system_messages": true,
       "supports_tool_choice": true,
       "supports_vision": true,
+      "supports_web_search": true,
       "supports_none_reasoning_effort": false,
       "supports_xhigh_reasoning_effort": false,
       "provider": "openai",
@@ -26163,7 +26064,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "jp.anthropic.claude-sonnet-4-5-20250929-v1:0",
     "name": "jp.anthropic.claude-sonnet-4-5-20250929-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.000004125,
       "cache_read_input_token_cost": 3.3e-7,
@@ -26192,7 +26093,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 346,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-sonnet-4-5"
     },
     "slug": "jp.anthropic.claude-sonnet-4-5-20250929-v1-0",
@@ -26201,7 +26102,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "jp.anthropic.claude-haiku-4-5-20251001-v1:0",
     "name": "jp.anthropic.claude-haiku-4-5-20251001-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.000001375,
       "cache_read_input_token_cost": 1.1e-7,
@@ -26222,7 +26123,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 346,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-haiku-4-5"
     },
     "slug": "jp.anthropic.claude-haiku-4-5-20251001-v1-0",
@@ -26915,7 +26816,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "meta.llama3-3-70b-instruct-v1:0",
     "name": "meta.llama3-3-70b-instruct-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 7.2e-7,
       "max_input_tokens": 128000,
@@ -26925,7 +26826,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 7.2e-7,
       "supports_function_calling": true,
       "supports_tool_choice": false,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "llama-3-3-70b-instruct"
     },
     "slug": "meta.llama3-3-70b-instruct-v1-0",
@@ -26968,7 +26869,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "meta.llama4-maverick-17b-instruct-v1:0",
     "name": "meta.llama4-maverick-17b-instruct-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 2.4e-7,
       "input_cost_per_token_batches": 1.2e-7,
@@ -26988,7 +26889,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       ],
       "supports_function_calling": true,
       "supports_tool_choice": false,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "llama-4-maverick-17b-instruct"
     },
     "slug": "meta.llama4-maverick-17b-instruct-v1-0",
@@ -26997,7 +26898,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "meta.llama4-scout-17b-instruct-v1:0",
     "name": "meta.llama4-scout-17b-instruct-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 1.7e-7,
       "input_cost_per_token_batches": 8.5e-8,
@@ -27017,7 +26918,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       ],
       "supports_function_calling": true,
       "supports_tool_choice": false,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "llama-4-scout-17b-instruct"
     },
     "slug": "meta.llama4-scout-17b-instruct-v1-0",
@@ -27026,7 +26927,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "minimax.minimax-m2",
     "name": "minimax.minimax-m2",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 3e-7,
       "max_input_tokens": 128000,
@@ -27035,7 +26936,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "mode": "chat",
       "output_cost_per_token": 0.0000012,
       "supports_system_messages": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "minimax-m2"
     },
     "slug": "minimax.minimax-m2",
@@ -27044,7 +26945,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "minimax.minimax-m2.1",
     "name": "minimax.minimax-m2.1",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 3e-7,
       "max_input_tokens": 196000,
@@ -27056,7 +26957,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_system_messages": true,
       "supports_tool_choice": true,
       "source": "https://aws.amazon.com/bedrock/pricing/",
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "minimax-m2.1"
     },
     "slug": "minimax.minimax-m2.1",
@@ -27180,7 +27081,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "mistral.devstral-2-123b",
     "name": "mistral.devstral-2-123b",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 4e-7,
       "max_input_tokens": 256000,
@@ -27192,7 +27093,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_system_messages": true,
       "supports_tool_choice": true,
       "source": "https://aws.amazon.com/bedrock/pricing/",
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "devstral-2-123b"
     },
     "slug": "mistral.devstral-2-123b",
@@ -27201,7 +27102,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "mistral.magistral-small-2509",
     "name": "mistral.magistral-small-2509",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 5e-7,
       "max_input_tokens": 128000,
@@ -27212,7 +27113,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_function_calling": true,
       "supports_reasoning": true,
       "supports_system_messages": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "magistral-small"
     },
     "slug": "mistral.magistral-small-2509",
@@ -27221,7 +27122,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "mistral.ministral-3-14b-instruct",
     "name": "mistral.ministral-3-14b-instruct",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 2e-7,
       "max_input_tokens": 128000,
@@ -27231,7 +27132,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 2e-7,
       "supports_function_calling": true,
       "supports_system_messages": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "ministral-3-14b-instruct"
     },
     "slug": "mistral.ministral-3-14b-instruct",
@@ -27240,7 +27141,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "mistral.ministral-3-3b-instruct",
     "name": "mistral.ministral-3-3b-instruct",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 1e-7,
       "max_input_tokens": 128000,
@@ -27250,7 +27151,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 1e-7,
       "supports_function_calling": true,
       "supports_system_messages": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "ministral-3-3b-instruct"
     },
     "slug": "mistral.ministral-3-3b-instruct",
@@ -27259,7 +27160,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "mistral.ministral-3-8b-instruct",
     "name": "mistral.ministral-3-8b-instruct",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 1.5e-7,
       "max_input_tokens": 128000,
@@ -27269,7 +27170,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 1.5e-7,
       "supports_function_calling": true,
       "supports_system_messages": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "ministral-3-8b-instruct"
     },
     "slug": "mistral.ministral-3-8b-instruct",
@@ -27333,7 +27234,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "mistral.mistral-large-3-675b-instruct",
     "name": "mistral.mistral-large-3-675b-instruct",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 5e-7,
       "max_input_tokens": 128000,
@@ -27343,7 +27244,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 0.0000015,
       "supports_function_calling": true,
       "supports_system_messages": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "mistral-large-3-675b-instruct"
     },
     "slug": "mistral.mistral-large-3-675b-instruct",
@@ -27388,7 +27289,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "mistral.voxtral-mini-3b-2507",
     "name": "mistral.voxtral-mini-3b-2507",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 4e-8,
       "max_input_tokens": 128000,
@@ -27398,7 +27299,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 4e-8,
       "supports_audio_input": true,
       "supports_system_messages": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "voxtral-mini-3b"
     },
     "slug": "mistral.voxtral-mini-3b-2507",
@@ -27407,7 +27308,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "mistral.voxtral-small-24b-2507",
     "name": "mistral.voxtral-small-24b-2507",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 1e-7,
       "max_input_tokens": 128000,
@@ -27417,7 +27318,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 3e-7,
       "supports_audio_input": true,
       "supports_system_messages": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "voxtral-small-24b"
     },
     "slug": "mistral.voxtral-small-24b-2507",
@@ -28474,7 +28375,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "moonshot.kimi-k2-thinking",
     "name": "moonshot.kimi-k2-thinking",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 6e-7,
       "max_input_tokens": 128000,
@@ -28484,7 +28385,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 0.0000025,
       "supports_reasoning": true,
       "supports_system_messages": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "kimi-k2-thinking"
     },
     "slug": "moonshot.kimi-k2-thinking",
@@ -28493,7 +28394,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "moonshotai.kimi-k2.5",
     "name": "moonshotai.kimi-k2.5",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 6e-7,
       "max_input_tokens": 262144,
@@ -28506,7 +28407,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "source": "https://aws.amazon.com/bedrock/pricing/",
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "kimi-k2.5"
     },
     "slug": "moonshotai.kimi-k2.5",
@@ -29871,7 +29772,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "nvidia.nemotron-nano-12b-v2",
     "name": "nvidia.nemotron-nano-12b-v2",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 2e-7,
       "max_input_tokens": 128000,
@@ -29881,7 +29782,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 6e-7,
       "supports_system_messages": true,
       "supports_vision": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "nvidia-nemotron-nano-12b-v2"
     },
     "slug": "nvidia.nemotron-nano-12b-v2",
@@ -29890,7 +29791,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "nvidia.nemotron-nano-9b-v2",
     "name": "nvidia.nemotron-nano-9b-v2",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 6e-8,
       "max_input_tokens": 128000,
@@ -29899,7 +29800,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "mode": "chat",
       "output_cost_per_token": 2.3e-7,
       "supports_system_messages": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "nvidia-nemotron-nano-9b-v2"
     },
     "slug": "nvidia.nemotron-nano-9b-v2",
@@ -29908,7 +29809,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "nvidia.nemotron-nano-3-30b",
     "name": "nvidia.nemotron-nano-3-30b",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 6e-8,
       "max_input_tokens": 262144,
@@ -29920,7 +29821,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_system_messages": true,
       "supports_tool_choice": true,
       "source": "https://aws.amazon.com/bedrock/pricing/",
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "nvidia-nemotron-nano-3-30b"
     },
     "slug": "nvidia.nemotron-nano-3-30b",
@@ -30188,6 +30089,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_service_tier": true,
       "supports_vision": true,
+      "supports_web_search": true,
       "provider": "openai",
       "base_model": "o3"
     },
@@ -30228,6 +30130,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_service_tier": true,
       "supports_vision": true,
+      "supports_web_search": true,
       "provider": "openai",
       "base_model": "o3"
     },
@@ -30269,6 +30172,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_system_messages": true,
       "supports_tool_choice": true,
       "supports_vision": true,
+      "supports_web_search": true,
       "provider": "openai",
       "base_model": "o3"
     },
@@ -30310,6 +30214,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_system_messages": true,
       "supports_tool_choice": true,
       "supports_vision": true,
+      "supports_web_search": true,
       "provider": "openai",
       "base_model": "o3"
     },
@@ -30398,6 +30303,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_response_schema": true,
       "supports_tool_choice": true,
       "supports_vision": true,
+      "supports_web_search": true,
       "provider": "openai",
       "base_model": "o3-pro"
     },
@@ -30436,6 +30342,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_response_schema": true,
       "supports_tool_choice": true,
       "supports_vision": true,
+      "supports_web_search": true,
       "provider": "openai",
       "base_model": "o3-pro"
     },
@@ -30469,6 +30376,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_service_tier": true,
       "supports_vision": true,
+      "supports_web_search": true,
       "provider": "openai",
       "base_model": "o4-mini"
     },
@@ -30496,6 +30404,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_service_tier": true,
       "supports_vision": true,
+      "supports_web_search": true,
       "provider": "openai",
       "base_model": "o4-mini"
     },
@@ -30537,6 +30446,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_system_messages": true,
       "supports_tool_choice": true,
       "supports_vision": true,
+      "supports_web_search": true,
       "provider": "openai",
       "base_model": "o4-mini"
     },
@@ -30578,6 +30488,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_system_messages": true,
       "supports_tool_choice": true,
       "supports_vision": true,
+      "supports_web_search": true,
       "provider": "openai",
       "base_model": "o4-mini"
     },
@@ -30847,7 +30758,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "openai.gpt-oss-120b-1:0",
     "name": "openai.gpt-oss-120b-1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 1.5e-7,
       "max_input_tokens": 128000,
@@ -30859,7 +30770,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_reasoning": true,
       "supports_response_schema": true,
       "supports_tool_choice": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "gpt-oss-120b"
     },
     "slug": "openai.gpt-oss-120b-1-0",
@@ -30868,7 +30779,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "openai.gpt-oss-20b-1:0",
     "name": "openai.gpt-oss-20b-1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 7e-8,
       "max_input_tokens": 128000,
@@ -30880,7 +30791,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_reasoning": true,
       "supports_response_schema": true,
       "supports_tool_choice": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "gpt-oss-20b"
     },
     "slug": "openai.gpt-oss-20b-1-0",
@@ -30889,7 +30800,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "openai.gpt-oss-safeguard-120b",
     "name": "openai.gpt-oss-safeguard-120b",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 1.5e-7,
       "max_input_tokens": 128000,
@@ -30898,7 +30809,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "mode": "chat",
       "output_cost_per_token": 6e-7,
       "supports_system_messages": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "gpt-oss-120b"
     },
     "slug": "openai.gpt-oss-safeguard-120b",
@@ -30907,7 +30818,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "openai.gpt-oss-safeguard-20b",
     "name": "openai.gpt-oss-safeguard-20b",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 7e-8,
       "max_input_tokens": 128000,
@@ -30916,7 +30827,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "mode": "chat",
       "output_cost_per_token": 2e-7,
       "supports_system_messages": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "gpt-oss-20b"
     },
     "slug": "openai.gpt-oss-safeguard-20b",
@@ -32582,6 +32493,140 @@ export const LLM_MODELS: ProcessedModel[] = [
     "displayName": "qwen3-235b-a22b-thinking-2507"
   },
   {
+    "id": "openrouter/qwen/qwen3.5-35b-a3b",
+    "name": "qwen3.5-35b-a3b",
+    "provider": "openrouter",
+    "data": {
+      "input_cost_per_token": 2.5e-7,
+      "max_input_tokens": 262144,
+      "max_output_tokens": 65536,
+      "max_tokens": 65536,
+      "mode": "chat",
+      "output_cost_per_token": 0.000002,
+      "source": "https://openrouter.ai/qwen/qwen3.5-35b-a3b",
+      "supports_function_calling": true,
+      "supports_reasoning": true,
+      "supports_tool_choice": true,
+      "supports_vision": true,
+      "provider": "openrouter",
+      "base_model": "qwen3.5-35b-a3b"
+    },
+    "slug": "qwen3.5-35b-a3b",
+    "displayName": "qwen3.5-35b-a3b"
+  },
+  {
+    "id": "openrouter/qwen/qwen3.5-27b",
+    "name": "qwen3.5-27b",
+    "provider": "openrouter",
+    "data": {
+      "input_cost_per_token": 3e-7,
+      "max_input_tokens": 262144,
+      "max_output_tokens": 65536,
+      "max_tokens": 65536,
+      "mode": "chat",
+      "output_cost_per_token": 0.0000024,
+      "source": "https://openrouter.ai/qwen/qwen3.5-27b",
+      "supports_function_calling": true,
+      "supports_reasoning": true,
+      "supports_tool_choice": true,
+      "supports_vision": true,
+      "provider": "openrouter",
+      "base_model": "qwen3.5-27b"
+    },
+    "slug": "qwen3.5-27b",
+    "displayName": "qwen3.5-27b"
+  },
+  {
+    "id": "openrouter/qwen/qwen3.5-122b-a10b",
+    "name": "qwen3.5-122b-a10b",
+    "provider": "openrouter",
+    "data": {
+      "input_cost_per_token": 4e-7,
+      "max_input_tokens": 262144,
+      "max_output_tokens": 65536,
+      "max_tokens": 65536,
+      "mode": "chat",
+      "output_cost_per_token": 0.000002,
+      "source": "https://openrouter.ai/qwen/qwen3.5-122b-a10b",
+      "supports_function_calling": true,
+      "supports_reasoning": true,
+      "supports_tool_choice": true,
+      "supports_vision": true,
+      "provider": "openrouter",
+      "base_model": "qwen3.5-122b-a10b"
+    },
+    "slug": "qwen3.5-122b-a10b",
+    "displayName": "qwen3.5-122b-a10b"
+  },
+  {
+    "id": "openrouter/qwen/qwen3.5-flash-02-23",
+    "name": "qwen3.5-flash-02-23",
+    "provider": "openrouter",
+    "data": {
+      "input_cost_per_token": 1e-7,
+      "max_input_tokens": 1000000,
+      "max_output_tokens": 65536,
+      "max_tokens": 65536,
+      "mode": "chat",
+      "output_cost_per_token": 4e-7,
+      "source": "https://openrouter.ai/qwen/qwen3.5-flash-02-23",
+      "supports_function_calling": true,
+      "supports_reasoning": true,
+      "supports_tool_choice": true,
+      "supports_vision": true,
+      "provider": "openrouter",
+      "base_model": "qwen3.5-flash"
+    },
+    "slug": "qwen3.5-flash-02-23",
+    "displayName": "qwen3.5-flash-02-23"
+  },
+  {
+    "id": "openrouter/qwen/qwen3.5-plus-02-15",
+    "name": "qwen3.5-plus-02-15",
+    "provider": "openrouter",
+    "data": {
+      "input_cost_per_token": 4e-7,
+      "input_cost_per_token_above_256k_tokens": 5e-7,
+      "max_input_tokens": 1000000,
+      "max_output_tokens": 65536,
+      "max_tokens": 65536,
+      "mode": "chat",
+      "output_cost_per_token": 0.0000024,
+      "output_cost_per_token_above_256k_tokens": 0.000003,
+      "source": "https://openrouter.ai/qwen/qwen3.5-plus-02-15",
+      "supports_function_calling": true,
+      "supports_reasoning": true,
+      "supports_tool_choice": true,
+      "supports_vision": true,
+      "provider": "openrouter",
+      "base_model": "qwen3.5-plus"
+    },
+    "slug": "qwen3.5-plus-02-15",
+    "displayName": "qwen3.5-plus-02-15"
+  },
+  {
+    "id": "openrouter/qwen/qwen3.5-397b-a17b",
+    "name": "qwen3.5-397b-a17b",
+    "provider": "openrouter",
+    "data": {
+      "input_cost_per_token": 6e-7,
+      "max_input_tokens": 262144,
+      "max_output_tokens": 65536,
+      "max_tokens": 65536,
+      "mode": "chat",
+      "output_cost_per_token": 0.0000036,
+      "source": "https://openrouter.ai/qwen/qwen3.5-397b-a17b",
+      "supports_function_calling": true,
+      "supports_reasoning": true,
+      "supports_tool_choice": true,
+      "supports_vision": true,
+      "provider": "openrouter",
+      "base_model": "qwen3.5-397b-a17b"
+    },
+    "slug": "qwen3.5-397b-a17b",
+    "displayName": "qwen3.5-397b-a17b"
+  },
+  {
     "id": "openrouter/switchpoint/router",
     "name": "router",
     "provider": "openrouter",
@@ -33742,7 +33787,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "qwen.qwen3-coder-480b-a35b-v1:0",
     "name": "qwen.qwen3-coder-480b-a35b-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 2.2e-7,
       "max_input_tokens": 262000,
@@ -33753,7 +33798,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_function_calling": true,
       "supports_reasoning": true,
       "supports_tool_choice": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "qwen3-coder-480b-a35b"
     },
     "slug": "qwen.qwen3-coder-480b-a35b-v1-0",
@@ -33762,7 +33807,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "qwen.qwen3-235b-a22b-2507-v1:0",
     "name": "qwen.qwen3-235b-a22b-2507-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 2.2e-7,
       "max_input_tokens": 262144,
@@ -33773,7 +33818,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_function_calling": true,
       "supports_reasoning": true,
       "supports_tool_choice": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "qwen3-235b-a22b"
     },
     "slug": "qwen.qwen3-235b-a22b-2507-v1-0",
@@ -33782,7 +33827,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "qwen.qwen3-coder-30b-a3b-v1:0",
     "name": "qwen.qwen3-coder-30b-a3b-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 1.5e-7,
       "max_input_tokens": 262144,
@@ -33793,7 +33838,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_function_calling": true,
       "supports_reasoning": true,
       "supports_tool_choice": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "qwen3-coder-30b-a3b"
     },
     "slug": "qwen.qwen3-coder-30b-a3b-v1-0",
@@ -33802,7 +33847,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "qwen.qwen3-32b-v1:0",
     "name": "qwen.qwen3-32b-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 1.5e-7,
       "max_input_tokens": 131072,
@@ -33813,7 +33858,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_function_calling": true,
       "supports_reasoning": true,
       "supports_tool_choice": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "qwen3-32b"
     },
     "slug": "qwen.qwen3-32b-v1-0",
@@ -33822,7 +33867,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "qwen.qwen3-next-80b-a3b",
     "name": "qwen.qwen3-next-80b-a3b",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 1.5e-7,
       "max_input_tokens": 128000,
@@ -33832,7 +33877,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 0.0000012,
       "supports_function_calling": true,
       "supports_system_messages": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "qwen3-next-80b-a3b"
     },
     "slug": "qwen.qwen3-next-80b-a3b",
@@ -33841,7 +33886,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "qwen.qwen3-vl-235b-a22b",
     "name": "qwen.qwen3-vl-235b-a22b",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 5.3e-7,
       "max_input_tokens": 128000,
@@ -33852,7 +33897,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_function_calling": true,
       "supports_system_messages": true,
       "supports_vision": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "qwen3-vl-235b-a22b"
     },
     "slug": "qwen.qwen3-vl-235b-a22b",
@@ -33861,7 +33906,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "qwen.qwen3-coder-next",
     "name": "qwen.qwen3-coder-next",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 5e-7,
       "max_input_tokens": 262144,
@@ -33873,7 +33918,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_system_messages": true,
       "supports_tool_choice": true,
       "source": "https://aws.amazon.com/bedrock/pricing/",
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "qwen3-coder-next"
     },
     "slug": "qwen.qwen3-coder-next",
@@ -35880,7 +35925,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "us.amazon.nova-lite-v1:0",
     "name": "us.amazon.nova-lite-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 6e-8,
       "max_input_tokens": 300000,
@@ -35893,7 +35938,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_prompt_caching": true,
       "supports_response_schema": true,
       "supports_vision": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "nova-lite"
     },
     "slug": "us.amazon.nova-lite-v1-0",
@@ -35902,7 +35947,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "us.amazon.nova-micro-v1:0",
     "name": "us.amazon.nova-micro-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 3.5e-8,
       "max_input_tokens": 128000,
@@ -35913,7 +35958,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_function_calling": true,
       "supports_prompt_caching": true,
       "supports_response_schema": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "nova-micro"
     },
     "slug": "us.amazon.nova-micro-v1-0",
@@ -35922,7 +35967,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "us.amazon.nova-premier-v1:0",
     "name": "us.amazon.nova-premier-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 0.0000025,
       "max_input_tokens": 1000000,
@@ -35935,7 +35980,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_prompt_caching": false,
       "supports_response_schema": true,
       "supports_vision": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "nova-premier"
     },
     "slug": "us.amazon.nova-premier-v1-0",
@@ -35944,7 +35989,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "us.amazon.nova-pro-v1:0",
     "name": "us.amazon.nova-pro-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 8e-7,
       "max_input_tokens": 300000,
@@ -35957,7 +36002,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_prompt_caching": true,
       "supports_response_schema": true,
       "supports_vision": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "nova-pro"
     },
     "slug": "us.amazon.nova-pro-v1-0",
@@ -35991,7 +36036,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
     "name": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.000001375,
       "cache_read_input_token_cost": 1.1e-7,
@@ -36012,7 +36057,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 346,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-haiku-4-5"
     },
     "slug": "us.anthropic.claude-haiku-4-5-20251001-v1-0",
@@ -36072,7 +36117,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "us.anthropic.claude-3-7-sonnet-20250219-v1:0",
     "name": "us.anthropic.claude-3-7-sonnet-20250219-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.00000375,
       "cache_read_input_token_cost": 3e-7,
@@ -36091,7 +36136,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_response_schema": true,
       "supports_tool_choice": true,
       "supports_vision": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-3-7-sonnet"
     },
     "slug": "us.anthropic.claude-3-7-sonnet-20250219-v1-0",
@@ -36171,7 +36216,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "us.anthropic.claude-opus-4-1-20250805-v1:0",
     "name": "us.anthropic.claude-opus-4-1-20250805-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.00001875,
       "cache_read_input_token_cost": 0.0000015,
@@ -36196,7 +36241,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 159,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-opus-4-1"
     },
     "slug": "us.anthropic.claude-opus-4-1-20250805-v1-0",
@@ -36205,7 +36250,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
     "name": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.000004125,
       "cache_read_input_token_cost": 3.3e-7,
@@ -36234,7 +36279,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 346,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-sonnet-4-5"
     },
     "slug": "us.anthropic.claude-sonnet-4-5-20250929-v1-0",
@@ -36243,7 +36288,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "au.anthropic.claude-haiku-4-5-20251001-v1:0",
     "name": "au.anthropic.claude-haiku-4-5-20251001-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.000001375,
       "cache_read_input_token_cost": 1.1e-7,
@@ -36263,7 +36308,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 346,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-haiku-4-5"
     },
     "slug": "au.anthropic.claude-haiku-4-5-20251001-v1-0",
@@ -36272,7 +36317,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "us.anthropic.claude-opus-4-20250514-v1:0",
     "name": "us.anthropic.claude-opus-4-20250514-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.00001875,
       "cache_read_input_token_cost": 0.0000015,
@@ -36297,7 +36342,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 159,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-opus-4"
     },
     "slug": "us.anthropic.claude-opus-4-20250514-v1-0",
@@ -36306,7 +36351,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "us.anthropic.claude-opus-4-5-20251101-v1:0",
     "name": "us.anthropic.claude-opus-4-5-20251101-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.000006875,
       "cache_read_input_token_cost": 5.5e-7,
@@ -36331,7 +36376,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 159,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-opus-4-5"
     },
     "slug": "us.anthropic.claude-opus-4-5-20251101-v1-0",
@@ -36340,7 +36385,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "global.anthropic.claude-opus-4-5-20251101-v1:0",
     "name": "global.anthropic.claude-opus-4-5-20251101-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.00000625,
       "cache_read_input_token_cost": 5e-7,
@@ -36365,7 +36410,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 159,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-opus-4-5"
     },
     "slug": "global.anthropic.claude-opus-4-5-20251101-v1-0",
@@ -36374,7 +36419,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "eu.anthropic.claude-opus-4-5-20251101-v1:0",
     "name": "eu.anthropic.claude-opus-4-5-20251101-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.00000625,
       "cache_read_input_token_cost": 5e-7,
@@ -36399,7 +36444,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 159,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-opus-4-5"
     },
     "slug": "eu.anthropic.claude-opus-4-5-20251101-v1-0",
@@ -36408,7 +36453,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "us.anthropic.claude-sonnet-4-20250514-v1:0",
     "name": "us.anthropic.claude-sonnet-4-20250514-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "cache_creation_input_token_cost": 0.00000375,
       "cache_read_input_token_cost": 3e-7,
@@ -36437,7 +36482,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_tool_choice": true,
       "supports_vision": true,
       "tool_use_system_prompt_tokens": 159,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "claude-sonnet-4"
     },
     "slug": "us.anthropic.claude-sonnet-4-20250514-v1-0",
@@ -36446,7 +36491,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "us.deepseek.r1-v1:0",
     "name": "us.deepseek.r1-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 0.00000135,
       "max_input_tokens": 128000,
@@ -36457,7 +36502,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_function_calling": false,
       "supports_reasoning": true,
       "supports_tool_choice": false,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "deepseek-r1"
     },
     "slug": "us.deepseek.r1-v1-0",
@@ -36466,7 +36511,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "us.deepseek.v3.2",
     "name": "us.deepseek.v3.2",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 6.2e-7,
       "max_input_tokens": 163840,
@@ -36477,7 +36522,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_function_calling": true,
       "supports_reasoning": true,
       "supports_tool_choice": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "deepseek"
     },
     "slug": "us.deepseek.v3.2",
@@ -36486,7 +36531,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "eu.deepseek.v3.2",
     "name": "eu.deepseek.v3.2",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 7.4e-7,
       "max_input_tokens": 163840,
@@ -36497,7 +36542,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_function_calling": true,
       "supports_reasoning": true,
       "supports_tool_choice": true,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "deepseek"
     },
     "slug": "eu.deepseek.v3.2",
@@ -36641,7 +36686,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "us.meta.llama3-3-70b-instruct-v1:0",
     "name": "us.meta.llama3-3-70b-instruct-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 7.2e-7,
       "max_input_tokens": 128000,
@@ -36651,7 +36696,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 7.2e-7,
       "supports_function_calling": true,
       "supports_tool_choice": false,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "llama-3-3-70b-instruct"
     },
     "slug": "us.meta.llama3-3-70b-instruct-v1-0",
@@ -36660,7 +36705,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "us.meta.llama4-maverick-17b-instruct-v1:0",
     "name": "us.meta.llama4-maverick-17b-instruct-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 2.4e-7,
       "input_cost_per_token_batches": 1.2e-7,
@@ -36680,7 +36725,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       ],
       "supports_function_calling": true,
       "supports_tool_choice": false,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "llama-4-maverick-17b-instruct"
     },
     "slug": "us.meta.llama4-maverick-17b-instruct-v1-0",
@@ -36689,7 +36734,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "us.meta.llama4-scout-17b-instruct-v1:0",
     "name": "us.meta.llama4-scout-17b-instruct-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 1.7e-7,
       "input_cost_per_token_batches": 8.5e-8,
@@ -36709,7 +36754,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       ],
       "supports_function_calling": true,
       "supports_tool_choice": false,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "llama-4-scout-17b-instruct"
     },
     "slug": "us.meta.llama4-scout-17b-instruct-v1-0",
@@ -36718,7 +36763,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "us.mistral.pixtral-large-2502-v1:0",
     "name": "us.mistral.pixtral-large-2502-v1:0",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 0.000002,
       "max_input_tokens": 128000,
@@ -36728,7 +36773,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "output_cost_per_token": 0.000006,
       "supports_function_calling": true,
       "supports_tool_choice": false,
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "pixtral-large"
     },
     "slug": "us.mistral.pixtral-large-2502-v1-0",
@@ -42550,7 +42595,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "zai.glm-4.7",
     "name": "zai.glm-4.7",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 6e-7,
       "max_input_tokens": 200000,
@@ -42563,7 +42608,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_system_messages": true,
       "supports_tool_choice": true,
       "source": "https://aws.amazon.com/bedrock/pricing/",
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "zai.glm-4.7"
     },
     "slug": "zai.glm-4.7",
@@ -42572,7 +42617,7 @@ export const LLM_MODELS: ProcessedModel[] = [
   {
     "id": "zai.glm-4.7-flash",
     "name": "zai.glm-4.7-flash",
-    "provider": "bedrock_converse",
+    "provider": "bedrock",
     "data": {
       "input_cost_per_token": 7e-8,
       "max_input_tokens": 200000,
@@ -42585,7 +42630,7 @@ export const LLM_MODELS: ProcessedModel[] = [
       "supports_system_messages": true,
       "supports_tool_choice": true,
       "source": "https://aws.amazon.com/bedrock/pricing/",
-      "provider": "bedrock_converse",
+      "provider": "bedrock",
       "base_model": "zai.glm-4.7-flash"
     },
     "slug": "zai.glm-4.7-flash",
@@ -49483,15 +49528,12 @@ export const LLM_PROVIDERS: string[] = [
   "anthropic",
   "anyscale",
   "azure",
-  "azure_ai",
   "azure_text",
   "bedrock",
-  "bedrock_converse",
   "bedrock_mantle",
   "cerebras",
   "cloudflare",
   "cohere",
-  "cohere_chat",
   "dashscope",
   "databricks",
   "deepinfra",
@@ -49580,7 +49622,7 @@ for (const model of LLM_MODELS) {
 // Stats
 export const LLM_STATS = {
   totalModels: 2088,
-  totalProviders: 73,
+  totalProviders: 70,
   totalModes: 10,
-  generatedAt: '2026-03-07T11:29:53.726Z',
+  generatedAt: '2026-03-11T13:03:43.343Z',
 };
