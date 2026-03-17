@@ -7,38 +7,38 @@ import { Button } from '@/components/ui/Button'
 import { getCostCalculatorBaseUrl } from '@/lib/utils'
 import {
   ArrowRight,
-  Server,
-  CreditCard,
-  Database,
+  ShieldCheck,
+  FileText,
+  Lock,
+  Users,
+  Layers,
+  Banknote,
   ExternalLink,
-  GitBranch,
-  KeyRound,
-  Network,
-  Plug,
-  Scale,
+  PlugZap,
   ScrollText,
-  ShieldAlert,
-  TrendingUp,
-  Unplug,
-  Zap,
+  Server,
+  Database,
+  AlertTriangle,
+  Code,
+  Route
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'AI Gateway for Retail and E-Commerce | Bifrost',
+  title: 'AI Gateway for Biotechnology & Pharma | Bifrost',
   description:
-    'Bifrost helps retail and eCommerce teams govern AI across every channel, route traffic through peak events, and keep payment data out of LLM scope.',
+    'AI gateway built for GxP compliance and IP protection. Governed AI for pharma and biotech teams that protects compound IP and satisfies ALCOA+ audit requirements.',
   alternates: {
-    canonical: 'https://www.getmaxim.ai/bifrost/industry-pages/retail',
+    canonical: 'https://www.getmaxim.ai/bifrost/industry-pages/biotech-pharma',
   },
 }
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
-  name: 'AI Gateway for Retail | Bifrost',
+  name: 'AI Gateway for Biotechnology & Pharma | Bifrost',
   description:
-    'Bifrost helps retail and eCommerce teams govern AI across every channel, route traffic through peak events, and keep payment data out of LLM scope.',
-  url: 'https://www.getmaxim.ai/bifrost/industry-pages/retail',
+    'AI gateway built for GxP compliance and IP protection. Governed AI for pharma and biotech teams that protects compound IP and satisfies ALCOA+ audit requirements.',
+  url: 'https://www.getmaxim.ai/bifrost/industry-pages/biotech-pharma',
   isPartOf: {
     '@type': 'WebSite',
     name: 'Bifrost by Maxim AI',
@@ -54,156 +54,153 @@ const jsonLd = {
     name: 'Bifrost',
     applicationCategory: 'BusinessApplication',
     description:
-      'Bifrost helps retail and eCommerce teams govern AI across every channel, route traffic through peak events, and keep payment data out of LLM scope.',
+      'Bifrost is an AI gateway built for GxP compliance and IP protection, giving pharma and biotech teams governed AI that protects compound IP and satisfies ALCOA+ audit requirements.',
   },
   audience: {
     '@type': 'Audience',
-    audienceType: 'Retail teams',
+    audienceType: 'Biotechnology and pharmaceutical teams',
   },
 }
 
 const challenges = [
   {
-    icon: TrendingUp,
-    title: 'Seasonal traffic exposure',
+    icon: AlertTriangle,
+    title: 'Permanent IP leakage risk',
     description:
-      'Black Friday and flash sales drive 10-50x traffic spikes. Standard gateways have no way to distribute load across providers automatically.',
+      'Researchers uploading proprietary compound structures to cloud AI create irreversible trade secret exposure.',
   },
   {
-    icon: ShieldAlert,
-    title: 'Ungoverned AI use',
+    icon: FileText,
+    title: 'GxP audit requirements',
     description:
-      'Employees use personal AI tools on payment records, customer PII, and supplier data without governance, creating PCI-DSS and CCPA liability.',
+      'AI used in regulated records must meet 21 CFR Part 11 ALCOA+ data integrity requirements -- standard gateways don’t.',
   },
   {
-    icon: Unplug,
-    title: 'Integration complexity',
+    icon: Layers,
+    title: 'Ungoverned AI sprawl',
     description:
-      'Connecting LLMs to commerce platforms, inventory systems, and data warehouses via custom code delays deployment and complicates auditing.',
+      'Research, clinical, and manufacturing teams use separate AI tools with no unified policy or audit layer.',
   },
 ]
 
 const governance = [
   {
-    icon: CreditCard,
-    title: 'PCI-DSS payment guardrails',
+    icon: Lock,
+    title: 'On-prem and VPC deployment',
     description:
-      'Block PII such as card numbers and CVVs before they reach any LLM, keeping customer-facing AI outside PCI audit scope.',
-  },
-  {
-    icon: KeyRound,
-    title: 'Granular access and budget controls',
-    description:
-      'Create virtual keys with scoped model access, usage limits, and per-team, user, or application budget controls.',
+      'Deploy within your own infrastructure and route IP-sensitive research workloads to on-premises models within your perimeter.',
   },
   {
     icon: ScrollText,
-    title: 'Audit-ready logging',
+    title: 'ALCOA+-compliant audit logs',
     description:
-      'Capture every model interaction with user ID, timestamp, and token detail to satisfy PCI Requirement 10 and CCPA obligations.',
+      'Capture attributable, tamper-evident records of every model interaction for FDA inspections.',
   },
   {
-    icon: Plug,
-    title: 'MCP tool governance',
+    icon: ShieldCheck,
+    title: 'Guardrails and data redaction',
     description:
-      'Enable governed and auditable access to MCP tools across connected systems including product catalogs, order management, and inventory.',
-  },
-]
-
-const useCases = [
-  {
-    title: 'AI shopping assistant',
-    description:
-      'Route conversational commerce queries through a governed, high-availability layer that stays live when upstream providers degrade.',
+      'Strip PHI, block proprietary molecular notation, and enforce output content policies before data reaches any LLM.',
   },
   {
-    title: 'Real-time personalization',
+    icon: Users,
+    title: 'Role-based access by function',
     description:
-      'Serve homepage and product recommendations at scale, with semantic caching cutting repeat query costs across high-traffic pages.',
+      'Segment model access so R&D, regulatory affairs, and engineering teams operate in isolated permission tiers.',
   },
-  {
-    title: 'Customer and merchant support',
-    description:
-      'Automate order status, returns, and seller support queries with governed MCP tool access to commerce systems.',
-  },
-  {
-    title: 'Enterprise AI adoption',
-    description:
-      'Give engineering, merchandising, and ops teams governed access to leading models with centralized budgeting and audit trails.',
-  },
-  {
-    title: 'Product content generation',
-    description:
-      'Generate titles, descriptions, and SEO metadata across thousands of SKUs using cost-optimized batch model routing.',
-  },
-  {
-    title: 'Demand forecasting',
-    description:
-      'Connect LLMs to ERP and inventory systems via MCP so buyers can query forecasts and get reasoning behind every recommendation.',
-  }
 ]
 
 const platformCapabilities = [
   {
-    icon: Scale,
-    title: 'Adaptive load balancing',
+    icon: Code,
+    title: 'Drop-in SDK compatibility',
     description:
-      'Automatically distributes traffic across providers, routing away from rate-limited or degraded endpoints when traffic spikes or providers fail.',
+      'Route existing AI integrations through Bifrost to access 1000+ models without rewriting application code.',
+  },
+  {
+    icon: Server,
+    title: 'High-availability clustering',
+    description:
+      'Keep regulated AI workloads running continuously with peer-to-peer clustering and no single point of failure.',
+  },
+  {
+    icon: PlugZap,
+    title: 'Lab system integrations',
+    description: 'MCP Gateway connects AI workflows to ELN, LIMS, and QMS platforms without building custom middleware.',
+  },
+  {
+    icon: Route,
+    title: 'Intelligent model routing',
+    description: 'Route molecular and clinical queries to on-premises models while directing general workloads to cloud providers.',
+  },
+  {
+    icon: Banknote,
+    title: 'Cost attribution and budgeting',
+    description: 'Tag every request by project, therapeutic area, department, or user for chargeback reporting and budget enforcement.',
   },
   {
     icon: Database,
     title: 'Semantic caching',
     description:
-      'Serves near-identical user queries from cache to reduce live LLM calls and provider costs.',
-  },
-  {
-    icon: Network,
-    title: 'Horizontal cluster scaling',
-    description:
-      'Peer-to-peer cluster architecture adds capacity in minutes, allowing traffic to scale from baseline to peak without config changes or downtime.',
-  },
-  {
-    icon: Zap,
-    title: 'Ultra-low latency overhead',
-    description:
-      'Maintains ~100 µs overhead at 5,000 RPS even with governance, routing, caching, and plugins enabled.',
-  },
-  {
-    icon: GitBranch,
-    title: 'Multi-provider support and fallbacks',
-    description:
-      'Route requests across multiple models and providers with automatic failover through a single-line integration.',
-  },
-  {
-    icon: Server,
-    title: 'In-VPC and air-gapped deployment',
-    description:
-      'Deploy inside your cloud VPC so customer PII and cardholder data never leave your network perimeter.',
+      'Reduce API costs on repeated queries and protocol questions with shared caching across research teams.',
   },
 ]
 
 const interfaceHighlights = [
   {
-    riveSrc: '/rive/lln9t3OuTneA9tQOi8XMPNlfNCk.riv',
-    title: 'Built-in observability',
+    riveSrc: '/rive/c0tVyQYkMtvuhTCKvA0SjGVHkY.riv',
+    title: 'Audit trail viewer',
     description:
-      'Live monitoring of request volume, provider distribution, and routing decisions to track system behavior.',
+      'Filter and export tamper-evident request logs for FDA Part 11 inspections and internal compliance review.',
   },
   {
-    riveSrc: '/rive/c0tVyQYkMtvuhTCKvA0SjGVHkY.riv',
-    title: 'Compliance audit logs',
+    riveSrc: '/rive/lln9t3OuTneA9tQOi8XMPNlfNCk.riv',
+    title: 'Routing and usage dashboard',
     description:
-      'Searchable request history with metadata supporting PCI Requirement 10, CCPA data lineage, and DSARs.',
+      'Monitor live routing decisions, provider selection, latency, and model usage across research and clinical workloads.',
   },
   {
     riveSrc: '/rive/KBbyqDZQ7ko6obmMhOt3hllKA.riv',
-    title: 'Budget and access controls',
+    title: 'Virtual keys and budgets',
     description:
-      'Per-team virtual keys, spend limits, and usage summaries for finance and platform team visibility.',
+      'Assign scoped keys to teams and workflows with hard spending limits and real-time usage reporting.',
   },
 ]
 
-export default function RetailPage() {
+const useCases = [
+  {
+    title: 'Engineering AI governance',
+    description:
+      'Give platform and data science teams governed access to coding assistants and advanced models, with usage budgets, audit trails, and model access controls.',
+  },
+  {
+    title: 'Scientific literature review',
+    description:
+      'Use AI to search, summarize, and analyze scientific literature and patent filings while protecting proprietary research data.',
+  },
+  {
+    title: 'Regulatory document writing',
+    description:
+      'Assist regulatory writers with CTD modules with AI routed through audit-logged infrastructure ready for FDA review.',
+  },
+  {
+    title: 'Pharmacovigilance monitoring',
+    description:
+      'Analyze adverse event reports and detect safety signals with governed AI, with traceable logs and human review checkpoints.',
+  },
+  {
+    title: 'Clinical trial operations',
+    description:
+      'Summarize monitoring reports, site communications, and study documentation using governed AI with traceable logs.',
+  },
+  {
+    title: 'Enterprise AI copilot',
+    description:
+      'Deploy a governed AI assistant for all employees, with routing controls replacing shadow AI use.',
+  },
+]
+
+export default function BiotechPharmaPage() {
   const basePath = getCostCalculatorBaseUrl()
 
   return (
@@ -218,12 +215,12 @@ export default function RetailPage() {
           <div className="text-center">
             <span className="provider-badge">[ ENTERPRISE READY: VPC | ON-PREM | AIR-GAPPED ]</span>
             <h1 className="mb-4 text-center text-4xl leading-[1.2] font-normal tracking-tight text-gray-900 md:text-5xl">
-              Most Scalable AI Gateway Built for
+              AI Gateway Built for
               <br />
-              <span className="text-[var(--accent-text)]">Retail and E-Commerce</span>
+              <span className="text-[var(--accent-text)]">GxP Compliance &amp; IP Protection</span>
             </h1>
             <p className="mx-auto mb-8 max-w-2xl text-sm leading-relaxed text-gray-500 md:text-base">
-            Unified routing, spend controls, and access governance for customer-facing and internal AI workloads.
+              Bifrost gives Pharmaceutical and Biotechnology teams governed AI access that protects molecular IP and satisfies ALCOA+ audit requirements.
             </p>
             <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
               <Link href={`${basePath}/resources/benchmarks`}>
@@ -255,10 +252,10 @@ export default function RetailPage() {
               [ CHALLENGES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Why retail AI stalls before it reaches production
+              Barriers to AI deployment in biotech and pharma
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-            Customer-facing AI and fragmented providers require strong governance; integration complexity, peak costs, and ungoverned usage hinder scaling.
+              The barriers slowing AI adoption across research, clinical, and manufacturing.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -288,11 +285,10 @@ export default function RetailPage() {
               [ GOVERNANCE ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Compliance controls for Retail and E-Commerce
+              Controls for IP protection and GxP compliance
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Deploy Bifrost inside your existing environment and apply consistent access
-              rules and spend limits across every team and use case.
+            Bifrost enforces access controls, policies, and audit requirements across every AI workflow in the organization.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -319,10 +315,10 @@ export default function RetailPage() {
               [ PLATFORM CAPABILITIES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Infrastructure built for omnichannel retail operations
+              Built for platform teams in pharma and biotech
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Routing, caching, and integration capabilities designed for the volume and latency demands of customer-facing workflows.
+              Routing, guardrails, lab integrations, and observability designed around pharma's data sensitivity and scale requirements.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -349,13 +345,13 @@ export default function RetailPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
             <p className="mb-4 font-mono text-xs tracking-widest text-gray-400 uppercase">
-              [ BIFROST INTERFACE ]
+              [ OPERATIONAL CAPABILITIES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Operational visibility designed for retail environments
+              Operational views for finance and research teams
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Focused views for monitoring AI traffic, reviewing audit trails, and managing spend by team and workload.
+              Dashboard panels that support evidence export, routing visibility, and cost control for platform operators.
             </p>
           </div>
           <InterfaceHighlights items={interfaceHighlights} />
@@ -370,7 +366,7 @@ export default function RetailPage() {
               [ USE CASES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Retail workflows that run on Bifrost
+              Scale AI workflows in pharma and biotech using Bifrost
             </h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -398,10 +394,10 @@ export default function RetailPage() {
             [ NEXT STEPS ]
           </p>
           <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-            Get your AI infrastructure ready before peak season
+            Deploy a GxP-ready AI gateway for your environment
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-gray-600">
-            Talk to the Bifrost team about peak traffic readiness, AI governance, or cost control for your current stack.
+            Talk to the Bifrost team about your compliance requirements and deployment architecture.
           </p>
           <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
             <Link

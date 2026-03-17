@@ -7,38 +7,38 @@ import { Button } from '@/components/ui/Button'
 import { getCostCalculatorBaseUrl } from '@/lib/utils'
 import {
   ArrowRight,
-  Server,
-  CreditCard,
-  Database,
-  ExternalLink,
-  GitBranch,
-  KeyRound,
-  Network,
-  Plug,
+  ShieldCheck,
+  FileText,
+  Lock,
   Scale,
-  ScrollText,
-  ShieldAlert,
-  TrendingUp,
-  Unplug,
-  Zap,
+  Building2,
+  Banknote,
+  ExternalLink,
+  PlugZap,
+  KeyRound,
+  Server,
+  Database,
+  AlertTriangle,
+  Shuffle,
+  Code,
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'AI Gateway for Retail and E-Commerce | Bifrost',
+  title: 'AI Gateway for Government & Public Sector | Bifrost',
   description:
-    'Bifrost helps retail and eCommerce teams govern AI across every channel, route traffic through peak events, and keep payment data out of LLM scope.',
+    'Bifrost deploys inside your existing authorized GovCloud environment, giving agencies compliant AI infrastructure without triggering a new authorization process.',
   alternates: {
-    canonical: 'https://www.getmaxim.ai/bifrost/industry-pages/retail',
+    canonical: 'https://www.getmaxim.ai/bifrost/industry-pages/government',
   },
 }
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
-  name: 'AI Gateway for Retail | Bifrost',
+  name: 'AI Gateway for Government & Public Sector | Bifrost',
   description:
-    'Bifrost helps retail and eCommerce teams govern AI across every channel, route traffic through peak events, and keep payment data out of LLM scope.',
-  url: 'https://www.getmaxim.ai/bifrost/industry-pages/retail',
+    'Bifrost deploys inside your existing authorized GovCloud environment, giving agencies compliant AI infrastructure without triggering a new authorization process.',
+  url: 'https://www.getmaxim.ai/bifrost/industry-pages/government',
   isPartOf: {
     '@type': 'WebSite',
     name: 'Bifrost by Maxim AI',
@@ -54,93 +54,60 @@ const jsonLd = {
     name: 'Bifrost',
     applicationCategory: 'BusinessApplication',
     description:
-      'Bifrost helps retail and eCommerce teams govern AI across every channel, route traffic through peak events, and keep payment data out of LLM scope.',
+      'Bifrost is a secure AI gateway for government and public sector teams that deploys inside your ATO boundary with FISMA-compliant controls, CUI-aware policy enforcement, and PIV/CAC identity integration.',
   },
   audience: {
     '@type': 'Audience',
-    audienceType: 'Retail teams',
+    audienceType: 'Government and public sector teams',
   },
 }
 
 const challenges = [
   {
-    icon: TrendingUp,
-    title: 'Seasonal traffic exposure',
-    description:
-      'Black Friday and flash sales drive 10-50x traffic spikes. Standard gateways have no way to distribute load across providers automatically.',
-  },
-  {
-    icon: ShieldAlert,
+    icon: AlertTriangle,
     title: 'Ungoverned AI use',
     description:
-      'Employees use personal AI tools on payment records, customer PII, and supplier data without governance, creating PCI-DSS and CCPA liability.',
+      'Federal employees use AI regularly, often through tools that carry no audit trail and no agency oversight.',
   },
   {
-    icon: Unplug,
-    title: 'Integration complexity',
+    icon: Lock,
+    title: 'The authorization bottleneck',
     description:
-      'Connecting LLMs to commerce platforms, inventory systems, and data warehouses via custom code delays deployment and complicates auditing.',
+      'Every commercial AI gateway needs its own federal authorization before processing agency data, delaying compliant deployments by months.',
+  },
+  {
+    icon: Building2,
+    title: 'CAIO mandates need infrastructure',
+    description:
+      'Agencies now have mandated CAIO roles and governance boards but no unified platform to meet the underlying compliance requirements.',
   },
 ]
 
 const governance = [
   {
-    icon: CreditCard,
-    title: 'PCI-DSS payment guardrails',
+    icon: Server,
+    title: 'Deployment inside the ATO boundary',
     description:
-      'Block PII such as card numbers and CVVs before they reach any LLM, keeping customer-facing AI outside PCI audit scope.',
+      'Bifrost runs inside your existing GovCloud VPC or Azure Government environment, inheriting its established controls.',
+  },
+  {
+    icon: FileText,
+    title: 'FISMA-compliant audit logging',
+    description:
+      'Capture every request with user identity, model, and use case tags to satisfy FISMA AU control requirements.',
   },
   {
     icon: KeyRound,
-    title: 'Granular access and budget controls',
+    title: 'Agency SSO integration',
     description:
-      'Create virtual keys with scoped model access, usage limits, and per-team, user, or application budget controls.',
+      'SAML 2.0 integration federates with your existing agency identity provider so users access Bifrost through their established credentials.',
   },
   {
-    icon: ScrollText,
-    title: 'Audit-ready logging',
+    icon: Banknote,
+    title: 'Usage budgets and spend limits',
     description:
-      'Capture every model interaction with user ID, timestamp, and token detail to satisfy PCI Requirement 10 and CCPA obligations.',
+      'Set appropriated budget limits per bureau or program, with real-time alerts before departments exceed their allocated AI spend.',
   },
-  {
-    icon: Plug,
-    title: 'MCP tool governance',
-    description:
-      'Enable governed and auditable access to MCP tools across connected systems including product catalogs, order management, and inventory.',
-  },
-]
-
-const useCases = [
-  {
-    title: 'AI shopping assistant',
-    description:
-      'Route conversational commerce queries through a governed, high-availability layer that stays live when upstream providers degrade.',
-  },
-  {
-    title: 'Real-time personalization',
-    description:
-      'Serve homepage and product recommendations at scale, with semantic caching cutting repeat query costs across high-traffic pages.',
-  },
-  {
-    title: 'Customer and merchant support',
-    description:
-      'Automate order status, returns, and seller support queries with governed MCP tool access to commerce systems.',
-  },
-  {
-    title: 'Enterprise AI adoption',
-    description:
-      'Give engineering, merchandising, and ops teams governed access to leading models with centralized budgeting and audit trails.',
-  },
-  {
-    title: 'Product content generation',
-    description:
-      'Generate titles, descriptions, and SEO metadata across thousands of SKUs using cost-optimized batch model routing.',
-  },
-  {
-    title: 'Demand forecasting',
-    description:
-      'Connect LLMs to ERP and inventory systems via MCP so buyers can query forecasts and get reasoning behind every recommendation.',
-  }
 ]
 
 const platformCapabilities = [
@@ -148,62 +115,95 @@ const platformCapabilities = [
     icon: Scale,
     title: 'Adaptive load balancing',
     description:
-      'Automatically distributes traffic across providers, routing away from rate-limited or degraded endpoints when traffic spikes or providers fail.',
+      'Route traffic across providers based on latency and availability, with automatic fallback if a model endpoint goes down.',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Configurable guardrails',
+    description:
+      'Validate AI inputs and outputs in real time against configurable policies, with block, redact, or flag actions on every violation.',
+  },
+  {
+    icon: Shuffle,
+    title: 'Vendor-agnostic model routing',
+    description:
+      'Route requests across commercial, open-source, and on-premises models based on task type and authorization tier.',
+  },
+  {
+    icon: PlugZap,
+    title: 'MCP Gateway',
+    description:
+      'Connect AI to external agency systems with explicit tool execution controls, per-virtual-key filtering, and a full audit trail on every tool operation.',
   },
   {
     icon: Database,
-    title: 'Semantic caching',
+    title: 'Policy query caching',
     description:
-      'Serves near-identical user queries from cache to reduce live LLM calls and provider costs.',
+      'Cache repeated policy questions and common lookups to reduce LLM API spend across high-volume workloads.',
   },
   {
-    icon: Network,
-    title: 'Horizontal cluster scaling',
+    icon: Code,
+    title: 'Drop-in SDK compatibility',
     description:
-      'Peer-to-peer cluster architecture adds capacity in minutes, allowing traffic to scale from baseline to peak without config changes or downtime.',
-  },
-  {
-    icon: Zap,
-    title: 'Ultra-low latency overhead',
-    description:
-      'Maintains ~100 µs overhead at 5,000 RPS even with governance, routing, caching, and plugins enabled.',
-  },
-  {
-    icon: GitBranch,
-    title: 'Multi-provider support and fallbacks',
-    description:
-      'Route requests across multiple models and providers with automatic failover through a single-line integration.',
-  },
-  {
-    icon: Server,
-    title: 'In-VPC and air-gapped deployment',
-    description:
-      'Deploy inside your cloud VPC so customer PII and cardholder data never leave your network perimeter.',
+      'Route existing AI SDKs and gateways through Bifrost with a single endpoint change — no code rewrite required.',
   },
 ]
 
 const interfaceHighlights = [
   {
     riveSrc: '/rive/lln9t3OuTneA9tQOi8XMPNlfNCk.riv',
-    title: 'Built-in observability',
+    title: 'Centralized governance dashboard',
     description:
-      'Live monitoring of request volume, provider distribution, and routing decisions to track system behavior.',
+      'Live overview of AI activity, approvals, and usage across departments.',
   },
   {
     riveSrc: '/rive/c0tVyQYkMtvuhTCKvA0SjGVHkY.riv',
-    title: 'Compliance audit logs',
+    title: 'Audit-ready compliance evidence',
     description:
-      'Searchable request history with metadata supporting PCI Requirement 10, CCPA data lineage, and DSARs.',
+      'Searchable request trails with full metadata, ready for compliance review and export.',
   },
   {
     riveSrc: '/rive/KBbyqDZQ7ko6obmMhOt3hllKA.riv',
-    title: 'Budget and access controls',
+    title: 'Budget dashboard',
     description:
-      'Per-team virtual keys, spend limits, and usage summaries for finance and platform team visibility.',
+      'Real-time spend by department with alerts before teams exceed their allocated AI spend.',
   },
 ]
 
-export default function RetailPage() {
+const useCases = [
+  {
+    title: 'Policy and knowledge search',
+    description:
+      'RAG-based search over agency intranets, SharePoint, and regulatory documents so employees find authoritative answers in seconds.',
+  },
+  {
+    title: 'Document drafting and summarization',
+    description:
+      'AI-assisted drafting of policy memos, budget justifications, and IG report summaries through approved models with full logging.',
+  },
+  {
+    title: 'Acquisition and procurement AI',
+    description:
+      'Route contracting officer workflows through governed LLMs for FAR compliance checking, market research, and source documentation.',
+  },
+  {
+    title: 'Code generation and modernization',
+    description:
+      'Govern AI coding assistants across developer teams with centralized model access, usage controls, and audit trails.',
+  },
+  {
+    title: 'SOC alert triage',
+    description:
+      'Triage SIEM alerts inside an air-gapped deployment, keeping classified threat intelligence within the authorized network perimeter.',
+  },
+  {
+    title: 'Org-wide AI rollout',
+    description:
+      'Provision scoped model access across departments using virtual keys and per-team/user budgets.',
+  },
+]
+
+export default function GovernmentPage() {
   const basePath = getCostCalculatorBaseUrl()
 
   return (
@@ -218,12 +218,12 @@ export default function RetailPage() {
           <div className="text-center">
             <span className="provider-badge">[ ENTERPRISE READY: VPC | ON-PREM | AIR-GAPPED ]</span>
             <h1 className="mb-4 text-center text-4xl leading-[1.2] font-normal tracking-tight text-gray-900 md:text-5xl">
-              Most Scalable AI Gateway Built for
+              Secure and Air-Gapped AI Gateway
               <br />
-              <span className="text-[var(--accent-text)]">Retail and E-Commerce</span>
+              <span className="text-[var(--accent-text)]">for Government Agencies</span>
             </h1>
             <p className="mx-auto mb-8 max-w-2xl text-sm leading-relaxed text-gray-500 md:text-base">
-            Unified routing, spend controls, and access governance for customer-facing and internal AI workloads.
+              Bifrost deploys inside your existing authorized GovCloud environment, giving agencies compliant AI infrastructure with centralized governance.
             </p>
             <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
               <Link href={`${basePath}/resources/benchmarks`}>
@@ -255,10 +255,10 @@ export default function RetailPage() {
               [ CHALLENGES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Why retail AI stalls before it reaches production
+              Why compliant AI is hard to deploy at scale
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-            Customer-facing AI and fragmented providers require strong governance; integration complexity, peak costs, and ungoverned usage hinder scaling.
+              The governance gap between AI adoption and authorized infrastructure is creating compliance exposure across agencies at scale.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -288,11 +288,10 @@ export default function RetailPage() {
               [ GOVERNANCE ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Compliance controls for Retail and E-Commerce
+              Controls your CAIO and CISO require before deployment
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Deploy Bifrost inside your existing environment and apply consistent access
-              rules and spend limits across every team and use case.
+              Deploy Bifrost inside your authorized network perimeter and enforce consistent policy across every model request.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -319,10 +318,10 @@ export default function RetailPage() {
               [ PLATFORM CAPABILITIES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Infrastructure built for omnichannel retail operations
+              Purpose-built for compliant federal AI operations
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Routing, caching, and integration capabilities designed for the volume and latency demands of customer-facing workflows.
+              Multi-model routing, observability, and cost controls built around the workflows government agencies actually run.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -349,13 +348,13 @@ export default function RetailPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
             <p className="mb-4 font-mono text-xs tracking-widest text-gray-400 uppercase">
-              [ BIFROST INTERFACE ]
+              [ OPERATIONAL CAPABILITIES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Operational visibility designed for retail environments
+              Operational views built for federal governance teams
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Focused views for monitoring AI traffic, reviewing audit trails, and managing spend by team and workload.
+              Dashboard panels that give leadership and platform engineers the visibility they need.
             </p>
           </div>
           <InterfaceHighlights items={interfaceHighlights} />
@@ -370,7 +369,7 @@ export default function RetailPage() {
               [ USE CASES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Retail workflows that run on Bifrost
+              Federal workflows running through Bifrost
             </h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -398,10 +397,10 @@ export default function RetailPage() {
             [ NEXT STEPS ]
           </p>
           <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-            Get your AI infrastructure ready before peak season
+            Deploy GenAI inside your ATO boundary with full governance
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-gray-600">
-            Talk to the Bifrost team about peak traffic readiness, AI governance, or cost control for your current stack.
+            Talk to the Bifrost team about deploying a compliant AI gateway inside your existing authorized environment.
           </p>
           <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
             <Link
