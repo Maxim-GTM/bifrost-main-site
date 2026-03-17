@@ -1,5 +1,5 @@
 // Auto-generated file - DO NOT EDIT
-// Generated at: 2026-03-17T13:07:24.721Z
+// Generated at: 2026-03-17T18:42:25.701Z
 // Source: https://getbifrost.ai/datasheet
 // Run `npm run generate:llm-data` to regenerate
 
@@ -46599,5 +46599,5 @@ export const LLM_STATS = {
   totalModels: 1989,
   totalProviders: 66,
   totalModes: 10,
-  generatedAt: '2026-03-17T13:07:24.727Z',
+  generatedAt: '2026-03-17T18:42:25.706Z',
 };

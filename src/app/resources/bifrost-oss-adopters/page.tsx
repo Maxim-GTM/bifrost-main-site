@@ -49,7 +49,7 @@ const showcaseCompanies: ShowcaseCompany[] = [
   },
 ]
 
-const overviewMetrics = [
+const _overviewMetrics = [
   {
     value: String(showcaseCompanies.length),
     label: 'Profiles',

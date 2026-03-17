@@ -318,7 +318,7 @@ export default function BiotechPharmaPage() {
               Built for platform teams in pharma and biotech
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Routing, guardrails, lab integrations, and observability designed around pharma's data sensitivity and scale requirements.
+              Routing, guardrails, lab integrations, and observability designed around pharma&apos;s data sensitivity and scale requirements.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

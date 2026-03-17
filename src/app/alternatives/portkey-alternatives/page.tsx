@@ -543,7 +543,7 @@ export const metadata: Metadata = {
     'Your team prefers Node.js/TypeScript ecosystem and extensibility',
   ]
   
-  const summaryTable = [
+  const _summaryTable = [
     {
       factor: 'Best For',
       bifrost: 'High-throughput production systems',

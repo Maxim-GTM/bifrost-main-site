@@ -155,8 +155,6 @@ export const metadata: Metadata = {
             bifrost: '11µs (Go native)',
             envoy: '~1-5ms',
           },
-          ,
-
           {
             feature: 'Object Pooling',
             bifrost: '✅',
@@ -584,7 +582,7 @@ export const metadata: Metadata = {
     "You prefer infrastructure managed through the CNCF ecosystem and don't mind writing CRDs for all configuration",
   ]
   
-  const summaryTable = [
+  const _summaryTable = [
     {
       factor: 'Best For',
       bifrost: 'High-throughput production systems',
