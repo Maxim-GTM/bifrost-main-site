@@ -7,38 +7,38 @@ import { Button } from '@/components/ui/Button'
 import { getCostCalculatorBaseUrl } from '@/lib/utils'
 import {
   ArrowRight,
-  Server,
-  CreditCard,
+  Banknote,
+  CloudOff,
   Database,
   ExternalLink,
-  GitBranch,
+  EyeOff,
   KeyRound,
-  Network,
-  Plug,
-  Scale,
+  Lock,
+  PlugZap,
+  Route,
   ScrollText,
-  ShieldAlert,
-  TrendingUp,
+  Server,
+  ShieldCheck,
   Unplug,
   Zap,
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'AI Gateway for Retail and E-Commerce | Bifrost',
+  title: 'AI Gateway for Telecommunications | Bifrost',
   description:
-    'Bifrost helps retail and eCommerce teams govern AI across every channel, route traffic through peak events, and keep payment data out of LLM scope.',
+    'CPNI-compliant by architecture. Sub-50ms latency for real-time network AI. Multi-vendor OSS/BSS integration out of the box.',
   alternates: {
-    canonical: 'https://www.getmaxim.ai/bifrost/industry-pages/retail',
+    canonical: 'https://www.getmaxim.ai/bifrost/industry-pages/telecommunication',
   },
 }
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
-  name: 'AI Gateway for Retail | Bifrost',
+  name: 'AI Gateway for Telecommunications | Bifrost',
   description:
-    'Bifrost helps retail and eCommerce teams govern AI across every channel, route traffic through peak events, and keep payment data out of LLM scope.',
-  url: 'https://www.getmaxim.ai/bifrost/industry-pages/retail',
+    'CPNI-compliant by architecture. Sub-50ms latency for real-time network AI. Multi-vendor OSS/BSS integration out of the box.',
+  url: 'https://www.getmaxim.ai/bifrost/industry-pages/telecommunication',
   isPartOf: {
     '@type': 'WebSite',
     name: 'Bifrost by Maxim AI',
@@ -54,156 +54,156 @@ const jsonLd = {
     name: 'Bifrost',
     applicationCategory: 'BusinessApplication',
     description:
-      'Bifrost helps retail and eCommerce teams govern AI across every channel, route traffic through peak events, and keep payment data out of LLM scope.',
+      'CPNI-compliant by architecture. Sub-50ms latency for real-time network AI. Multi-vendor OSS/BSS integration out of the box.',
   },
   audience: {
     '@type': 'Audience',
-    audienceType: 'Retail teams',
+    audienceType: 'Telecommunications operators',
   },
 }
 
 const challenges = [
   {
-    icon: TrendingUp,
-    title: 'Seasonal traffic exposure',
+    icon: EyeOff,
+    title: 'No platform-wide visibility',
     description:
-      'Black Friday and flash sales drive 10-50x traffic spikes. Standard gateways have no way to distribute load across providers automatically.',
-  },
-  {
-    icon: ShieldAlert,
-    title: 'Ungoverned AI use',
-    description:
-      'Employees use personal AI tools on payment records, customer PII, and supplier data without governance, creating PCI-DSS and CCPA liability.',
+      'Teams build using different LLM providers independently, with no shared view of costs, usage, or model behavior.',
   },
   {
     icon: Unplug,
-    title: 'Integration complexity',
+    title: 'Integration built from scratch',
     description:
-      'Connecting LLMs to commerce platforms, inventory systems, and data warehouses via custom code delays deployment and complicates auditing.',
+      'Connecting GenAI to live network and customer systems requires custom work for every OSS, BSS, and ITSM tool used.',
+  },
+  {
+    icon: CloudOff,
+    title: 'Regulated data and CPNI constraints',
+    description:
+      'FCC §222 bars call records and location data from routing through any third-party API, ruling out cloud SaaS gateways for regulated workloads.',
   },
 ]
 
 const governance = [
   {
-    icon: CreditCard,
-    title: 'PCI-DSS payment guardrails',
+    icon: Server,
+    title: 'Air-gapped network deployment',
     description:
-      'Block PII such as card numbers and CVVs before they reach any LLM, keeping customer-facing AI outside PCI audit scope.',
-  },
-  {
-    icon: KeyRound,
-    title: 'Granular access and budget controls',
-    description:
-      'Create virtual keys with scoped model access, usage limits, and per-team, user, or application budget controls.',
+      'CPNI data stays inside your perimeter by architecture, removing FCC violation risk.',
   },
   {
     icon: ScrollText,
-    title: 'Audit-ready logging',
+    title: 'Immutable audit logs',
     description:
-      'Capture every model interaction with user ID, timestamp, and token detail to satisfy PCI Requirement 10 and CCPA obligations.',
+      'Capture full interaction trails for CPNI annual certification, TCPA litigation defense, and EU AI Act conformity.',
   },
   {
-    icon: Plug,
-    title: 'MCP tool governance',
+    icon: KeyRound,
+    title: 'SSO and role-based access',
     description:
-      'Enable governed and auditable access to MCP tools across connected systems including product catalogs, order management, and inventory.',
+      'Role templates for NOC analysts, network engineers, and internal teams enforce CPNI minimum-necessary access via IdP.',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Guardrails and PII redaction',
+    description:
+      'Enforce content safety rules and auto-redact PII and CPNI fields before requests reach any model, across every workflow.',
   },
 ]
 
 const useCases = [
   {
-    title: 'AI shopping assistant',
+    title: 'Coding agent governance',
     description:
-      'Route conversational commerce queries through a governed, high-availability layer that stays live when upstream providers degrade.',
+      'Centralize Claude Code and Codex usage across engineering teams to track spend and activity and enforce model access policies.',
   },
   {
-    title: 'Real-time personalization',
+    title: 'NOC AI and AIOps',
     description:
-      'Serve homepage and product recommendations at scale, with semantic caching cutting repeat query costs across high-traffic pages.',
+      'Query Ericsson ENM, Nokia NetAct, and ServiceNow simultaneously in natural language, while maintaining OTel logs.',
   },
   {
-    title: 'Customer and merchant support',
+    title: 'AI customer service',
     description:
-      'Automate order status, returns, and seller support queries with governed MCP tool access to commerce systems.',
+      'Route customer interactions through governed LLMs with semantic caching to cut costs on similar requests.',
   },
   {
-    title: 'Enterprise AI adoption',
+    title: 'Employee knowledge search',
     description:
-      'Give engineering, merchandising, and ops teams governed access to leading models with centralized budgeting and audit trails.',
+      'Connect Confluence, Jira, and Slack through a secure and governed interface, eliminating shadow AI risk.',
   },
   {
-    title: 'Product content generation',
+    title: 'AI-assisted outbound campaigns',
     description:
-      'Generate titles, descriptions, and SEO metadata across thousands of SKUs using cost-optimized batch model routing.',
+      'Generate personalized retention and upsell messages for voice and text channels, with TCPA consent guardrails enforced at the gateway.',
   },
   {
-    title: 'Demand forecasting',
+    title: 'Field tech assistant',
     description:
-      'Connect LLMs to ERP and inventory systems via MCP so buyers can query forecasts and get reasoning behind every recommendation.',
-  }
+      'Equip field technicians with an LLM that answers questions using site history, equipment configs, and vendor runbooks.',
+  },
 ]
 
 const platformCapabilities = [
   {
-    icon: Scale,
-    title: 'Adaptive load balancing',
+    icon: Lock,
+    title: 'Air-gapped deployment',
     description:
-      'Automatically distributes traffic across providers, routing away from rate-limited or degraded endpoints when traffic spikes or providers fail.',
-  },
-  {
-    icon: Database,
-    title: 'Semantic caching',
-    description:
-      'Serves near-identical user queries from cache to reduce live LLM calls and provider costs.',
-  },
-  {
-    icon: Network,
-    title: 'Horizontal cluster scaling',
-    description:
-      'Peer-to-peer cluster architecture adds capacity in minutes, allowing traffic to scale from baseline to peak without config changes or downtime.',
+      'Deploy inside your VPC so sensitive data and CPNI-regulated data never leave your network perimeter.',
   },
   {
     icon: Zap,
-    title: 'Ultra-low latency overhead',
+    title: 'Near-zero gateway overhead',
     description:
-      'Maintains ~100 µs overhead at 5,000 RPS even with governance, routing, caching, and plugins enabled.',
+      '~11µs gateway overhead keeps fraud detection, NOC queries, and internal AI workloads within real-time SLAs.',
   },
   {
-    icon: GitBranch,
-    title: 'Multi-provider support and fallbacks',
+    icon: PlugZap,
+    title: 'Multi-vendor MCP gateway',
     description:
-      'Route requests across multiple models and providers with automatic failover through a single-line integration.',
+      'Connect LLMs to your ticketing, network management, and knowledge systems via a single interface with federated auth.',
   },
   {
-    icon: Server,
-    title: 'In-VPC and air-gapped deployment',
+    icon: Database,
+    title: 'Semantic caching at scale',
     description:
-      'Deploy inside your cloud VPC so customer PII and cardholder data never leave your network perimeter.',
+      'Cache semantically identical customer service queries, reducing LLM API costs on high-volume workloads.',
+  },
+  {
+    icon: Route,
+    title: 'Adaptive model routing',
+    description:
+      'Automatically route traffic across providers for the lowest latency and error rates, balancing based on failures & TPM limits.',
+  },
+  {
+    icon: Banknote,
+    title: 'Department cost governance',
+    description:
+      'Virtual keys enforce model access policies and granular spend limits with real-time cost visibility.',
   },
 ]
 
 const interfaceHighlights = [
   {
     riveSrc: '/rive/lln9t3OuTneA9tQOi8XMPNlfNCk.riv',
-    title: 'Built-in observability',
+    title: 'Live operations dashboard',
     description:
-      'Live monitoring of request volume, provider distribution, and routing decisions to track system behavior.',
+      'Live view of request volume, provider routing, latency by tier, and system health across every active AI workload.',
   },
   {
     riveSrc: '/rive/c0tVyQYkMtvuhTCKvA0SjGVHkY.riv',
-    title: 'Compliance audit logs',
+    title: 'Audit log viewer',
     description:
-      'Searchable request history with metadata supporting PCI Requirement 10, CCPA data lineage, and DSARs.',
+      'Track logins, permission changes, virtual key modifications, and guardrail violations across every user and team.',
   },
   {
     riveSrc: '/rive/KBbyqDZQ7ko6obmMhOt3hllKA.riv',
-    title: 'Budget and access controls',
+    title: 'Virtual keys and budgets',
     description:
-      'Per-team virtual keys, spend limits, and usage summaries for finance and platform team visibility.',
+      'Per-team API key management with configurable spend caps, usage breakdowns by role, and alerting before limits are reached.',
   },
 ]
 
-export default function RetailPage() {
+export default function TelecommunicationPage() {
   const basePath = getCostCalculatorBaseUrl()
 
   return (
@@ -218,12 +218,12 @@ export default function RetailPage() {
           <div className="text-center">
             <span className="provider-badge">[ ENTERPRISE READY: VPC | ON-PREM | AIR-GAPPED ]</span>
             <h1 className="mb-4 text-center text-4xl leading-[1.2] font-normal tracking-tight text-gray-900 md:text-5xl">
-              Most Scalable AI Gateway Built for
+              Secure and Ultra-Fast AI Gateway 
               <br />
-              <span className="text-[var(--accent-text)]">Retail and E-Commerce</span>
+              <span className="text-[var(--accent-text)]">for Telecom Operators</span>
             </h1>
             <p className="mx-auto mb-8 max-w-2xl text-sm leading-relaxed text-gray-500 md:text-base">
-            Unified routing, spend controls, and access governance for customer-facing and internal AI workloads.
+            Deploy CPNI-compliant AI inside your network perimeter, with ~11µs latency overhead and custom OSS/BSS integration for real-time telecom workloads.
             </p>
             <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
               <Link href={`${basePath}/resources/benchmarks`}>
@@ -255,10 +255,10 @@ export default function RetailPage() {
               [ CHALLENGES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Why retail AI stalls before it reaches production
+              Why AI deployment stalls at telecom operators
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-            Customer-facing AI and fragmented providers require strong governance; integration complexity, peak costs, and ungoverned usage hinder scaling.
+            Telecom operators are investing heavily in AI, but CPNI regulations, strict latency requirements, and fragmented systems delay production deployments.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -288,11 +288,10 @@ export default function RetailPage() {
               [ GOVERNANCE ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Compliance controls for Retail and E-Commerce
+              Enterprise AI controls built for regulated operators
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Deploy Bifrost inside your existing environment and apply consistent access
-              rules and spend limits across every team and use case.
+              Bifrost gives compliance, security, and platform engineering teams the controls they need to deploy AI without creating CPNI or TCPA exposure.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -319,10 +318,10 @@ export default function RetailPage() {
               [ PLATFORM CAPABILITIES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Infrastructure built for omnichannel retail operations
+              Production controls for every telecom AI workload
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Routing, caching, and integration capabilities designed for the volume and latency demands of customer-facing workflows.
+              Governance, routing, and integration capabilities chosen for regulated, high-throughput, multi-vendor operator environments.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -352,10 +351,10 @@ export default function RetailPage() {
               [ BIFROST INTERFACE ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Operational visibility designed for retail environments
+              Operator views for production AI environments
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Focused views for monitoring AI traffic, reviewing audit trails, and managing spend by team and workload.
+              Dashboard panels built for teams managing real-time routing, compliance readiness, and multi-department AI spend.
             </p>
           </div>
           <InterfaceHighlights items={interfaceHighlights} />
@@ -370,7 +369,7 @@ export default function RetailPage() {
               [ USE CASES ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Retail workflows that run on Bifrost
+              Productionize telecom AI workflows using Bifrost
             </h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -398,10 +397,10 @@ export default function RetailPage() {
             [ NEXT STEPS ]
           </p>
           <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-            Get your AI infrastructure ready before peak season
+            Deploy AI your compliance team can sign off on
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-gray-600">
-            Talk to the Bifrost team about peak traffic readiness, AI governance, or cost control for your current stack.
+            Talk to the Bifrost team about CPNI-compliant deployment, multi-provider routing, and production-ready LLM governance for your operator environment.
           </p>
           <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
             <Link
