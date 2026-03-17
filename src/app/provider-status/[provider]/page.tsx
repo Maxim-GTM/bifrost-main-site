@@ -5,9 +5,11 @@ import Image from 'next/image'
 import { getProviderById, STATUS_PROVIDERS } from '@/lib/provider-status/providers'
 import { getProviderFullStatus } from '@/lib/provider-status/api'
 import { getProviderPageMetadata, getProviderPageJsonLd } from '@/lib/provider-status/seo'
+import { buildProviderPageContent } from '@/lib/provider-status/content'
 import StatusIndicator from '@/components/provider-status/StatusIndicator'
 import ComponentStatusList from '@/components/provider-status/ComponentStatusList'
 import IncidentTimeline from '@/components/provider-status/IncidentTimeline'
+import ProviderContentSections from '@/components/provider-status/ProviderContentSections'
 import StatusCTA from '@/components/provider-status/StatusCTA'
 import LiveRefresher from '@/components/provider-status/LiveRefresher'
 import { getProviderStatusBaseUrl } from '@/lib/utils'
@@ -38,8 +40,9 @@ export default async function ProviderStatusPage({ params }: PageProps) {
   }
 
   const status = await getProviderFullStatus(provider)
+  const content = buildProviderPageContent(provider, status)
   const baseUrl = getProviderStatusBaseUrl()
-  const jsonLd = getProviderPageJsonLd(provider)
+  const jsonLd = getProviderPageJsonLd(provider, content.faqItems)
 
   const gridSvg = `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`
 
@@ -106,9 +109,7 @@ export default async function ProviderStatusPage({ params }: PageProps) {
               </div>
             </div>
 
-            <div className="mt-4">
-              <LiveRefresher />
-            </div>
+            
 
             {/* Link to official status page */}
             {provider.statusPageUrl && (
@@ -122,10 +123,45 @@ export default async function ProviderStatusPage({ params }: PageProps) {
                   View official status page &rarr;
                 </a>
               </div>
+              
             )}
+            <div className="mt-4 flex justify-center">
+              <LiveRefresher />
+            </div>
           </div>
         </div>
       </div>
+
+      {/* Status At A Glance */}
+      <section className="py-10">
+        <div className="w-full">
+          <p className="mb-4 text-center font-mono text-[10px] tracking-widest text-gray-400 uppercase">
+            [ STATUS AT A GLANCE ]
+          </p>
+          <div className="border-y border-gray-200">
+            <div className="mx-auto max-w-7xl">
+              <div className="grid grid-cols-2 divide-y md:grid-cols-5 md:divide-y-0">
+                <div className="hidden border-r border-gray-200 md:col-span-1 md:block" />
+                {content.metrics.map((metric) => (
+                  <div
+                    key={metric.label}
+                    className="border-r border-gray-200 px-4 py-5 text-center last:border-r-0"
+                  >
+                    <div className="mb-1 font-mono text-xl leading-none text-[var(--accent-text)] md:text-2xl">
+                      {metric.value}
+                    </div>
+                    <div className="mb-1 font-mono text-[10px] font-medium tracking-wider text-gray-500 uppercase">
+                      {metric.label}
+                    </div>
+                    <div className="text-[11px] text-gray-400">{metric.description}</div>
+                  </div>
+                ))}
+                <div className="hidden border-gray-200 md:col-span-1 md:block" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Components Section */}
       <div className="relative flex w-full justify-center">
@@ -149,6 +185,64 @@ export default async function ProviderStatusPage({ params }: PageProps) {
               </p>
             </div>
             <ComponentStatusList components={status.components} incidents={status.incidents} />
+          </div>
+        </div>
+
+        <div className="hidden w-20 flex-none flex-col items-start gap-4 border-l border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{ backgroundImage: gridSvg, backgroundSize: '4px 4px' }}
+          />
+        </div>
+      </div>
+
+      {/* CTA Section */}
+      <div className="relative flex w-full justify-center">
+        <div className="hidden w-20 flex-none flex-col items-end gap-4 border-r border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{ backgroundImage: gridSvg, backgroundSize: '4px 4px' }}
+          />
+        </div>
+
+        <div className="w-full max-w-[1100px] px-4 pb-16">
+          <div className="absolute right-0 left-0 h-px w-full bg-black/10" />
+          <div className="pt-8">
+            <StatusCTA providerName={provider.name} />
+          </div>
+        </div>
+
+        <div className="hidden w-20 flex-none flex-col items-start gap-4 border-l border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{ backgroundImage: gridSvg, backgroundSize: '4px 4px' }}
+          />
+        </div>
+      </div>
+
+      {/* Context Section */}
+      <div className="relative flex w-full justify-center">
+        <div className="hidden w-20 flex-none flex-col items-end gap-4 border-r border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{ backgroundImage: gridSvg, backgroundSize: '4px 4px' }}
+          />
+        </div>
+
+        <div className="w-full max-w-[1100px] px-4 pb-12">
+          <div className="absolute right-0 left-0 h-px w-full bg-black/10" />
+
+          <div className="pt-8">
+            <div className="mb-6">
+              <h2 className="mb-2 font-sans text-xl font-medium tracking-tight text-gray-900 md:text-2xl">
+                About {provider.name}
+              </h2>
+              <p className="text-sm text-gray-600">
+                What {provider.name} does, where the data on this page comes from, and recent
+                reliability
+              </p>
+            </div>
+            <ProviderContentSections providerName={provider.name} content={content} />
           </div>
         </div>
 
@@ -184,6 +278,8 @@ export default async function ProviderStatusPage({ params }: PageProps) {
             <IncidentTimeline
               incidents={status.incidents}
               scheduledMaintenances={status.scheduledMaintenances}
+              providerName={provider.name}
+              statusPageUrl={provider.statusPageUrl}
             />
           </div>
         </div>
@@ -215,46 +311,12 @@ export default async function ProviderStatusPage({ params }: PageProps) {
               </h2>
             </div>
             <div className="space-y-4">
-              <div className="border border-gray-200 bg-white px-5 py-4">
-                <h3 className="text-sm font-medium text-gray-900">
-                  Is {provider.name} down right now?
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-gray-600">
-                  This page shows the real-time status of {provider.name} services. We monitor{' '}
-                  {provider.name}&apos;s official status page and display live component status,
-                  active incidents, and incident history. If {provider.name} is experiencing issues,
-                  consider using Bifrost to automatically route your requests to an alternative
-                  provider with zero code changes.
-                </p>
-              </div>
-              <div className="border border-gray-200 bg-white px-5 py-4">
-                <h3 className="text-sm font-medium text-gray-900">
-                  What should I do when {provider.name} is down?
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-gray-600">
-                  When {provider.name} experiences an outage, you can use{' '}
-                  <a
-                    href="https://www.getmaxim.ai/bifrost"
-                    className="text-[#35c09e] underline underline-offset-2"
-                  >
-                    Bifrost
-                  </a>{' '}
-                  — an open-source AI gateway — to automatically failover to alternative providers.
-                  Bifrost routes your LLM API requests through multiple providers, so if one goes
-                  down, your application keeps running. No code changes required.
-                </p>
-              </div>
-              <div className="border border-gray-200 bg-white px-5 py-4">
-                <h3 className="text-sm font-medium text-gray-900">
-                  How can I avoid downtime from {provider.name} outages?
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-gray-600">
-                  Use Bifrost to add automatic failover to your AI infrastructure. Bifrost is an
-                  open-source LLM gateway that sits between your application and AI providers. It
-                  monitors provider health and automatically routes requests to healthy alternatives
-                  when an outage is detected — giving you 99.999% effective uptime.
-                </p>
-              </div>
+              {content.faqItems.map((item) => (
+                <div key={item.question} className="border border-gray-200 bg-white px-5 py-4">
+                  <h3 className="text-sm font-medium text-gray-900">{item.question}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-gray-600">{item.answer}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -267,29 +329,6 @@ export default async function ProviderStatusPage({ params }: PageProps) {
         </div>
       </div>
 
-      {/* CTA Section */}
-      <div className="relative flex w-full justify-center">
-        <div className="hidden w-20 flex-none flex-col items-end gap-4 border-r border-black/10 xl:flex">
-          <div
-            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
-            style={{ backgroundImage: gridSvg, backgroundSize: '4px 4px' }}
-          />
-        </div>
-
-        <div className="w-full max-w-[1100px] px-4 pb-16">
-          <div className="absolute right-0 left-0 h-px w-full bg-black/10" />
-          <div className="pt-8">
-            <StatusCTA providerName={provider.name} />
-          </div>
-        </div>
-
-        <div className="hidden w-20 flex-none flex-col items-start gap-4 border-l border-black/10 xl:flex">
-          <div
-            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
-            style={{ backgroundImage: gridSvg, backgroundSize: '4px 4px' }}
-          />
-        </div>
-      </div>
     </div>
   )
 }

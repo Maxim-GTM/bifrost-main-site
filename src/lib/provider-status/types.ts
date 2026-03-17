@@ -111,12 +111,48 @@ export interface BetterStackResource {
   }
 }
 
+export interface BetterStackAffectedResource {
+  status_page_resource_id: string
+  status: string
+}
+
 export interface BetterStackSection {
   id: string
   type: 'status_page_section'
   attributes: {
     name: string
     position: number
+  }
+}
+
+export interface BetterStackStatusUpdate {
+  id: string
+  type: 'status_update'
+  attributes: {
+    message: string
+    published_at: string
+    published_at_timezone?: string
+    notify_subscribers?: boolean
+    affected_resources?: BetterStackAffectedResource[]
+  }
+}
+
+export interface BetterStackStatusReport {
+  id: string
+  type: 'status_report'
+  attributes: {
+    title: string
+    report_type: 'manual' | 'automatic' | 'maintenance'
+    starts_at: string
+    ends_at: string | null
+    status_page_id?: number
+    affected_resources?: BetterStackAffectedResource[]
+    aggregate_state: string
+  }
+  relationships?: {
+    status_updates?: {
+      data?: { id: string; type: 'status_update' }[]
+    }
   }
 }
 
@@ -128,9 +164,15 @@ export interface BetterStackResponse {
       aggregate_state: 'operational' | 'downtime' | 'degraded' | 'maintenance'
       url: string
       company_name: string
+      updated_at?: string
+    }
+    relationships?: {
+      sections?: { data: { id: string; type: 'status_page_section' }[] }
+      resources?: { data: { id: string; type: 'status_page_resource' }[] }
+      status_reports?: { data: { id: string; type: 'status_report' }[] }
     }
   }
-  included: (BetterStackResource | BetterStackSection)[]
+  included: (BetterStackResource | BetterStackSection | BetterStackStatusReport | BetterStackStatusUpdate)[]
 }
 
 // ============================================================

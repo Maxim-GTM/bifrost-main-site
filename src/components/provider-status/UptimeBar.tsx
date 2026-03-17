@@ -89,27 +89,45 @@ export interface ResolvedUptimeData {
   dailyStatuses: DayStatus[]
   uptimePercentage: number
   isOfficial: boolean
+  /** True when the data is specific to this component (official history or attributed incidents) */
+  isComponentSpecific: boolean
 }
 
 export function resolveUptimeData(
   component: ComponentStatusType,
   incidents: NormalizedIncident[]
 ): ResolvedUptimeData {
-  // If the provider API gave us official per-day history, use it
   if (component.dailyHistory && component.dailyHistory.length > 0) {
     const dailyStatuses = officialHistoryToDayStatuses(component.dailyHistory)
     const uptimePercentage = component.uptimePercentage ?? calculateUptimeFromDays(dailyStatuses)
-    return { dailyStatuses, uptimePercentage, isOfficial: true }
+    return { dailyStatuses, uptimePercentage, isOfficial: true, isComponentSpecific: true }
   }
 
-  // If the provider API gave us only the uptime percentage (no daily breakdown)
-  // still use it for the number but calculate bars from incidents
-  const dailyStatuses = calculateDailyStatusesFromIncidents(component.name, incidents)
-  const uptimePercentage = component.uptimePercentage ?? calculateUptimeFromDays(dailyStatuses)
+  const attributedIncidents = incidents.filter(
+    (inc) =>
+      inc.affectedComponents.length > 0 &&
+      inc.affectedComponents.some(
+        (c) => c.toLowerCase() === component.name.toLowerCase()
+      )
+  )
+
+  if (attributedIncidents.length > 0) {
+    const dailyStatuses = calculateDailyStatusesFromIncidents(component.name, attributedIncidents)
+    const uptimePercentage = component.uptimePercentage ?? calculateUptimeFromDays(dailyStatuses)
+    return { dailyStatuses, uptimePercentage, isOfficial: false, isComponentSpecific: true }
+  }
+
+  if (incidents.length > 0) {
+    const dailyStatuses = calculateDailyStatusesFromIncidents(component.name, incidents)
+    const uptimePercentage = component.uptimePercentage ?? calculateUptimeFromDays(dailyStatuses)
+    return { dailyStatuses, uptimePercentage, isOfficial: false, isComponentSpecific: false }
+  }
+
   return {
-    dailyStatuses,
-    uptimePercentage,
-    isOfficial: component.uptimePercentage !== undefined,
+    dailyStatuses: new Array(DAYS).fill('no_data'),
+    uptimePercentage: 0,
+    isOfficial: false,
+    isComponentSpecific: false,
   }
 }
 
@@ -175,30 +193,39 @@ function getDayLabel(status: DayStatus): string {
 interface UptimeBarProps {
   dailyStatuses: DayStatus[]
   uptimePercentage: number
+  isComponentSpecific?: boolean
 }
 
 export default function UptimeBar({
   dailyStatuses,
   uptimePercentage,
+  isComponentSpecific = true,
 }: UptimeBarProps) {
   return (
     <div className="space-y-1.5">
-      {/* Uptime percentage */}
-      <div className="flex justify-end">
-        <span
-          className="font-mono text-xs font-medium"
-          style={{
-            color:
-              uptimePercentage >= 99.9
-                ? '#10b981'
-                : uptimePercentage >= 99
-                  ? '#f59e0b'
-                  : '#ef4444',
-          }}
-        >
-          {uptimePercentage.toFixed(uptimePercentage === 100 ? 0 : 3)}% uptime
-        </span>
-      </div>
+      {isComponentSpecific ? (
+        <div className="flex justify-end">
+          <span
+            className="font-mono text-xs font-medium"
+            style={{
+              color:
+                uptimePercentage >= 99.9
+                  ? '#10b981'
+                  : uptimePercentage >= 99
+                    ? '#f59e0b'
+                    : '#ef4444',
+            }}
+          >
+            {uptimePercentage.toFixed(uptimePercentage === 100 ? 0 : 3)}% uptime
+          </span>
+        </div>
+      ) : (
+        <div className="flex justify-end">
+          <span className="font-mono text-[10px] text-gray-400">
+            system-wide incident history
+          </span>
+        </div>
+      )}
 
       {/* Bar */}
       <div className="flex h-8 items-stretch gap-[1.5px] rounded-[3px] bg-gray-100 p-[3px]">

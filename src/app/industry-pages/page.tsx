@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight, Building2, Shield, ShoppingCart, Stethoscope } from 'lucide-react'
+import { ArrowRight, Building2, Shield, ShoppingCart, Stethoscope, ShieldCheck, Microscope, Landmark, Radio } from 'lucide-react'
 import { getCostCalculatorBaseUrl } from '@/lib/utils'
 
 export const metadata: Metadata = {
@@ -14,6 +14,10 @@ export const metadata: Metadata = {
     'AI gateway for healthcare',
     'AI gateway for insurance',
     'AI gateway for retail',
+    'AI gateway for cybersecurity',
+    'AI gateway for government',
+    'AI gateway for biotech',
+    'AI gateway for telecommunications',
   ],
   openGraph: {
     type: 'website',
@@ -69,6 +73,38 @@ const industries = [
     href: `${basePath}/industry-pages/retail`,
     icon: ShoppingCart,
     label: 'Retail',
+  },
+  {
+    title: 'Cybersecurity & Threat Intelligence',
+    description:
+      'Air-gapped AI infrastructure for security operations teams with zero-trust controls, complete audit trails, and protection for sensitive threat data.',
+    href: `${basePath}/industry-pages/cybersecurity`,
+    icon: ShieldCheck,
+    label: 'Cybersecurity',
+  },
+  {
+    title: 'Biotech & Pharma',
+    description:
+      'Governed AI infrastructure for drug discovery, clinical trials, and regulatory compliance with IP protection and complete audit capabilities.',
+    href: `${basePath}/industry-pages/biotech-pharma`,
+    icon: Microscope,
+    label: 'Biotech & Pharma',
+  },
+  {
+    title: 'Government & Public Sector',
+    description:
+      'Compliant AI infrastructure for federal agencies with deployment inside ATO boundaries, FISMA-compliant logging, and agency SSO integration.',
+    href: `${basePath}/industry-pages/government`,
+    icon: Landmark,
+    label: 'Government',
+  },
+  {
+    title: 'Telecommunications',
+    description:
+      'Scalable AI infrastructure for telecom operators with high-throughput routing, multi-region deployment, and comprehensive cost governance.',
+    href: `${basePath}/industry-pages/telecommunication`,
+    icon: Radio,
+    label: 'Telecommunications',
   },
 ]
 

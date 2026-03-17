@@ -18,20 +18,25 @@ export default function ComponentStatusList({ components, incidents = [] }: Comp
     )
   }
 
+  const hasAnyData = components.some((comp) => {
+    const r = resolveUptimeData(comp, incidents)
+    return r.dailyStatuses.some((d) => d !== 'no_data')
+  })
+
   return (
     <div className="space-y-3">
       {components.map((comp) => {
         const color = getStatusColor(comp.status)
         const text = getStatusText(comp.status)
-        const { dailyStatuses, uptimePercentage } = resolveUptimeData(comp, incidents)
+        const resolved = resolveUptimeData(comp, incidents)
+        const showBar = hasAnyData
 
         return (
           <div
             key={comp.name}
             className="border border-gray-200 bg-white px-5 py-4"
           >
-            {/* Header row: name + status */}
-            <div className="mb-3 flex items-center justify-between">
+            <div className={`flex items-center justify-between${showBar ? ' mb-3' : ''}`}>
               <span className="text-sm font-medium text-gray-800">{comp.name}</span>
               <span className="inline-flex items-center gap-2">
                 <span className="font-mono text-xs font-medium" style={{ color }}>
@@ -44,11 +49,13 @@ export default function ComponentStatusList({ components, incidents = [] }: Comp
               </span>
             </div>
 
-            {/* Uptime bar */}
-            <UptimeBar
-              dailyStatuses={dailyStatuses}
-              uptimePercentage={uptimePercentage}
-            />
+            {showBar && (
+              <UptimeBar
+                dailyStatuses={resolved.dailyStatuses}
+                uptimePercentage={resolved.uptimePercentage}
+                isComponentSpecific={resolved.isComponentSpecific}
+              />
+            )}
           </div>
         )
       })}

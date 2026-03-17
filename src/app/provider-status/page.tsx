@@ -7,6 +7,7 @@ import { getMainPageMetadata, getMainPageJsonLd } from '@/lib/provider-status/se
 import StatusTable from '@/components/provider-status/StatusTable'
 import StatusCTA from '@/components/provider-status/StatusCTA'
 import LiveRefresher from '@/components/provider-status/LiveRefresher'
+import ProviderStatusFAQ from '@/components/provider-status/ProviderStatusFAQ'
 import { getProviderStatusBaseUrl } from '@/lib/utils'
 
 export const dynamic = 'force-dynamic'
@@ -44,12 +45,9 @@ export default async function ProviderStatusPage() {
               AI Provider Status Monitor
             </h1>
             <p className="mx-auto max-w-2xl text-[16px] leading-[140%] tracking-[0em] text-[#525252]">
-              Real-time status monitoring for AI model providers. Check if ChatGPT, Claude, Gemini,
-              and other AI services are operational.
+              Real-time status monitoring for AI model providers. Check if OpenAI, Claude, Groq,
+              and other AI providers are operational.
             </p>
-            <div className="mt-4">
-              <LiveRefresher />
-            </div>
           </div>
         </div>
       </div>
@@ -95,7 +93,11 @@ export default async function ProviderStatusPage() {
             </div>
           </div>
         </div>
+        <div className="mt-4">
+              <LiveRefresher />
+            </div>
       </div>
+      
 
       {/* Provider Quick Links */}
       <div className="relative flex w-full justify-center">
@@ -208,6 +210,30 @@ export default async function ProviderStatusPage() {
           <div className="absolute right-0 left-0 h-px w-full bg-black/10" />
           <div className="pt-8">
             <StatusCTA />
+          </div>
+        </div>
+
+        <div className="hidden w-20 flex-none flex-col items-start gap-4 border-l border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{ backgroundImage: gridSvg, backgroundSize: '4px 4px' }}
+          />
+        </div>
+      </div>
+
+      {/* FAQ Section */}
+      <div className="relative flex w-full justify-center">
+        <div className="hidden w-20 flex-none flex-col items-end gap-4 border-r border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{ backgroundImage: gridSvg, backgroundSize: '4px 4px' }}
+          />
+        </div>
+
+        <div className="w-full max-w-[1100px] px-4 pb-16">
+          <div className="absolute right-0 left-0 h-px w-full bg-black/10" />
+          <div className="pt-12">
+            <ProviderStatusFAQ />
           </div>
         </div>
 

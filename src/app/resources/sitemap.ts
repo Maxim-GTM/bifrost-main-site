@@ -9,6 +9,7 @@ const subpages = [
   'mcp-gateway',
   'migrating-from-litellm',
   'litellm-alternative',
+  'bifrost-oss-adopters',
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {

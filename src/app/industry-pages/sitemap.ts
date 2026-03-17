@@ -7,6 +7,10 @@ const subpages = [
   'healthcare-life-sciences',
   'insurance',
   'retail',
+  'biotech-pharma',
+  'government',
+  'telecommunication',
+  'cybersecurity',
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {

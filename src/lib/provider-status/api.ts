@@ -3,6 +3,8 @@ import type {
   StatuspageIncidentsResponse,
   BetterStackResponse,
   BetterStackResource,
+  BetterStackStatusReport,
+  BetterStackStatusUpdate,
   InstatusComponent,
   InstatusSummaryResponse,
   ProviderStatusLevel,
@@ -57,7 +59,7 @@ function mapComponentStatus(status: string): ProviderStatusLevel {
 }
 
 function mapBetterStackStatus(status: string): ProviderStatusLevel {
-  switch (status) {
+  switch (status.toLowerCase()) {
     case 'up':
       return 'operational'
     case 'down':
@@ -137,18 +139,41 @@ export function getStatusColor(status: ProviderStatusLevel): string {
 // Normalize Helpers (null-safe)
 // ============================================================
 
+const STATUS_SEVERITY_ORDER: ProviderStatusLevel[] = [
+  'unknown',
+  'operational',
+  'maintenance',
+  'degraded',
+  'partial_outage',
+  'major_outage',
+]
+
+function worseStatus(a: ProviderStatusLevel, b: ProviderStatusLevel): ProviderStatusLevel {
+  return STATUS_SEVERITY_ORDER.indexOf(a) >= STATUS_SEVERITY_ORDER.indexOf(b) ? a : b
+}
+
 function normalizeStatuspageComponents(
   components?: StatuspageSummaryResponse['components']
 ): ComponentStatus[] {
   if (!components) return []
-  return components
+
+  const filtered = components
     .filter((c) => !c.group_id && c.name !== 'Visit our status site')
     .sort((a, b) => a.position - b.position)
-    .map((c) => ({
-      name: c.name,
-      status: mapComponentStatus(c.status),
-      updatedAt: c.updated_at,
-    }))
+
+  const byName = new Map<string, ComponentStatus>()
+  for (const c of filtered) {
+    const mapped = mapComponentStatus(c.status)
+    const existing = byName.get(c.name)
+    if (existing) {
+      existing.status = worseStatus(existing.status, mapped)
+      if (c.updated_at > existing.updatedAt) existing.updatedAt = c.updated_at
+    } else {
+      byName.set(c.name, { name: c.name, status: mapped, updatedAt: c.updated_at })
+    }
+  }
+
+  return Array.from(byName.values())
 }
 
 function normalizeIncidentUpdates(
@@ -287,7 +312,7 @@ async function fetchBetterStack(
 }
 
 function mapBetterStackDayStatus(status: string): DayUptimeStatus['status'] {
-  switch (status) {
+  switch (status.toLowerCase()) {
     case 'operational':
       return 'operational'
     case 'downtime':
@@ -307,16 +332,132 @@ function extractBetterStackResources(data: BetterStackResponse): BetterStackReso
   )
 }
 
+function extractBetterStackStatusReports(data: BetterStackResponse): BetterStackStatusReport[] {
+  return (data.included ?? []).filter(
+    (item): item is BetterStackStatusReport => item.type === 'status_report'
+  )
+}
+
+function extractBetterStackStatusUpdates(data: BetterStackResponse): BetterStackStatusUpdate[] {
+  return (data.included ?? []).filter(
+    (item): item is BetterStackStatusUpdate => item.type === 'status_update'
+  )
+}
+
+function mapBetterStackReportImpact(aggregateState: string): string {
+  switch (aggregateState.toLowerCase()) {
+    case 'downtime':
+      return 'critical'
+    case 'degraded':
+      return 'major'
+    case 'maintenance':
+      return 'minor'
+    default:
+      return 'minor'
+  }
+}
+
+function mapBetterStackReportStatus(report: BetterStackStatusReport): string {
+  if (report.attributes.report_type === 'maintenance') {
+    return report.attributes.ends_at ? 'resolved' : 'monitoring'
+  }
+
+  return report.attributes.ends_at ? 'resolved' : 'investigating'
+}
+
+function getBetterStackResourceNames(
+  report: BetterStackStatusReport,
+  resourcesById: Map<string, BetterStackResource>
+): string[] {
+  return (report.attributes.affected_resources ?? [])
+    .map((resource) => resourcesById.get(resource.status_page_resource_id)?.attributes.public_name)
+    .filter((name): name is string => Boolean(name))
+}
+
+function getBetterStackReportUpdates(
+  report: BetterStackStatusReport,
+  updatesById: Map<string, BetterStackStatusUpdate>
+): IncidentUpdate[] {
+  const reportStatus = mapBetterStackReportStatus(report)
+  const updates = (report.relationships?.status_updates?.data ?? [])
+    .map((ref) => updatesById.get(ref.id))
+    .filter((update): update is BetterStackStatusUpdate => Boolean(update))
+    .sort(
+      (left, right) =>
+        new Date(right.attributes.published_at).getTime() -
+        new Date(left.attributes.published_at).getTime()
+    )
+
+  return updates.map((update) => ({
+    status: reportStatus,
+    body: update.attributes.message,
+    createdAt: update.attributes.published_at,
+  }))
+}
+
+function betterStackToIncidentsAndMaintenances(
+  data: BetterStackResponse
+): {
+  incidents: NormalizedIncident[]
+  scheduledMaintenances: NormalizedMaintenance[]
+} {
+  const resourcesById = new Map(
+    extractBetterStackResources(data).map((resource) => [resource.id, resource] as const)
+  )
+  const updatesById = new Map(
+    extractBetterStackStatusUpdates(data).map((update) => [update.id, update] as const)
+  )
+
+  const incidents: NormalizedIncident[] = []
+  const scheduledMaintenances: NormalizedMaintenance[] = []
+
+  for (const report of extractBetterStackStatusReports(data)) {
+    const affectedComponents = getBetterStackResourceNames(report, resourcesById)
+    const updates = getBetterStackReportUpdates(report, updatesById)
+    const reportStatus = mapBetterStackReportStatus(report)
+
+    if (report.attributes.report_type === 'maintenance') {
+      scheduledMaintenances.push({
+        id: report.id,
+        name: report.attributes.title,
+        status: reportStatus,
+        impact: 'maintenance',
+        scheduledFor: report.attributes.starts_at,
+        scheduledUntil: report.attributes.ends_at ?? report.attributes.starts_at,
+        updates,
+        affectedComponents,
+      })
+      continue
+    }
+
+    incidents.push({
+      id: report.id,
+      name: report.attributes.title,
+      status: reportStatus,
+      impact: mapBetterStackReportImpact(report.attributes.aggregate_state),
+      createdAt: report.attributes.starts_at,
+      updatedAt: updates[0]?.createdAt ?? report.attributes.starts_at,
+      resolvedAt: report.attributes.ends_at,
+      shortlink: '',
+      updates,
+      affectedComponents,
+    })
+  }
+
+  return { incidents, scheduledMaintenances }
+}
+
 function betterStackToSummary(
   providerId: string,
   data: BetterStackResponse
 ): ProviderStatusSummary {
   const resources = extractBetterStackResources(data)
+  const { incidents } = betterStackToIncidentsAndMaintenances(data)
 
   const components: ComponentStatus[] = resources.map((r) => ({
     name: r.attributes.public_name,
     status: mapBetterStackStatus(r.attributes.status),
-    updatedAt: new Date().toISOString(),
+    updatedAt: data.data.attributes.updated_at ?? new Date().toISOString(),
     uptimePercentage: r.attributes.availability * 100,
     dailyHistory: (r.attributes.status_history ?? []).map((day) => ({
       day: day.day,
@@ -335,16 +476,12 @@ function betterStackToSummary(
           : 'degraded'
       : ('unknown' as ProviderStatusLevel)
 
-  const downCount = components.filter(
-    (c) => c.status !== 'operational' && c.status !== 'unknown'
-  ).length
-
   return {
     providerId,
     status: overallStatus,
     statusText: getStatusText(overallStatus),
-    activeIncidents: downCount,
-    lastUpdated: new Date().toISOString(),
+    activeIncidents: incidents.filter((incident) => !incident.resolvedAt).length,
+    lastUpdated: data.data.attributes.updated_at ?? new Date().toISOString(),
     components,
   }
 }
@@ -355,10 +492,11 @@ function betterStackToFull(
   pageUrl: string
 ): ProviderFullStatus {
   const summary = betterStackToSummary(providerId, data)
+  const { incidents, scheduledMaintenances } = betterStackToIncidentsAndMaintenances(data)
   return {
     ...summary,
-    incidents: [],
-    scheduledMaintenances: [],
+    incidents,
+    scheduledMaintenances,
     pageUrl,
   }
 }

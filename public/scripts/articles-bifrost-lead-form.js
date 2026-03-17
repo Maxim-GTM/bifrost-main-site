@@ -9,15 +9,17 @@
     var TRIGGER_DELAY_MS = 30000;
     var SHOW_ON_SCROLL_PERCENT = 30;
     var MIN_SCREEN_WIDTH = 768;
-  
+
     var COMPANY_SIZES = ['1-10', '11-50', '51-100', '101-500', '501-1000', '1000+'];
-  
+
+    var BIFROST_TAGS = ['LLM Gateway', 'AI Gateway', 'MCP Gateway', 'AI Governance'];
+
     // ============================================================
     // CAMPAIGN CONFIG — from <script> data attributes
     // ============================================================
   
     function getScriptConfig() {
-      var scripts = document.querySelectorAll('script[src*="form-fill-download"]');
+      var scripts = document.querySelectorAll('script[src*="articles-bifrost-lead-form"]');
       var el = scripts[scripts.length - 1];
       return {
         ebookTitle: (el && el.getAttribute('data-ebook-title')) || 'Bifrost: The Enterprise AI Gateway',
@@ -34,6 +36,17 @@
     // ============================================================
     // HELPERS
     // ============================================================
+
+    function hasBifrostTag() {
+      var metaTags = document.querySelectorAll('meta[property="article:tag"]');
+      for (var i = 0; i < metaTags.length; i++) {
+        var content = metaTags[i].getAttribute('content');
+        if (BIFROST_TAGS.indexOf(content) !== -1) {
+          return true;
+        }
+      }
+      return false;
+    }
   
     function isDismissed() {
       return document.cookie.indexOf(COOKIE_NAME + '=1') !== -1;
@@ -62,17 +75,16 @@
       var s = document.createElement('style');
       s.id = 'bfr-dl-styles';
       s.textContent = [
-        // Both panels share the same absolute slot
         '.bfr-dl-panel{position:absolute !important;bottom:0 !important;right:0 !important;width:' + PANEL_W + ' !important;background:#fff !important;border:1px solid #e2e5e9 !important;border-radius:0 !important;box-shadow:0 8px 32px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.06) !important;overflow:hidden !important;opacity:0;transform:translateY(12px) scale(.98);transition:opacity .3s ease,transform .3s ease;pointer-events:none;display:none}',
         '.bfr-dl-panel.visible{display:block !important;opacity:1 !important;transform:translateY(0) scale(1) !important;pointer-events:auto !important}',
-  
+
         // Accent bar at top
         '.bfr-dl-accent-bar{height:3px;background:linear-gradient(90deg,#33C09E 0%,#2BA085 50%,#177B62 100%)}',
-  
+
         // Close
         '.bfr-dl-close{position:absolute !important;top:12px !important;right:12px !important;width:28px !important;height:28px !important;background:rgba(255,255,255,.85) !important;backdrop-filter:blur(4px) !important;border:1px solid #e2e5e9 !important;border-radius:6px !important;cursor:pointer !important;display:flex !important;align-items:center !important;justify-content:center !important;color:#9ca3af !important;transition:background .15s,color .15s,border-color .15s !important;z-index:3 !important;padding:0 !important}',
         '.bfr-dl-close:hover{background:#fff !important;color:#111827 !important;border-color:#d1d5db !important}',
-  
+
         // ---- Teaser ----
         '.bfr-dl-teaser-inner{padding:28px 24px 24px}',
         '.bfr-dl-teaser-header{display:flex;align-items:flex-start;gap:14px;margin-bottom:14px}',
@@ -82,7 +94,7 @@
         '.bfr-dl-teaser-p{font-size:13px !important;color:#6b7280 !important;margin:0 0 18px !important;line-height:1.5 !important}',
         '.bfr-dl-teaser-btn{display:flex !important;align-items:center !important;justify-content:center !important;gap:8px !important;width:100% !important;height:40px !important;font-family:"SF Mono",Monaco,Consolas,monospace !important;font-size:12px !important;font-weight:600 !important;text-transform:uppercase !important;letter-spacing:.06em !important;color:#fff !important;background:#33C09E !important;border:none !important;border-radius:8px !important;cursor:pointer !important;transition:background .15s !important;position:relative !important}',
         '.bfr-dl-teaser-btn:hover{background:#2BA085 !important}',
-  
+
         // ---- Form ----
         '.bfr-dl-form-inner{padding:24px 24px 20px}',
         '.bfr-dl-form-h{font-size:16px !important;font-weight:700 !important;color:#111827 !important;margin:0 0 2px !important}',
@@ -94,22 +106,22 @@
         '.bfr-dl-input:focus,.bfr-dl-select:focus{border-color:#33C09E !important;box-shadow:0 0 0 2px rgba(51,192,158,.12) !important;background:#fff !important}',
         '.bfr-dl-input::placeholder{color:#9ca3af !important}',
         '.bfr-dl-select{appearance:none !important;-webkit-appearance:none !important;background-image:url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'12\' height=\'12\' viewBox=\'0 0 12 12\' fill=\'none\' stroke=\'%239ca3af\' stroke-width=\'1.5\'%3E%3Cpath d=\'M3 4.5L6 7.5L9 4.5\'/%3E%3C/svg%3E") !important;background-repeat:no-repeat !important;background-position:right 10px center !important;padding-right:28px !important}',
-  
+
         // Submit
         '.bfr-dl-submit{position:relative !important;display:inline-flex !important;align-items:center !important;justify-content:center !important;gap:8px !important;width:100% !important;height:40px !important;margin-top:6px !important;font-family:"SF Mono",Monaco,Consolas,monospace !important;font-size:12px !important;font-weight:600 !important;text-transform:uppercase !important;letter-spacing:.06em !important;color:#fff !important;background:#33C09E !important;border:none !important;border-radius:8px !important;cursor:pointer !important;transition:background .15s !important}',
         '.bfr-dl-submit:hover{background:#2BA085 !important}',
         '.bfr-dl-submit:disabled{opacity:.6 !important;cursor:not-allowed !important}',
-  
+
         // Success
         '.bfr-dl-success{text-align:center;padding:32px 24px}',
         '.bfr-dl-success-icon{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 100%);margin-bottom:14px}',
         '.bfr-dl-success h4{font-size:16px !important;font-weight:700 !important;color:#111827 !important;margin:0 0 6px !important}',
         '.bfr-dl-success p{font-size:13px !important;color:#6b7280 !important;margin:0 0 18px !important}',
-  
+
         // Error
         '.bfr-dl-error{font-size:11px !important;color:#dc2626 !important;margin:6px 0 0 !important;display:none !important}',
         '.bfr-dl-error.show{display:block !important}',
-  
+
         // Hide on small screens
         '@media(max-width:767px){#bfr-dl-widget{display:none !important}}',
       ].join('\n');
@@ -119,11 +131,7 @@
     // ============================================================
     // MARKUP HELPERS
     // ============================================================
-  
-    function cornersHTML() {
-      return '';
-    }
-  
+
     var CLOSE_SVG = '<svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1L13 13M13 1L1 13"/></svg>';
     var ARROW_SVG = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12M8 2l5 5-5 5"/></svg>';
     var BOOK_SVG = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#33C09E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8M8 11h5"/></svg>';
@@ -153,7 +161,6 @@
       teaser.id = 'bfr-dl-teaser';
       teaser.innerHTML =
         '<div class="bfr-dl-accent-bar"></div>' +
-        cornersHTML() +
         '<button class="bfr-dl-close" id="bfr-dl-teaser-close" aria-label="Close">' + CLOSE_SVG + '</button>' +
         '<div class="bfr-dl-teaser-inner">' +
           '<div class="bfr-dl-teaser-header">' +
@@ -178,7 +185,6 @@
       formPanel.id = 'bfr-dl-form-panel';
       formPanel.innerHTML =
         '<div class="bfr-dl-accent-bar"></div>' +
-        cornersHTML() +
         '<button class="bfr-dl-close" id="bfr-dl-form-close" aria-label="Close">' + CLOSE_SVG + '</button>' +
         '<div class="bfr-dl-form-inner">' +
           '<p class="bfr-dl-tagline">' + esc(cfg.teaserTagline) + '</p>' +
@@ -237,8 +243,7 @@
             ? '<a href="' + esc(cfg.ebookUrl) + '" target="_blank" rel="noopener" style="font-size:12px;color:#6b7280;text-decoration:underline;cursor:pointer">Download didn\'t start? Click here.</a>'
             : '') +
         '</div>';
-  
-      // Auto-trigger the PDF download
+
       if (cfg.ebookUrl && cfg.ebookUrl !== '#') {
         var a = document.createElement('a');
         a.href = cfg.ebookUrl;
@@ -277,10 +282,7 @@
         submittedAt: new Date().toISOString(),
         pageUrl: window.location.href,
       };
-  
-      // Encode as application/x-www-form-urlencoded -- a CORS "simple"
-      // content type that does NOT trigger a preflight OPTIONS request,
-      // and that Clay can parse into structured fields.
+
       var parts = [];
       for (var key in payload) {
         if (payload.hasOwnProperty(key)) {
@@ -325,6 +327,10 @@
   
     function init() {
       if (window.innerWidth < MIN_SCREEN_WIDTH) return;
+      if (!hasBifrostTag()) {
+        console.log('Bifrost Ebook CTA: Article does not have a Bifrost tag (' + BIFROST_TAGS.join(', ') + ')');
+        return;
+      }
       if (isDismissed()) {
         console.log('Bifrost Ebook CTA: Dismissed (cookie set), will reappear after expiry');
         return;

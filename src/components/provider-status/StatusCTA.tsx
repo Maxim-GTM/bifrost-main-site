@@ -8,7 +8,7 @@ interface StatusCTAProps {
 export default function StatusCTA({ providerName }: StatusCTAProps) {
   const heading = providerName
     ? `${providerName} down? Route around it.`
-    : 'Never go down with your provider.'
+    : "Your provider goes down. You don't."
 
   const description = providerName
     ? `When ${providerName} has issues, Bifrost automatically routes your requests to a healthy alternative provider. Zero code changes. 99.999% effective uptime.`
@@ -60,8 +60,8 @@ export default function StatusCTA({ providerName }: StatusCTAProps) {
               </>
             ) : (
               <>
-                Never go down{' '}
-                <span className="text-accent">with your provider.</span>
+                Your provider goes down.{' '}
+                <span className="text-accent">You don&apos;t.</span>
               </>
             )}
           </h3>

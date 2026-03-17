@@ -8,6 +8,7 @@ import {
   Plug,
   RefreshCw,
   Zap,
+  Users,
 } from 'lucide-react'
 import { getCostCalculatorBaseUrl } from '@/lib/utils'
 
@@ -94,6 +95,14 @@ const resources = [
     href: `${basePath}/resources/litellm-alternative`,
     icon: Zap,
     label: 'Alternative',
+  },
+  {
+    title: 'Bifrost OSS Adopters',
+    description:
+      'A polished ecosystem showcase page for teams and products adopting Bifrost OSS, ready for you to swap in real company entries.',
+    href: `${basePath}/resources/bifrost-oss-adopters`,
+    icon: Users,
+    label: 'Showcase',
   },
 ]
 

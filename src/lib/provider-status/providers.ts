@@ -239,65 +239,6 @@ export const STATUS_PROVIDERS: StatusProviderConfig[] = [
     logoPath: '/provider-logo/openrouter.svg',
   },
 
-  // ============================================================
-  // No Public API Providers (3)
-  // ============================================================
-  {
-    id: 'mistral',
-    name: 'Mistral AI',
-    description:
-      'Mistral Large, Mistral Medium, Mixtral, Codestral, Le Chat, and Mistral API services.',
-    statusPageUrl: 'https://status.mistral.ai',
-    apiBaseUrl: null,
-    platform: 'none',
-    aliases: ['mistral', 'mixtral', 'codestral', 'le chat', 'mistral api'],
-    logoPath: '/provider-logo/mistral.svg',
-  },
-  {
-    id: 'google-ai',
-    name: 'Google AI',
-    description:
-      'Google Gemini, Vertex AI, Google AI Studio, and Google Cloud AI services.',
-    statusPageUrl: 'https://status.cloud.google.com',
-    apiBaseUrl: null,
-    platform: 'none',
-    aliases: [
-      'gemini',
-      'google gemini',
-      'vertex ai',
-      'google ai',
-      'google ai studio',
-      'bard',
-    ],
-    logoPath: '/provider-logo/google.svg',
-  },
-  {
-    id: 'aws-bedrock',
-    name: 'AWS Bedrock',
-    description:
-      'Amazon Bedrock, Amazon Nova, and AWS cloud AI infrastructure services.',
-    statusPageUrl: 'https://health.aws.amazon.com/health/status',
-    apiBaseUrl: null,
-    platform: 'none',
-    aliases: [
-      'aws bedrock',
-      'amazon bedrock',
-      'amazon nova',
-      'aws ai',
-      'bedrock',
-    ],
-    logoPath: '/provider-logo/bedrock.svg',
-  },
-  {
-    id: 'xai',
-    name: 'xAI',
-    description: 'xAI Grok models, Grok API, and xAI platform services.',
-    statusPageUrl: 'https://status.x.ai',
-    apiBaseUrl: null,
-    platform: 'none',
-    aliases: ['xai', 'grok', 'x.ai', 'grok api'],
-    logoPath: '/provider-logo/xai.svg',
-  },
 ]
 
 /**

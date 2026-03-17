@@ -175,12 +175,16 @@ interface IncidentTimelineProps {
   incidents: NormalizedIncident[]
   scheduledMaintenances?: NormalizedMaintenance[]
   maxIncidents?: number
+  providerName?: string
+  statusPageUrl?: string
 }
 
 export default function IncidentTimeline({
   incidents,
   scheduledMaintenances = [],
   maxIncidents = 20,
+  providerName,
+  statusPageUrl,
 }: IncidentTimelineProps) {
   const activeIncidents = incidents.filter((i) => !i.resolvedAt)
   const resolvedIncidents = incidents.filter((i) => i.resolvedAt).slice(0, maxIncidents)
@@ -236,13 +240,37 @@ export default function IncidentTimeline({
       {/* No incidents */}
       {activeIncidents.length === 0 && resolvedIncidents.length === 0 && scheduledMaintenances.length === 0 && (
         <div className="border border-gray-200 bg-white px-5 py-12 text-center">
-          <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-emerald-50">
-            <svg className="h-5 w-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <p className="text-sm font-medium text-gray-900">No recent incidents</p>
-          <p className="mt-1 text-xs text-gray-500">All systems have been running smoothly.</p>
+          {incidents.length === 0 && statusPageUrl ? (
+            <>
+              <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100">
+                <svg className="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <p className="text-sm font-medium text-gray-900">Incident history not available</p>
+              <p className="mt-1 text-xs text-gray-500">
+                {providerName ?? 'This provider'} does not publish incident logs through their public status API.
+              </p>
+              <a
+                href={statusPageUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 inline-block font-mono text-xs text-gray-400 underline decoration-gray-300 underline-offset-2 transition-colors hover:text-[#35c09e]"
+              >
+                Check their official status page &rarr;
+              </a>
+            </>
+          ) : (
+            <>
+              <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-emerald-50">
+                <svg className="h-5 w-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <p className="text-sm font-medium text-gray-900">No recent incidents</p>
+              <p className="mt-1 text-xs text-gray-500">All systems have been running smoothly.</p>
+            </>
+          )}
         </div>
       )}
     </div>
