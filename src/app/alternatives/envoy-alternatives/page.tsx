@@ -25,122 +25,121 @@ import {
   Zap,
 } from 'lucide-react'
 export const metadata: Metadata = {
-    title: 'Bifrost — The High-Performance Portkey Alternative | LLM Gateway',
+    title: 'Bifrost — The High-Performance Envoy Alternative | LLM Gateway',
     description:
-      'Bifrost is a production-grade Portkey alternative built in Go. 50x faster, zero-config deployment, native observability, and 100% success rate at 5,000 RPS.',
+      'Bifrost is a production-grade Envoy alternative built in Go. 50x faster, zero-config deployment, native observability, and 100% success rate at 5,000 RPS.',
     alternates: {
-      canonical: 'https://www.getmaxim.ai/bifrost/alternatives/portkey-alternatives',
+      canonical: 'https://www.getmaxim.ai/bifrost/alternatives/envoy-alternatives',
     },
   }
 
   const performanceMetrics = [
-    { label: 'Mean Latency', value: '11µs', description: 'Gateway overhead per request' },
-    { label: 'Throughput', value: '5K RPS', description: 'Requests per second sustained' },
+    { label: 'Gateway Overhead', value: '11µs', description: 'At 5,000 RPS sustained' },
     { label: 'Success Rate', value: '100%', description: 'Even under extreme load' },
+    { label: 'K8S Dependency', value: '0', description: 'Runs anywhere: NPX, Docker, zero config' },
     { label: 'Setup Time', value: '<30s', description: 'NPX or Docker, zero config' },
   ]
 
-  const portkeyLimitations = [
+  const envoyLimitations = [
     {
       icon: Lock,
-      title: 'Performance Ceiling at Scale',
+      title: 'Kubernetes Required',
       description:
-        "TypeScript/Node.js runtime introduces 20–25ms gateway overhead. Third-party benchmarks show it lagging behind compiled alternatives under load.",
+        "Requires a Kubernetes cluster, Helm, and Gateway API CRDs. Teams without K8s infrastructure cannot use it at all.",
     },
     {
       icon: RefreshCw,
-      title: 'Limited SDK Drop-in Support',
+      title: 'Early-Stage APIs',
       description:
-        "Only supports OpenAI SDK drop-in natively. Anthropic, Google GenAI, AWS Bedrock, and Go SDKs require workarounds or aren't supported.",
+        "APIs are v1alpha1. Release notes acknowledge known limitations including inability to route to Kubernetes services. The project is still maturing.",
     },
     {
       icon: HardDrive,
-      title: 'Pricing Ramps Quickly',
+      title: 'AI Features Bolted On, Not Native',
       description:
-        "Free tier for development, then $49+/month per project. Enterprise plans require custom sales engagement, adding cost unpredictability.",
+        " AI routing is layered on top of a general-purpose proxy via external processors and WASM filters. Solo.io acknowledged fundamental mismatches with MCP's bidirectional streaming.",
     },
     {
       icon: Server,
-      title: 'Overwhelming Complexity',
+      title: 'No Caching, Budgets, or Guardrails',
       description:
-      'Reviewers consistently report the platform is overwhelming for newcomers, with a steep learning curve and documentation gaps on advanced features.',
+        'Ships without semantic caching, cost tracking, budget enforcement, virtual key management, PII redaction, or jailbreak detection, all table-stakes for modern AI gateways.',
     },
 
   ]
   
-  const portkeyStrengths = [
+  const envoyStrengths = [
     {
       icon: Zap,
-      title: 'Broad Provider Support',
+      title: 'OpenAI-Compatible Endpoint',
       description:
-        "Unified API for over 250 AI models across text, vision, audio, and image generation.",
+        "Single API for multiple LLM providers with OpenAI-compatible interface, enabling fast model switching during experimentation.",
     },
     {
       icon: Gauge,
-      title: 'Built-in Observability',
+      title: 'Open Source (Apache 2.0)',
       description:
-        'Real-time dashboards tracking latency, token usage, cost analytics, and request-level tracing across all providers.',
+        'Fully open-source under the Envoy project umbrella. Transparent development process with community governance.',
     },
     {
       icon: HardDrive,
-      title: 'Enterprise Compliance',
+      title: 'Kubernetes-Native Architecture',
       description:
-        'SOC2 Type 2, ISO 27001, HIPAA, and GDPR certifications with SSO/SCIM integration.',
+        'Deep integration with Gateway API, Kubernetes CRDs, and cloud-native tooling for teams already invested in K8s infrastructure.',
     },
     {
       icon: Cpu,
-      title: 'Prompt Management',
+      title: 'Token-Based Rate Limiting',
       description:
-        'Built-in prompt versioning, testing playground, and collaborative template management for team workflows.',
+        'Supports token-level rate limiting and upstream credential injection at the gateway layer, giving platform teams basic controls over LLM traffic consumption.',
     },
   ]
 
   const whyMigrate = [
     {
       icon: Zap,
-      title: 'Latency Overhead at Scale',
+      title: 'Heavy Infrastructure Requirements',
       description:
-        "Portkey's TypeScript runtime adds ~20–25ms of gateway overhead per request.",
+        "Deploying Envoy AI Gateway requires a running Kubernetes cluster, Helm, and familiarity with Gateway API specifications. Configuration is done via CRDs like AIServiceBackend, AIGatewayRoute, and BackendSecurityPolicy, infrastructure-engineer territory, not developer-friendly.",
     },
     {
       icon: Shield,
-      title: 'SDK Integration Gaps',
+      title: 'Not AI-Native by Design',
       description:
-        "Only the OpenAI SDK is supported as a drop-in. Teams using Anthropic, Google GenAI, AWS Bedrock, or Go must implement custom integrations, adding development time and maintenance burden.",
+        'Envoy was built for HTTP/TCP traffic management. AI capabilities are added through external processors and WASM filters, not as first-class features.',
     },
     {
       icon: DollarSign,
-      title: 'Pricing Complexity',
+      title: 'Zero Cost Management',
       description:
-        'Starting at $49/month with enterprise tiers requiring sales calls, costs scale unpredictably. Smaller teams report pricing is disproportionately high relative to their usage volume.',
+        'No virtual keys, no per-team or per-project budgets, no spend tracking, and no token-level cost attribution. Teams have no mechanism to prevent runaway LLM costs or enforce financial governance across teams.',
     },
     {
       icon: Lock,
-      title: 'Missing Production Features',
+      title: 'No Built-in Guardrails',
       description:
-        'No automatic fallbacks, no adaptive load balancing, no backpressure handling, and no geo-aware routing. These gaps force teams to build reliability layers outside the gateway.',
-
+        'Ships without content moderation, PII redaction, jailbreak detection, or any prompt/response filtering. Teams in regulated industries must build these safety layers entirely from scratch.',
     },
     {
       icon: BarChart3,
-      title: 'Limited MCP Capabilities',
+      title: 'No Caching of Any Kind',
       description:
-        "While Portkey supports basic MCP server management, it lacks Agent Mode, Code Mode, and Tool Hosting, critical features for teams building autonomous agent workflows at scale.",
+        "Neither simple nor semantic caching is available. Every identical prompt results in a full round-trip to the LLM provider, meaning no cost savings and no latency reduction for repeated queries.",
     },
     {
       icon: RefreshCw,
-      title: 'Software Stability Concerns',
+      title: 'Minimal SDK & Multimodal Support',
       description:
-        "G2 and AWS Marketplace reviewers report bugs, slow service responses, and documentation gaps. ",
+        "Only OpenAI SDK drop-in is supported. No Anthropic, Google GenAI, Bedrock, LangChain, or Go SDK integration. No support for vision, audio, image generation, or video APIs.",
     },
   ]
 
   interface ComparisonRow {
     feature: string
     bifrost: string | null
-    portkey: string | null
+    envoy: string | null
     bifrostCheck?: boolean
-    portkeyCheck?: boolean
+    envoyCheck?: boolean
   }
 
   const featureComparison: { title: string; rows: ComparisonRow[] }[] = [
@@ -148,19 +147,20 @@ export const metadata: Metadata = {
       title: 'Speed & Performance',
       rows: [
 
-        { feature: 'Language', bifrost: 'Go', portkey: 'TypeScript (Node.js)' },
+        { feature: 'Language', bifrost: 'Go', envoy: 'C++ (Envoy) + Go' },
 
         
         {
             feature: 'Gateway Overhead (per request)',
             bifrost: '11µs (Go native)',
-            portkey: '~20-25 ms @ 100 RPS',
+            envoy: '~1-5ms',
           },
+          ,
 
           {
             feature: 'Object Pooling',
             bifrost: '✅',
-            portkey: '❌',
+            envoy: '❌',
           },  
 
         
@@ -173,36 +173,31 @@ export const metadata: Metadata = {
         {
           feature: 'Basic Weighted LB',
           bifrost: '✅',
-          portkey: '✅',
+          envoy: '✅',
         
         },
         {
           feature: 'Automatic Fallbacks',
           bifrost: '✅',
-          portkey: '❌',
+          envoy: '✅',
         
         },
         {
           feature: 'Adaptive Load Balancing',
           bifrost: '✅',
-          portkey: '❌',
+          envoy: '❌',
         
         },
-        {
-            feature: 'Backpressure',
-            bifrost: '✅',
-            portkey: '❌',
-          
-          },
+        
           {
             feature: 'Geo-Aware Routing',
             bifrost: '✅',
-            portkey: '❌',
+            envoy: '❌',
           
           },  
-        { feature: 'Health-Aware Routing', bifrost: '✅', portkey: 'Fallback only' },
+        { feature: 'Token-Aware Routing', bifrost: '✅', envoy: '✅' },
 
-        { feature: 'Latency-Based Routing', bifrost: '✅', portkey: '❌' },
+        
       ],
     },
 
@@ -214,31 +209,31 @@ export const metadata: Metadata = {
           {
             feature: 'MCP Server Management',
             bifrost: '✅',
-            portkey: '✅',
+            envoy: '✅',
           
           },
           {
             feature: 'MCP Agent Mode',
             bifrost: '✅',
-            portkey: '❌',
+            envoy: '❌',
           
           },
           {
             feature: 'MCP Code Mode',
             bifrost: '✅',
-            portkey: '❌',
+            envoy: '❌',
           
           },
           {
             feature: 'MCP Tool Hosting',
             bifrost: '✅',
-            portkey: '❌',
+            envoy: '❌',
           
           },
           {
             feature: 'MCP OAuth',
             bifrost: '✅',
-            portkey: '✅',
+            envoy: '✅',
           
           },
         ],
@@ -251,25 +246,25 @@ export const metadata: Metadata = {
           {
             feature: 'Built-in Guardrails',
             bifrost: '✅',
-            portkey: '✅',
+            envoy: '❌',
           
           },
           {
-            feature: 'Custom Guardrail Plugins',
+            feature: 'Input & Output Guardrails',
             bifrost: '✅',
-            portkey: '✅',
+            envoy: '❌',
           
           },
           {
             feature: 'Jailbreak Detection',
             bifrost: '✅',
-            portkey: '✅',
+            envoy: '❌',
           
           },
           {
             feature: 'PII Redaction',
             bifrost: '✅',
-            portkey: '✅ (plugin)',
+            envoy: '❌',
           
           },
         ],
@@ -282,19 +277,19 @@ export const metadata: Metadata = {
           {
             feature: 'Simple Cache',
             bifrost: '✅',
-            portkey: '✅',
+            envoy: '❌',
           
           },
           {
             feature: 'Semantic Cache',
             bifrost: '✅',
-            portkey: '✅(Cloud)',
+            envoy: '❌',
           
           },
           {
             feature: 'Built-in Vector Store',
             bifrost: '✅',
-            portkey: 'Cloud-managed',
+            envoy: '❌',
           
           },
         ],
@@ -303,35 +298,44 @@ export const metadata: Metadata = {
       title: 'Governance & Budget',
       rows: [
         {
-          feature: 'Virtual Keys',
-          bifrost: 'With budgets & rate limits',
-          portkey: '✅',
+          feature: 'Virtual Keys with Budgets',
+          bifrost: '✅',
+          envoy: '❌',
         
         },
         {
-          feature: 'RBAC',
-          bifrost: 'Fine-grained access management',
-          portkey: '✅',
-      
-        },
+            feature: 'Heirarchial Budgets',
+            bifrost: '✅',
+            envoy: '❌',
+          
+          },
+
+          {
+            feature: 'Spend Tracking',
+            bifrost: '✅',
+            envoy: '❌',
+          
+          },
+        
         {
           feature: 'Audit Logs',
           bifrost: '✅',
-          portkey: '✅',
+          envoy: '✅',
         
         },
         {
           feature: 'SSO Integration',
           bifrost: '✅',
-          portkey: '✅',
+          envoy: 'via K8s RBAC',
       
         },
         {
-          feature: 'Heirarchial Budgets',
-          bifrost: '✅',
-          portkey: '✅',
-         
-        },
+            feature: 'RBAC',
+            bifrost: '✅',
+            envoy: 'via K8s-native RBAC',
+        
+          },
+        
       ],
     },
     {
@@ -340,31 +344,65 @@ export const metadata: Metadata = {
         {
           feature: 'Native Prometheus',
           bifrost: '✅',
-          portkey: '✅',
+          envoy: '✅',
       
         },
         {
-          feature: 'Native OpenTelemetry',
+          feature: 'Built-in Log Viewer',
           bifrost: '✅',
-          portkey: '❌',
+          envoy: '❌',
         
         },
         {
-          feature: 'Request/Response Debug',
+          feature: 'Cost per Request Tracking',
           bifrost: '✅',
-          portkey: '❌',
+          envoy: '❌',
         
         },
         {
-            feature: 'Cost per Request Tracking',
+            feature: 'Request/Response Debug',
             bifrost: '✅',
-            portkey: '✅',
+            envoy: '❌',
         
           },
 
     
       ],
     },
+
+    {
+        title: 'Multimodal Support',
+        rows: [
+          
+          {
+            feature: 'Vision',
+            bifrost: '✅',
+            envoy: '❌',
+          
+          },
+          {
+            feature: 'Audio',
+            bifrost: '✅',
+            envoy: '❌',
+          
+          },
+          {
+              feature: 'Image Gen',
+              bifrost: '✅',
+              envoy: '❌',
+          
+            },
+
+            {
+                feature: 'Video API',
+                bifrost: '✅',
+                envoy: '❌',
+            
+              },
+  
+      
+        ],
+      },
     {
         title: 'SDK INTEGRATIONS',
         rows: [
@@ -372,38 +410,38 @@ export const metadata: Metadata = {
             {
                 feature: 'OpenAI SDK Drop-in',
                 bifrost: '✅',
-                portkey: '✅',
+                envoy: '✅',
                
               },
 
           {
             feature: 'Anthropic SDK Drop-in',
             bifrost: '✅',
-            portkey: '❌',
+            envoy: '❌',
            
           },
           {
             feature: 'GenAI SDK Drop-in',
             bifrost: '✅',
-            portkey: '❌',
+            envoy: '❌',
           
           },
           {
             feature: 'Bedrock SDK Drop-in',
             bifrost: '✅',
-            portkey: '❌',
+            envoy: '❌',
           
           },
           {
             feature: 'LiteLLM SDK Compat',
             bifrost: '✅',
-            portkey: '❌',
+            envoy: '❌',
           
           },
           {
             feature: 'Go SDK (Library)',
             bifrost: '✅',
-            portkey: '❌',
+            envoy: '❌',
           
           },
         ],
@@ -415,26 +453,45 @@ export const metadata: Metadata = {
             {
                 feature: 'Cluster Mode / HA',
                 bifrost: '✅',
-                portkey: '✅',
+                envoy: '✅ (K8s)',
                
               },
 
           {
             feature: 'In-VPC Deployment',
             bifrost: '✅',
-            portkey: '✅',
+            envoy: '✅',
            
           },
           {
             feature: 'Helm Charts',
             bifrost: '✅',
-            portkey: '❌',
+            envoy: '✅',
           
           },
           {
+            feature: 'K8s Required',
+            bifrost: 'No',
+            envoy: 'Yes',
+          
+          },
+          {
+            feature: 'SOC2',
+            bifrost: '✅',
+            envoy: '❌',
+          
+          },
+          {
+            feature: 'HIPAA',
+            bifrost: '✅',
+            envoy: '❌',
+          
+          },
+        
+          {
             feature: 'Vault Support',
             bifrost: '✅',
-            portkey: '✅',
+            envoy: '✅',
           
           },
           
@@ -446,51 +503,34 @@ export const metadata: Metadata = {
       rows: [
        
   
-       
-        {
-          feature: 'LiteLLM SDK Compat Layer',
-          bifrost: '✅',
-          portkey: '❌',
         
-        },
+        
         {
           feature: 'Prompt Studio / Editor',
           bifrost: '✅',
-          portkey: '✅',
+          envoy: '❌',
         
         },
         {
-          feature: 'Circuit Breaker',
-          bifrost: '✅',
-          portkey: '✅',
-        
-        },
-        {
-            feature: 'Traffic Mirroring',
+            feature: 'Self-Hosted Model Mgmt',
             bifrost: '✅',
-            portkey: '❌',
+            envoy: '✅',
           
           },
+       
           {
             feature: 'Mock Responses',
             bifrost: '✅',
-            portkey: '❌',
+            envoy: '❌',
           
           },
-          {
-            feature: 'Self-Hosted Model Mgmt',
-            bifrost: '✅',
-            portkey: '❌',
-          
-          },
-          {
-            feature: 'Inference Endpoint Picker',
-            bifrost: '✅',
-            portkey: '❌',
-          
-          },
+         
+
+    
       ],
     },
+    
+
   ]
 
   const setupSteps = [
@@ -530,52 +570,53 @@ export const metadata: Metadata = {
   ]
   
   const chooseBifrost = [
-    'You need high-throughput performance at 1,000+ RPS with minimal latency overhead',
-    'You want zero-configuration deployment, start in seconds, no Redis or databases',
-    'You use multiple SDKs (Anthropic, Google GenAI, Bedrock) and need native drop-in support',
-    'You need native OpenTelemetry, and web UI',
-    'You need advanced MCP capabilities: Agent Mode, Code Mode, and Tool Hosting for agentic workflows',
+    'You need a purpose-built AI gateway with caching, budgets, guardrails, and MCP, and not a general proxy with AI bolted on',
+    'You want to deploy without Kubernete - on Docker, or via NPX in under 30 seconds',
+    'You use multiple AI SDKs (Anthropic, GenAI, Bedrock, LangChain) and need native drop-in support for all of them',
+    'You need multimodal support: vision, audio, image generation, and video APIs through a unified gateway',
+    'You want SOC2/HIPAA compliance certifications and enterprise-grade governance from day one',
   ]
 
-  const choosePortkey = [
-    'Your team is small, traffic is low (<100 RPS), and you value managed cloud dashboards',
-    "You need built-in prompt versioning and a collaborative prompt playground for non-technical teams",
-    'Your team prefers Node.js/TypeScript ecosystem and extensibility',
+  const chooseEnvoy = [
+    "You're already running Envoy Gateway / Envoy Proxy in your Kubernetes cluster",
+    'Your platform engineering team is deeply invested in Kubernetes Gateway API and CRD-based workflows',
+    'You only need basic LLM routing (chat completions, embeddings) with no caching, budgets, or guardrails',
+    "You prefer infrastructure managed through the CNCF ecosystem and don't mind writing CRDs for all configuration",
   ]
   
   const summaryTable = [
     {
       factor: 'Best For',
       bifrost: 'High-throughput production systems',
-      portkey: 'Multi-provider abstraction, Python teams',
+      envoy: 'Multi-provider abstraction, Python teams',
     },
-    { factor: 'Performance', bifrost: '11µs', portkey: '40ms' },
-    { factor: 'Setup Time', bifrost: '<30 seconds', portkey: '2-10 minutes' },
-    { factor: 'Dependencies', bifrost: 'Zero', portkey: 'Redis recommended' },
+    { factor: 'Performance', bifrost: '11µs', envoy: '40ms' },
+    { factor: 'Setup Time', bifrost: '<30 seconds', envoy: '2-10 minutes' },
+    { factor: 'Dependencies', bifrost: 'Zero', envoy: 'Redis recommended' },
     {
       factor: 'Deployment Asset',
       bifrost: 'Single binary, Docker, npx',
-      portkey: 'Python package, Docker',
+      envoy: 'Python package, Docker',
     },
-    { factor: 'Configuration', bifrost: 'Web UI, API, files', portkey: 'Files, env variables' },
+    { factor: 'Configuration', bifrost: 'Web UI, API, files', envoy: 'Files, env variables' },
     {
       factor: 'Observability',
       bifrost: 'Native Prometheus, built-in UI',
-      portkey: 'Via integrations',
+      envoy: 'Via integrations',
     },
-    { factor: 'Cost', bifrost: 'Free (Apache 2.0)', portkey: 'Free (MIT)' },
-    { factor: 'Providers', bifrost: '20+ providers, 1000+ models', portkey: '100+ LLM APIs' },
+    { factor: 'Cost', bifrost: 'Free (Apache 2.0)', envoy: 'Free (MIT)' },
+    { factor: 'Providers', bifrost: '20+ providers, 1000+ models', envoy: '100+ LLM APIs' },
   ]
   
   function tableCellStyle(
     value: string | null,
     hasCheck: boolean | undefined,
-    isPortkey: boolean
+    isEnvoy: boolean
   ): 'sy' | 'sn' | 'sp' | 'sv' {
     if (value === null || value === '') return 'sn'
     const v = value.toLowerCase().trim()
     if (v === 'n/a') return 'sn'
-    if (hasCheck === false && isPortkey) return 'sn'
+    if (hasCheck === false && isEnvoy) return 'sn'
     if (/\d+(\.\d+)?(µs|ms|s|%| rps)/i.test(value) || v.includes('99.999') || v.includes('1.68')) return 'sv'
     const partialPhrases = [
       'community-maintained',
@@ -599,7 +640,7 @@ export const metadata: Metadata = {
   }
   
 
-  export default function PortkeyAlternativesPage() {
+  export default function EnvoyAlternativesPage() {
     return (
       <div className="min-h-screen bg-white">
       {/* Hero */}
@@ -607,18 +648,19 @@ export const metadata: Metadata = {
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
           <div className="text-center">
             <span className="font-mono text-[12px] leading-[15px] font-medium tracking-[0.04em] text-emerald-500 uppercase">
-              [&ensp;PORTKEY ALTERNATIVES&ensp;]
+              [&ensp;ENVOY AI GATEWAY ALTERNATIVES&ensp;]
             </span>
             <h1 className="mt-2 mb-4 text-center text-4xl leading-[1.2] font-normal tracking-tight text-gray-900 md:text-5xl">
-              Top Portkey Alternatives
+              Top Envoy AI Gateway Alternatives
               <br />
-              <span className="text-[var(--accent-text)]">for High-Performance AI Infrastructure </span>
+              <span className="text-[var(--accent-text)]">for Production AI Teams </span>
             </h1>
             <p className="mx-auto mb-8 max-w-3xl text-sm leading-relaxed text-gray-500 md:text-base">
-            Portkey can introduce latency overhead, SDK limitations, and pricing complexity as your AI application scales. Compare leading AI gateway platforms for raw performance, multi-SDK support, MCP capabilities, and production-grade reliability.
+            Envoy AI Gateway requires Kubernetes, ships without caching, budgets, or guardrails, and leaves teams writing CRDs instead of shipping features. Compare purpose-built AI gateways for developer experience, MCP support, and production-grade governance.
+            
             </p>
             <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
-              <Link href="#comparison">
+              <Link href="#comparison" >
                 <Button size="lg">
                   Compare Platforms
                   <ArrowRight className="h-4 w-4" />
@@ -665,32 +707,31 @@ export const metadata: Metadata = {
         </div>
       </section>
 
-      
       <section className="bg-white py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-3xl text-center">
       <p className="mb-4 font-mono text-xs tracking-widest text-gray-400 uppercase">
-        [ PORTKEY GATEWAY OVERVIEW ]
+        [ ENVOY AI GATEWAY OVERVIEW ]
       </p>
 
       <h2 className="mb-6 text-2xl text-gray-900 md:text-3xl">
-        What is Portkey?
+        What is Envoy AI Gateway?
       </h2>
 
       <p className="leading-relaxed text-gray-600">
-      Portkey is an AI gateway and LLMOps platform that provides a unified API for routing requests across 250 LLM models. It has been adopted by teams seeking observability, guardrails, and prompt management for production AI applications.
+      Envoy Gateway is an open source project for managing Envoy Proxy as a standalone or Kubernetes-based application gateway.  It was initiated by Bloomberg and Tetrate to address GenAI traffic challenges within cloud-native infrastructure.
       </p>
     </div>
 
     {/* Bottom row: Strengths vs Limitations - symmetrical, equidistant */}
     <div className="mt-14 grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 md:gap-x-12 md:gap-y-0 py-10">
-      {/* Strengths of Portkey */}
+      {/* Strengths of Envoy */}
       <div className="flex min-w-0 flex-col gap-6">
         <p className="font-mono text-xs font-medium uppercase tracking-widest text-[var(--accent-text)]">
-          Strengths of Portkey
+          Strengths of Envoy
         </p>
         <div className="flex min-h-0 flex-col gap-6">
-          {portkeyStrengths.map((item) => (
+          {envoyStrengths.map((item) => (
             <div key={item.title} className="relative min-h-[7.5rem] flex flex-col border border-gray-200 bg-white p-5">
               <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-[var(--accent)] opacity-40" />
               <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
@@ -705,13 +746,13 @@ export const metadata: Metadata = {
           ))}
         </div>
       </div>
-      {/* Limitations of Portkey */}
+      {/* Limitations of Envoy */}
       <div className="flex min-w-0 flex-col gap-6">
         <p className="font-mono text-xs font-medium uppercase tracking-widest text-gray-400">
-          Limitations of Portkey
+          Limitations of Envoy
         </p>
         <div className="flex min-h-0 flex-col gap-6">
-          {portkeyLimitations.map((item) => (
+          {envoyLimitations.map((item) => (
             <div key={item.title} className="relative min-h-[7.5rem] flex flex-col border border-gray-200 bg-white p-5">
               <div className="absolute top-3 left-3 h-2 w-2 border-t border-l border-gray-300 opacity-40" />
               <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-gray-300 opacity-40" />
@@ -736,9 +777,9 @@ export const metadata: Metadata = {
             <p className="mb-4 font-mono text-xs tracking-widest text-gray-400 uppercase">
               [ PRODUCTION CHALLENGES ]
             </p>
-            <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">Why Teams Look for Portkey Alternatives?</h2>
+            <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">Why Teams Look for Envoy AI Gateway Alternatives?</h2>
             <p className="mx-auto max-w-3xl text-gray-600">
-            While Portkey works well for early-stage teams, scaling to production often exposes pricing overhead and deployment constraints.
+            While Envoy Proxy is battle-tested for HTTP/TCP traffic, teams building AI applications quickly discover that a general-purpose proxy with AI extensions is not the same as a purpose-built AI gateway.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -762,7 +803,7 @@ export const metadata: Metadata = {
       
       
 
-      <section id="comparison"className="bg-gray-50 py-16 md:py-24">
+      <section id="comparison" className="bg-gray-50 py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
             <p className="mb-4 font-mono text-xs tracking-widest text-gray-400 uppercase">
@@ -783,7 +824,7 @@ export const metadata: Metadata = {
                 <tr>
                   <th>Feature</th>
                   <th className="col-b">Bifrost</th>
-                  <th>Portkey</th>
+                  <th>Envoy</th>
                 </tr>
               </thead>
               <tbody>
@@ -795,19 +836,19 @@ export const metadata: Metadata = {
                     {section.rows.map((row) => {
                       const isLanguage = row.feature === 'Language'
                       const bifrostVal = row.bifrost ?? '—'
-                      const portkeyVal = row.portkey ?? '—'
-                      const portkeyClass = tableCellStyle(row.portkey, row.portkeyCheck, true)
+                      const envoyVal = row.envoy ?? '—'
+                      const envoyClass = tableCellStyle(row.envoy, row.envoyCheck, true)
                       const isAvailable =
-                        (row.portkey ?? '').toLowerCase().trim() === 'available'
-                      const isNa = (row.portkey ?? '').toLowerCase().trim() === 'n/a'
+                        (row.envoy ?? '').toLowerCase().trim() === 'available'
+                      const isNa = (row.envoy ?? '').toLowerCase().trim() === 'n/a'
                       const isCheckOrCross =
-                        portkeyVal === '✅' || String(portkeyVal).startsWith('✅') || portkeyVal === '❌'
-                      const portkeyDisplayClass = isAvailable
+                        envoyVal === '✅' || String(envoyVal).startsWith('✅') || envoyVal === '❌'
+                      const envoyDisplayClass = isAvailable
                         ? 'sy'
                         : isNa
                           ? 'text-[#5A606D]'
                           : isCheckOrCross
-                            ? portkeyClass
+                            ? envoyClass
                             : 'sp'
                       return (
                         <tr key={`${section.title}-${row.feature}`}>
@@ -826,18 +867,18 @@ export const metadata: Metadata = {
                           </td>
                           <td>
                             {isLanguage ? (
-                              <span className="arch-tag py">{portkeyVal}</span>
-                            ) : portkeyVal === '✅' || String(portkeyVal).startsWith('✅') ? (
-                              <span className={`${portkeyDisplayClass} inline-flex items-center gap-1`}>
+                              <span className="arch-tag py">{envoyVal}</span>
+                            ) : envoyVal === '✅' || String(envoyVal).startsWith('✅') ? (
+                              <span className={`${envoyDisplayClass} inline-flex items-center gap-1`}>
                                 <Check className="h-5 w-5 shrink-0" strokeWidth={2.5} />
-                                {String(portkeyVal).startsWith('✅') && String(portkeyVal).slice(1) ? String(portkeyVal).slice(1) : null}
+                                {String(envoyVal).startsWith('✅') && String(envoyVal).slice(1) ? String(envoyVal).slice(1) : null}
                               </span>
-                            ) : portkeyVal === '❌' ? (
-                              <span className={`${portkeyDisplayClass} inline-flex items-center`}>
+                            ) : envoyVal === '❌' ? (
+                              <span className={`${envoyDisplayClass} inline-flex items-center`}>
                                 <X className="h-5 w-5 shrink-0 text-red-500" strokeWidth={2.5} />
                               </span>
                             ) : (
-                              <span className={portkeyDisplayClass}>{portkeyVal}</span>
+                            <span className={envoyDisplayClass}>{envoyVal}</span>
                             )}
                           </td>
                         </tr>
@@ -878,10 +919,10 @@ export const metadata: Metadata = {
                 <tr>
                   <th>Features</th>
                   <th className="col-b">Bifrost</th>
-                  <th>LiteLLM</th>
+                  <th>Portkey</th>
                   <th>TrueFoundry</th>
                   <th>HAProxy</th>
-                  <th>Envoy AI GW</th>
+                  <th>LiteLLM</th>
                 </tr>
               </thead>
               <tbody>
@@ -889,6 +930,27 @@ export const metadata: Metadata = {
                 <tr className="row-cat">
                   <td colSpan={6}>Performance & Architecture</td>
                 </tr>
+
+                <tr>
+                  <td>Gateway Overhead</td>
+                  <td className="col-b-c">
+                    <span className="sy inline-flex items-center">~11µs @ 5K RPS</span>
+                  </td>
+                  <td>
+                    <span className="sp inline-flex items-center">~20-25 ms @ 100 RPS</span>
+                  </td>
+                  <td>
+                    <span className="sp inline-flex items-center">~5-15 ms (managed)</span>
+                  </td>
+                  <td>
+                    <span className="sp">~1 ms (raw proxy)</span>
+                  </td>
+                  <td>
+                    <span className="sp inline-flex items-center">~20-25 ms @ 100 RPS</span>
+                  </td>
+                  
+                </tr>
+          
                 <tr>
                   <td>Object pooling / memory reuse</td>
                   <td className="col-b-c">
@@ -926,7 +988,7 @@ export const metadata: Metadata = {
                     <span className="sp">Latency-Based</span>
                   </td>
                   <td>
-                    <span className="sn inline-flex items-center"><X className="h-5 w-5 shrink-0 text-red-500" strokeWidth={2.5} /></span>
+                    <span className="sy inline-flex items-center"><Check className="h-5 w-5 shrink-0" strokeWidth={2.5} /></span>
                   </td>
                   <td>
                     <span className="sn inline-flex items-center"><X className="h-5 w-5 shrink-0 text-red-500" strokeWidth={2.5} /></span>
@@ -939,7 +1001,7 @@ export const metadata: Metadata = {
                     <span className="sy inline-flex items-center"><Check className="h-5 w-5 shrink-0" strokeWidth={2.5} /></span>
                   </td>
                   <td>
-                    <span className="sn inline-flex items-center"><X className="h-5 w-5 shrink-0 text-red-500" strokeWidth={2.5} /></span>
+                    <span className="sp">Cloud</span>
                   </td>
                   <td>
                     <span className="sy inline-flex items-center"><Check className="h-5 w-5 shrink-0" strokeWidth={2.5} /></span>
@@ -986,7 +1048,7 @@ export const metadata: Metadata = {
                     <span className="sy inline-flex items-center"><Check className="h-5 w-5 shrink-0" strokeWidth={2.5} /></span>
                   </td>
                   <td>
-                    <span className="sy inline-flex items-center"><Check className="h-5 w-5 shrink-0" strokeWidth={2.5} /></span>
+                    <span className="sn inline-flex items-center"><X className="h-5 w-5 shrink-0 text-red-500" strokeWidth={2.5} /></span>
                   </td>
                 
                 </tr>
@@ -1040,16 +1102,16 @@ export const metadata: Metadata = {
                     <span className="sy inline-flex items-center"><Check className="h-5 w-5 shrink-0" strokeWidth={2.5} /></span>
                   </td>
                   <td>
+                    <span className="sn inline-flex items-center"><X className="h-5 w-5 shrink-0 text-red-500" strokeWidth={2.5} /></span>
+                  </td>
+                  <td>
+                    <span className="sn inline-flex items-center"><X className="h-5 w-5 shrink-0 text-red-500" strokeWidth={2.5} /></span>
+                  </td>
+                  <td>
+                    <span className="sn inline-flex items-center"><X className="h-5 w-5 shrink-0 text-red-500" strokeWidth={2.5} /></span>
+                  </td>
+                  <td>
                     <span className="sy inline-flex items-center"><Check className="h-5 w-5 shrink-0" strokeWidth={2.5} /></span>
-                  </td>
-                  <td>
-                    <span className="sn inline-flex items-center"><X className="h-5 w-5 shrink-0 text-red-500" strokeWidth={2.5} /></span>
-                  </td>
-                  <td>
-                    <span className="sn inline-flex items-center"><X className="h-5 w-5 shrink-0 text-red-500" strokeWidth={2.5} /></span>
-                  </td>
-                  <td>
-                    <span className="sn inline-flex items-center"><X className="h-5 w-5 shrink-0 text-red-500" strokeWidth={2.5} /></span>
                   </td>
                   
                 </tr>
@@ -1075,7 +1137,7 @@ export const metadata: Metadata = {
                     <span className="sn inline-flex items-center"><X className="h-5 w-5 shrink-0 text-red-500" strokeWidth={2.5} /></span>
                   </td>
                   <td>
-                    <span className="sy inline-flex items-center"><Check className="h-5 w-5 shrink-0" strokeWidth={2.5} /></span>
+                    <span className="sn inline-flex items-center"><X className="h-5 w-5 shrink-0 text-red-500" strokeWidth={2.5} /></span>
                   </td>
                   
                 </tr>
@@ -1085,7 +1147,7 @@ export const metadata: Metadata = {
                     <span className="sy inline-flex items-center"><Check className="h-5 w-5 shrink-0" strokeWidth={2.5} /></span>
                   </td>
                   <td>
-                    <span className="sy inline-flex items-center"><Check className="h-5 w-5 shrink-0" strokeWidth={2.5} /></span>
+                    <span className="sn inline-flex items-center"><X className="h-5 w-5 shrink-0 text-red-500" strokeWidth={2.5} /></span>
                   </td>
                   <td>
                     <span className="sn inline-flex items-center"><X className="h-5 w-5 shrink-0 text-red-500" strokeWidth={2.5} /></span>
@@ -1096,7 +1158,48 @@ export const metadata: Metadata = {
                   <td>
                     <span className="sy inline-flex items-center"><Check className="h-5 w-5 shrink-0" strokeWidth={2.5} /></span>
                   </td>                  
-                </tr>                
+                </tr>   
+
+                <tr>
+                  <td>Prompt Studio / Editor</td>
+                  <td className="col-b-c">
+                    <span className="sy inline-flex items-center"><Check className="h-5 w-5 shrink-0" strokeWidth={2.5} /></span>
+                  </td>
+                  <td>
+                    <span className="sy inline-flex items-center"><Check className="h-5 w-5 shrink-0" strokeWidth={2.5} /></span>
+                  </td>
+                  <td>
+                    <span className="sy inline-flex items-center"><Check className="h-5 w-5 shrink-0" strokeWidth={2.5} /></span>
+                  </td>
+                  <td>
+                    <span className="sn inline-flex items-center"><X className="h-5 w-5 shrink-0 text-red-500" strokeWidth={2.5} /></span>
+                  </td>
+                  <td>
+                    <span className="sn inline-flex items-center"><X className="h-5 w-5 shrink-0 text-red-500" strokeWidth={2.5} /></span>
+                  </td>                  
+                </tr>      
+
+                <tr>
+                  <td>Mock Responses</td>
+                  <td className="col-b-c">
+                    <span className="sy inline-flex items-center"><Check className="h-5 w-5 shrink-0" strokeWidth={2.5} /></span>
+                  </td>
+                  <td>
+                    <span className="sn inline-flex items-center"><X className="h-5 w-5 shrink-0 text-red-500" strokeWidth={2.5} /></span>
+                  </td>
+                  <td>
+                    <span className="sn inline-flex items-center"><X className="h-5 w-5 shrink-0 text-red-500" strokeWidth={2.5} /></span>
+                  </td>
+                  <td>
+                    <span className="sn inline-flex items-center"><X className="h-5 w-5 shrink-0 text-red-500" strokeWidth={2.5} /></span>
+                  </td>
+                  <td>
+                    <span className="sn inline-flex items-center"><X className="h-5 w-5 shrink-0 text-red-500" strokeWidth={2.5} /></span>
+                  </td>                  
+                </tr>  
+
+                   
+
               </tbody>
             </table>
           </div>
@@ -1150,11 +1253,11 @@ export const metadata: Metadata = {
               <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-gray-300 opacity-40" />
               <div className="border-b border-gray-200 bg-gray-50 px-6 py-4">
                 <h3 className="text-sm font-medium tracking-wider text-gray-600 uppercase">
-                  Portkey might be better when
+                  Envoy might be better when
                 </h3>
               </div>
               <ul className="divide-y divide-gray-200">
-                {choosePortkey.map((reason) => (
+                {chooseEnvoy.map((reason) => (
                   <li key={reason} className="flex items-start gap-3 px-6 py-3">
                     <span className="mt-0.5 flex h-4 w-4 flex-shrink-0 items-center justify-center text-xs text-gray-400">
                       •
