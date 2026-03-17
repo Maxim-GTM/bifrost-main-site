@@ -60,7 +60,7 @@ export default function ProviderStatusFAQ() {
           [ FREQUENTLY ASKED QUESTIONS ]
         </p>
         <h2 className="mb-2 text-2xl font-medium tracking-tight text-gray-900 md:text-3xl">
-          Everything You Need to Know About Bifrost AI Provider Status Library
+          Everything You Need to Know About Bifrost AI Provider Status Monitor
         </h2>
       </div>
 

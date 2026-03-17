@@ -252,7 +252,7 @@ function FeatureCard({ feature, accentColor }: { feature: Feature; accentColor: 
 }
 
 export default function FeatureMatrix() {
-  const [activeTab, setActiveTab] = useState<'oss' | 'enterprise'>('oss')
+  const [activeTab, setActiveTab] = useState<'oss' | 'enterprise'>('enterprise')
 
   const features = activeTab === 'oss' ? ossFeatures : enterpriseFeatures
   const accentColor = '#35c09e'
