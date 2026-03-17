@@ -22,6 +22,13 @@ export function getBuiltWithBifrostBaseUrl() {
   return '/bifrost'
 }
 
+export function getProviderStatusBaseUrl() {
+  if (process.env.NEXT_PUBLIC_ENV === 'local') {
+    return ''
+  }
+  return '/bifrost'
+}
+
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
