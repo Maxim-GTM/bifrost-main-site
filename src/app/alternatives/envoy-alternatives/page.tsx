@@ -25,9 +25,9 @@ import {
   Zap,
 } from 'lucide-react'
 export const metadata: Metadata = {
-    title: 'Bifrost — The High-Performance Envoy Alternative | LLM Gateway',
+    title: 'Top Envoy AI Gateway Alternatives for Production Teams (2026)',
     description:
-      'Bifrost is a production-grade Envoy alternative built in Go. 50x faster, zero-config deployment, native observability, and 100% success rate at 5,000 RPS.',
+      'Compare top Envoy AI Gateway alternatives with built-in caching, guardrails, and MCP support. See how Bifrost is the best alternative for production AI gateways.',
     alternates: {
       canonical: 'https://www.getmaxim.ai/bifrost/alternatives/envoy-alternatives',
     },
