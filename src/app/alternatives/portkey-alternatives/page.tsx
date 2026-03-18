@@ -25,9 +25,9 @@ import {
   Zap,
 } from 'lucide-react'
 export const metadata: Metadata = {
-    title: 'Bifrost — The High-Performance Portkey Alternative | LLM Gateway',
+    title: 'Top Portkey Alternatives for Production AI Gateways (2026)',
     description:
-      'Bifrost is a production-grade Portkey alternative built in Go. 50x faster, zero-config deployment, native observability, and 100% success rate at 5,000 RPS.',
+      'Compare top Portkey alternatives for multi-provider routing, load balancing, and MCP gateway support. See how Bifrost is the best alternative for production AI gateways. ',
     alternates: {
       canonical: 'https://www.getmaxim.ai/bifrost/alternatives/portkey-alternatives',
     },

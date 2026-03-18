@@ -25,9 +25,9 @@ import {
   Zap,
 } from 'lucide-react'
 export const metadata: Metadata = {
-    title: 'Bifrost — The High-Performance LiteLLM Alternative | LLM Gateway',
+    title: 'Top LiteLLM Alternatives for Scalable Enterprise AI (2026)',
     description:
-      'Bifrost is a production-grade LiteLLM alternative built in Go. 50x faster, zero-config deployment, native observability, and 100% success rate at 5,000 RPS.',
+      'Compare top LiteLLM alternatives for production AI. See how Bifrost is the best alternative for production AI gateways.',
     alternates: {
       canonical: 'https://www.getmaxim.ai/bifrost/alternatives/litellm-alternatives',
     },
