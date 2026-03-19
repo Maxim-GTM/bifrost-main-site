@@ -26,17 +26,16 @@ const defaultCards: DeploymentCard[] = [
   {
     icon: ShieldCheck,
     title: 'In-VPC',
-    badge: 'Enterprise',
     tags: ['AWS VPC', 'GCP VPC', 'Azure VNet'],
     description:
       'Deploy within your private cloud with VPC isolation. Data never leaves your network boundary.',
   },
   {
     icon: Globe,
-    title: 'Multi-Cloud',
+    title: 'Multi-Cloud Deployment',
     tags: ['AWS', 'GCP', 'Azure', 'Cloudflare'],
     description:
-      'Route to AWS Bedrock, Google Vertex, Azure OpenAI, and Cloudflare Workers AI simultaneously.',
+      'Deploy Bifrost Enterprise across multiple cloud providers.',
   },
 ]
 

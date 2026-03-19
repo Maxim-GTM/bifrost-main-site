@@ -5,7 +5,7 @@ import InterfaceHighlights from '@/components/resources/InterfaceHighlights'
 import DeploymentOptions from '@/components/resources/DeploymentOptions'
 import DropInReplacement from '@/components/resources/DropInReplacement'
 import EnterpriseTrialForm from '@/components/industry-pages/EnterpriseTrialForm'
-import ComplianceSection from '@/components/industry-pages/ComplianceSection'
+import ComplianceLogoStrip from '@/components/industry-pages/ComplianceLogoStrip'
 import { Button } from '@/components/ui/Button'
 import { getCostCalculatorBaseUrl } from '@/lib/utils'
 import {
@@ -411,8 +411,6 @@ export default function RetailPage() {
           <DeploymentOptions />
         </div>
       </section>
-      <ComplianceSection />
-
       {/* CTA */}
       <section className="bg-gray-50 py-16 md:py-24">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
@@ -443,6 +441,7 @@ export default function RetailPage() {
               </Button>
             </Link>
           </div>
+          <ComplianceLogoStrip className="mt-10" />
         </div>
       </section>
 
