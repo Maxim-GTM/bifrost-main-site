@@ -654,7 +654,7 @@ export const metadata: Metadata = {
               <span className="text-[var(--accent-text)]">for Production AI Teams </span>
             </h1>
             <p className="mx-auto mb-8 max-w-3xl text-sm leading-relaxed text-gray-500 md:text-base">
-            Envoy AI Gateway requires Kubernetes, ships without caching, budgets, or guardrails, and leaves teams writing CRDs instead of shipping features. Compare purpose-built AI gateways for developer experience, MCP support, and production-grade governance.
+            While Envoy AI Gateway handles basic proxy routing for teams already deep in Kubernetes, it ships without caching, budgets, or guardrails. Compare purpose-built AI gateways for developer experience, MCP support, and production-grade governance.
             
             </p>
             <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">

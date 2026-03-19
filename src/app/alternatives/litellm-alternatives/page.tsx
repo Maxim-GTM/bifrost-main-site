@@ -549,7 +549,7 @@ export const metadata: Metadata = {
               <span className="text-[var(--accent-text)]">for Scalable Enterprise AI </span>
             </h1>
             <p className="mx-auto mb-8 max-w-3xl text-sm leading-relaxed text-gray-500 md:text-base">
-            LiteLLM can introduce performance bottlenecks, infrastructure overhead, and governance gaps as your application scales. 
+            While LiteLLM works well for prototyping, teams scaling to production need infrastructure that doesn&apos;t become a bottleneck.
             Compare leading AI gateway platforms for multi-provider routing, cost management, access control, governance, observability, and enterprise-grade reliability.
             </p>
             <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">

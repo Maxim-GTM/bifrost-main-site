@@ -615,7 +615,7 @@ export const metadata: Metadata = {
               <span className="text-[var(--accent-text)]">for High-Performance AI Infrastructure </span>
             </h1>
             <p className="mx-auto mb-8 max-w-3xl text-sm leading-relaxed text-gray-500 md:text-base">
-            Portkey can introduce latency overhead, SDK limitations, and pricing complexity as your AI application scales. Compare leading AI gateway platforms for raw performance, multi-SDK support, MCP capabilities, and production-grade reliability.
+            While Portkey offers a managed AI gateway, it can introduce latency overhead, SDK limitations, and pricing complexity as your AI application scales. Compare leading AI gateway platforms for raw performance, multi-SDK support, MCP capabilities, and production-grade reliability.
             </p>
             <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
               <Link href="#comparison">
