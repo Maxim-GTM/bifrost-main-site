@@ -184,13 +184,13 @@ export default function EnterpriseTrialForm() {
                 id="companySize"
                 name="companySize"
                 options={companySizes}
-                placeholder="Select company size ..."
+                placeholder="Select company size"
               />
               <SelectField
                 id="companyHQ"
                 name="companyHQ"
                 options={companyRegions}
-                placeholder="Select company HQ ..."
+                placeholder="Select company HQ"
               />
             </div>
 

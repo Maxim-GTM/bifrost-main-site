@@ -91,13 +91,13 @@ const governance = [
     icon: Server,
     title: 'Air-gapped deployment',
     description:
-      'Deploy Bifrost completely offline in isolated security environments, with no internet connectivity required for operations.',
+      'Deploy on-prem or in your VPC with full network isolation. Data never crosses your security boundary. SOC 2 Type II, HIPAA, and ISO 270001 compliant.',
   },
   {
     icon: FileText,
-    title: 'Security-grade audit logging',
+    title: 'Enterprise-grade audit logs',
     description:
-      'Immutable logs of every AI interaction with full context: user identity, query content, model responses, and data classifications.',
+      'Comprehensive security and compliance audit logging that tracks authentication, authorization, configuration changes, and data access.',
   },
   {
     icon: KeyRound,
