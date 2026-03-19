@@ -16,7 +16,7 @@ export default function ComplianceSection() {
             [ TRUST & COMPLIANCE ]
           </p>
           <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-            Compliance your security team can sign off on
+            Compliance for enterprise AI deployments
           </h2>
           <p className="mx-auto max-w-2xl text-gray-600">
             Built for regulated deployments with policy controls, auditability, and the standards
