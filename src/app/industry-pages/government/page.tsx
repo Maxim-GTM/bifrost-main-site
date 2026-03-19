@@ -3,6 +3,7 @@ import Link from 'next/link'
 import FeatureMatrix from '@/components/resources/FeatureMatrix'
 import InterfaceHighlights from '@/components/resources/InterfaceHighlights'
 import DropInReplacement from '@/components/resources/DropInReplacement'
+import DeploymentOptions from '@/components/resources/DeploymentOptions'
 import { Button } from '@/components/ui/Button'
 import { getCostCalculatorBaseUrl } from '@/lib/utils'
 import {
@@ -387,6 +388,24 @@ export default function GovernmentPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-12 text-center">
+            <p className="mb-4 font-mono text-xs tracking-widest text-gray-400 uppercase">
+              [ DEPLOYMENT ]
+            </p>
+            <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
+              Flexible deployment
+            </h2>
+            <p className="mx-auto max-w-2xl text-gray-600">
+              Run Bifrost wherever your compliance requirements demand - on-prem, in your VPC, or
+              across multiple clouds.
+            </p>
+          </div>
+          <DeploymentOptions />
         </div>
       </section>
 
