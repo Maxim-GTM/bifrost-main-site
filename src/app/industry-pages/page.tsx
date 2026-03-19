@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight, Building2, Shield, ShoppingCart, Stethoscope, ShieldCheck, Microscope, Landmark, Radio } from 'lucide-react'
+import { ArrowRight, Building2, Shield, ShoppingCart, Stethoscope, ShieldCheck, Microscope, Landmark, Radio, Zap } from 'lucide-react'
 import { getCostCalculatorBaseUrl } from '@/lib/utils'
 
 export const metadata: Metadata = {
@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     'AI gateway for government',
     'AI gateway for biotech',
     'AI gateway for telecommunications',
+    'AI gateway for energy',
   ],
   openGraph: {
     type: 'website',
@@ -45,7 +46,7 @@ const industries = [
   {
     title: 'Financial Services and Banking',
     description:
-      'Secure AI infrastructure for banking, investment, and fintech teams that need audit-grade controls and air-gapped deployment options.',
+      'Audit-grade AI controls with air-gapped deployment and department-level cost governance for banking, investment, and fintech teams.',
     href: `${basePath}/industry-pages/financial-services-and-banking`,
     icon: Building2,
     label: 'Financial Services',
@@ -53,7 +54,7 @@ const industries = [
   {
     title: 'Healthcare & Life Sciences',
     description:
-      'Governed AI infrastructure for clinical, research, and operational workflows with PHI protection, auditability, and resilient routing.',
+      'Governed, HIPAA-compliant AI infrastructure with PHI protection and on-prem deployment for clinical, research, and operational workflows',
     href: `${basePath}/industry-pages/healthcare-life-sciences`,
     icon: Stethoscope,
     label: 'Healthcare',
@@ -61,7 +62,7 @@ const industries = [
   {
     title: 'Insurance',
     description:
-      'Purpose-built AI infrastructure for carriers with NAIC-ready audit trails, NPI redaction, and cost governance across lines of business.',
+      'Governed AI infrastructure for carriers with NAIC examination-ready audit trails, NPI redaction, and cost controls across lines of business.',
     href: `${basePath}/industry-pages/insurance`,
     icon: Shield,
     label: 'Insurance',
@@ -77,13 +78,13 @@ const industries = [
   {
     title: 'Cybersecurity & Threat Intelligence',
     description:
-      'Air-gapped AI infrastructure for security operations teams with zero-trust controls, complete audit trails, and protection for sensitive threat data.',
+      'Air-gapped AI infrastructure for SOC and threat intelligence teams with zero-trust access, credential redaction, and governed MCP tool integration.',
     href: `${basePath}/industry-pages/cybersecurity`,
     icon: ShieldCheck,
     label: 'Cybersecurity',
   },
   {
-    title: 'Biotech & Pharma',
+    title: 'Biotechnology & Pharmaceutical',
     description:
       'Governed AI infrastructure for drug discovery, clinical trials, and regulatory compliance with IP protection and complete audit capabilities.',
     href: `${basePath}/industry-pages/biotech-pharma`,
@@ -93,7 +94,7 @@ const industries = [
   {
     title: 'Government & Public Sector',
     description:
-      'Compliant AI infrastructure for federal agencies with deployment inside ATO boundaries, FISMA-compliant logging, and agency SSO integration.',
+      'Compliant AI infrastructure that deploys inside your existing ATO boundary with FISMA-compliant logging, agency SSO, and bureau-level budget controls.',
     href: `${basePath}/industry-pages/government`,
     icon: Landmark,
     label: 'Government',
@@ -101,10 +102,18 @@ const industries = [
   {
     title: 'Telecommunications',
     description:
-      'Scalable AI infrastructure for telecom operators with high-throughput routing, multi-region deployment, and comprehensive cost governance.',
+      'CPNI-compliant AI infrastructure with ~11 µs gateway overhead, high-throughput routing, multi-region deployment, and comprehensive cost governance',
     href: `${basePath}/industry-pages/telecommunication`,
     icon: Radio,
-    label: 'Telecommunications',
+    label: 'Telecom',
+  },
+  {
+    title: 'Energy & Utilities',
+    description:
+      'On-prem AI infrastructure for engineering and operations teams, with secure, governed data access and audit trails.',
+    href: `${basePath}/industry-pages/energy`,
+    icon: Zap,
+    label: 'Energy',
   },
 ]
 
@@ -152,7 +161,7 @@ export default function IndustryPagesHomePage() {
               [&ensp;BIFROST FOR INDUSTRIES&ensp;]
             </span>
             <h1 className="mx-auto mt-2 mb-4 max-w-3xl text-[42px] leading-[120%] font-medium tracking-[-0.02em] text-black">
-              Governed AI Infrastructure for the Industries That Need It Most
+              Governed AI Infrastructure for Enterprise Use Cases Across Industries
             </h1>
             <p className="mx-auto max-w-3xl text-[16px] leading-[140%] tracking-[0em] text-[#525252]">
               Explore how Bifrost supports regulated, high-scale, and customer-facing teams with
@@ -182,8 +191,8 @@ export default function IndustryPagesHomePage() {
                 [ INDUSTRY SOLUTIONS ]
               </p>
               <p className="mt-3 text-sm leading-relaxed text-gray-500">
-                Choose the deployment context closest to your team, then drill into the governance,
-                architecture, and workflow patterns that matter in production.
+                From air-gapped deployments to peak-traffic routing, explore how Bifrost adapts to
+                the compliance, performance, and cost requirements of your industry.
               </p>
             </div>
 
