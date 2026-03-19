@@ -226,7 +226,7 @@ export default function FinancialServicesAndBankingPage() {
             <p className="mx-auto mb-8 max-w-2xl text-sm leading-relaxed text-gray-500 md:text-base">
             Centralized governance, air-gapped security, and complete audit trails built for regulated financial institutions.
             </p>
-            <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+            <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:items-center">
               <Link href={`${basePath}/resources/benchmarks`}>
                 <Button size="lg">
                   View benchmarks
@@ -423,7 +423,7 @@ export default function FinancialServicesAndBankingPage() {
           <p className="mx-auto mb-8 max-w-2xl text-gray-600">
             Talk to the Bifrost team about deploying a compliant, air-gapped gateway inside your environment.
           </p>
-          <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+          <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:items-center">
             <Link
               href="https://www.getmaxim.ai/bifrost/book-a-demo"
               target="_blank"

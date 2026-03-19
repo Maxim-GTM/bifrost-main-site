@@ -227,7 +227,7 @@ export default function CybersecurityPage() {
             <p className="mx-auto mb-8 max-w-2xl text-sm leading-relaxed text-gray-500 md:text-base">
               Air-gapped deployments, zero-trust controls, and complete audit trails purpose-built for security operations teams.
             </p>
-            <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+            <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:items-center">
               <Link href={`${basePath}/resources/benchmarks`}>
                 <Button size="lg">
                   View benchmarks
@@ -423,7 +423,7 @@ export default function CybersecurityPage() {
           <p className="mx-auto mb-8 max-w-2xl text-gray-600">
             Deploy Bifrost in your air-gapped environment and give security teams AI capabilities without compromising your threat intelligence or operational security.
           </p>
-          <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+          <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:items-center">
             <Link
               href="https://www.getmaxim.ai/bifrost/book-a-demo"
               target="_blank"

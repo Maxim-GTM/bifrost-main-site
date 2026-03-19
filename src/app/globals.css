@@ -1413,11 +1413,15 @@ input {
 .provider-badge {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 0.5rem;
   margin-bottom: 1.5rem;
   padding: 0.25rem 0.75rem;
+  max-width: 100%;
   font-size: 0.75rem;
   font-family: var(--font-geist-mono), monospace;
+  text-align: center;
   color: var(--accent-dark);
   background: var(--accent-light);
   border-radius: 9999px;
@@ -1510,6 +1514,45 @@ input {
   letter-spacing: 0.05em;
   padding: 0.5rem 1rem;
   border-top: 1px solid #e5e7eb;
+}
+
+@media (max-width: 767px) {
+  .provider-badge {
+    gap: 0.35rem;
+    padding: 0.35rem 0.65rem;
+    font-size: 0.6875rem;
+    line-height: 1.4;
+  }
+
+  .mt-container {
+    margin: 1.25rem 0;
+    border-radius: 6px;
+  }
+
+  .mt {
+    min-width: 640px;
+    font-size: 12px;
+  }
+
+  .mt-col-platform-wide {
+    width: 220px;
+  }
+
+  .mt-col-platform-narrow {
+    width: 110px;
+  }
+
+  .mt th {
+    padding: 0.75rem;
+  }
+
+  .mt td {
+    padding: 0.65rem 0.75rem;
+  }
+
+  .row-cat td {
+    padding: 0.5rem 0.75rem;
+  }
 }
 
 /* Architecture tags */

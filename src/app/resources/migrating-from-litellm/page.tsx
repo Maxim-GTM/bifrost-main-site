@@ -379,7 +379,7 @@ export default function MigratingFromLiteLLMPage() {
               at 500 RPS compared to Python-based gateways. Built in Go for teams that need 99.99%
               uptime and infrastructure that scales from prototype to millions of requests.
             </p>
-            <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+            <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:items-center">
               <Link
                 href="https://github.com/maximhq/bifrost"
                 target="_blank"
@@ -809,7 +809,7 @@ response = litellm.completion(
             Get started in under 15 minutes. Our team is here to help with any questions during your
             migration.
           </p>
-          <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+          <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:items-center">
             <Link
               href="https://github.com/maximhq/bifrost"
               target="_blank"

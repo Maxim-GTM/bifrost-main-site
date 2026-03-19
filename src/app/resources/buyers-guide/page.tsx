@@ -288,7 +288,7 @@ export default function BuyersGuidePage() {
               Compare leading AI gateway platforms for multi-provider routing, cost management,
               access control, governance, observability, and enterprise-grade reliability.
             </p>
-            <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+            <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:items-center">
               <Link href="#comparison">
                 <Button size="lg">
                   Compare Platforms
@@ -461,15 +461,15 @@ export default function BuyersGuidePage() {
                 </div>
                 <p className="mb-4 text-sm leading-relaxed text-gray-600">{platform.description}</p>
                 <div className="mb-4 space-y-2">
-                  <div className="flex justify-between text-sm">
+                  <div className="flex flex-col gap-1 text-sm sm:flex-row sm:justify-between sm:gap-4">
                     <span className="text-gray-500">Deployment</span>
                     <span className="font-medium text-gray-700">{platform.deployment}</span>
                   </div>
-                  <div className="flex justify-between text-sm">
+                  <div className="flex flex-col gap-1 text-sm sm:flex-row sm:justify-between sm:gap-4">
                     <span className="text-gray-500">Pricing</span>
                     <span className="font-medium text-gray-700">{platform.pricing}</span>
                   </div>
-                  <div className="flex justify-between text-sm">
+                  <div className="flex flex-col gap-1 text-sm sm:flex-row sm:justify-between sm:gap-4">
                     <span className="text-gray-500">Latency</span>
                     <span
                       className={`font-medium ${platform.highlight ? 'text-[var(--accent-dark)]' : 'text-gray-700'}`}

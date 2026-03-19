@@ -227,7 +227,7 @@ export default function InsuranceTestPage() {
               Bifrost provides centralized control over every model request with air-gapped
               security, NAIC-ready audit trails, and intelligent routing across providers.
             </p>
-            <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+            <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:items-center">
               <Link href={`${basePath}/resources/benchmarks`}>
                 <Button size="lg">
                   View benchmarks
@@ -422,7 +422,7 @@ export default function InsuranceTestPage() {
             Talk to the Bifrost team about deploying a compliant, air-gapped AI gateway that
             satisfies NAIC requirements and gives your platform team visibility from day one.
           </p>
-          <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+          <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:items-center">
             <Link
               href="https://www.getmaxim.ai/bifrost/book-a-demo"
               target="_blank"

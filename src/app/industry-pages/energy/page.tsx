@@ -225,7 +225,7 @@ export default function EnergyPage() {
             <p className="mx-auto mb-8 max-w-2xl text-sm leading-relaxed text-gray-500 md:text-base">
             Air-gapped AI infrastructure deployed inside your network perimeter, enforcing governed model access, audit-ready logging, and low-latency routing.
             </p>
-            <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+            <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:items-center">
               <Link href={`${basePath}/resources/benchmarks`}>
                 <Button size="lg">
                   View benchmarks
@@ -402,7 +402,7 @@ export default function EnergyPage() {
           <p className="mx-auto mb-8 max-w-2xl text-gray-600">
             Talk to the Bifrost team about air-gapped deployment, operational data access, and audit-ready governance in your environment.
           </p>
-          <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+          <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:items-center">
             <Link
               href="https://www.getmaxim.ai/bifrost/book-a-demo"
               target="_blank"

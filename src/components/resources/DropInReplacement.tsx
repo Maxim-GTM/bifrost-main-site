@@ -272,7 +272,7 @@ export default function DropInReplacement() {
     <div className="border border-gray-200 bg-white">
       <div className="grid grid-cols-1 lg:grid-cols-2">
         {/* Left Side - Text Content */}
-        <div className="flex flex-col justify-center border-b border-gray-200 p-6 sm:p-8 lg:border-r lg:border-b-0 lg:p-12">
+        <div className="flex flex-col justify-center border-b border-gray-200 p-5 sm:p-8 lg:border-r lg:border-b-0 lg:p-12">
           {/* Badge */}
           <div className="mb-6 flex items-center gap-2">
             <Zap className="h-4 w-4 text-[var(--accent-text)]" strokeWidth={1.5} />
@@ -302,7 +302,7 @@ export default function DropInReplacement() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`relative flex-none border-r border-gray-200 px-4 py-3 font-mono text-xs font-semibold tracking-wider whitespace-nowrap uppercase transition-all ${
+                  className={`relative flex-none border-r border-gray-200 px-3 py-3 font-mono text-xs font-semibold tracking-wider whitespace-nowrap uppercase transition-all sm:px-4 ${
                     tab.active
                       ? 'bg-white text-gray-900'
                       : 'bg-gray-50 text-gray-400 hover:text-gray-600'
@@ -323,7 +323,7 @@ export default function DropInReplacement() {
             {/* Copy Button */}
             <button
               onClick={handleCopy}
-              className="flex items-center justify-center gap-2 border-t border-r border-gray-200 bg-gray-50 px-4 py-3 transition-colors hover:bg-gray-100 sm:border-t-0 sm:border-l"
+              className="flex items-center justify-center gap-2 border-t border-r border-gray-200 bg-gray-50 px-3 py-3 transition-colors hover:bg-gray-100 sm:border-t-0 sm:border-l sm:px-4"
             >
               {copied ? (
                 <Check className="h-4 w-4 text-[var(--accent)]" />
@@ -337,12 +337,12 @@ export default function DropInReplacement() {
           </div>
 
           {/* Code Editor */}
-          <div className="overflow-x-auto bg-white p-4">
+          <div className="overflow-x-auto bg-white p-3 sm:p-4">
             <div className="space-y-0.5 font-mono text-[10px] leading-relaxed">
               {codeExamples[activeTab].lines.map((line) => (
                 <div
                   key={line.number}
-                  className={`flex ${line.highlighted ? '-mx-4 bg-[var(--accent)]/10 px-4 py-0.5' : ''}`}
+                  className={`flex ${line.highlighted ? '-mx-3 bg-[var(--accent)]/10 px-3 py-0.5 sm:-mx-4 sm:px-4' : ''}`}
                 >
                   <span className="w-6 flex-shrink-0 text-[var(--accent-text)] select-none">
                     {line.number}

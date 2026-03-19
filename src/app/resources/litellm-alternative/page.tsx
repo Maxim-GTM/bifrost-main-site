@@ -482,7 +482,7 @@ export default function LiteLLMAlternativePage() {
               experiencing performance bottlenecks at scale, Bifrost is a drop-in alternative
               designed for serious GenAI workloads.
             </p>
-            <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+            <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:items-center">
               <Link
                 href="https://github.com/maximhq/bifrost"
                 target="_blank"
@@ -546,8 +546,8 @@ export default function LiteLLMAlternativePage() {
               Why Teams Choose Bifrost Over LiteLLM
             </h2>
           </div>
-          <div className="overflow-hidden border border-gray-200 bg-white">
-            <table className="w-full">
+          <div className="overflow-x-auto border border-gray-200 bg-white">
+            <table className="min-w-[640px] w-full">
               <thead>
                 <tr className="border-b border-gray-200 bg-gray-50">
                   <th className="px-4 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
@@ -607,7 +607,7 @@ export default function LiteLLMAlternativePage() {
                     <p className="text-xs text-gray-500">{bench.specs}</p>
                   </div>
                 </div>
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
                   {bench.metrics.map((m) => (
                     <div key={m.label} className="border-l-2 border-[var(--accent)] pl-3">
                       <div className="text-lg font-bold text-gray-900">{m.value}</div>
@@ -910,8 +910,8 @@ export default function LiteLLMAlternativePage() {
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">At a Glance</h2>
           </div>
-          <div className="overflow-hidden border border-gray-200 bg-white">
-            <table className="w-full">
+          <div className="overflow-x-auto border border-gray-200 bg-white">
+            <table className="min-w-[640px] w-full">
               <thead>
                 <tr className="border-b border-gray-200 bg-gray-50">
                   <th className="px-4 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
@@ -949,7 +949,7 @@ export default function LiteLLMAlternativePage() {
             100% open source under Apache 2.0. Free forever. No vendor lock-in. Get started in under
             30 seconds.
           </p>
-          <div className="mb-12 flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+          <div className="mb-12 flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:items-center">
             <Link
               href="https://github.com/maximhq/bifrost"
               target="_blank"

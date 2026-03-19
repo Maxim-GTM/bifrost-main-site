@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/Button'
 import FeatureMatrix from '@/components/resources/FeatureMatrix'
 import DropInReplacement from '@/components/resources/DropInReplacement'
 import SetupSteps from '@/components/resources/SetupSteps'
+import EnterpriseTrialForm from '@/components/industry-pages/EnterpriseTrialForm'
 
 import {
   ArrowRight,
@@ -582,30 +583,6 @@ export const metadata: Metadata = {
     "You prefer infrastructure managed through the CNCF ecosystem and don't mind writing CRDs for all configuration",
   ]
   
-  const _summaryTable = [
-    {
-      factor: 'Best For',
-      bifrost: 'High-throughput production systems',
-      envoy: 'Multi-provider abstraction, Python teams',
-    },
-    { factor: 'Performance', bifrost: '11µs', envoy: '40ms' },
-    { factor: 'Setup Time', bifrost: '<30 seconds', envoy: '2-10 minutes' },
-    { factor: 'Dependencies', bifrost: 'Zero', envoy: 'Redis recommended' },
-    {
-      factor: 'Deployment Asset',
-      bifrost: 'Single binary, Docker, npx',
-      envoy: 'Python package, Docker',
-    },
-    { factor: 'Configuration', bifrost: 'Web UI, API, files', envoy: 'Files, env variables' },
-    {
-      factor: 'Observability',
-      bifrost: 'Native Prometheus, built-in UI',
-      envoy: 'Via integrations',
-    },
-    { factor: 'Cost', bifrost: 'Free (Apache 2.0)', envoy: 'Free (MIT)' },
-    { factor: 'Providers', bifrost: '20+ providers, 1000+ models', envoy: '100+ LLM APIs' },
-  ]
-  
   function tableCellStyle(
     value: string | null,
     hasCheck: boolean | undefined,
@@ -657,7 +634,7 @@ export const metadata: Metadata = {
             While Envoy AI Gateway handles basic proxy routing for teams already deep in Kubernetes, it ships without caching, budgets, or guardrails. Compare purpose-built AI gateways for developer experience, MCP support, and production-grade governance.
             
             </p>
-            <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+            <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:items-center">
               <Link href="#comparison" >
                 <Button size="lg">
                   Compare Platforms
@@ -1281,7 +1258,7 @@ export const metadata: Metadata = {
             100% open source under Apache 2.0. Free forever. No vendor lock-in. Get started in under
             30 seconds.
           </p>
-          <div className="mb-12 flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+          <div className="mb-12 flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:items-center">
             <Link
               href="https://github.com/maximhq/bifrost"
               target="_blank"
@@ -1341,6 +1318,13 @@ export const metadata: Metadata = {
             </p>
           </div>
           <FeatureMatrix />
+        </div>
+      </section>
+
+      {/* Free Trial Form */}
+      <section className="bg-white py-8 md:py-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <EnterpriseTrialForm />
         </div>
       </section>
 

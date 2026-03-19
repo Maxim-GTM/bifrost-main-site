@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/Button'
 import FeatureMatrix from '@/components/resources/FeatureMatrix'
 import DropInReplacement from '@/components/resources/DropInReplacement'
 import SetupSteps from '@/components/resources/SetupSteps'
+import EnterpriseTrialForm from '@/components/industry-pages/EnterpriseTrialForm'
 
 import {
   ArrowRight,
@@ -552,7 +553,7 @@ export const metadata: Metadata = {
             While LiteLLM works well for prototyping, teams scaling to production need infrastructure that doesn&apos;t become a bottleneck.
             Compare leading AI gateway platforms for multi-provider routing, cost management, access control, governance, observability, and enterprise-grade reliability.
             </p>
-            <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+            <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:items-center">
               <Link
                 href="https://github.com/maximhq/bifrost"
                 target="_blank"
@@ -1155,7 +1156,7 @@ export const metadata: Metadata = {
             100% open source under Apache 2.0. Free forever. No vendor lock-in. Get started in under
             30 seconds.
           </p>
-          <div className="mb-12 flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+          <div className="mb-12 flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:items-center">
             <Link
               href="https://github.com/maximhq/bifrost"
               target="_blank"
@@ -1215,6 +1216,13 @@ export const metadata: Metadata = {
             </p>
           </div>
           <FeatureMatrix />
+        </div>
+      </section>
+
+      {/* Free Trial Form */}
+      <section className="bg-white py-8 md:py-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <EnterpriseTrialForm />
         </div>
       </section>
 

@@ -29,10 +29,10 @@ export default function SetupSteps({ steps }: SetupStepsProps) {
   }
 
   return (
-    <div className="grid items-stretch gap-6 md:grid-cols-3">
+    <div className="grid items-stretch gap-6 sm:grid-cols-2 xl:grid-cols-3">
       {steps.map((step) => (
         <div key={step.step} className="flex flex-col border border-gray-200 bg-white">
-          <div className="flex-1 p-6">
+          <div className="flex-1 p-5 sm:p-6">
             <span className="font-mono text-xs tracking-wider text-[var(--accent-text)] uppercase">
               Step {step.step}
             </span>
@@ -67,7 +67,7 @@ export default function SetupSteps({ steps }: SetupStepsProps) {
                 )}
               </button>
             </div>
-            <div className="space-y-1 overflow-x-auto px-4 py-3 font-mono text-xs text-gray-200">
+            <div className="space-y-1 overflow-x-auto px-3 py-3 font-mono text-xs text-gray-200 sm:px-4">
               {step.code.split('\n').map((line, index) => {
                 const isComment = line.trim().startsWith('#')
                 return (

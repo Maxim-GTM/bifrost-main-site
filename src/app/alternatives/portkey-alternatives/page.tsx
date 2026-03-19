@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/Button'
 import FeatureMatrix from '@/components/resources/FeatureMatrix'
 import DropInReplacement from '@/components/resources/DropInReplacement'
 import SetupSteps from '@/components/resources/SetupSteps'
+import EnterpriseTrialForm from '@/components/industry-pages/EnterpriseTrialForm'
 
 import {
   ArrowRight,
@@ -543,30 +544,6 @@ export const metadata: Metadata = {
     'Your team prefers Node.js/TypeScript ecosystem and extensibility',
   ]
   
-  const _summaryTable = [
-    {
-      factor: 'Best For',
-      bifrost: 'High-throughput production systems',
-      portkey: 'Multi-provider abstraction, Python teams',
-    },
-    { factor: 'Performance', bifrost: '11µs', portkey: '40ms' },
-    { factor: 'Setup Time', bifrost: '<30 seconds', portkey: '2-10 minutes' },
-    { factor: 'Dependencies', bifrost: 'Zero', portkey: 'Redis recommended' },
-    {
-      factor: 'Deployment Asset',
-      bifrost: 'Single binary, Docker, npx',
-      portkey: 'Python package, Docker',
-    },
-    { factor: 'Configuration', bifrost: 'Web UI, API, files', portkey: 'Files, env variables' },
-    {
-      factor: 'Observability',
-      bifrost: 'Native Prometheus, built-in UI',
-      portkey: 'Via integrations',
-    },
-    { factor: 'Cost', bifrost: 'Free (Apache 2.0)', portkey: 'Free (MIT)' },
-    { factor: 'Providers', bifrost: '20+ providers, 1000+ models', portkey: '100+ LLM APIs' },
-  ]
-  
   function tableCellStyle(
     value: string | null,
     hasCheck: boolean | undefined,
@@ -617,7 +594,7 @@ export const metadata: Metadata = {
             <p className="mx-auto mb-8 max-w-3xl text-sm leading-relaxed text-gray-500 md:text-base">
             While Portkey offers a managed AI gateway, it can introduce latency overhead, SDK limitations, and pricing complexity as your AI application scales. Compare leading AI gateway platforms for raw performance, multi-SDK support, MCP capabilities, and production-grade reliability.
             </p>
-            <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+            <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:items-center">
               <Link href="#comparison">
                 <Button size="lg">
                   Compare Platforms
@@ -1180,7 +1157,7 @@ export const metadata: Metadata = {
             100% open source under Apache 2.0. Free forever. No vendor lock-in. Get started in under
             30 seconds.
           </p>
-          <div className="mb-12 flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+          <div className="mb-12 flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:items-center">
             <Link
               href="https://github.com/maximhq/bifrost"
               target="_blank"
@@ -1240,6 +1217,13 @@ export const metadata: Metadata = {
             </p>
           </div>
           <FeatureMatrix />
+        </div>
+      </section>
+
+      {/* Free Trial Form */}
+      <section className="bg-white py-8 md:py-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <EnterpriseTrialForm />
         </div>
       </section>
 

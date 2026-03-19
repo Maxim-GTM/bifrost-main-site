@@ -227,7 +227,7 @@ export default function RetailPage() {
             <p className="mx-auto mb-8 max-w-2xl text-sm leading-relaxed text-gray-500 md:text-base">
             Unified routing, spend controls, and access governance for customer-facing and internal AI workloads.
             </p>
-            <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+            <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:items-center">
               <Link href={`${basePath}/resources/benchmarks`}>
                 <Button size="lg">
                   View benchmarks
@@ -423,7 +423,7 @@ export default function RetailPage() {
           <p className="mx-auto mb-8 max-w-2xl text-gray-600">
             Talk to the Bifrost team about peak traffic readiness, AI governance, or cost control for your current stack.
           </p>
-          <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+          <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:items-center">
             <Link
               href="https://www.getmaxim.ai/bifrost/book-a-demo"
               target="_blank"

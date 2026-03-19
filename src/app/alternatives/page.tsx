@@ -1,7 +1,10 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight, Building2, Shield, ShoppingCart, Stethoscope, ShieldCheck, Microscope, Landmark, Radio } from 'lucide-react'
+import { ArrowRight, Building2, Shield, Stethoscope } from 'lucide-react'
 import { getCostCalculatorBaseUrl } from '@/lib/utils'
+import FeatureMatrix from '@/components/resources/FeatureMatrix'
+import DropInReplacement from '@/components/resources/DropInReplacement'
+import EnterpriseTrialForm from '@/components/industry-pages/EnterpriseTrialForm'
 
 export const metadata: Metadata = {
   title: ' Top AI Gateway Alternatives Compared | Bifrost (2026)',
@@ -41,6 +44,8 @@ export const metadata: Metadata = {
 }
 
 const basePath = getCostCalculatorBaseUrl()
+const gridSvg =
+  'url("data:image/svg+xml,%3Csvg width=\'12\' height=\'12\' viewBox=\'0 0 12 12\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Crect x=\'4\' y=\'4\' width=\'4\' height=\'4\' fill=\'black\'/%3E%3Crect y=\'8\' width=\'4\' height=\'4\' fill=\'black\'/%3E%3Crect x=\'8\' width=\'4\' height=\'4\' fill=\'black\'/%3E%3C/svg%3E")'
 
 const platforms = [
   {
@@ -127,10 +132,7 @@ export default function AlternativesPage() {
         <div className="hidden w-20 flex-none flex-col items-end gap-4 border-r border-black/10 xl:flex">
           <div
             className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
-              backgroundSize: '4px 4px',
-            }}
+            style={{ backgroundImage: gridSvg, backgroundSize: '4px 4px' }}
           ></div>
         </div>
 
@@ -184,10 +186,89 @@ export default function AlternativesPage() {
         <div className="hidden w-20 flex-none flex-col items-start gap-4 border-l border-black/10 xl:flex">
           <div
             className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
-              backgroundSize: '4px 4px',
-            }}
+            style={{ backgroundImage: gridSvg, backgroundSize: '4px 4px' }}
+          ></div>
+        </div>
+      </div>
+
+      {/* Feature Matrix */}
+      <div className="relative flex w-full justify-center">
+        <div className="hidden w-20 flex-none flex-col items-end gap-4 border-r border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{ backgroundImage: gridSvg, backgroundSize: '4px 4px' }}
+          ></div>
+        </div>
+
+        <div className="w-full max-w-[1100px] px-4 pb-16">
+          <div className="absolute right-0 left-0 h-px w-full bg-black/10" />
+          <section className="bg-white py-16 md:py-24">
+            <div className="mb-12 text-center">
+              <p className="mb-4 font-mono text-xs tracking-widest text-gray-400 uppercase">
+                [ BIFROST FEATURES ]
+              </p>
+              <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">Open Source & Enterprise</h2>
+              <p className="mx-auto max-w-2xl text-gray-600">
+                Everything you need to run AI in production, from free open source to
+                enterprise-grade security features.
+              </p>
+            </div>
+            <FeatureMatrix />
+          </section>
+        </div>
+
+        <div className="hidden w-20 flex-none flex-col items-start gap-4 border-l border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{ backgroundImage: gridSvg, backgroundSize: '4px 4px' }}
+          ></div>
+        </div>
+      </div>
+
+      {/* Free Trial Form */}
+      <div className="relative flex w-full justify-center">
+        <div className="hidden w-20 flex-none flex-col items-end gap-4 border-r border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{ backgroundImage: gridSvg, backgroundSize: '4px 4px' }}
+          ></div>
+        </div>
+
+        <div className="w-full max-w-[1100px] px-4 pb-16">
+          <div className="absolute right-0 left-0 h-px w-full bg-black/10" />
+          <section className="bg-white py-8 md:py-12">
+            <EnterpriseTrialForm />
+          </section>
+        </div>
+
+        <div className="hidden w-20 flex-none flex-col items-start gap-4 border-l border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{ backgroundImage: gridSvg, backgroundSize: '4px 4px' }}
+          ></div>
+        </div>
+      </div>
+
+      {/* Drop-in Replacement */}
+      <div className="relative flex w-full justify-center">
+        <div className="hidden w-20 flex-none flex-col items-end gap-4 border-r border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{ backgroundImage: gridSvg, backgroundSize: '4px 4px' }}
+          ></div>
+        </div>
+
+        <div className="w-full max-w-[1100px] bg-gray-50 px-4 pb-16">
+          <div className="absolute right-0 left-0 h-px w-full bg-black/10" />
+          <section className="px-4 py-16 sm:px-6 md:py-24 lg:px-8">
+            <DropInReplacement />
+          </section>
+        </div>
+
+        <div className="hidden w-20 flex-none flex-col items-start gap-4 border-l border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{ backgroundImage: gridSvg, backgroundSize: '4px 4px' }}
           ></div>
         </div>
       </div>

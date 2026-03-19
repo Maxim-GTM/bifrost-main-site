@@ -224,7 +224,7 @@ export default function BiotechPharmaPage() {
             <p className="mx-auto mb-8 max-w-2xl text-sm leading-relaxed text-gray-500 md:text-base">
               Bifrost gives Pharmaceutical and Biotechnology teams governed AI access that protects molecular IP and satisfies ALCOA+ audit requirements.
             </p>
-            <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+            <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:items-center">
               <Link href={`${basePath}/resources/benchmarks`}>
                 <Button size="lg">
                   View benchmarks
@@ -419,7 +419,7 @@ export default function BiotechPharmaPage() {
           <p className="mx-auto mb-8 max-w-2xl text-gray-600">
             Talk to the Bifrost team about your compliance requirements and deployment architecture.
           </p>
-          <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+          <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:items-center">
             <Link
               href="https://www.getmaxim.ai/bifrost/book-a-demo"
               target="_blank"

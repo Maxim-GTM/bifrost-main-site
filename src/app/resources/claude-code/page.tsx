@@ -346,7 +346,7 @@ export default function ClaudeCodePage() {
             </p>
 
             {/* CTAs */}
-            <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+            <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:items-center">
               <Link
                 href="https://github.com/maximhq/bifrost"
                 target="_blank"
@@ -888,7 +888,7 @@ export default function ClaudeCodePage() {
             Bifrost is open source and production-ready. Teams get started in minutes and scale
             without rethinking the architecture.
           </p>
-          <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+          <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:items-center">
             <Link
               href="https://github.com/maximhq/bifrost"
               target="_blank"

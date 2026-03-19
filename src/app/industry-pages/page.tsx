@@ -211,19 +211,19 @@ export default function IndustryPagesHomePage() {
                   <div className="absolute top-3 right-3 h-2 w-2 border-t border-r border-[var(--accent)] opacity-40" />
                   <div className="absolute bottom-3 left-3 h-2 w-2 border-b border-l border-[var(--accent)] opacity-40" />
                   <div className="absolute right-3 bottom-3 h-2 w-2 border-r border-b border-[var(--accent)] opacity-40" />
-                  <div className="flex items-center justify-between border-b border-gray-200 p-6">
-                    <div className="flex items-center gap-3">
+                  <div className="flex items-center justify-between gap-4 border-b border-gray-200 p-6">
+                    <div className="flex min-w-0 items-center gap-3">
                       <div className="flex h-10 w-10 items-center justify-center bg-[var(--accent)]/10 text-[var(--accent-text)]">
                         <industry.icon className="h-5 w-5" />
                       </div>
-                      <div>
+                      <div className="min-w-0">
                         <p className="font-mono text-xs tracking-widest text-gray-400 uppercase">
                           {industry.label}
                         </p>
-                        <h2 className="text-sm text-gray-900">{industry.title}</h2>
+                        <h2 className="break-words text-sm text-gray-900">{industry.title}</h2>
                       </div>
                     </div>
-                    <ArrowRight className="h-4 w-4 text-gray-400 transition-colors group-hover:text-[var(--accent-text)]" />
+                    <ArrowRight className="h-4 w-4 shrink-0 text-gray-400 transition-colors group-hover:text-[var(--accent-text)]" />
                   </div>
                   <div className="p-6">
                     <p className="text-sm leading-relaxed text-gray-600">{industry.description}</p>
@@ -309,7 +309,7 @@ export default function IndustryPagesHomePage() {
           ></div>
         </div>
 
-        <div className="w-full max-w-[1100px] bg-gray-50 px-4 pb-16">
+        <div className="w-full max-w-[1100px] bg-gray-50 pb-16">
           <div className="absolute right-0 left-0 h-px w-full bg-black/10" />
           <section className="px-4 py-16 sm:px-6 md:py-24 lg:px-8">
             <DropInReplacement />

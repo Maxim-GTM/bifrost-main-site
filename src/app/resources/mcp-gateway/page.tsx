@@ -326,7 +326,7 @@ export default function MCPGatewayPage() {
               open-source MCP gateway that delivers 11µs overhead and complete security control
               without automatic execution.
             </p>
-            <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+            <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:items-center">
               <Link
                 href="https://github.com/maximhq/bifrost"
                 target="_blank"
@@ -858,7 +858,7 @@ export default function MCPGatewayPage() {
             Get enterprise-grade MCP gateway performance with explicit security controls, Code Mode
             for token efficiency, and a single gateway URL for your entire tool ecosystem.
           </p>
-          <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+          <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:items-center">
             <Link
               href="https://github.com/maximhq/bifrost"
               target="_blank"

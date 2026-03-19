@@ -49,29 +49,6 @@ const showcaseCompanies: ShowcaseCompany[] = [
   },
 ]
 
-const _overviewMetrics = [
-  {
-    value: String(showcaseCompanies.length),
-    label: 'Profiles',
-    description: 'Representative adopter examples',
-  },
-  {
-    value: 'Multi-provider',
-    label: 'Routing',
-    description: 'One gateway across model vendors',
-  },
-  {
-    value: 'Observability',
-    label: 'Operations',
-    description: 'Logs, metrics, and traces from one layer',
-  },
-  {
-    value: 'Policy Controls',
-    label: 'Governance',
-    description: 'Centralized access and usage management',
-  },
-]
-
 function getWebsiteLabel(url: string) {
   try {
     const { hostname, pathname } = new URL(url)
@@ -271,7 +248,7 @@ export default function BifrostOssAdoptersPage() {
               Deploy the fastest open source enterprise AI gateway with intelligent model routing,
               observability, governance, guardrails and enterprise-ready controls for your AI Infrastructure.
             </p>
-            <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+            <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:items-center">
               <Link
                 href="https://github.com/maximhq/bifrost"
                 target="_blank"

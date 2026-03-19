@@ -221,7 +221,7 @@ export default function HealthcareLifeSciencesPage() {
             <p className="mx-auto mb-8 max-w-2xl text-sm leading-relaxed text-gray-500 md:text-base">
             Deploy AI across clinical, research, and operational workflows without sending PHI outside your network. Air-gapped, HIPAA-compliant infrastructure built for healthcare systems.
             </p>
-            <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+            <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:items-center">
               <Link href={`${basePath}/resources/benchmarks`}>
                 <Button size="lg">
                   View benchmarks
@@ -413,7 +413,7 @@ export default function HealthcareLifeSciencesPage() {
             Talk to the Bifrost team about deploying a compliant, air-gapped gateway inside your
             network.
           </p>
-          <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+          <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:items-center">
             <Link
               href="https://www.getmaxim.ai/bifrost/book-a-demo"
               target="_blank"
