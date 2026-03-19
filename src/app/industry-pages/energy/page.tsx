@@ -3,6 +3,7 @@ import Link from 'next/link'
 import FeatureMatrix from '@/components/resources/FeatureMatrix'
 import InterfaceHighlights from '@/components/resources/InterfaceHighlights'
 import DropInReplacement from '@/components/resources/DropInReplacement'
+import ComplianceSection from '@/components/industry-pages/ComplianceSection'
 import { Button } from '@/components/ui/Button'
 import { getCostCalculatorBaseUrl } from '@/lib/utils'
 import {
@@ -389,6 +390,8 @@ export default function EnergyPage() {
           </div>
         </div>
       </section>
+
+      <ComplianceSection />
 
       {/* CTA */}
       <section className="bg-gray-50 py-16 md:py-24">

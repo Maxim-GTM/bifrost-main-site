@@ -5,6 +5,7 @@ import InterfaceHighlights from '@/components/resources/InterfaceHighlights'
 import DeploymentOptions from '@/components/resources/DeploymentOptions'
 import DropInReplacement from '@/components/resources/DropInReplacement'
 import EnterpriseTrialForm from '@/components/industry-pages/EnterpriseTrialForm'
+import ComplianceSection from '@/components/industry-pages/ComplianceSection'
 import { Button } from '@/components/ui/Button'
 import { getCostCalculatorBaseUrl } from '@/lib/utils'
 import {
@@ -409,6 +410,8 @@ export default function TelecommunicationPage() {
           <DeploymentOptions />
         </div>
       </section>
+
+      <ComplianceSection />
 
       {/* CTA */}
       <section className="bg-gray-50 py-16 md:py-24">
