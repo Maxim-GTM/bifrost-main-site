@@ -3,6 +3,7 @@ import Link from 'next/link'
 import FeatureMatrix from '@/components/resources/FeatureMatrix'
 import InterfaceHighlights from '@/components/resources/InterfaceHighlights'
 import DropInReplacement from '@/components/resources/DropInReplacement'
+import EnterpriseTrialForm from '@/components/industry-pages/EnterpriseTrialForm'
 import ComplianceSection from '@/components/industry-pages/ComplianceSection'
 import { Button } from '@/components/ui/Button'
 import { getCostCalculatorBaseUrl } from '@/lib/utils'
@@ -440,6 +441,13 @@ export default function EnergyPage() {
             </p>
           </div>
           <FeatureMatrix />
+        </div>
+      </section>
+
+      {/* Free Trial Form */}
+      <section className="bg-white py-8 md:py-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <EnterpriseTrialForm />
         </div>
       </section>
 
