@@ -1,5 +1,5 @@
 // Auto-generated file - DO NOT EDIT
-// Generated at: 2026-03-17T18:42:25.701Z
+// Generated at: 2026-03-19T13:32:09.178Z
 // Source: https://getbifrost.ai/datasheet
 // Run `npm run generate:llm-data` to regenerate
 
@@ -39463,6 +39463,77 @@ export const LLM_MODELS: ProcessedModel[] = [
     "displayName": "grok-4-1-fast-non-reasoning-latest"
   },
   {
+    "id": "xai/grok-4.20-multi-agent-beta-0309",
+    "name": "grok-4.20-multi-agent-beta-0309",
+    "provider": "xai",
+    "data": {
+      "cache_read_input_token_cost": 2e-7,
+      "input_cost_per_token": 0.000002,
+      "max_input_tokens": 2000000,
+      "max_output_tokens": 2000000,
+      "max_tokens": 2000000,
+      "mode": "chat",
+      "output_cost_per_token": 0.000006,
+      "source": "https://docs.x.ai/docs/models",
+      "supports_function_calling": true,
+      "supports_reasoning": true,
+      "supports_tool_choice": true,
+      "supports_vision": true,
+      "supports_web_search": true,
+      "provider": "xai",
+      "base_model": "grok-4.20-multi-agent"
+    },
+    "slug": "grok-4.20-multi-agent-beta-0309",
+    "displayName": "grok-4.20-multi-agent-beta-0309"
+  },
+  {
+    "id": "xai/grok-4.20-beta-0309-reasoning",
+    "name": "grok-4.20-beta-0309-reasoning",
+    "provider": "xai",
+    "data": {
+      "cache_read_input_token_cost": 2e-7,
+      "input_cost_per_token": 0.000002,
+      "max_input_tokens": 2000000,
+      "max_output_tokens": 2000000,
+      "max_tokens": 2000000,
+      "mode": "chat",
+      "output_cost_per_token": 0.000006,
+      "source": "https://docs.x.ai/docs/models",
+      "supports_function_calling": true,
+      "supports_reasoning": true,
+      "supports_tool_choice": true,
+      "supports_vision": true,
+      "supports_web_search": true,
+      "provider": "xai",
+      "base_model": "grok-4.20-beta"
+    },
+    "slug": "grok-4.20-beta-0309-reasoning",
+    "displayName": "grok-4.20-beta-0309-reasoning"
+  },
+  {
+    "id": "xai/grok-4.20-beta-0309-non-reasoning",
+    "name": "grok-4.20-beta-0309-non-reasoning",
+    "provider": "xai",
+    "data": {
+      "cache_read_input_token_cost": 2e-7,
+      "input_cost_per_token": 0.000002,
+      "max_input_tokens": 2000000,
+      "max_output_tokens": 2000000,
+      "max_tokens": 2000000,
+      "mode": "chat",
+      "output_cost_per_token": 0.000006,
+      "source": "https://docs.x.ai/docs/models",
+      "supports_function_calling": true,
+      "supports_tool_choice": true,
+      "supports_vision": true,
+      "supports_web_search": true,
+      "provider": "xai",
+      "base_model": "grok-4.20-beta-0309-non"
+    },
+    "slug": "grok-4.20-beta-0309-non-reasoning",
+    "displayName": "grok-4.20-beta-0309-non-reasoning"
+  },
+  {
     "id": "xai/grok-beta",
     "name": "grok-beta",
     "provider": "xai",
@@ -46596,8 +46667,8 @@ for (const model of LLM_MODELS) {
 
 // Stats
 export const LLM_STATS = {
-  totalModels: 1989,
+  totalModels: 1992,
   totalProviders: 66,
   totalModes: 10,
-  generatedAt: '2026-03-17T18:42:25.706Z',
+  generatedAt: '2026-03-19T13:32:09.182Z',
 };

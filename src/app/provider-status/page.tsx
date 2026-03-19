@@ -39,10 +39,10 @@ export default async function ProviderStatusPage() {
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
           <div className="text-center">
             <span className="font-mono text-[12px] leading-[15px] font-medium tracking-[0.04em] text-emerald-500 uppercase">
-              [&ensp;AI PROVIDER STATUS&ensp;]
+              [&ensp;LLM PROVIDER STATUS&ensp;]
             </span>
             <h1 className="mx-auto mt-2 mb-4 max-w-3xl text-[42px] leading-[120%] font-medium tracking-[-0.02em] text-black">
-              AI Provider Status Monitor
+              LLM Provider Status
             </h1>
             <p className="mx-auto max-w-2xl text-[16px] leading-[140%] tracking-[0em] text-[#525252]">
               Real-time status monitoring for AI model providers. Check if OpenAI, Claude, Groq,

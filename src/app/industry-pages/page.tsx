@@ -2,9 +2,12 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight, Building2, Shield, ShoppingCart, Stethoscope, ShieldCheck, Microscope, Landmark, Radio, Zap } from 'lucide-react'
 import { getCostCalculatorBaseUrl } from '@/lib/utils'
+import FeatureMatrix from '@/components/resources/FeatureMatrix'
+import DropInReplacement from '@/components/resources/DropInReplacement'
+import EnterpriseTrialForm from '@/components/industry-pages/EnterpriseTrialForm'
 
 export const metadata: Metadata = {
-  title: 'Governed AI Infrastructure by Industry | Bifrost',
+  title: 'Gateway, Governance, and Guardrails for Enterprise AI | Bifrost',
   description:
     'Explore Bifrost Enterprise AI Gateway for financial services, healthcare, insurance, and retail with secure deployment, governance, and intelligent model routing.',
   keywords: [
@@ -25,13 +28,13 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://www.getmaxim.ai/bifrost/industry-pages',
     siteName: 'Bifrost by Maxim AI',
-    title: 'Governed AI Infrastructure by Industry | Bifrost',
+    title: 'Gateway, Governance, and Guardrails for Enterprise AI | Bifrost',
     description:
       'Explore Bifrost Enterprise AI Gateway for financial services, healthcare, insurance, and retail with secure deployment, governance, and intelligent model routing.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Governed AI Infrastructure by Industry | Bifrost',
+    title: 'Gateway, Governance, and Guardrails for Enterprise AI | Bifrost',
     description:
       'Explore Bifrost Enterprise AI Gateway for financial services, healthcare, insurance, and retail with secure deployment, governance, and intelligent model routing.',
   },
@@ -41,6 +44,8 @@ export const metadata: Metadata = {
 }
 
 const basePath = getCostCalculatorBaseUrl()
+const gridSvg =
+  'url("data:image/svg+xml,%3Csvg width=\'12\' height=\'12\' viewBox=\'0 0 12 12\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Crect x=\'4\' y=\'4\' width=\'4\' height=\'4\' fill=\'black\'/%3E%3Crect y=\'8\' width=\'4\' height=\'4\' fill=\'black\'/%3E%3Crect x=\'8\' width=\'4\' height=\'4\' fill=\'black\'/%3E%3C/svg%3E")'
 
 const industries = [
   {
@@ -161,7 +166,9 @@ export default function IndustryPagesHomePage() {
               [&ensp;BIFROST FOR INDUSTRIES&ensp;]
             </span>
             <h1 className="mx-auto mt-2 mb-4 max-w-3xl text-[42px] leading-[120%] font-medium tracking-[-0.02em] text-black">
-              Governed AI Infrastructure for Enterprise Use Cases Across Industries
+              Gateway, Governance, and Guardrails for
+              <br />
+              <span className="text-[var(--accent-text)]">Enterprise AI</span>
             </h1>
             <p className="mx-auto max-w-3xl text-[16px] leading-[140%] tracking-[0em] text-[#525252]">
               Explore how Bifrost supports regulated, high-scale, and customer-facing teams with
@@ -175,10 +182,7 @@ export default function IndustryPagesHomePage() {
         <div className="hidden w-20 flex-none flex-col items-end gap-4 border-r border-black/10 xl:flex">
           <div
             className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
-              backgroundSize: '4px 4px',
-            }}
+            style={{ backgroundImage: gridSvg, backgroundSize: '4px 4px' }}
           ></div>
         </div>
 
@@ -233,10 +237,89 @@ export default function IndustryPagesHomePage() {
         <div className="hidden w-20 flex-none flex-col items-start gap-4 border-l border-black/10 xl:flex">
           <div
             className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='4' height='4' fill='black'/%3E%3Crect y='8' width='4' height='4' fill='black'/%3E%3Crect x='8' width='4' height='4' fill='black'/%3E%3C/svg%3E")`,
-              backgroundSize: '4px 4px',
-            }}
+            style={{ backgroundImage: gridSvg, backgroundSize: '4px 4px' }}
+          ></div>
+        </div>
+      </div>
+
+      {/* Feature Matrix */}
+      <div className="relative flex w-full justify-center">
+        <div className="hidden w-20 flex-none flex-col items-end gap-4 border-r border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{ backgroundImage: gridSvg, backgroundSize: '4px 4px' }}
+          ></div>
+        </div>
+
+        <div className="w-full max-w-[1100px] px-4 pb-16">
+          <div className="absolute right-0 left-0 h-px w-full bg-black/10" />
+          <section className="bg-white py-16 md:py-24">
+            <div className="mb-12 text-center">
+              <p className="mb-4 font-mono text-xs tracking-widest text-gray-400 uppercase">
+                [ BIFROST FEATURES ]
+              </p>
+              <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">Open Source & Enterprise</h2>
+              <p className="mx-auto max-w-2xl text-gray-600">
+                Everything you need to run AI in production, from free open source to
+                enterprise-grade security features.
+              </p>
+            </div>
+            <FeatureMatrix />
+          </section>
+        </div>
+
+        <div className="hidden w-20 flex-none flex-col items-start gap-4 border-l border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{ backgroundImage: gridSvg, backgroundSize: '4px 4px' }}
+          ></div>
+        </div>
+      </div>
+
+      {/* Free Trial Form */}
+      <div className="relative flex w-full justify-center">
+        <div className="hidden w-20 flex-none flex-col items-end gap-4 border-r border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{ backgroundImage: gridSvg, backgroundSize: '4px 4px' }}
+          ></div>
+        </div>
+
+        <div className="w-full max-w-[1100px] px-4 pb-16">
+          <div className="absolute right-0 left-0 h-px w-full bg-black/10" />
+          <section className="bg-white py-8 md:py-12">
+            <EnterpriseTrialForm />
+          </section>
+        </div>
+
+        <div className="hidden w-20 flex-none flex-col items-start gap-4 border-l border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{ backgroundImage: gridSvg, backgroundSize: '4px 4px' }}
+          ></div>
+        </div>
+      </div>
+
+      {/* Drop-in Replacement */}
+      <div className="relative flex w-full justify-center">
+        <div className="hidden w-20 flex-none flex-col items-end gap-4 border-r border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{ backgroundImage: gridSvg, backgroundSize: '4px 4px' }}
+          ></div>
+        </div>
+
+        <div className="w-full max-w-[1100px] bg-gray-50 px-4 pb-16">
+          <div className="absolute right-0 left-0 h-px w-full bg-black/10" />
+          <section className="px-4 py-16 sm:px-6 md:py-24 lg:px-8">
+            <DropInReplacement />
+          </section>
+        </div>
+
+        <div className="hidden w-20 flex-none flex-col items-start gap-4 border-l border-black/10 xl:flex">
+          <div
+            className="h-full w-full bg-[#F6F6F6] opacity-[0.07]"
+            style={{ backgroundImage: gridSvg, backgroundSize: '4px 4px' }}
           ></div>
         </div>
       </div>
