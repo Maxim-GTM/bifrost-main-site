@@ -402,8 +402,8 @@ export default function InsuranceTestPage() {
               Flexible deployment
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Run Bifrost wherever your compliance requirements demand - on-prem, in your VPC, or
-              across multiple clouds.
+              Run Bifrost wherever your compliance requirements demand - on-prem, in-VPC, or
+              hybrid.
             </p>
           </div>
           <DeploymentOptions />

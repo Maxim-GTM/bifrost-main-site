@@ -11,31 +11,32 @@ interface DeploymentCard {
 const defaultCards: DeploymentCard[] = [
   {
     icon: Server,
-    title: 'Self-Hosted',
+    title: 'Single Binary',
     tags: ['npx', 'Docker', 'Binary'],
     description:
-      'Single binary, zero dependencies. Deploy anywhere. Full control over data, config, and networking.',
+      'Bifrost is deployed as a single binary that you can run via NPX or Docker, no additional dependencies needed.',
   },
   {
     icon: Cloud,
-    title: 'Kubernetes / Helm',
-    tags: ['K8s', 'Helm charts'],
+    title: 'Cluster Mode',
+   
+    tags: ['Multi-Node', 'P2P gossip'],
     description:
-      'Official Helm charts in the repo. Horizontal scaling, readiness probes, and rolling deployments out of the box.',
+      'Built-in high availability with gossip-protocol sync, automatic service discovery, and zero-downtime rolling deployments.',
   },
   {
     icon: ShieldCheck,
-    title: 'In-VPC',
-    tags: ['AWS VPC', 'GCP VPC', 'Azure VNet'],
+    title: 'Air-Gapped (in-VPC, on-prem)',
+    tags: ['AWS', 'GCP', 'Azure', 'On-Prem'],
     description:
-      'Deploy within your private cloud with VPC isolation. Data never leaves your network boundary.',
+      'Deploy on-prem or in your VPC with full network isolation. Data never crosses your security boundary. SOC 2 Type II, HIPAA, and ISO 27001 compliant.',
   },
   {
     icon: Globe,
-    title: 'Multi-Cloud Deployment',
-    tags: ['AWS', 'GCP', 'Azure', 'Cloudflare'],
+    title: 'Helm Chart (K8s)',
+    tags: ['K8s', 'Helm', 'Auto-scaling'],
     description:
-      'Deploy Bifrost Enterprise across multiple cloud providers.',
+      'Bifrost is available as a Helm chart for easy deployment to your Kubernetes cluster.',
   },
 ]
 
