@@ -22,7 +22,7 @@ const defaultCards: DeploymentCard[] = [
    
     tags: ['Multi-Node', 'P2P gossip'],
     description:
-      'Built-in high availability with gossip-protocol sync, automatic service discovery, and zero-downtime rolling deployments.',
+      'Built-in high availability with gossip-protocol, automatic service discovery, and zero-downtime rolling deployments.',
   },
   {
     icon: ShieldCheck,

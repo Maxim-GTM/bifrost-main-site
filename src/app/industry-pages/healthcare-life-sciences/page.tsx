@@ -391,7 +391,7 @@ export default function HealthcareLifeSciencesPage() {
               [ DEPLOYMENT ]
             </p>
             <h2 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              Flexible deployment
+              Secure deployment
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
               Run Bifrost wherever your compliance requirements demand - on-prem, in-VPC, or
